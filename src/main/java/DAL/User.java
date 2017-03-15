@@ -11,4 +11,8 @@ public class User {
     public String login;
     public String password_hash;
     public Roles role;
+
+    public String getLogin() {
+        return login;
+    }
 }
