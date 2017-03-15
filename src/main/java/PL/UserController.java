@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
     @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String HelloWorld() throws ClassNotFoundException, SQLException {
+    public String Index() throws ClassNotFoundException, SQLException {
         UserRepository userRepository = new UserRepository();
         Iterable<User> users = userRepository.GetAll();
+        for (User user:
+             users) {
+            System.out.println(user.login);
+        }
         return "index";
     }
 }
