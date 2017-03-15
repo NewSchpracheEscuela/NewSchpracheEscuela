@@ -1,9 +1,11 @@
 package DAL;
 
+import com.mysql.jdbc.Connection;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,33 +15,37 @@ import java.util.List;
  */
 public class UserRepository implements IRepository<User> {
 
+    private java.sql.Connection connection;
+    private Statement statement;
     public UserRepository() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            java.sql.Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/newschpracheescuela","root","admin");
-            Statement stmt=con.createStatement();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/newschpracheescuela","root","admin");
+        }
+            catch (Exception e){System.out.println(e);}
+    }
 
-            ResultSet rs=stmt.executeQuery("select * from user");
-            ArrayList<User> users = new ArrayList<User>();
+    public Iterable<User> GetAll() throws SQLException {
+        ArrayList<User> users = new ArrayList<User>();
+        try{
+            statement=connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("select * from user");
             while(rs.next()){
                 User user = new User();
                 user.user_id = rs.getInt(1);
                 user.email = rs.getString(2);
                 user.login = rs.getString(3);
                 user.password_hash = rs.getString(4);
-                user.role = Roles.values()[rs.getInt(5)];
+                user.role = Roles.valueOf(rs.getString(5));
                 users.add(user);
-
-            con.close();
             }
+            connection.close();
         }
-            catch (Exception e){System.out.println(e);}
-    }
+        catch (Exception e){System.out.println(e);}
 
-    public Iterable<User> GetAll() {
-
-        return null;
+        return users;
     }
 
     public User Get(int id) {
