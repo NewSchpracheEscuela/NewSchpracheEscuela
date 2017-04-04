@@ -19,12 +19,6 @@ public class UserController {
     public ModelAndView Index(ModelMap model) throws ClassNotFoundException, SQLException {
         UserRepository userRepository = new UserRepository();
         Iterable<User> users = userRepository.GetAll();
-        for (User user:
-             users) {
-            System.out.println(user.login);
-            //request.setAttribute("user", user.login);
-
-        }
         model.addAttribute("users", users);
         return new ModelAndView("users", "users", users);
     }

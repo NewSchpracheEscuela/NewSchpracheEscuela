@@ -6,11 +6,11 @@
 
     <mvc:annotation-driven />
     <context:component-scan base-package="PL"/>
-    <mvc:resources mapping="/resources/**" location="views/"/>
+
+    <mvc:resources mapping="/resources/**" location="/views/"/>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/views/"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
-
 </beans>
