@@ -1,4 +1,4 @@
-<%--
+<%@ page import="DAL.User" %><%--
   Created by IntelliJ IDEA.
   User: alexb
   Date: 14-Mar-17
@@ -9,10 +9,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <link href="<c:url value="views/css/styles.css"/>" type="text/css">
-    <title>NSEdb connection</title>
+    <title>Index</title>
   </head>
   <body>
-  <h1>Index</h1>
+    Index
   </body>
 </html>
