@@ -1,4 +1,4 @@
-package DAL;
+package Database_layer;
 
 import java.sql.SQLException;
 

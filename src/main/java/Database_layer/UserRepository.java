@@ -1,6 +1,5 @@
-package DAL;
+package Database_layer;
 
-import com.mysql.jdbc.Connection;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.DriverManager;
@@ -8,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by alexb on 14-Mar-17.

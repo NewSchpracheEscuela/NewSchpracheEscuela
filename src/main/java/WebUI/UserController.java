@@ -1,7 +1,7 @@
-package PL;
+package WebUI;
 import java.sql.*;
-import DAL.User;
-import DAL.UserRepository;
+import Database_layer.User;
+import Database_layer.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;

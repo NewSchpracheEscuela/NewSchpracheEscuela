@@ -1,4 +1,4 @@
-<%@ page import="DAL.User" %><%--
+<%@ page import="Database_layer.User" %><%--
   Created by IntelliJ IDEA.
   User: alexb
   Date: 14-Mar-17

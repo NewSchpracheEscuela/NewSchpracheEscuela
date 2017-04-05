@@ -1,4 +1,4 @@
-package DAL;
+package Database_layer;
 
 /**
  * Created by alexb on 15-Mar-17.
