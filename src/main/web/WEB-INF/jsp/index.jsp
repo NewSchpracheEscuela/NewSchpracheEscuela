@@ -12,7 +12,7 @@
 <spring:url value="/resources/scripts/angular/angular.min.js" var="angularMain"/>
 <spring:url value="/resources/scripts/script.js" var="scriptMain"/>
 <spring:url value="/resources/scripts/angular/angular-route.min.js" var="angularRoute"/>
-<html>
+<html ng-app="NSE">
   <head>
       <base href="/"/>
       <script src="${angularMain}"></script>
