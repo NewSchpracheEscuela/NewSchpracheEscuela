@@ -19,7 +19,7 @@ public class UserRepository implements IRepository<User> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/newschpracheescuela","root","admin");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
         }
             catch (Exception e){System.out.println(e);}
     }
@@ -32,11 +32,11 @@ public class UserRepository implements IRepository<User> {
             ResultSet rs = statement.executeQuery("select * from user");
             while(rs.next()){
                 User user = new User();
-                user.user_id = rs.getInt(1);
-                user.email = rs.getString(2);
-                user.login = rs.getString(3);
-                user.password_hash = rs.getString(4);
-                user.role = Roles.valueOf(rs.getString(5));
+                user.user_id = rs.getInt("user_id");
+                user.email = rs.getString("email");
+                user.login = rs.getString("login");
+                user.password_hash = rs.getString("password");
+                user.role = Roles.valueOf(rs.getString("role"));
                 users.add(user);
             }
             connection.close();

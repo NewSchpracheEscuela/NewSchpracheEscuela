@@ -1,4 +1,20 @@
+body{
+  background-color: darkgray;
+  color: white;
+}
 h1{
-  color: aqua;
-    background-color: black;
+  margin: 20px;
+  font-size: 50px;
+}
+table{
+  border-collapse: collapse;
+  border-color: white;
+  border-style: solid;
+}
+td{
+  border-collapse: collapse;
+  border-style: solid;
+}
+th{
+  border-style: solid;
 }
