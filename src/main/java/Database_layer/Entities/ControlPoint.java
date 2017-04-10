@@ -1,4 +1,4 @@
-package Database_layer;
+package Database_layer.Entities;
 
 
 /**

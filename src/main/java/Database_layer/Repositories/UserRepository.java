@@ -1,5 +1,8 @@
-package Database_layer;
+package Database_layer.Repositories;
 
+import Database_layer.IRepository;
+import Database_layer.Entities.Roles;
+import Database_layer.Entities.User;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.DriverManager;
@@ -50,11 +53,15 @@ public class UserRepository implements IRepository<User> {
         throw new NotImplementedException();
     }
 
+    public void Add(User entity) {
+
+    }
+
     public void Delete(int id) {
         throw new NotImplementedException();
     }
 
-    public void Update(User item) {
+    public void Update(int id,User item) {
         throw new NotImplementedException();
     }
 }

@@ -1,5 +1,7 @@
 package Database_layer;
 
+import Database_layer.Entities.ControlPoint;
+import Database_layer.Repositories.ControlPointRepository;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -9,8 +11,6 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by alexb on 09-Apr-17.

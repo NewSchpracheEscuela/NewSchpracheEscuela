@@ -1,4 +1,7 @@
-package Database_layer;
+package Database_layer.Repositories;
+
+import Database_layer.Entities.ControlPoint;
+import Database_layer.IRepository;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by alexb on 09-Apr-17.
  */
-public class ControlPointRepository implements IRepository<ControlPoint>{
+public class ControlPointRepository implements IRepository<ControlPoint> {
     private java.sql.Connection connection;
     private Statement statement;
     private static SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");

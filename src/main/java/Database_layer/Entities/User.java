@@ -1,4 +1,6 @@
-package Database_layer;
+package Database_layer.Entities;
+
+import Database_layer.Entities.Roles;
 
 /**
  * Created by alexb on 14-Mar-17.
