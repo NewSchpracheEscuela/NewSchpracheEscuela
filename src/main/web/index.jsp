@@ -1,4 +1,4 @@
-<%@ page import="Database_layer.User" %><%--
+<%@ page import="Database_layer.Entities.User" %><%--
   Created by IntelliJ IDEA.
   User: alexb
   Date: 14-Mar-17

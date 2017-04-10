@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="Database_layer.User" %>
+<%@ page import="Database_layer.Entities.User" %>
 <html>
 <head>
     <title>Hello</title>
