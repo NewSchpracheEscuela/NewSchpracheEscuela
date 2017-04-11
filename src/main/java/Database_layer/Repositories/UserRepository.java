@@ -53,6 +53,8 @@ public class UserRepository implements IRepository<User> {
         User user = new User();
         String query = String.format("SELECT * FROM user WHERE user_id=%1$d", id);
         try{
+            statement=connection.createStatement();
+
             ResultSet rs = statement.executeQuery(query);
             user.setUser_id(rs.getInt("user_id"));
             user.setEmail(rs.getString("email"));
@@ -68,6 +70,8 @@ public class UserRepository implements IRepository<User> {
                 entity.getUser_id(), entity.getLogin(), entity.getPassword_hash(), entity.getEmail(), entity.getRole(), entity.getFirstName(), entity.getLastName(),
                 entity.getPatronym(), entity.getContactInfo());
         try{
+            statement=connection.createStatement();
+
             ResultSet rs = statement.executeQuery(query);
         } catch(Exception e){System.out.println(e);}
     }
@@ -75,6 +79,8 @@ public class UserRepository implements IRepository<User> {
     public void Delete(int id) {
         String query = String.format("DELETE FROM user WHERE user_id=%1$d", id);
         try{
+            statement=connection.createStatement();
+
             statement.executeQuery(query);
         } catch(Exception e){System.out.println(e);}
     }
@@ -84,6 +90,8 @@ public class UserRepository implements IRepository<User> {
                 id, item.getLogin(), item.getPassword_hash(), item.getEmail(), item.getRole(), item.getFirstName(), item.getLastName(),
                 item.getPatronym(), item.getContactInfo());
         try{
+            statement=connection.createStatement();
+
             ResultSet rs = statement.executeQuery(query);
         } catch(Exception e){System.out.println(e);}
     }

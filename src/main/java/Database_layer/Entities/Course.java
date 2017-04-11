@@ -12,6 +12,7 @@ public class Course {
     private String description;
     private int numberOfHours;
     private java.util.Date startDate;
+    private float price;
 
     public int getCourse_id(){return course_id;}
     public String getTitle(){return title;}
@@ -19,6 +20,7 @@ public class Course {
     public String getDescription(){return description;}
     public int getNumberOfHours(){return numberOfHours;}
     public java.util.Date getStartDate(){return startDate;}
+    public float getPrice(){return price;}
 
     public void setCourse_id(int value){course_id=value;}
     public void setTitle(String value){title = value;}
@@ -27,4 +29,5 @@ public class Course {
     public void setDescription(String value){description = value;}
     public void setNumberOfHours(int value){numberOfHours = value;}
     public void setStartDate(java.util.Date value){startDate = value;}
+    public void setPrice(float value){price = value;}
 }

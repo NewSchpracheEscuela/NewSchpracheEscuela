@@ -52,6 +52,8 @@ public class NewsRepository implements IRepository<News> {
         News news = new News();
         String query = String.format("SELECT * FROM news WHERE news_id=%1$d", id);
         try{
+            statement=connection.createStatement();
+
             ResultSet rs = statement.executeQuery(query);
             news.setNews_id(rs.getInt("news_id"));
             news.setTitle(rs.getString("title"));
@@ -65,6 +67,8 @@ public class NewsRepository implements IRepository<News> {
     public void Delete(int id) {
         String query = String.format("DELETE FROM news WHERE news_id=%1$d", id);
         try{
+            statement=connection.createStatement();
+
             statement.executeQuery(query);
         } catch(Exception e){System.out.println(e);}
     }
@@ -73,6 +77,8 @@ public class NewsRepository implements IRepository<News> {
         String query = String.format("UPDATE news SET title=%2$s, description=%3$s, date=%4$s, user_id=%5$d WHERE user_id=%1$d",
                 id, item.getTitle(), item.getContent(), item.getDate().toString(), item.getAuthor().getUser_id());
         try{
+            statement=connection.createStatement();
+
             ResultSet rs = statement.executeQuery(query);
         } catch(Exception e){System.out.println(e);}
     }
@@ -81,6 +87,8 @@ public class NewsRepository implements IRepository<News> {
         String query = String.format("insert into news (%1$d, %2$s, %3$s, %4$s, %5$s)",
                 item.getNews_id(), item.getTitle(), item.getContent(), item.getDate(), item.getAuthor().getUser_id());
         try{
+            statement=connection.createStatement();
+
             ResultSet rs = statement.executeQuery(query);
         } catch(Exception e){System.out.println(e);}
     }
