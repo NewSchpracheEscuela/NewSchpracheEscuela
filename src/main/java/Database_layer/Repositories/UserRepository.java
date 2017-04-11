@@ -15,9 +15,9 @@ import java.util.ArrayList;
  * Created by alexb on 14-Mar-17.
  */
 public class UserRepository implements IRepository<User> {
-
     private java.sql.Connection connection;
     private Statement statement;
+
     public UserRepository() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -80,7 +80,7 @@ public class UserRepository implements IRepository<User> {
     }
 
     public void Update(int id, User item) {
-        String query = String.format("UPDATE user SET login=%2$s, password=%3$s, email=%4$s, role=%5$s, first_name=%6$s, last_name=%7$s, patronym=%8$s, telephone=%9$s, WHERE user_id=%1$d",
+        String query = String.format("UPDATE user SET login=%2$s, password=%3$s, email=%4$s, role=%5$s, first_name=%6$s, last_name=%7$s, patronym=%8$s, telephone=%9$s WHERE user_id=%1$d",
                 id, item.getLogin(), item.getPassword_hash(), item.getEmail(), item.getRole(), item.getFirstName(), item.getLastName(),
                 item.getPatronym(), item.getContactInfo());
         try{
