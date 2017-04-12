@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +18,7 @@ public class CommentRepository implements IRepository<Comment> {
     private Statement statement;
     private UserRepository userRepository = new UserRepository();
     private CourseRepository courseRepository = new CourseRepository();
+    private static SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
     public CommentRepository() {
         try{
@@ -25,6 +27,18 @@ public class CommentRepository implements IRepository<Comment> {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
         }
         catch (Exception e){System.out.println(e);}
+    }
+
+    @Override
+    protected void finalize() throws SQLException
+    {
+        try {
+            if (!connection.isClosed()){
+                connection.close();
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     public Iterable<Comment> GetAll() throws SQLException {
@@ -36,7 +50,7 @@ public class CommentRepository implements IRepository<Comment> {
             while(rs.next()){
                 Comment comment = new Comment();
                 comment.setComment_id(rs.getInt("comment_id"));
-                comment.setDate(rs.getDate("date"));
+                comment.setDate(formatter.parse(rs.getString("date")));
                 comment.setEntity(rs.getString("entity"));
                 comment.setAuthor(userRepository.Get(rs.getInt("user_id")));
                 comment.setCourse(courseRepository.Get(rs.getInt("course_id")));
@@ -56,6 +70,8 @@ public class CommentRepository implements IRepository<Comment> {
             statement=connection.createStatement();
 
             ResultSet rs = statement.executeQuery(query);
+
+            rs.next();
             comment.setComment_id(rs.getInt("comment_id"));
             comment.setDate(rs.getDate("date"));
             comment.setEntity(rs.getString("entity"));
@@ -76,7 +92,7 @@ public class CommentRepository implements IRepository<Comment> {
 
     public void Update(int id, Comment item) {
         String query = String.format("UPDATE comment SET entity=%2$s, course_id=%3$d, user_id=%4$d, date=%5$s WHERE comment_id=%1$d",
-                id, item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), item.getDate().toString());
+                id, item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
         try{
             statement=connection.createStatement();
 
@@ -86,7 +102,7 @@ public class CommentRepository implements IRepository<Comment> {
 
     public void Add(Comment item) {
         String query = String.format("insert into news (%1$d, %2$s, %3$d, %4$d, %5$s)",
-                item.getComment_id(), item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), item.getDate().toString());
+                item.getComment_id(), item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
         try{
             statement=connection.createStatement();
 

@@ -27,6 +27,18 @@ public class UserRepository implements IRepository<User> {
             catch (Exception e){System.out.println(e);}
     }
 
+    @Override
+    protected void finalize() throws SQLException
+    {
+        try {
+            if (!connection.isClosed()){
+                connection.close();
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public Iterable<User> GetAll() throws SQLException {
         ArrayList<User> users = new ArrayList<User>();
         try{
@@ -60,6 +72,8 @@ public class UserRepository implements IRepository<User> {
             statement=connection.createStatement();
 
             ResultSet rs = statement.executeQuery(query);
+
+            rs.next();
             user.setUser_id(rs.getInt("user_id"));
             user.setLogin(rs.getString("login"));
             user.setEmail(rs.getString("email"));

@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ public class NewsRepository implements IRepository<News> {
     private java.sql.Connection connection;
     private Statement statement;
     private UserRepository userRepository = new UserRepository();
+    private static SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
     public NewsRepository() {
         try{
@@ -24,6 +26,18 @@ public class NewsRepository implements IRepository<News> {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
         }
         catch (Exception e){System.out.println(e);}
+    }
+
+    @Override
+    protected void finalize() throws SQLException
+    {
+        try {
+            if (!connection.isClosed()){
+                connection.close();
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     public Iterable<News> GetAll() throws SQLException {
@@ -37,7 +51,7 @@ public class NewsRepository implements IRepository<News> {
                 news.setNews_id(rs.getInt("news_id"));
                 news.setTitle(rs.getString("title"));
                 news.setContent(rs.getString("description"));
-                news.setDate(rs.getDate("date"));
+                news.setDate(formatter.parse(rs.getString("date")));
                 news.setAuthor(userRepository.Get(rs.getInt("user_id")));
                 newsList.add(news);
             }
@@ -55,10 +69,12 @@ public class NewsRepository implements IRepository<News> {
             statement=connection.createStatement();
 
             ResultSet rs = statement.executeQuery(query);
+
+            rs.next();
             news.setNews_id(rs.getInt("news_id"));
             news.setTitle(rs.getString("title"));
             news.setContent(rs.getString("description"));
-            news.setDate(rs.getDate("date"));
+            news.setDate(formatter.parse(rs.getString("date")));
             news.setAuthor(userRepository.Get(rs.getInt("user_id")));
         } catch(Exception e){System.out.println(e);}
         return news;
@@ -75,7 +91,7 @@ public class NewsRepository implements IRepository<News> {
 
     public void Update(int id, News item) throws SQLException {
         String query = String.format("UPDATE news SET title=%2$s, description=%3$s, date=%4$s, user_id=%5$d WHERE user_id=%1$d",
-                id, item.getTitle(), item.getContent(), item.getDate().toString(), item.getAuthor().getUser_id());
+                id, item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
         try{
             statement=connection.createStatement();
 
@@ -85,7 +101,7 @@ public class NewsRepository implements IRepository<News> {
 
     public void Add(News item) {
         String query = String.format("insert into news (%1$d, %2$s, %3$s, %4$s, %5$s)",
-                item.getNews_id(), item.getTitle(), item.getContent(), item.getDate(), item.getAuthor().getUser_id());
+                item.getNews_id(), item.getTitle(), item.getContent(), item.getDate(), formatter.format(item.getDate()));
         try{
             statement=connection.createStatement();
 
