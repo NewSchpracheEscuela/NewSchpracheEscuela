@@ -36,10 +36,14 @@ public class UserRepository implements IRepository<User> {
             while(rs.next()){
                 User user = new User();
                 user.setUser_id(rs.getInt("user_id"));
-                user.setEmail(rs.getString("email"));
                 user.setLogin(rs.getString("login"));
+                user.setEmail(rs.getString("email"));
                 user.setPassword_hash(rs.getString("password"));
                 user.setRole(rs.getString("role"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setPatronym(rs.getString("patronym"));
+                user.setContactInfo(rs.getString("telephone"));
                 users.add(user);
             }
             connection.close();
@@ -57,10 +61,14 @@ public class UserRepository implements IRepository<User> {
 
             ResultSet rs = statement.executeQuery(query);
             user.setUser_id(rs.getInt("user_id"));
-            user.setEmail(rs.getString("email"));
             user.setLogin(rs.getString("login"));
+            user.setEmail(rs.getString("email"));
             user.setPassword_hash(rs.getString("password"));
             user.setRole(rs.getString("role"));
+            user.setFirstName(rs.getString("first_name"));
+            user.setLastName(rs.getString("last_name"));
+            user.setPatronym(rs.getString("patronym"));
+            user.setContactInfo(rs.getString("telephone"));
         } catch(Exception e){System.out.println(e);}
         return user;
     }

@@ -8,14 +8,17 @@ public class Comment {
     private User author;
     private Course course;
     private java.util.Date date;
+    private String entity;
 
     public int getComment_id(){return comment_id;}
     public User getAuthor(){return author;}
     public Course getCourse(){return course;}
     public java.util.Date getDate(){return date;}
+    public String getEntity(){return entity;}
 
     public void setComment_id(int value){comment_id = value;}
     public void setAuthor(User value){author = value;}
     public void setDate(java.util.Date value){date = value;}
     public void setCourse(Course value){course = value;}
+    public void setEntity(String value){entity = value;}
 }
