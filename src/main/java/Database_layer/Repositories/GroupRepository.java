@@ -49,7 +49,6 @@ public class GroupRepository implements IRepository<Group>{
                  group.setLevel(rs.getString("level"));
                  group.setPerson_id(rs.getInt("person_id"));
             }
-            connection.close();
         }
         catch (SQLException e){
             System.out.println(e);
