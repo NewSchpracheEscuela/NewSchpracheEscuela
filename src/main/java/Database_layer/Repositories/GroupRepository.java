@@ -48,6 +48,7 @@ public class GroupRepository implements IRepository<Group>{
                  group.setCourse_id(rs.getInt("course_id"));
                  group.setLevel(rs.getString("level"));
                  group.setPerson_id(rs.getInt("person_id"));
+                 groups.add(group);
             }
         }
         catch (SQLException e){

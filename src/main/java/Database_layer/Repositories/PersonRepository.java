@@ -1,24 +1,22 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.ControlPoint;
-import Database_layer.Entities.Teacher;
+import Database_layer.Entities.Person;
 import Database_layer.IRepository;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
  * Created by alexb on 15-Apr-17.
  */
-public class TeacherRepository implements IRepository<Teacher> {
+public class PersonRepository implements IRepository<Person> {
     private java.sql.Connection connection;
     private Statement statement;
 
-    public TeacherRepository(){
+    public PersonRepository(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -38,44 +36,44 @@ public class TeacherRepository implements IRepository<Teacher> {
         }
     }
 
-    public Iterable<Teacher> GetAll() throws SQLException {
-        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    public Iterable<Person> GetAll() throws SQLException {
+        ArrayList<Person> people = new ArrayList<Person>();
         try{
-            ResultSet rs = statement.executeQuery("SELECT * FROM `teacher`");
+            ResultSet rs = statement.executeQuery("SELECT * FROM `person`");
             while(rs.next()){
-                Teacher teacher = new Teacher();
-                teacher.setId(rs.getInt("teacher_id"));
-                teacher.setUser_id(rs.getInt("user_id"));
-                teachers.add(teacher);
+                Person person = new Person();
+                person.setId(rs.getInt("person_id"));
+                person.setUser_id(rs.getInt("user_id"));
+                people.add(person);
             }
         }
         catch (SQLException e){
             System.out.println(e);
             throw e;
         }
-        return teachers;
+        return people;
     }
 
-    public Teacher Get(int id) throws SQLException {
-        Teacher teacher = new Teacher();
+    public Person Get(int id) throws SQLException {
+        Person person = new Person();
         try{
-            ResultSet rs = statement.executeQuery("SELECT * FROM `teacher` WHERE teacher_id="+id);
+            ResultSet rs = statement.executeQuery("SELECT * FROM `person` WHERE person_id="+id);
             rs.next();
-            teacher.setId(rs.getInt("teacher_id"));
-            teacher.setUser_id(rs.getInt("user_id"));
+            person.setId(rs.getInt("person_id"));
+            person.setUser_id(rs.getInt("user_id"));
 
         }
         catch (SQLException e){
             System.out.println(e);
             throw e;
         }
-        return teacher;
+        return person;
     }
 
-    public void Add(Teacher entity) throws SQLException {
+    public void Add(Person entity) throws SQLException {
         try {
             int resultSet = statement.executeUpdate(
-                    String.format("INSERT INTO `teacher` (user_id) VALUES ('%d')",
+                    String.format("INSERT INTO `person` (user_id) VALUES ('%d')",
                             entity.getUser_id()));
 
             System.out.println("Rows affected during Add: " + resultSet);
@@ -87,7 +85,7 @@ public class TeacherRepository implements IRepository<Teacher> {
 
     public void Delete(int id) throws SQLException {
         try{
-            int resultSet = statement.executeUpdate("DELETE FROM `teacher` WHERE teacher_id="+id);
+            int resultSet = statement.executeUpdate("DELETE FROM `person` WHERE person_id="+id);
             System.out.println("Rows affected during Delete: " + resultSet);
         }
         catch (SQLException e){
@@ -95,10 +93,10 @@ public class TeacherRepository implements IRepository<Teacher> {
         }
     }
 
-    public void Update(int id, Teacher item) throws SQLException {
-        Teacher teacher = new Teacher();
+    public void Update(int id, Person item) throws SQLException {
+        Person person = new Person();
         try{
-            int resultSet = statement.executeUpdate(String.format("UPDATE `teacher` SET user_id='%d' WHERE teacher_id='%s'",
+            int resultSet = statement.executeUpdate(String.format("UPDATE `person` SET user_id='%d' WHERE person_id='%s'",
                     item.getUser_id(),
                     id));
             System.out.println("Rows affected during Update: " + resultSet);

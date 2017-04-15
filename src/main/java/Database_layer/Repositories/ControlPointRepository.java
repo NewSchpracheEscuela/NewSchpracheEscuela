@@ -46,6 +46,7 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
                 ControlPoint controlPoint = new ControlPoint();
                 controlPoint.setId(rs.getInt("control_point_id"));
                 controlPoint.setDate(formatter.parse(rs.getString("date")));
+                controlPoints.add(controlPoint);
             }
         }
         catch (SQLException e){
