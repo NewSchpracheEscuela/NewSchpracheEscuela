@@ -1,4 +1,4 @@
-package Database_layer;
+package Database_layer.Repositories;
 
 import Database_layer.Entities.ControlPoint;
 import Database_layer.Repositories.ControlPointRepository;
@@ -49,7 +49,7 @@ public class ControlPointRepositoryTest {
     @Test
     public void add() throws Exception{
         ControlPoint controlPoint = new ControlPoint();
-        controlPoint.date = new Date(2005,5,5);
+        controlPoint.setDate(new Date(2005,5,5));
         repository.Add(controlPoint);
     }
     @Test
@@ -60,8 +60,8 @@ public class ControlPointRepositoryTest {
     @Test
     public void update() throws Exception {
         ControlPoint controlPoint = new ControlPoint();
-        controlPoint.date = new Date(2017,5,5);
-        repository.Update(16,controlPoint);
+        controlPoint.setDate(new Date(2017,5,5));
+        repository.Update(18,controlPoint);
     }
 
 }

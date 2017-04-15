@@ -44,8 +44,8 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
             ResultSet rs = statement.executeQuery("SELECT * FROM control_point");
             while(rs.next()){
                 ControlPoint controlPoint = new ControlPoint();
-                controlPoint.id = rs.getInt("control_point_id");
-                controlPoint.date = formatter.parse(rs.getString("date"));
+                controlPoint.setId(rs.getInt("control_point_id"));
+                controlPoint.setDate(formatter.parse(rs.getString("date")));
             }
             connection.close();
         }
@@ -63,8 +63,8 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
         try{
             ResultSet resultSet = statement.executeQuery("SELECT * FROM control_point WHERE control_point_id="+id);
             resultSet.next();
-            controlPoint.id = resultSet.getInt("control_point_id");
-            controlPoint.date = formatter.parse(resultSet.getString("date"));
+            controlPoint.setId(resultSet.getInt("control_point_id"));
+            controlPoint.setDate(formatter.parse(resultSet.getString("date")));
         }
         catch (SQLException e){
             System.out.println(e);
@@ -79,9 +79,9 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
         try {
             int resultSet = statement.executeUpdate(
                     String.format("INSERT INTO control_point (date) VALUES ('0%s.0%s.%s')",
-                            entity.date.getDay(),
-                            entity.date.getMonth(),
-                            entity.date.getYear()));
+                            entity.getDate().getDay(),
+                            entity.getDate().getMonth(),
+                            entity.getDate().getYear()));
 
             System.out.println("Rows affected during Add: " + resultSet);
         } catch (SQLException e) {
@@ -103,7 +103,11 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
     public void Update(int id,ControlPoint item) throws SQLException {
         ControlPoint controlPoint = new ControlPoint();
         try{
-            int resultSet = statement.executeUpdate(String.format("UPDATE control_point SET date='%s' WHERE control_point_id='%s'",item.date,id));
+            int resultSet = statement.executeUpdate(String.format("UPDATE control_point SET date='0%s.0%s.%s' WHERE control_point_id='%s'",
+                    item.getDate().getDay(),
+                    item.getDate().getMonth(),
+                    item.getDate().getYear(),
+                    id));
             System.out.println("Rows affected during Update: " + resultSet);
         }
         catch (SQLException e){System.out.println(e); throw e;}
