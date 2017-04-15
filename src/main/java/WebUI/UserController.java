@@ -1,7 +1,7 @@
 package WebUI;
 import java.sql.*;
-import Database_layer.User;
-import Database_layer.UserRepository;
+import Database_layer.Entities.User;
+import Database_layer.Repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
