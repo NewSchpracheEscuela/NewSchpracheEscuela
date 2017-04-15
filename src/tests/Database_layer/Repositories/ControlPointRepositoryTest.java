@@ -23,20 +23,7 @@ public class ControlPointRepositoryTest {
     public void setUp()throws Exception{
         repository = new ControlPointRepository();
     }
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
-        }
-        catch (Exception e){System.out.println(e);}
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        connection.close();
-    }
     @Test
     public void getAll() throws Exception {
         ArrayList<ControlPoint> controlPoints = (ArrayList<ControlPoint>) repository.GetAll();
