@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by angre on 10.04.2017.
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class CourseRepository implements IRepository<Course> {
     private java.sql.Connection connection;
     private Statement statement;
-    private static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     public CourseRepository() {
         try{
@@ -46,7 +47,7 @@ public class CourseRepository implements IRepository<Course> {
         try{
             statement=connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select * from news");
+            ResultSet rs = statement.executeQuery("select * from course");
             while(rs.next()){
                 Course course = new Course();
                 course.setCourse_id(rs.getInt("course_id"));
@@ -90,27 +91,28 @@ public class CourseRepository implements IRepository<Course> {
         try{
             statement=connection.createStatement();
 
-            statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
     }
 
     public void Update(int id, Course item) {
-        String query = String.format("UPDATE course SET title=%2$s, price=%3$.3f, description=%4$s, hours=%5$d, language=%6$s, start_date=%7$s WHERE course_id=%1$d",
+        String query = String.format(Locale.ENGLISH, "UPDATE course SET title='%2$s', price='%3$.3f', description='%4$s', hours=%5$d, language='%6$s', start_date='%7$s' WHERE course_id=%1$d",
                 id, item.getTitle(), item.getPrice(), item.getDescription(), item.getNumberOfHours(), item.getLanguage(), formatter.format(item.getStartDate()));
         try{
             statement=connection.createStatement();
 
-            ResultSet rs = statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
     }
 
     public void Add(Course item) {
-        String query = String.format("insert into news (%1$d, %2$s, %3$.3f, %4$s, %5$d, %6$s, %7$s)",
+        String query = String.format(Locale.ENGLISH, "insert into course values(%1$d, '%2$s', '%3$.3f', '%4$s', %5$d, '%6$s', '%7$s')",
                 item.getCourse_id(), item.getTitle(), item.getPrice(), item.getDescription(), item.getNumberOfHours(), item.getLanguage(), formatter.format(item.getStartDate()));
+
         try{
             statement=connection.createStatement();
 
-            ResultSet rs = statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
     }
 }

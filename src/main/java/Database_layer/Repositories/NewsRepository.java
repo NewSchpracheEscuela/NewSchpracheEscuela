@@ -17,7 +17,7 @@ public class NewsRepository implements IRepository<News> {
     private java.sql.Connection connection;
     private Statement statement;
     private UserRepository userRepository = new UserRepository();
-    private static SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public NewsRepository() {
         try{
@@ -85,27 +85,27 @@ public class NewsRepository implements IRepository<News> {
         try{
             statement=connection.createStatement();
 
-            statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
     }
 
     public void Update(int id, News item) throws SQLException {
-        String query = String.format("UPDATE news SET title=%2$s, description=%3$s, date=%4$s, user_id=%5$d WHERE user_id=%1$d",
+        String query = String.format("UPDATE news SET title='%2$s', description='%3$s', date='%4$s', user_id=%5$d WHERE news_id=%1$d",
                 id, item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
         try{
             statement=connection.createStatement();
 
-            ResultSet rs = statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
     }
 
     public void Add(News item) {
-        String query = String.format("insert into news (%1$d, %2$s, %3$s, %4$s, %5$s)",
-                item.getNews_id(), item.getTitle(), item.getContent(), item.getDate(), formatter.format(item.getDate()));
+        String query = String.format("insert into news values(%1$d, '%2$s', '%3$s', '%4$s', %5$d)",
+                item.getNews_id(), item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
         try{
             statement=connection.createStatement();
 
-            ResultSet rs = statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
     }
 }
