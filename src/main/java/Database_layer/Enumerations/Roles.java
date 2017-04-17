@@ -1,4 +1,4 @@
-package Database_layer;
+package Database_layer.Enumerations;
 
 /**
  * Created by alexb on 15-Mar-17.
