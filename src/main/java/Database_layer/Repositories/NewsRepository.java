@@ -1,6 +1,6 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.News;
+import Entities.News;
 import Database_layer.IRepository;
 
 import java.sql.DriverManager;

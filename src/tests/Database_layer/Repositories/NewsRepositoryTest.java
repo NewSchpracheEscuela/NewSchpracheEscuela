@@ -7,9 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Database_layer.Entities.News;
-
-import static org.junit.Assert.*;
+import Entities.News;
 
 /**
  * Created by angre on 15.04.2017.

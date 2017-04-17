@@ -5,12 +5,10 @@ import org.junit.*;
 
 import java.sql.DriverManager;
 import java.sql.Statement;
-import Database_layer.Entities.Course;
-import java.sql.Statement;
+import Entities.Course;
+
 import java.util.ArrayList;
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by angre on 16.04.2017.

@@ -1,4 +1,4 @@
-package Database_layer.Entities;
+package Entities;
 
 /**
  * Created by angre on 10.04.2017.

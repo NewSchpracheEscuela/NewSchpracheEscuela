@@ -1,7 +1,6 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.Course;
-import Database_layer.Enumerations.Languages;
+import Entities.Course;
 import Database_layer.IRepository;
 
 import java.sql.DriverManager;

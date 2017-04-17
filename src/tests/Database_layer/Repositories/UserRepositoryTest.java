@@ -1,14 +1,12 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.User;
+import Entities.User;
 import Database_layer.Enumerations.Roles;
 import org.junit.*;
 
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by angre on 15.04.2017.

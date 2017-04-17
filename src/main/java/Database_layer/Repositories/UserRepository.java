@@ -1,9 +1,7 @@
 package Database_layer.Repositories;
 
 import Database_layer.IRepository;
-import Database_layer.Enumerations.Roles;
-import Database_layer.Entities.User;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import Entities.User;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;

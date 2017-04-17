@@ -1,7 +1,6 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.Person;
-import Database_layer.Entities.Teacher;
+import Entities.Person;
 import Database_layer.IRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,8 +8,6 @@ import org.junit.Test;
 
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by alexb on 15-Apr-17.

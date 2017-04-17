@@ -1,6 +1,6 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.Comment;
+import Entities.Comment;
 import Database_layer.IRepository;
 
 import java.sql.DriverManager;

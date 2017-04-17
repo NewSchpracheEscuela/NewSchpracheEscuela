@@ -1,15 +1,12 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.Comment;
-import Database_layer.Entities.News;
+import Entities.Comment;
 import org.junit.*;
 
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by angre on 15.04.2017.

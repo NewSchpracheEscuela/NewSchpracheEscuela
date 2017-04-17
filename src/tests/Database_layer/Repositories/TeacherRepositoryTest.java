@@ -1,17 +1,12 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.ControlPoint;
-import Database_layer.Entities.Group;
-import Database_layer.Entities.Teacher;
+import Entities.Teacher;
 import Database_layer.IRepository;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by alexb on 15-Apr-17.

@@ -3,10 +3,10 @@ package WebUI;
 import org.springframework.stereotype.Controller;
 
 /**
- * Created by angre on 15.04.2017.
+ * Created by alexb on 17-Apr-17.
  */
-
 @Controller
-public class CourseController {
+public class ControlPointsController {
 
+    public
 }

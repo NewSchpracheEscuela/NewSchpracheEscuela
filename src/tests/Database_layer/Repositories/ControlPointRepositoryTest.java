@@ -1,13 +1,9 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.ControlPoint;
-import Database_layer.Repositories.ControlPointRepository;
-import org.junit.AfterClass;
+import Entities.ControlPoint;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;

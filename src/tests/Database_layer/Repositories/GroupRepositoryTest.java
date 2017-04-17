@@ -1,15 +1,11 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.ControlPoint;
-import Database_layer.Entities.Group;
+import Entities.Group;
 import Database_layer.IRepository;
 import org.junit.*;
 
-import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by alexb on 15-Apr-17.

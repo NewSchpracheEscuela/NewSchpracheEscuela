@@ -1,4 +1,4 @@
-package Database_layer.Entities;
+package Entities;
 
 /**
  * Created by alexb on 15-Apr-17.

@@ -1,6 +1,4 @@
-package Database_layer.Entities;
-
-import sun.util.calendar.LocalGregorianCalendar;
+package Entities;
 
 /**
  * Created by angre on 10.04.2017.

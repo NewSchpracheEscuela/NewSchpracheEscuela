@@ -1,4 +1,4 @@
-package Database_layer.Entities;
+package Entities;
 
 import Database_layer.Enumerations.Roles;
 

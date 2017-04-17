@@ -1,14 +1,12 @@
 package Database_layer.Repositories;
 
-import Database_layer.Entities.ControlPoint;
-import Database_layer.Entities.Teacher;
+import Entities.Teacher;
 import Database_layer.IRepository;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
