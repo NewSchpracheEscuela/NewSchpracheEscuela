@@ -1,3 +1,43 @@
-<div>
-    <h1>{{hello}}</h1>
+<ng-include src="'resources/html/header.html'"></ng-include>
+<div class="container">
+    <div class="container__banner">
+        <div class="banner__slider">
+            <img ng-repeat="slide in slides" ng-src="{{slide.image}}" class="banner__slide">
+        </div>
+        <div class="banner__title">
+                <span>Говорить на иностранном языке просто!<br>
+                    Месяц обучения всего от<br></span>
+            <span class="info__price">300 рублей!<br></span>
+            <span>Запишитесь на бесплатное занятие по телефону:<br></span>
+            <span class="info__phone">+372(29)123-45-67</span>
+        </div>
+    </div>
+    <script src="resources/scripts/slider.js" type="text/javascript"></script>
+    <div class="container__choice">
+        <script src="resources/scripts/choice_reason.js" type="text/javascript"></script>
+        <div class="choice__block">
+            <h2>Почему более 2 студентов выбрали нас</h2>
+            <div class="container__delimeter"></div>
+            <div class="container__numbers">
+                <div ng-repeat="number in [1,2,3,4,5] track by $index">
+                    <button class="container__number" onclick="openChoice(event,$index)">{{number}}</button>
+                </div>
+                <!--<button class="container__number container__number--active" onclick="openChoice(event,1)">1</button>
+                <button class="container__number" onclick="openChoice(event,2)">2</button>
+                <button class="container__number" onclick="openChoice(event,3)">3</button>
+                <button class="container__number" onclick="openChoice(event,4)">4</button>
+                <button class="container__number" onclick="openChoice(event,5)">5</button>-->
+            </div>
+            <div ng-repeat="choice in choices">
+                <div id="{{choice.id}}" class="container__text">
+                    <div class="choice__text">
+                        <h3>{{choice.title}}</h3>
+                        <span>{{choice.content}}</span>
+                    </div>
+                </div>
+            </div>
+            <script>openChoice(event,1)</script>
+        </div>
+    </div>
 </div>
+<ng-include src="'resources/html/footer.html'"></ng-include>

@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
 
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @RequestMapping(value = "/users",method = RequestMethod.GET)
     public ModelAndView Users(ModelMap model) throws ClassNotFoundException, SQLException {
         UserRepository userRepository = new UserRepository();
         Iterable<User> users = userRepository.GetAll();
@@ -22,7 +22,7 @@ public class UserController {
         return new ModelAndView("users", "users", users);
     }
 
-    @RequestMapping(value = "/users",method = RequestMethod.GET)
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView AngularIndex(){
         return new ModelAndView("index");
     }

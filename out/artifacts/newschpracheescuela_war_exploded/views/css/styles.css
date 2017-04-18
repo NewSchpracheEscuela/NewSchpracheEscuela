@@ -1,20 +1,251 @@
-body{
-  background-color: darkgray;
-  color: white;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+* {
+    box-sizing: border-box;
 }
-h1{
-  margin: 20px;
-  font-size: 50px;
+
+:root {
+    --dark: #071E22;
+    --green-dark: #1D7874;
+    --green-light: #679289;
+    --bg-color: #FDF3EB;
+    --font-color:#134D4A;
+    --red: #AE2224;
 }
-table{
-  border-collapse: collapse;
-  border-color: white;
-  border-style: solid;
+
+body {
+    background: var(--bg-color);
+    font-family: 'Open Sans', Helvetica, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
 }
-td{
-  border-collapse: collapse;
-  border-style: solid;
+/*HEADER*/
+header {
+    min-height: 70px;
+    background: var(--green-light);
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-th{
-  border-style: solid;
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    width:30%;
+}
+
+.header__menu{
+    width: 70vw;
+}
+
+.header__list {
+    margin:0;
+    padding: 0;
+    max-height: 70px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header__item{
+    display: inline-block;
+    width: 80px;
+    height: 70px;
+    margin-right: 7px;
+    padding-top: 25px;
+    text-decoration: none;
+    color: var(--font-color);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.header__item:hover {
+    color: var(--bg-color);
+    background-image: url(../images/flag-icon.png);
+}
+
+.header__item--active{
+    color: var(--bg-color);
+    background-image: url(../images/flag-icon.png);
+}
+/*CONTAINER*/
+.container {
+    min-height: calc(100vh - 170px);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+/*
+.container__content{
+    display: flex;
+    justify-content: space-between;
+}
+.container__banner{
+    max-width: 60vw;
+}
+
+.container__banner img{
+    width:100%;
+}
+
+.container__info{
+    max-width: 40vw;
+}
+
+.info__initial{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+    align-items: stretch;
+    text-align: center;
+    color: var(--green-dark);
+}
+
+.info__dark{
+    
+    height: 50%;
+    width: 100%;
+    background: var(--green-dark);
+    color:var(--bg-color);
+}*/
+
+.container__banner{
+    width: 100%;
+    color: var(--bg-color);
+    text-align: center;
+}
+
+
+.banner__slide{
+    width: 100%;
+}
+
+.banner__title{
+    position: absolute;   
+    background: var(--green-dark);
+    opacity: 0.85; 
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 15vw;
+    height: 15vw;
+    width: 30vw;
+    font-size: 1.3vw;
+    text-shadow: 1px 1px 2px black;
+}
+
+.info__price{
+    font-size: 1.8vw;
+    color: var(--red);
+}
+
+.info__phone{
+    font-size: 2vw;
+}
+
+.container__choice{
+    min-height: 400px;
+    width: 100%;
+    background: var(--bg-color);
+    color: var(--green-dark);
+}
+
+.choice__block{
+    width: 60%;
+    margin: auto;
+}
+
+.container__delimeter{
+    width: 100px;
+    height: 3px;
+    background: var(--green-dark);
+}
+
+.container__numbers{
+    margin: 25px 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container__number {
+    border: none;
+    background: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--green-dark);
+    width: 75px;
+    height: 75px;
+}
+
+.container__number:focus{
+    outline: none;
+}
+
+.container__number:hover{
+    color:var(--font-color);
+    background-image: url(../images/round-icon-hover.png);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.container__number--active{
+    color:var(--bg-color);
+    background-image: url(../images/round-icon.png);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.choice__text{
+    line-height: 15px;
+}
+
+.choice__text span{
+    font-size: 13px;
+}
+/*FOOTER*/
+footer{
+    height: 100px;
+    background: var(--dark);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--bg-color);
+}
+
+.navigation__list{
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+} 
+
+.navigation__link:hover{
+    text-decoration: underline;
+}
+.navigation__link{
+    width: 40%;
+    float: left;
+    text-decoration: none;
+    color: var(--bg-color);
+    
+}
+
+.footer__navigation{
+    font-size: 12px;
+}
+
+.footer__logo{
+    width: 10%;
+}
+
+.footer__logo img{
+    width: 100%;
 }

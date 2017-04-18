@@ -20,7 +20,7 @@ public class PersonRepository implements IRepository<Person> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
             statement=connection.createStatement();
         }
         catch (Exception e){System.out.println(e);}

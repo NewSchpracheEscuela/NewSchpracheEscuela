@@ -30,7 +30,7 @@ public class CommentRepositoryTest {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
         }
         catch (Exception e){System.out.println(e);}
     }
