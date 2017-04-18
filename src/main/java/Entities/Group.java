@@ -17,11 +17,32 @@ public class Group {
     public int getCourse_id(){return course_id;}
     public int getPerson_id(){return person_id;}
 
-    public void setId(int newId){id = newId;}
-    public void setLevel(String newLevel){level = Level.valueOf(newLevel);;}
+    public void setId(int newId){
+        if (newId < 1){
+            throw new IllegalArgumentException();
+        }
+        id = newId;
+    }
+    public void setLevel(String newLevel){
+        if (newLevel == null || newLevel.length() == 0){
+            throw new IllegalArgumentException();
+        }
+        level = Level.valueOf(newLevel);
+    }
     public void setAmount(int newAmount){amount = newAmount;}
-    public void setCourse_id(int newCourse_id){course_id = newCourse_id;}
-    public void setPerson_id(int  newPerson_id){person_id = newPerson_id;}
+
+    public void setCourse_id(int newCourse_id){
+        if (newCourse_id < 1){
+            throw new IllegalArgumentException();
+        }
+        course_id = newCourse_id;
+    }
+    public void setPerson_id(int  newPerson_id){
+        if (newPerson_id < 1){
+            throw new IllegalArgumentException();
+        }
+        person_id = newPerson_id;
+    }
 
 
 }

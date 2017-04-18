@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -59,4 +60,42 @@ public class PersonRepositoryTest {
         //Assert.assertEquals(7,repository.Get(10).getUser_id());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void exceptionGet() throws SQLException {
+        repository.Get(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void exceptionAdd() throws SQLException {
+        repository.Add(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void exceptionUpdateIllegalId() throws SQLException {
+        repository.Update(-1,new Person());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void exceptionUpdateIllegalItem() throws SQLException {
+        repository.Update(3,null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void exceptionDelete() throws SQLException {
+        repository.Delete(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void EmptyEntityAdd() throws SQLException {
+        Person group = new Person();
+        group.setUser_id(-1);
+        repository.Add(group);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void EmptyEntityUpdate() throws SQLException {
+        Person group = new Person();
+        group.setUser_id(-1);
+        repository.Update(1,group);
+    }
 }

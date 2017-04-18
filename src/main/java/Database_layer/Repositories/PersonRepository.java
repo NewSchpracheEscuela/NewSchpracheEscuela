@@ -54,7 +54,10 @@ public class PersonRepository implements IRepository<Person> {
         return people;
     }
 
-    public Person Get(int id) throws SQLException {
+    public Person Get(int id) throws SQLException, IllegalArgumentException {
+        if (id < 1){
+            throw new IllegalArgumentException();
+        }
         Person person = new Person();
         try{
             ResultSet rs = statement.executeQuery("SELECT * FROM `person` WHERE person_id="+id);
@@ -70,7 +73,13 @@ public class PersonRepository implements IRepository<Person> {
         return person;
     }
 
-    public void Add(Person entity) throws SQLException {
+    public void Add(Person entity) throws SQLException, IllegalArgumentException {
+        if (entity == null){
+            throw new IllegalArgumentException();
+        }
+        if (entity.getUser_id() < 1){
+            throw new IllegalArgumentException();
+        }
         try {
             int resultSet = statement.executeUpdate(
                     String.format("INSERT INTO `person` (user_id) VALUES ('%d')",
@@ -83,7 +92,10 @@ public class PersonRepository implements IRepository<Person> {
         }
     }
 
-    public void Delete(int id) throws SQLException {
+    public void Delete(int id) throws SQLException,IllegalArgumentException {
+        if (id < 1){
+            throw new IllegalArgumentException();
+        }
         try{
             int resultSet = statement.executeUpdate("DELETE FROM `person` WHERE person_id="+id);
             System.out.println("Rows affected during Delete: " + resultSet);
@@ -93,7 +105,13 @@ public class PersonRepository implements IRepository<Person> {
         }
     }
 
-    public void Update(int id, Person item) throws SQLException {
+    public void Update(int id, Person item) throws SQLException,IllegalArgumentException {
+        if (item == null || id<1){
+            throw new IllegalArgumentException();
+        }
+        if (item.getUser_id() < 1){
+            throw new IllegalArgumentException();
+        }
         Person person = new Person();
         try{
             int resultSet = statement.executeUpdate(String.format("UPDATE `person` SET user_id='%d' WHERE person_id='%s'",
