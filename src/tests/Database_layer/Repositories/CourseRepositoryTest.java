@@ -1,9 +1,11 @@
 package Database_layer.Repositories;
 
 import Database_layer.Enumerations.Languages;
+import Entities.Comment;
 import org.junit.*;
 
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import Entities.Course;
 
@@ -78,4 +80,54 @@ public class CourseRepositoryTest {
         repository.Add(course);
     }
 
+    @Test(expected = SQLException.class)
+    public void add_throwsSQLException() throws Exception{
+        Course course = new Course();
+        repository.Add(course);
+    }
+
+    @Test(expected = SQLException.class)
+    public void delete_throwsSQLException() throws Exception{
+        repository.Delete(20);
+    }
+
+    @Test(expected = SQLException.class)
+    public void get_throwsSQLException() throws Exception{
+        repository.Get(20);
+    }
+
+    @Test(expected = SQLException.class)
+    public void update_throwsSQLException() throws Exception{
+        repository.Update(20, new Course());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void add_throwsIllegalArgumentException()
+    {
+        repository.Add(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void delete_throwsIllegalArgumentException()
+    {
+        repository.Delete(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void get_throwsIllegalArgumentException()
+    {
+        repository.Get(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsIllegalArgumentException_item()
+    {
+        repository.Update(13, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsIllegalArgumentException_id()
+    {
+        repository.Update(-1, new Course());
+    }
 }

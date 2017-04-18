@@ -63,6 +63,7 @@ public class NewsRepository implements IRepository<News> {
     }
 
     public News Get(int id) {
+        if (id < 1) throw new IllegalArgumentException();
         News news = new News();
         String query = String.format("SELECT * FROM news WHERE news_id=%1$d", id);
         try{
@@ -81,6 +82,7 @@ public class NewsRepository implements IRepository<News> {
     }
 
     public void Delete(int id) {
+        if (id < 1) throw new IllegalArgumentException();
         String query = String.format("DELETE FROM news WHERE news_id=%1$d", id);
         try{
             statement=connection.createStatement();
@@ -90,6 +92,9 @@ public class NewsRepository implements IRepository<News> {
     }
 
     public void Update(int id, News item) throws SQLException {
+        if (id < 1) throw new IllegalArgumentException();
+        if (item == null) throw new IllegalArgumentException();
+        if (IsEmpty(item)) throw new IllegalArgumentException();
         String query = String.format("UPDATE news SET title='%2$s', description='%3$s', date='%4$s', user_id=%5$d WHERE news_id=%1$d",
                 id, item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
         try{
@@ -100,6 +105,9 @@ public class NewsRepository implements IRepository<News> {
     }
 
     public void Add(News item) {
+        if (item == null) throw new IllegalArgumentException();
+        if (IsEmpty(item)) throw new IllegalArgumentException();
+
         String query = String.format("insert into news values(%1$d, '%2$s', '%3$s', '%4$s', %5$d)",
                 item.getNews_id(), item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
         try{
@@ -107,5 +115,14 @@ public class NewsRepository implements IRepository<News> {
 
             statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
+    }
+
+    private boolean IsEmpty(News item)
+    {
+        if (item.getAuthor() == null) return true;
+        if (item.getContent() == null) return true;
+        if (item.getDate() == null) return true;
+        if (item.getTitle() == null) return true;
+        return false;
     }
 }
