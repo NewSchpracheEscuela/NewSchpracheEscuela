@@ -48,16 +48,22 @@ public class CourseRepositoryTest {
     @Test
     public void getAll() throws Exception {
         ArrayList<Course> courses = (ArrayList<Course>)repository.GetAll();
+
+        Assert.assertEquals(courses.size(), 15);
     }
 
     @Test
     public void get() throws Exception {
         Course course = repository.Get(15);
+
+        Assert.assertEquals(Languages.italian.toString(), course.getLanguage());
     }
 
-    @Test
+    @Test(expected = IllegalAccessError.class)
     public void delete() throws Exception {
         repository.Delete(15);
+
+        repository.Get(15);
     }
 
     @Test
@@ -65,6 +71,8 @@ public class CourseRepositoryTest {
         Course course = repository.Get(15);
         course.setLanguage(Languages.italian);
         repository.Update(15, course);
+
+        Assert.assertEquals(Languages.italian.toString(), repository.Get(15).getLanguage());
     }
 
     @Test
@@ -78,25 +86,27 @@ public class CourseRepositoryTest {
         course.setNumberOfHours(168);
         course.setCourse_id(15);
         repository.Add(course);
+
+        Assert.assertEquals(Languages.italian.toString(), repository.Get(15).getLanguage());
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void add_throwsSQLException() throws Exception{
         Course course = new Course();
         repository.Add(course);
     }
 
-    @Test(expected = SQLException.class)
+    @Test
     public void delete_throwsSQLException() throws Exception{
         repository.Delete(20);
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalAccessError.class)
     public void get_throwsSQLException() throws Exception{
         repository.Get(20);
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void update_throwsSQLException() throws Exception{
         repository.Update(20, new Course());
     }

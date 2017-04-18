@@ -79,7 +79,10 @@ public class CommentRepository implements IRepository<Comment> {
             comment.setEntity(rs.getString("entity"));
             comment.setAuthor(userRepository.Get(rs.getInt("user_id")));
             comment.setCourse(courseRepository.Get(rs.getInt("course_id")));
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){
+            System.out.println(e);
+            throw new IllegalAccessError();
+        }
         return comment;
     }
 

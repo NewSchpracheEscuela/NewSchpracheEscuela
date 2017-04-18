@@ -83,7 +83,10 @@ public class UserRepository implements IRepository<User> {
             user.setLastName(rs.getString("last_name"));
             user.setPatronym(rs.getString("patronym"));
             user.setContactInfo(rs.getString("telephone"));
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){
+            System.out.println(e);
+            throw new IllegalAccessError();
+        }
         return user;
     }
 

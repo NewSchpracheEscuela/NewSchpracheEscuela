@@ -48,17 +48,23 @@ public class CommentRepositoryTest {
 
     @Test
     public void getAll() throws Exception {
-        ArrayList<Comment> news = (ArrayList<Comment>)repository.GetAll();
+        ArrayList<Comment> comments = (ArrayList<Comment>)repository.GetAll();
+
+        Assert.assertEquals(13, comments.size());
     }
 
     @Test
     public void get() throws Exception {
         Comment comment = repository.Get(4);
+
+        Assert.assertEquals("нравится", comment.getEntity());
     }
 
-    @Test
+    @Test(expected = IllegalAccessError.class)
     public void delete() throws Exception {
         repository.Delete(15);
+
+        repository.Get(15);
     }
 
     @Test
@@ -66,6 +72,8 @@ public class CommentRepositoryTest {
         Comment comment = repository.Get(15);
         comment.setEntity("Hi guys. I\\'m new here. Can explain what this is all about?");
         repository.Update(15, comment);
+
+        Assert.assertEquals("Hi guys. I'm new here. Can explain what this is all about?", repository.Get(15).getEntity());
     }
 
     @Test
@@ -77,25 +85,27 @@ public class CommentRepositoryTest {
         comment.setCourse(courseRepository.Get(4));
         comment.setComment_id(15);
         repository.Add(comment);
+
+        Assert.assertEquals("Hi guys. I'm new here", repository.Get(15).getEntity());
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void add_throwsSQLException() throws Exception{
         Comment comment = new Comment();
         repository.Add(comment);
     }
 
-    @Test(expected = SQLException.class)
+    @Test
     public void delete_throwsSQLException() throws Exception{
         repository.Delete(20);
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalAccessError.class)
     public void get_throwsSQLException() throws Exception{
         repository.Get(20);
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void update_throwsSQLException() throws Exception{
         repository.Update(20, new Comment());
     }

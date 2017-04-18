@@ -47,12 +47,14 @@ public class UserRepositoryTest {
     public void getAll() throws Exception {
         ArrayList<User> users = (ArrayList<User>) repository.GetAll();
 
-        Assert.assertEquals(users.size(), 16);
+        Assert.assertEquals(users.size(), 15);
     }
 
     @Test
     public void get() throws Exception {
         User user = (User) repository.Get(16);
+
+        Assert.assertEquals("Hienadz", user.getLogin());
     }
 
     @Test
@@ -72,7 +74,7 @@ public class UserRepositoryTest {
         Assert.assertEquals("Hienadz", repository.Get(16).getLogin());
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalAccessError.class)
     public void delete() throws Exception {
         repository.Delete(16);
 
@@ -88,24 +90,31 @@ public class UserRepositoryTest {
         Assert.assertEquals("sandal gnome", repository.Get(15).getLogin());
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void add_throwsSQLException() throws Exception{
         User user = new User();
         repository.Add(user);
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalArgumentException.class)
+    public void add_throwsSQLException_variation() throws Exception{
+        User user = new User();
+        user.setLogin("HelloUser");
+        repository.Add(user);
+    }
+
+    @Test
     public void delete_throwsSQLException() throws Exception{
         repository.Delete(20);
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = IllegalAccessError.class)
     public void get_throwsSQLException() throws Exception{
         repository.Get(20);
     }
 
-    @Test(expected = SQLException.class)
-    public void update_throwsSQLException() throws Exception{
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsSQLException() throws Exception {
         repository.Update(20, new User());
     }
 

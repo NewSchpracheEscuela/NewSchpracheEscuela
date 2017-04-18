@@ -83,7 +83,10 @@ public class CourseRepository implements IRepository<Course> {
             course.setNumberOfHours(rs.getInt("hours"));
             course.setLanguage(rs.getString("language"));
             course.setStartDate(formatter.parse(rs.getString("start_date")));
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){
+            System.out.println(e);
+            throw new IllegalAccessError();
+        }
         return course;
     }
 
