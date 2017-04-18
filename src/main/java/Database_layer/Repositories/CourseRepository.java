@@ -66,8 +66,6 @@ public class CourseRepository implements IRepository<Course> {
     }
 
     public Course Get(int id) {
-        if (id < 1) throw new IllegalArgumentException();
-
         Course course = new Course();
         String query = String.format("SELECT * FROM course WHERE course_id=%1$d", id);
         try{
@@ -88,8 +86,6 @@ public class CourseRepository implements IRepository<Course> {
     }
 
     public void Delete(int id) {
-        if (id < 1) throw new IllegalArgumentException();
-
         String query = String.format("DELETE FROM course WHERE course_id=%1$d", id);
         try{
             statement=connection.createStatement();
@@ -99,10 +95,6 @@ public class CourseRepository implements IRepository<Course> {
     }
 
     public void Update(int id, Course item) {
-        if (id < 1) throw new IllegalArgumentException();
-        if (item == null) throw new IllegalArgumentException();
-        if (IsEmpty(item)) throw new IllegalArgumentException();
-
         String query = String.format(Locale.ENGLISH, "UPDATE course SET title='%2$s', price='%3$.3f', description='%4$s', hours=%5$d, language='%6$s', start_date='%7$s' WHERE course_id=%1$d",
                 id, item.getTitle(), item.getPrice(), item.getDescription(), item.getNumberOfHours(), item.getLanguage(), formatter.format(item.getStartDate()));
         try{
@@ -113,9 +105,6 @@ public class CourseRepository implements IRepository<Course> {
     }
 
     public void Add(Course item) {
-        if (item == null) throw new IllegalArgumentException();
-        if (IsEmpty(item)) throw new IllegalArgumentException();
-
         String query = String.format(Locale.ENGLISH, "insert into course values(%1$d, '%2$s', '%3$.3f', '%4$s', %5$d, '%6$s', '%7$s')",
                 item.getCourse_id(), item.getTitle(), item.getPrice(), item.getDescription(), item.getNumberOfHours(), item.getLanguage(), formatter.format(item.getStartDate()));
 
@@ -124,14 +113,5 @@ public class CourseRepository implements IRepository<Course> {
 
             statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
-    }
-
-    private boolean IsEmpty(Course item)
-    {
-        if (item.getDescription() == null) return true;
-        if (item.getLanguage() == null) return true;
-        if (item.getStartDate() == null) return true;
-        if (item.getTitle() == null) return true;
-        return false;
     }
 }

@@ -64,8 +64,6 @@ public class CommentRepository implements IRepository<Comment> {
     }
 
     public Comment Get(int id) {
-        if (id < 1) throw new IllegalArgumentException();
-
         Comment comment = new Comment();
         String query = String.format("SELECT * FROM comment WHERE comment_id=%1$d", id);
         try{
@@ -84,8 +82,6 @@ public class CommentRepository implements IRepository<Comment> {
     }
 
     public void Delete(int id) {
-        if (id < 1) throw new IllegalArgumentException();
-
         String query = String.format("DELETE FROM comment WHERE comment_id=%1$d", id);
         try{
             statement=connection.createStatement();
@@ -95,10 +91,6 @@ public class CommentRepository implements IRepository<Comment> {
     }
 
     public void Update(int id, Comment item) {
-        if (id < 1) throw new IllegalArgumentException();
-        if (item == null) throw new IllegalArgumentException();
-        if (IsEmpty(item)) throw new IllegalArgumentException();
-
         String query = String.format("UPDATE comment SET entity='%2$s', course_id=%3$d, user_id=%4$d, date='%5$s' WHERE comment_id=%1$d",
                 id, item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
         try{
@@ -109,9 +101,6 @@ public class CommentRepository implements IRepository<Comment> {
     }
 
     public void Add(Comment item) {
-        if (item == null) throw new IllegalArgumentException();
-        if (IsEmpty(item)) throw new IllegalArgumentException();
-
         String query = String.format("insert into comment values(%1$d, '%2$s', %3$d, %4$d, '%5$s')",
                 item.getComment_id(), item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
         try{
@@ -119,14 +108,5 @@ public class CommentRepository implements IRepository<Comment> {
 
             statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
-    }
-
-    private boolean IsEmpty(Comment item)
-    {
-        if (item.getAuthor() == null) return true;
-        if (item.getCourse() == null) return true;
-        if (item.getDate() == null) return true;
-        if (item.getEntity() == null) return true;
-        return false;
     }
 }

@@ -4,7 +4,6 @@ import Entities.Comment;
 import org.junit.*;
 
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,7 +52,7 @@ public class CommentRepositoryTest {
 
     @Test
     public void get() throws Exception {
-        Comment comment = repository.Get(4);
+        Comment comment = repository.Get(3);
     }
 
     @Test
@@ -77,56 +76,5 @@ public class CommentRepositoryTest {
         comment.setCourse(courseRepository.Get(4));
         comment.setComment_id(15);
         repository.Add(comment);
-    }
-
-    @Test(expected = SQLException.class)
-    public void add_throwsSQLException() throws Exception{
-        Comment comment = new Comment();
-        repository.Add(comment);
-    }
-
-    @Test(expected = SQLException.class)
-    public void delete_throwsSQLException() throws Exception{
-        repository.Delete(20);
-    }
-
-    @Test(expected = SQLException.class)
-    public void get_throwsSQLException() throws Exception{
-        repository.Get(20);
-    }
-
-    @Test(expected = SQLException.class)
-    public void update_throwsSQLException() throws Exception{
-        repository.Update(20, new Comment());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void add_throwsIllegalArgumentException()
-    {
-        repository.Add(null);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void delete_throwsIllegalArgumentException()
-    {
-        repository.Delete(-1);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void get_throwsIllegalArgumentException()
-    {
-        repository.Get(-1);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void update_throwsIllegalArgumentException_item()
-    {
-        repository.Update(13, null);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void update_throwsIllegalArgumentException_id()
-    {
-        repository.Update(-1, new Comment());
     }
 }
