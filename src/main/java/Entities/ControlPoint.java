@@ -11,6 +11,16 @@ public class ControlPoint {
     public int getId(){return id;}
     public java.util.Date getDate(){return date;}
 
-    public void setId(int newId){id = newId;}
-    public void setDate(java.util.Date newDate){date = newDate;}
+    public void setId(int newId){
+        if (newId < 1){
+            throw new IllegalArgumentException();
+        }
+        id = newId;
+    }
+    public void setDate(java.util.Date newDate){
+        if (newDate == null){
+            throw new IllegalArgumentException();
+        }
+        date = newDate;
+    }
 }

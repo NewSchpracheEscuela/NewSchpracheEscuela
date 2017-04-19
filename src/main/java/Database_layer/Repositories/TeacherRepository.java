@@ -20,7 +20,7 @@ public class TeacherRepository implements IRepository<Teacher> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
             statement=connection.createStatement();
         }
         catch (Exception e){System.out.println(e);}
@@ -54,7 +54,10 @@ public class TeacherRepository implements IRepository<Teacher> {
         return teachers;
     }
 
-    public Teacher Get(int id) throws SQLException {
+    public Teacher Get(int id) throws SQLException, IllegalArgumentException {
+        if (id<1){
+            throw new IllegalArgumentException();
+        }
         Teacher teacher = new Teacher();
         try{
             ResultSet rs = statement.executeQuery("SELECT * FROM `teacher` WHERE teacher_id="+id);
@@ -70,7 +73,13 @@ public class TeacherRepository implements IRepository<Teacher> {
         return teacher;
     }
 
-    public void Add(Teacher entity) throws SQLException {
+    public void Add(Teacher entity) throws SQLException, IllegalArgumentException {
+        if (entity == null){
+            throw new IllegalArgumentException();
+        }
+        if(entity.getUser_id() <1){
+            throw new IllegalArgumentException();
+        }
         try {
             int resultSet = statement.executeUpdate(
                     String.format("INSERT INTO `teacher` (user_id) VALUES ('%d')",
@@ -83,7 +92,10 @@ public class TeacherRepository implements IRepository<Teacher> {
         }
     }
 
-    public void Delete(int id) throws SQLException {
+    public void Delete(int id) throws SQLException,IllegalArgumentException {
+        if (id<1){
+            throw new IllegalArgumentException();
+        }
         try{
             int resultSet = statement.executeUpdate("DELETE FROM `teacher` WHERE teacher_id="+id);
             System.out.println("Rows affected during Delete: " + resultSet);
@@ -93,7 +105,13 @@ public class TeacherRepository implements IRepository<Teacher> {
         }
     }
 
-    public void Update(int id, Teacher item) throws SQLException {
+    public void Update(int id, Teacher item) throws SQLException, IllegalArgumentException {
+        if (item == null || id<1){
+            throw new IllegalArgumentException();
+        }
+        if(item.getUser_id() <1){
+            throw new IllegalArgumentException();
+        }
         Teacher teacher = new Teacher();
         try{
             int resultSet = statement.executeUpdate(String.format("UPDATE `teacher` SET user_id='%d' WHERE teacher_id='%s'",

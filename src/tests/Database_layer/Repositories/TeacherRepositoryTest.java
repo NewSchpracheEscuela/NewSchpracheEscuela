@@ -5,6 +5,7 @@ import Database_layer.IRepository;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -46,6 +47,45 @@ public class TeacherRepositoryTest {
         Teacher teacher = new Teacher();
         teacher.setUser_id(3);
         repository.Update(3,teacher);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addException() throws SQLException{
+        repository.Add(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getException() throws SQLException{
+        repository.Get(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void updateException_Id() throws SQLException{
+        repository.Update(-1, new Teacher());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void updateException_Item() throws SQLException{
+        repository.Update(1, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void deleteException() throws SQLException{
+        repository.Delete(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void updateInvalidEntity() throws SQLException{
+        Teacher teacher = new Teacher();
+        teacher.setUser_id(-1);
+        repository.Update(1, teacher);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addInvalidEntity() throws SQLException{
+        Teacher teacher = new Teacher();
+        teacher.setUser_id(-1);
+        repository.Add(teacher);
     }
 
 }

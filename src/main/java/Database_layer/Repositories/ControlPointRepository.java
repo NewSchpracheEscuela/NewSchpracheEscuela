@@ -22,7 +22,7 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
             statement=connection.createStatement();
         }
         catch (Exception e){System.out.println(e);}
@@ -58,7 +58,10 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
         return controlPoints;
     }
 
-    public ControlPoint Get(int id) throws SQLException {
+    public ControlPoint Get(int id) throws SQLException, IllegalArgumentException {
+        if (id<1){
+            throw new IllegalArgumentException();
+        }
         ControlPoint controlPoint = new ControlPoint();
         try{
             ResultSet resultSet = statement.executeQuery("SELECT * FROM control_point WHERE control_point_id="+id);
@@ -75,7 +78,13 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
         return controlPoint;
     }
 
-    public void Add(ControlPoint entity) throws SQLException {
+    public void Add(ControlPoint entity) throws SQLException, IllegalArgumentException {
+        if (entity == null){
+            throw new IllegalArgumentException();
+        }
+        if(entity.getDate() == null){
+            throw new IllegalArgumentException();
+        }
         try {
             int resultSet = statement.executeUpdate(
                     String.format("INSERT INTO control_point (date) VALUES ('0%s.0%s.%s')",
@@ -90,7 +99,10 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
         }
     }
 
-    public void Delete(int id) throws SQLException {
+    public void Delete(int id) throws SQLException, IllegalArgumentException {
+        if (id<1){
+            throw new IllegalArgumentException();
+        }
         try{
             int resultSet = statement.executeUpdate("DELETE FROM control_point WHERE control_point_id="+id);
             System.out.println("Rows affected during Delete: " + resultSet);
@@ -100,7 +112,13 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
         }
     }
 
-    public void Update(int id,ControlPoint item) throws SQLException {
+    public void Update(int id,ControlPoint item) throws SQLException, IllegalArgumentException {
+        if (id<1 || item == null){
+            throw new IllegalArgumentException();
+        }
+        if (item.getDate() == null){
+            throw new IllegalArgumentException();
+        }
         ControlPoint controlPoint = new ControlPoint();
         try{
             int resultSet = statement.executeUpdate(String.format("UPDATE control_point SET date='0%s.0%s.%s' WHERE control_point_id='%s'",
