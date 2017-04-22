@@ -30,7 +30,7 @@ public class NewsRepositoryTest {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
         }
         catch (Exception e){System.out.println(e);}
     }
@@ -62,9 +62,9 @@ public class NewsRepositoryTest {
 
     @Test
     public void update() throws Exception {
-        News news = repository.Get(15);
+        News news = repository.Get(10);
         news.setContent("У нас все хорошо!");
-        repository.Update(15, news);
+        repository.Update(10, news);
     }
 
     @Test

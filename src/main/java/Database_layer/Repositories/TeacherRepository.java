@@ -20,7 +20,7 @@ public class TeacherRepository implements IRepository<Teacher> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
             statement=connection.createStatement();
         }
         catch (Exception e){System.out.println(e);}
