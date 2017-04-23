@@ -26,5 +26,6 @@
     <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
     </bean>
 
-    <bean id = "controlPointRepository" class = "Database_layer.Repositories.ControlPointRepository"></bean>
+    <bean id = "controlPointRepository" class = "Database_layer.Repositories.ControlPointRepository"/>
+    <bean id = "groupRepository" class = "Database_layer.Repositories.GroupRepository"/>
 </beans>

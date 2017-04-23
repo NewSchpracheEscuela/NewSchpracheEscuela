@@ -1,9 +1,13 @@
 package Entities;
 
 import Database_layer.Enumerations.Level;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by alexb on 15-Apr-17.
  */
+@JsonAutoDetect
 public class Group {
     private int id;
     private Level level;
