@@ -86,11 +86,10 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
             throw new IllegalArgumentException();
         }
         try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
             int resultSet = statement.executeUpdate(
-                    String.format("INSERT INTO control_point (date) VALUES ('0%s.0%s.%s')",
-                            entity.getDate().getDay(),
-                            entity.getDate().getMonth(),
-                            entity.getDate().getYear()));
+                    String.format("INSERT INTO control_point (date) VALUES ('%s')",
+                            dateFormat.format(entity.getDate())));
 
             System.out.println("Rows affected during Add: " + resultSet);
         } catch (SQLException e) {
@@ -121,10 +120,9 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
         }
         ControlPoint controlPoint = new ControlPoint();
         try{
-            int resultSet = statement.executeUpdate(String.format("UPDATE control_point SET date='0%s.0%s.%s' WHERE control_point_id='%s'",
-                    item.getDate().getDay(),
-                    item.getDate().getMonth(),
-                    item.getDate().getYear(),
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+            int resultSet = statement.executeUpdate(String.format("UPDATE control_point SET date='%s' WHERE control_point_id='%s'",
+                    dateFormat.format(item.getDate()),
                     id));
             System.out.println("Rows affected during Update: " + resultSet);
         }
