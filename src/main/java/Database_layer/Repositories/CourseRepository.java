@@ -58,7 +58,6 @@ public class CourseRepository implements IRepository<Course> {
                 course.setStartDate(formatter.parse(rs.getString("start_date")));
                 courses.add(course);
             }
-            connection.close();
         }
         catch (Exception e){System.out.println(e);}
 

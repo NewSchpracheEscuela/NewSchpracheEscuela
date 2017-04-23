@@ -56,7 +56,6 @@ public class CommentRepository implements IRepository<Comment> {
                 comment.setCourse(courseRepository.Get(rs.getInt("course_id")));
                 comments.add(comment);
             }
-            connection.close();
         }
         catch (Exception e){System.out.println(e);}
 

@@ -58,7 +58,6 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
                 pointEvent.setControlPoint(pointRepository.Get(rs.getInt("control_point_id")));
                 pointEvents.add(pointEvent);
             }
-            connection.close();
         }
         catch (Exception e){System.out.println(e);}
 

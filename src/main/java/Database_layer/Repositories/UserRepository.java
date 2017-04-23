@@ -56,7 +56,6 @@ public class UserRepository implements IRepository<User> {
                 user.setContactInfo(rs.getString("telephone"));
                 users.add(user);
             }
-            connection.close();
         }
         catch (Exception e){System.out.println(e);}
 

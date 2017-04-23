@@ -59,7 +59,6 @@ public class LessonRepository implements IRepository<Lesson> {
                 lesson.setRoom(rs.getString("room"));
                 lessons.add(lesson);
             }
-            connection.close();
         }
         catch (Exception e){System.out.println(e);}
 
@@ -70,7 +69,7 @@ public class LessonRepository implements IRepository<Lesson> {
         if (id < 1) throw new IllegalArgumentException();
 
         Lesson lesson = new Lesson();
-        String query = String.format("SELECT * FROM comment WHERE teacher_group_id=%1$d", id);
+        String query = String.format("SELECT * FROM teacher_group WHERE teacher_group_id=%1$d", id);
         try{
             statement=connection.createStatement();
 
@@ -78,7 +77,7 @@ public class LessonRepository implements IRepository<Lesson> {
 
             rs.next();
             lesson.setLesson_id(rs.getInt("teacher_group_id"));
-            lesson.setTime(formatter.parse(rs.getString("date")));
+            lesson.setTime(formatter.parse(rs.getString("time")));
             lesson.setDay(rs.getString("day"));
             lesson.setTeacher(teacherRepository.Get(rs.getInt("teacher_id")));
             lesson.setGroup(groupRepository.Get(rs.getInt("group_id")));
@@ -93,7 +92,7 @@ public class LessonRepository implements IRepository<Lesson> {
     public void Delete(int id) {
         if (id < 1) throw new IllegalArgumentException();
 
-        String query = String.format("DELETE FROM comment WHERE teacher_group_id=%1$d", id);
+        String query = String.format("DELETE FROM teacher_group WHERE teacher_group_id=%1$d", id);
         try{
             statement=connection.createStatement();
 
