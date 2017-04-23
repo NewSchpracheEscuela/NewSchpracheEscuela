@@ -20,7 +20,7 @@ public class LessonRepository implements IRepository<Lesson> {
     private Statement statement;
     private TeacherRepository teacherRepository = new TeacherRepository();
     private GroupRepository groupRepository = new GroupRepository();
-    private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+    private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 
     public LessonRepository() {
         try{
@@ -52,7 +52,7 @@ public class LessonRepository implements IRepository<Lesson> {
             while(rs.next()){
                 Lesson lesson = new Lesson();
                 lesson.setLesson_id(rs.getInt("teacher_group_id"));
-                lesson.setTime(formatter.parse(rs.getString("date")));
+                lesson.setTime(formatter.parse(rs.getString("time")));
                 lesson.setDay(rs.getString("day"));
                 lesson.setTeacher(teacherRepository.Get(rs.getInt("teacher_id")));
                 lesson.setGroup(groupRepository.Get(rs.getInt("group_id")));

@@ -11,7 +11,7 @@ import java.util.Date;
 public class JsonTimeDeserializer extends JsonDeserializer<Date> {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat(
-            "HH:mm:ss.SSS");
+            "HH:mm:ss");
 
     @Override
     public Date deserialize(JsonParser paramJsonParser,
