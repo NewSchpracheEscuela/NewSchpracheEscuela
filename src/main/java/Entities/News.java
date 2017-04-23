@@ -3,6 +3,9 @@ package Entities;
 /**
  * Created by angre on 10.04.2017.
  */
+import Entities.Serializers.JsonDateTimeSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 public class News {
     private int news_id;
     private String title;
@@ -14,6 +17,8 @@ public class News {
     public String getTitle(){return title;}
     public String getContent(){return content;}
     public User getAuthor(){return author;}
+
+    @JsonSerialize(using = JsonDateTimeSerializer.class)
     public java.util.Date getDate(){return date;}
 
     public void setNews_id(int value){news_id = value;}

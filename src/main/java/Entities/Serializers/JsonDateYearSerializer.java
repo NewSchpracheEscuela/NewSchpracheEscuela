@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 @Component
-public class JsonDateSerializer extends JsonSerializer<Date> {
+public class JsonDateYearSerializer extends JsonSerializer<Date> {
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     @Override
     public void serialize(Date date, JsonGenerator gen, SerializerProvider provider)
             throws IOException{

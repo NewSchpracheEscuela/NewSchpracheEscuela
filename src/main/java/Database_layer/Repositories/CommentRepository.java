@@ -24,7 +24,7 @@ public class CommentRepository implements IRepository<Comment> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
         }
         catch (Exception e){System.out.println(e);}
     }

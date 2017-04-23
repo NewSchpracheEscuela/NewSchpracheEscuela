@@ -1,6 +1,8 @@
 package Entities;
 
 import Database_layer.Enumerations.Languages;
+import Entities.Serializers.JsonDateYearSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Created by angre on 10.04.2017.
@@ -19,6 +21,8 @@ public class Course {
     public String getLanguage(){return language.toString();}
     public String getDescription(){return description;}
     public int getNumberOfHours(){return numberOfHours;}
+
+    @JsonSerialize(using = JsonDateYearSerializer.class)
     public java.util.Date getStartDate(){return startDate;}
     public float getPrice(){return price;}
 
