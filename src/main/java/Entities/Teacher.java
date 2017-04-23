@@ -1,8 +1,11 @@
 package Entities;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 /**
  * Created by alexb on 15-Apr-17.
  */
+@JsonAutoDetect
 public class Teacher {
     private int id;
     private int user_id;
