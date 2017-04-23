@@ -45,4 +45,28 @@ public class CourseController {
         return null;
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody
+    boolean addCourse(@RequestBody Course item) {
+        try {
+            repository.Add(item);
+            return true;
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public @ResponseBody
+    boolean updateCourse(@PathVariable int id, @RequestBody Course item) {
+        try {
+            repository.Update(id, item);
+            return true;
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

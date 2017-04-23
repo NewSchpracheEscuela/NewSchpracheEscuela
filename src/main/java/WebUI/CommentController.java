@@ -45,4 +45,28 @@ public class CommentController {
         return null;
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody
+    boolean addComment(@RequestBody Comment item) {
+        try {
+            repository.Add(item);
+            return true;
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public @ResponseBody
+    boolean addComment(@PathVariable int id, @RequestBody Comment item) {
+        try {
+            repository.Update(id, item);
+            return true;
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

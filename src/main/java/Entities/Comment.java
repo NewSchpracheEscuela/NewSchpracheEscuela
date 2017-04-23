@@ -1,6 +1,8 @@
 package Entities;
 
 import Entities.Serializers.JsonDateTimeSerializer;
+import Entities.Deserializers.JSONDateTimeDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
@@ -23,6 +25,8 @@ public class Comment {
 
     public void setComment_id(int value){comment_id = value;}
     public void setAuthor(User value){author = value;}
+
+    @JsonDeserialize(using = JSONDateTimeDeserializer.class)
     public void setDate(java.util.Date value){date = value;}
     public void setCourse(Course value){course = value;}
     public void setEntity(String value){entity = value;}

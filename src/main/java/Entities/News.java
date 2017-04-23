@@ -4,6 +4,8 @@ package Entities;
  * Created by angre on 10.04.2017.
  */
 import Entities.Serializers.JsonDateTimeSerializer;
+import Entities.Deserializers.JSONDateTimeDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class News {
@@ -25,6 +27,8 @@ public class News {
     public void setTitle(String value){title = value;}
     public void setContent(String value){content = value;}
     public void setAuthor(User value){author = value;}
+
+    @JsonDeserialize(using = JSONDateTimeDeserializer.class)
     public void setDate(java.util.Date value){date = value;}
 
 

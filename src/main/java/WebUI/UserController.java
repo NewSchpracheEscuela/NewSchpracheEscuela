@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Entities.User;
 import Database_layer.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
     private final UserRepository repository;
 
     public UserController() {
@@ -61,16 +63,28 @@ public class UserController {
         return false;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/{id}")
+    @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    boolean createUser(@PathVariable int id)
-    {
+    boolean addUser(@RequestBody User item) {
         try {
-            repository.Delete(id);
+            repository.Add(item);
             return true;
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
         return false;
     }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public @ResponseBody
+    boolean addUser(@PathVariable int id, @RequestBody User item) {
+        try {
+            repository.Update(id, item);
+            return true;
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

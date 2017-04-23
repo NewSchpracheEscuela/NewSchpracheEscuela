@@ -80,5 +80,4 @@ public class ControlPointController {
             e.printStackTrace();
         }
     }
-
 }

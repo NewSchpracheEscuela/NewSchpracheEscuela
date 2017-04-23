@@ -45,4 +45,28 @@ public class NewsController {
         return null;
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody
+    boolean addNews(@RequestBody News item) {
+        try {
+            repository.Add(item);
+            return true;
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public @ResponseBody
+    boolean updateNews(@PathVariable int id, @RequestBody News item) {
+        try {
+            repository.Update(id, item);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

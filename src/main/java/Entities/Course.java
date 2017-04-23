@@ -2,6 +2,8 @@ package Entities;
 
 import Database_layer.Enumerations.Languages;
 import Entities.Serializers.JsonDateYearSerializer;
+import Entities.Deserializers.JSONDateYearDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
@@ -32,6 +34,8 @@ public class Course {
     public void setLanguage(Languages value){language = value;}
     public void setDescription(String value){description = value;}
     public void setNumberOfHours(int value){numberOfHours = value;}
+
+    @JsonDeserialize(using = JSONDateYearDeserializer.class)
     public void setStartDate(java.util.Date value){startDate = value;}
     public void setPrice(float value){price = value;}
 }
