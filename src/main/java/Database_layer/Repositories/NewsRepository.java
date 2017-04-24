@@ -55,7 +55,6 @@ public class NewsRepository implements IRepository<News> {
                 news.setAuthor(userRepository.Get(rs.getInt("user_id")));
                 newsList.add(news);
             }
-            connection.close();
         }
         catch (Exception e){System.out.println(e);}
 
