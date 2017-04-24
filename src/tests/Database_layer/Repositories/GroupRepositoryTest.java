@@ -3,6 +3,8 @@ package Database_layer.Repositories;
 import Entities.Group;
 import Database_layer.IRepository;
 import org.junit.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,7 +16,10 @@ public class GroupRepositoryTest {
     private IRepository<Group> repository;
     @Before
     public void setUp()throws Exception{
-        repository = new GroupRepository();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (GroupRepository) context.getBean("groupRepository");
     }
 
     @Test

@@ -1,33 +1,35 @@
 package Database_layer.Repositories;
 
-import Entities.Teacher;
 import Database_layer.IRepository;
+import Entities.GroupStudent;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by alexb on 15-Apr-17.
- */
-public class TeacherRepository implements IRepository<Teacher> {
+public class GroupStudentRepository implements IRepository<GroupStudent>{
+
     private DataSource dataSource;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    public Iterable<Teacher> GetAll() throws SQLException {
-        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    public Iterable<GroupStudent> GetAll() throws SQLException {
+        ArrayList<GroupStudent> groupStudents = new ArrayList<GroupStudent>();
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `teacher`");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `person_group`");
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                Teacher teacher = new Teacher();
-                teacher.setId(rs.getInt("teacher_id"));
-                teacher.setUser_id(rs.getInt("user_id"));
-                teachers.add(teacher);
+                GroupStudent groupStudent = new GroupStudent();
+                groupStudent.setGroupId(rs.getInt("group_id"));
+                groupStudent.setGroupStudentId(rs.getInt("person_group_id"));
+                groupStudent.setPersonId(rs.getInt("person_id"));
+                groupStudents.add(groupStudent);
             }
             connection.close();
         }
@@ -35,42 +37,44 @@ public class TeacherRepository implements IRepository<Teacher> {
             System.out.println(e);
             throw e;
         }
-        return teachers;
+        return groupStudents;
     }
 
-    public Teacher Get(int id) throws SQLException, IllegalArgumentException {
+    public GroupStudent Get(int id) throws SQLException {
         if (id<1){
             throw new IllegalArgumentException();
         }
-        Teacher teacher = new Teacher();
+        GroupStudent groupStudent = new GroupStudent();
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `teacher` WHERE teacher_id="+id);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `person_group` WHERE person_group_id="+id);
             ResultSet rs = statement.executeQuery();
             rs.next();
-            teacher.setId(rs.getInt("teacher_id"));
-            teacher.setUser_id(rs.getInt("user_id"));
+            groupStudent.setGroupId(rs.getInt("group_id"));
+            groupStudent.setGroupStudentId(rs.getInt("person_group_id"));
+            groupStudent.setPersonId(rs.getInt("person_id"));
             connection.close();
         }
         catch (SQLException e){
             System.out.println(e);
             throw e;
         }
-        return teacher;
+        return groupStudent;
     }
 
-    public void Add(Teacher entity) throws SQLException, IllegalArgumentException {
+    public void Add(GroupStudent entity) throws SQLException {
         if (entity == null){
             throw new IllegalArgumentException();
         }
-        if(entity.getUser_id() <1){
+        if(entity.getPersonId() <1 || entity.getGroupId() < 1){
             throw new IllegalArgumentException();
         }
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(
-                    String.format("INSERT INTO `teacher` (user_id) VALUES ('%d')",
-                        entity.getUser_id()));
+                    String.format("INSERT INTO `person_group` (group_id,person_id) VALUES ('%d','%d')",
+                            entity.getGroupId(),
+                            entity.getPersonId()));
             int resultSet = statement.executeUpdate();
             connection.close();
             System.out.println("Rows affected during Add: " + resultSet);
@@ -80,13 +84,13 @@ public class TeacherRepository implements IRepository<Teacher> {
         }
     }
 
-    public void Delete(int id) throws SQLException,IllegalArgumentException {
-        if (id<1){
+    public void Delete(int id) throws SQLException {
+        if (id < 1){
             throw new IllegalArgumentException();
         }
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM `teacher` WHERE teacher_id="+id);
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM `person_group` WHERE person_group_id="+id);
             int resultSet = statement.executeUpdate();
             System.out.println("Rows affected during Delete: " + resultSet);
             connection.close();
@@ -96,26 +100,24 @@ public class TeacherRepository implements IRepository<Teacher> {
         }
     }
 
-    public void Update(int id, Teacher item) throws SQLException, IllegalArgumentException {
+    public void Update(int id, GroupStudent item) throws SQLException {
         if (item == null || id<1){
             throw new IllegalArgumentException();
         }
-        if(item.getUser_id() <1){
+        if(item.getPersonId() <1 || item.getGroupId() < 1){
             throw new IllegalArgumentException();
         }
-        Teacher teacher = new Teacher();
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(
-                    String.format("UPDATE `teacher` SET user_id='%d' WHERE teacher_id='%s'",
-                        item.getUser_id(),
-                        id));
+                    String.format("UPDATE `person_group` SET group_id='%d',person_id='%d' WHERE person_group_id='%s'",
+                            item.getGroupId(),
+                            item.getPersonId(),
+                            id));
             int resultSet = statement.executeUpdate();
             System.out.println("Rows affected during Update: " + resultSet);
             connection.close();
         }
         catch (SQLException e){System.out.println(e); throw e;}
     }
-
-
 }

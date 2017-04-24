@@ -3,49 +3,34 @@ package Database_layer.Repositories;
 import Entities.Person;
 import Database_layer.IRepository;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.sql.DataSource;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
  * Created by alexb on 15-Apr-17.
  */
 public class PersonRepository implements IRepository<Person> {
-    private java.sql.Connection connection;
-    private Statement statement;
 
-    public PersonRepository(){
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
+    private DataSource dataSource;
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
-            statement=connection.createStatement();
-        }
-        catch (Exception e){System.out.println(e);}
-    }
-    @Override
-    protected void finalize() throws SQLException {
-        try {
-            if (!connection.isClosed()){
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public Iterable<Person> GetAll() throws SQLException {
         ArrayList<Person> people = new ArrayList<Person>();
         try{
-            ResultSet rs = statement.executeQuery("SELECT * FROM `person`");
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `person`");
+            ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 Person person = new Person();
                 person.setId(rs.getInt("person_id"));
                 person.setUser_id(rs.getInt("user_id"));
                 people.add(person);
             }
+            connection.close();
         }
         catch (SQLException e){
             System.out.println(e);
@@ -60,11 +45,13 @@ public class PersonRepository implements IRepository<Person> {
         }
         Person person = new Person();
         try{
-            ResultSet rs = statement.executeQuery("SELECT * FROM `person` WHERE person_id="+id);
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `person` WHERE person_id="+id);
+            ResultSet rs = statement.executeQuery();
             rs.next();
             person.setId(rs.getInt("person_id"));
             person.setUser_id(rs.getInt("user_id"));
-
+            connection.close();
         }
         catch (SQLException e){
             System.out.println(e);
@@ -81,11 +68,13 @@ public class PersonRepository implements IRepository<Person> {
             throw new IllegalArgumentException();
         }
         try {
-            int resultSet = statement.executeUpdate(
-                    String.format("INSERT INTO `person` (user_id) VALUES ('%d')",
-                            entity.getUser_id()));
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(String.format("INSERT INTO `person` (user_id) VALUES ('%d')",
+                    entity.getUser_id()));
+            int resultSet = statement.executeUpdate();
 
             System.out.println("Rows affected during Add: " + resultSet);
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw e;
@@ -97,8 +86,11 @@ public class PersonRepository implements IRepository<Person> {
             throw new IllegalArgumentException();
         }
         try{
-            int resultSet = statement.executeUpdate("DELETE FROM `person` WHERE person_id="+id);
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM `person` WHERE person_id="+id);
+            int resultSet = statement.executeUpdate();
             System.out.println("Rows affected during Delete: " + resultSet);
+            connection.close();
         }
         catch (SQLException e){
             System.out.println(e); throw e;
@@ -114,11 +106,16 @@ public class PersonRepository implements IRepository<Person> {
         }
         Person person = new Person();
         try{
-            int resultSet = statement.executeUpdate(String.format("UPDATE `person` SET user_id='%d' WHERE person_id='%s'",
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(String.format("UPDATE `person` SET user_id='%d' WHERE person_id='%s'",
                     item.getUser_id(),
                     id));
+            int resultSet = statement.executeUpdate();
             System.out.println("Rows affected during Update: " + resultSet);
+            connection.close();
         }
         catch (SQLException e){System.out.println(e); throw e;}
     }
+
+
 }

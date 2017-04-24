@@ -1,8 +1,11 @@
 package WebUI;
 
+import Database_layer.Repositories.ControlPointRepository;
 import Database_layer.Repositories.GroupRepository;
 import Entities.Group;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -11,8 +14,14 @@ import java.sql.SQLException;
 @RequestMapping(value = "/groups")
 public class GroupController {
 
-    @Autowired
     private GroupRepository repository;
+
+    public GroupController(){
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (GroupRepository) context.getBean("groupRepository");
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody

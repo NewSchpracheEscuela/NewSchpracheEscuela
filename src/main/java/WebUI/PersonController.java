@@ -1,8 +1,11 @@
 package WebUI;
 
 import Database_layer.Repositories.PersonRepository;
+import Database_layer.Repositories.TeacherRepository;
 import Entities.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -10,8 +13,15 @@ import java.sql.SQLException;
 @RestController
 @RequestMapping(value = "/people")
 public class PersonController {
-    @Autowired
+
     private PersonRepository repository;
+
+    public PersonController(){
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (PersonRepository) context.getBean("personRepository");
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody

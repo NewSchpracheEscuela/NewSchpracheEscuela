@@ -4,6 +4,8 @@ import Entities.Teacher;
 import Database_layer.IRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,7 +20,10 @@ public class TeacherRepositoryTest {
     private IRepository<Teacher> repository;
     @Before
     public void setUp()throws Exception{
-        repository = new TeacherRepository();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (TeacherRepository) context.getBean("teacherRepository");
     }
     @Test
     public void getAll() throws Exception {

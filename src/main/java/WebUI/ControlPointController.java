@@ -3,6 +3,8 @@ package WebUI;
 import Database_layer.Repositories.ControlPointRepository;
 import Entities.ControlPoint;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -15,8 +17,14 @@ import java.util.Date;
 @RequestMapping("/controlpoints")
 public class ControlPointController {
 
-    @Autowired
     private ControlPointRepository repository;
+
+    public ControlPointController(){
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (ControlPointRepository) context.getBean("controlPointRepository");
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody

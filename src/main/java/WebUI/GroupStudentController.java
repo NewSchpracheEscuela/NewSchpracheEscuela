@@ -1,9 +1,7 @@
 package WebUI;
 
-import Database_layer.Repositories.GroupRepository;
-import Database_layer.Repositories.TeacherRepository;
-import Entities.Teacher;
-import org.springframework.beans.factory.annotation.Autowired;
+import Database_layer.Repositories.GroupStudentRepository;
+import Entities.GroupStudent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
@@ -11,20 +9,20 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 
 @RestController
-@RequestMapping(value = "/teachers")
-public class TeacherController {
+@RequestMapping(value = "/groupstudents")
+public class GroupStudentController {
+    private GroupStudentRepository repository;
 
-    private TeacherRepository repository;
-
-    public TeacherController(){
+    public GroupStudentController(){
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("beans.xml");
 
-        repository = (TeacherRepository) context.getBean("teacherRepository");
+        repository = (GroupStudentRepository) context.getBean("groupStudentRepository");
     }
+
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    Iterable<Teacher> getTeacher(){
+    Iterable<GroupStudent> getMarks(){
         try {
             return repository.GetAll();
         } catch (SQLException e) {
@@ -35,7 +33,7 @@ public class TeacherController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
-    Teacher getTeacher(@PathVariable int id){
+    GroupStudent getMark(@PathVariable int id){
 
         try {
             return repository.Get(id);
@@ -47,7 +45,7 @@ public class TeacherController {
 
     @RequestMapping(method = RequestMethod.DELETE,value = "/{id}")
     public @ResponseBody
-    void deleteTeacher(@PathVariable int id){
+    void deleteMark(@PathVariable int id){
         try {
             repository.Delete(id);
         } catch (SQLException e) {
@@ -57,9 +55,9 @@ public class TeacherController {
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    void addGroup(@RequestBody Teacher teacher){
+    void addPerson(@RequestBody GroupStudent groupStudent){
         try {
-            repository.Add(teacher);
+            repository.Add(groupStudent);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,9 +65,9 @@ public class TeacherController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public @ResponseBody
-    void updateGroup(@PathVariable int id,@RequestBody Teacher teacher){
+    void updatePerson(@PathVariable int id,@RequestBody GroupStudent groupStudent){
         try {
-            repository.Update(id,teacher);
+            repository.Update(id,groupStudent);
         } catch (SQLException e) {
             e.printStackTrace();
         }

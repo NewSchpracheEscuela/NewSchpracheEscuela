@@ -1,33 +1,36 @@
 package Database_layer.Repositories;
 
-import Entities.Teacher;
 import Database_layer.IRepository;
+import Entities.Mark;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by alexb on 15-Apr-17.
- */
-public class TeacherRepository implements IRepository<Teacher> {
+public class MarkRepository implements IRepository<Mark>{
+
     private DataSource dataSource;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    public Iterable<Teacher> GetAll() throws SQLException {
-        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    public Iterable<Mark> GetAll() throws SQLException {
+        ArrayList<Mark> marks = new ArrayList<Mark>();
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `teacher`");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `control_point_person`");
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                Teacher teacher = new Teacher();
-                teacher.setId(rs.getInt("teacher_id"));
-                teacher.setUser_id(rs.getInt("user_id"));
-                teachers.add(teacher);
+                Mark mark = new Mark();
+                mark.setId(rs.getInt("control_point_person_id"));
+                mark.setMark(rs.getInt("mark"));
+                mark.setPersonId(rs.getInt("person_id"));
+                mark.setControlPointId(rs.getInt("control_point_id"));
+                marks.add(mark);
             }
             connection.close();
         }
@@ -35,42 +38,46 @@ public class TeacherRepository implements IRepository<Teacher> {
             System.out.println(e);
             throw e;
         }
-        return teachers;
+        return marks;
     }
 
-    public Teacher Get(int id) throws SQLException, IllegalArgumentException {
+    public Mark Get(int id) throws SQLException {
         if (id<1){
             throw new IllegalArgumentException();
         }
-        Teacher teacher = new Teacher();
+        Mark mark = new Mark();
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `teacher` WHERE teacher_id="+id);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `control_point_person` WHERE control_point_person_id="+id);
             ResultSet rs = statement.executeQuery();
             rs.next();
-            teacher.setId(rs.getInt("teacher_id"));
-            teacher.setUser_id(rs.getInt("user_id"));
+            mark.setId(rs.getInt("control_point_person_id"));
+            mark.setMark(rs.getInt("mark"));
+            mark.setPersonId(rs.getInt("person_id"));
+            mark.setControlPointId(rs.getInt("control_point_id"));
             connection.close();
         }
         catch (SQLException e){
             System.out.println(e);
             throw e;
         }
-        return teacher;
+        return mark;
     }
 
-    public void Add(Teacher entity) throws SQLException, IllegalArgumentException {
+    public void Add(Mark entity) throws SQLException {
         if (entity == null){
             throw new IllegalArgumentException();
         }
-        if(entity.getUser_id() <1){
+        if(entity.getPersonId() <1 || entity.getControlPointId() < 1){
             throw new IllegalArgumentException();
         }
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(
-                    String.format("INSERT INTO `teacher` (user_id) VALUES ('%d')",
-                        entity.getUser_id()));
+                    String.format("INSERT INTO `control_point_person` (mark,person_id,control_point_id) VALUES ('%d','%d','%d')",
+                            entity.getMark(),
+                            entity.getPersonId(),
+                            entity.getControlPointId()));
             int resultSet = statement.executeUpdate();
             connection.close();
             System.out.println("Rows affected during Add: " + resultSet);
@@ -80,13 +87,13 @@ public class TeacherRepository implements IRepository<Teacher> {
         }
     }
 
-    public void Delete(int id) throws SQLException,IllegalArgumentException {
-        if (id<1){
+    public void Delete(int id) throws SQLException {
+        if (id < 1){
             throw new IllegalArgumentException();
         }
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM `teacher` WHERE teacher_id="+id);
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM `control_point_person` WHERE control_point_person_id="+id);
             int resultSet = statement.executeUpdate();
             System.out.println("Rows affected during Delete: " + resultSet);
             connection.close();
@@ -96,20 +103,21 @@ public class TeacherRepository implements IRepository<Teacher> {
         }
     }
 
-    public void Update(int id, Teacher item) throws SQLException, IllegalArgumentException {
+    public void Update(int id, Mark item) throws SQLException {
         if (item == null || id<1){
             throw new IllegalArgumentException();
         }
-        if(item.getUser_id() <1){
+        if(item.getPersonId() <1 || item.getControlPointId() < 1){
             throw new IllegalArgumentException();
         }
-        Teacher teacher = new Teacher();
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(
-                    String.format("UPDATE `teacher` SET user_id='%d' WHERE teacher_id='%s'",
-                        item.getUser_id(),
-                        id));
+                    String.format("UPDATE `control_point_person` SET mark='%d',person_id='%d',control_point_id='%d' WHERE control_point_person_id='%s'",
+                            item.getMark(),
+                            item.getPersonId(),
+                            item.getControlPointId(),
+                            id));
             int resultSet = statement.executeUpdate();
             System.out.println("Rows affected during Update: " + resultSet);
             connection.close();

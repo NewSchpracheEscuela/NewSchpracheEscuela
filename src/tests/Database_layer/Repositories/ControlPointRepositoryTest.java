@@ -3,6 +3,8 @@ package Database_layer.Repositories;
 import Entities.ControlPoint;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,7 +20,10 @@ public class ControlPointRepositoryTest {
     private ControlPointRepository repository;
     @Before
     public void setUp()throws Exception{
-        repository = new ControlPointRepository();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (ControlPointRepository) context.getBean("controlPointRepository");
     }
 
     @Test

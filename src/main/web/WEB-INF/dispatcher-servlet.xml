@@ -25,9 +25,5 @@
     <!-- Configure bean to convert JSON to POJO and vice versa -->
     <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
     </bean>
-
-    <bean id = "controlPointRepository" class = "Database_layer.Repositories.ControlPointRepository"/>
-    <bean id = "groupRepository" class = "Database_layer.Repositories.GroupRepository"/>
-    <bean id = "teacherRepository" class = "Database_layer.Repositories.TeacherRepository"/>
-    <bean id = "personRepository" class = "Database_layer.Repositories.PersonRepository"/>
+    
 </beans>

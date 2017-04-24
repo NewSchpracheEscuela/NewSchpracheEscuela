@@ -5,6 +5,8 @@ import Database_layer.IRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +21,10 @@ public class PersonRepositoryTest {
     private IRepository<Person> repository;
     @Before
     public void setUp()throws Exception{
-        repository = new PersonRepository();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (PersonRepository) context.getBean("personRepository");
     }
     @Test
     public void getAll() throws Exception {
