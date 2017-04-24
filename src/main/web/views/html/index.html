@@ -1,10 +1,10 @@
 <ng-include src="'resources/html/header.html'"></ng-include>
-<div class="container">
+<div class="container" >
     <div class="container__banner">
         <div class="banner__slider">
-            <img ng-repeat="slide in slides" ng-src="{{slide.image}}" class="banner__slide">
+            <img ng-repeat="slide in slides" class="banner__slide" src="{{slide.image}}">
         </div>
-        <div class="banner__title">
+        <div class="banner__title" >
                 <span>Говорить на иностранном языке просто!<br>
                     Месяц обучения всего от<br></span>
             <span class="info__price">300 рублей!<br></span>
@@ -12,23 +12,16 @@
             <span class="info__phone">+372(29)123-45-67</span>
         </div>
     </div>
-    <script src="resources/scripts/slider.js" type="text/javascript"></script>
     <div class="container__choice">
-        <script src="resources/scripts/choice_reason.js" type="text/javascript"></script>
         <div class="choice__block">
             <h2>Почему более 2 студентов выбрали нас</h2>
-            <div class="container__delimeter"></div>
+            <div class="container__delimiter"></div>
             <div class="container__numbers">
-                <div ng-repeat="number in [1,2,3,4,5] track by $index">
-                    <button class="container__number" onclick="openChoice(event,$index)">{{number}}</button>
+                <div ng-repeat="number in [1,2,3,4,5] track by $index"  >
+                    <button class="container__number" ng-click = "changeTypeChoice($event, $index+1)">{{number}}</button>
                 </div>
-                <!--<button class="container__number container__number--active" onclick="openChoice(event,1)">1</button>
-                <button class="container__number" onclick="openChoice(event,2)">2</button>
-                <button class="container__number" onclick="openChoice(event,3)">3</button>
-                <button class="container__number" onclick="openChoice(event,4)">4</button>
-                <button class="container__number" onclick="openChoice(event,5)">5</button>-->
             </div>
-            <div ng-repeat="choice in choices">
+            <div ng-repeat="choice in choices" >
                 <div id="{{choice.id}}" class="container__text">
                     <div class="choice__text">
                         <h3>{{choice.title}}</h3>
@@ -36,8 +29,39 @@
                     </div>
                 </div>
             </div>
-            <script>openChoice(event,1)</script>
+        </div>
+    </div>
+    <div class="info__block">
+        <div class="info__image">
+            <img src="resources/images/german_woman.jpg">
+        </div>
+        <div class="info__text">
+            <h3>Лалалалл лалал аллалала</h3>
+            <article>Ла лалалаааоа лалалалал аллаал алалалал алалалал алалал алаалаал аа лааалала алалала алалал
+            лалалала аллалаал алаллаала аллалалалал алаллаа алалалала алалалалал алалаллаллал алаллалалла алаллалал
+            лалаллала алла алалла алалалаллала алалаллалаа алаллалла</article>
+            <div class="info__blockButton">
+                <button>Читать подробнее</button>
+                <button>Записаться</button>
+            </div>
+        </div>
+    </div>
+    <div class="info__block">
+        <div class="info__image">
+            <img src="resources/images/italian-girl.jpg">
+        </div>
+        <div class="info__text">
+            <h3>Лалалалл лалал аллалала</h3>
+            <article>Ла лалалаааоа лалалалал аллаал алалалал алалалал алалал алаалаал аа лааалала алалала алалал
+                лалалала аллалаал алаллаала аллалалалал алаллаа алалалала алалалалал алалаллаллал алаллалалла алаллалал
+                лалаллала алла алалла алалалаллала алалаллалаа алаллалла</article>
+            <div class="info__blockButton">
+                <button>Читать подробнее</button>
+                <button>Записаться</button>
+            </div>
         </div>
     </div>
 </div>
 <ng-include src="'resources/html/footer.html'"></ng-include>
+
+

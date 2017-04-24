@@ -10,10 +10,13 @@
     --bg-color: #FDF3EB;
     --font-color:#134D4A;
     --red: #AE2224;
+    --red-hover:#7D191B;
+    --green-dark-hover:#165855;
 }
 
 body {
     background: var(--bg-color);
+    color: var(--font-color);
     font-family: 'Open Sans', Helvetica, Verdana, sans-serif;
     min-height: 100vh;
     padding: 0;
@@ -22,7 +25,8 @@ body {
 /*HEADER*/
 header {
     min-height: 70px;
-    background: var(--green-light);
+    /*background: var(--green-light);*/
+    background: #679289;
     top: 0;
     left: 0;
     width: 100%;
@@ -71,6 +75,18 @@ header {
 .header__item--active{
     color: var(--bg-color);
     background-image: url(../images/flag-icon.png);
+}
+
+.header__list a{
+    text-decoration: none;
+    color:var(--font-color);
+}
+.header__item--active a{
+    color:var(--bg-color);
+}
+
+.header__item:hover a{
+    color:var(--bg-color);
 }
 /*CONTAINER*/
 .container {
@@ -150,7 +166,7 @@ header {
 }
 
 .container__choice{
-    min-height: 400px;
+    min-height: 300px;
     width: 100%;
     background: var(--bg-color);
     color: var(--green-dark);
@@ -161,7 +177,7 @@ header {
     margin: auto;
 }
 
-.container__delimeter{
+.container__delimiter{
     width: 100px;
     height: 3px;
     background: var(--green-dark);
@@ -210,6 +226,67 @@ header {
 
 .choice__text span{
     font-size: 13px;
+}
+
+.info__block:nth-child(odd){
+    background: var(--green-light);
+    color: var(--bg-color);
+}
+
+.info__block{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.info__image{
+    width: 150%;
+}
+
+.info__image img{
+    width: 100%;
+}
+
+.info__text{
+    margin-right: 20%;
+    margin-left: 25px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.info__blockButton{
+    display: flex;
+    justify-content: flex-start;
+}
+.info__blockButton button{
+    margin-right: 20px;
+    background: var(--green-dark);
+    border: none;
+    color: var(--bg-color);
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+.info__blockButton button:hover{
+    background: var(--green-dark-hover);
+}
+
+.info__blockButton button:nth-child(odd){
+    background: var(--red);
+}
+
+.info__blockButton button:nth-child(odd):hover{
+    background: var(--red-hover);
+}
+
+/*Contact*/
+#map{
+    width: 100%;
+    height: 100%;
 }
 /*FOOTER*/
 footer{

@@ -7,11 +7,13 @@
 <spring:url value="/resources/scripts/angular/angular.min.js" var="angularMain"/>
 <spring:url value="/resources/scripts/script.js" var="scriptMain"/>
 <spring:url value="/resources/scripts/angular/angular-route.min.js" var="angularRoute"/>
+<spring:url value="/resources/scripts/angular/ng-map.min.js" var="map"/>
 <html ng-app="NSE">
   <head>
       <base href="/"/>
       <script src="${angularMain}"></script>
       <script src="${angularRoute}"></script>
+      <script src="${map}"></script>
       <script src="http://code.jquery.com/jquery-latest.js"></script>
       <script src="${scriptMain}"></script>
       <link rel="stylesheet" href="${mainCss}">
