@@ -10,7 +10,9 @@ import java.util.Date;
 
 import Entities.News;
 
-
+/**
+ * Created by angre on 15.04.2017.
+ */
 public class NewsRepositoryTest {
     private static java.sql.Connection connection;
     private static Statement statement;
@@ -28,11 +30,7 @@ public class NewsRepositoryTest {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-<<<<<<< HEAD
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
-=======
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
->>>>>>> workflow
         }
         catch (Exception e){System.out.println(e);}
     }

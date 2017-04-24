@@ -14,25 +14,8 @@ public class PersonRepository implements IRepository<Person> {
 
     private DataSource dataSource;
 
-<<<<<<< HEAD
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
-            statement=connection.createStatement();
-        }
-        catch (Exception e){System.out.println(e);}
-    }
-    @Override
-    protected void finalize() throws SQLException {
-        try {
-            if (!connection.isClosed()){
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-=======
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
->>>>>>> workflow
     }
 
     public Iterable<Person> GetAll() throws SQLException {

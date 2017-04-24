@@ -17,25 +17,8 @@ public class ControlPointRepository implements IRepository<ControlPoint> {
 
     private static SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 
-<<<<<<< HEAD
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
-            statement=connection.createStatement();
-        }
-        catch (Exception e){System.out.println(e);}
-    }
-    @Override
-    protected void finalize() throws SQLException {
-        try {
-            if (!connection.isClosed()){
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-=======
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
->>>>>>> workflow
     }
 
     public Iterable<ControlPoint> GetAll() throws SQLException {

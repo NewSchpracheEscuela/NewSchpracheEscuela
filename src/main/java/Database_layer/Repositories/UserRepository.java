@@ -20,11 +20,7 @@ public class UserRepository implements IRepository<User> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-<<<<<<< HEAD
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
-=======
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
->>>>>>> workflow
         }
             catch (Exception e){System.out.println(e);}
     }

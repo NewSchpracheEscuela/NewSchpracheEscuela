@@ -102,5 +102,21 @@ angular.module('NSE',['ngRoute', 'ngMap'])
         '$scope', '$http' ,function ($scope, $http)
         {
 
+          /*  $http.get('/users').success(function(data) {
+                $scope.users = data;
+            });*/
+
+            $http({
+                method: 'GET',
+                url: '/users'
+            }).then(function successCallback(response) {
+                $scope.users = response.data;
+                // this callback will be called asynchronously
+                // when the response is available
+            }, function errorCallback(response) {
+                alert("код : " +response.status);
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
         }
     ]);
