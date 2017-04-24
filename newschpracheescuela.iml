@@ -9,7 +9,10 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/web" relative="/" />
         </webroots>
-        <sourceRoots />
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+        </sourceRoots>
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
@@ -17,21 +20,10 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/web/WEB-INF/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/web/WEB-INF/dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/Spring-Datasource.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/Spring-Database_layer.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/beans.xml</file>
         </fileset>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web2">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_7_RELEASE.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/.idea/libraries" relative="/WEB-INF" />
-        </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -59,5 +51,9 @@
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.0.pr2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.0.pr2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0.pr2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.3.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.3.7.RELEASE" level="project" />
   </component>
 </module>

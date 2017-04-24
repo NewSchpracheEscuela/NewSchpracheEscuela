@@ -56,7 +56,6 @@ public class UserRepository implements IRepository<User> {
                 user.setContactInfo(rs.getString("telephone"));
                 users.add(user);
             }
-            connection.close();
         }
         catch (Exception e){System.out.println(e);}
 
@@ -64,6 +63,8 @@ public class UserRepository implements IRepository<User> {
     }
 
     public User Get(int id) {
+        if (id < 1) throw new IllegalArgumentException();
+
         User user = new User();
         String query = String.format("SELECT * FROM user WHERE user_id=%1$d", id);
         try{
@@ -81,11 +82,17 @@ public class UserRepository implements IRepository<User> {
             user.setLastName(rs.getString("last_name"));
             user.setPatronym(rs.getString("patronym"));
             user.setContactInfo(rs.getString("telephone"));
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){
+            System.out.println(e);
+            throw new IllegalAccessError();
+        }
         return user;
     }
 
     public void Add(User entity) {
+        if (entity == null) throw new IllegalArgumentException();
+        if (IsEmpty(entity)) throw new IllegalArgumentException();
+
         String query = String.format("insert into user values(%1$d, '%2$s', '%3$s', '%4$s', '%5$s', '%6$s', '%7$s', '%8$s', '%9$s')",
                 entity.getUser_id(), entity.getLogin(), entity.getPassword_hash(), entity.getEmail(), entity.getRole(), entity.getFirstName(), entity.getLastName(),
                 entity.getPatronym(), entity.getContactInfo());
@@ -97,6 +104,8 @@ public class UserRepository implements IRepository<User> {
     }
 
     public void Delete(int id) {
+        if (id < 1) throw new IllegalArgumentException();
+
         String query = String.format("DELETE FROM user WHERE user_id=%1$d", id);
         try{
             statement=connection.createStatement();
@@ -106,6 +115,10 @@ public class UserRepository implements IRepository<User> {
     }
 
     public void Update(int id, User item) {
+        if (id < 1) throw new IllegalArgumentException();
+        if (item == null) throw new IllegalArgumentException();
+        if (IsEmpty(item)) throw new IllegalArgumentException();
+
         String query = String.format("UPDATE user SET login='%2$s', password='%3$s', email='%4$s', role='%5$s', first_name='%6$s', last_name='%7$s', patronym='%8$s', telephone='%9$s' WHERE user_id=%1$d",
                 id, item.getLogin(), item.getPassword_hash(), item.getEmail(), item.getRole(), item.getFirstName(), item.getLastName(),
                 item.getPatronym(), item.getContactInfo());
@@ -114,5 +127,18 @@ public class UserRepository implements IRepository<User> {
 
             statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
+    }
+
+    private boolean IsEmpty(User item)
+    {
+        if (item.getContactInfo() == null) return true;
+        if (item.getEmail() == null) return true;
+        if (item.getFirstName() == null) return true;
+        if (item.getLastName() == null) return true;
+        if (item.getLogin() == null) return true;
+        if (item.getPassword_hash() == null) return true;
+        if (item.getPatronym() == null) return true;
+        if (item.getRole() == null) return true;
+        return false;
     }
 }

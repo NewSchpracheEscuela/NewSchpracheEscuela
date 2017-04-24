@@ -3,6 +3,7 @@ package Database_layer.Repositories;
 import org.junit.*;
 
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,7 +30,7 @@ public class NewsRepositoryTest {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
         }
         catch (Exception e){System.out.println(e);}
     }
@@ -61,9 +62,9 @@ public class NewsRepositoryTest {
 
     @Test
     public void update() throws Exception {
-        News news = repository.Get(15);
-        news.setContent("Как дела?");
-        repository.Update(15, news);
+        News news = repository.Get(10);
+        news.setContent("У нас все хорошо!");
+        repository.Update(10, news);
     }
 
     @Test
@@ -77,4 +78,43 @@ public class NewsRepositoryTest {
         repository.Add(news);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void addException() throws SQLException{
+        repository.Add(null);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getException() throws SQLException{
+        repository.Get(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void updateException_Id() throws SQLException{
+        repository.Update(-1, new News());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void updateException_Item() throws SQLException{
+        repository.Update(1, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void deleteException() throws SQLException{
+        repository.Delete(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void updateInvalidEntity() throws SQLException{
+        News news = new News();
+        news.setDate(null);
+        repository.Update(1, news);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addInvalidEntity() throws SQLException{
+        News news = new News();
+        news.setDate(null);
+        repository.Add(news);
+    }
 }

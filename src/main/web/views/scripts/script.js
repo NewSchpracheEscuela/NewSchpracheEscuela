@@ -1,11 +1,11 @@
 /**
  * Created by alexb on 05-Apr-17.
  */
-var app = angular.module('NSE',['ngRoute']);
-    app.config([
+angular.module('NSE',['ngRoute'])
+    .config([
         '$locationProvider','$routeProvider',function ($locationProvider,$routeProvider) {
             $routeProvider
-                .when('/hello',
+                .when('/index',
                     {
                         templateUrl:'/resources/html/index.html',
                         controller:'IndexController'
@@ -16,10 +16,10 @@ var app = angular.module('NSE',['ngRoute']);
                 });
             $locationProvider.html5Mode(true);
         }
-    ]);
-    app.controller('IndexController',
+    ])
+    .controller('IndexController',
     [
         '$scope',function ($scope) {
-            $scope.hello = "index"
+            $scope.hello = "Angular index"
         }
     ]);

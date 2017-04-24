@@ -1,5 +1,9 @@
+/out/*
+
+/target/*
+
+\.idea/workspace\.xml
 
 out/
 
 target/
-\.idea/workspace\.xml
