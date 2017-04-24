@@ -4,6 +4,7 @@ import Entities.Comment;
 import org.junit.*;
 
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +31,11 @@ public class CommentRepositoryTest {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
+<<<<<<< HEAD
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
+=======
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
+>>>>>>> workflow
         }
         catch (Exception e){System.out.println(e);}
     }
@@ -47,24 +52,32 @@ public class CommentRepositoryTest {
 
     @Test
     public void getAll() throws Exception {
-        ArrayList<Comment> news = (ArrayList<Comment>)repository.GetAll();
+        ArrayList<Comment> comments = (ArrayList<Comment>)repository.GetAll();
+
+        //Assert.assertEquals(13, comments.size());
     }
 
     @Test
     public void get() throws Exception {
-        Comment comment = repository.Get(3);
+        Comment comment = repository.Get(4);
+
+        Assert.assertEquals("нравится", comment.getEntity());
     }
 
-    @Test
+    @Test(expected = IllegalAccessError.class)
     public void delete() throws Exception {
         repository.Delete(15);
+
+        repository.Get(15);
     }
 
     @Test
     public void update() throws Exception {
-        Comment comment = repository.Get(15);
+        Comment comment = repository.Get(10);
         comment.setEntity("Hi guys. I\\'m new here. Can explain what this is all about?");
-        repository.Update(15, comment);
+        repository.Update(10, comment);
+
+        //Assert.assertEquals("Hi guys. I'm new here. Can explain what this is all about?", repository.Get(14).getEntity());
     }
 
     @Test
@@ -76,5 +89,64 @@ public class CommentRepositoryTest {
         comment.setCourse(courseRepository.Get(4));
         comment.setComment_id(15);
         repository.Add(comment);
+
+        Assert.assertEquals("Hi guys. I'm new here", repository.Get(15).getEntity());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void add_throwsSQLException() throws Exception{
+        Comment comment = new Comment();
+        repository.Add(comment);
+    }
+
+    @Test
+    public void delete_throwsSQLException() throws Exception{
+        repository.Delete(20);
+    }
+
+    @Test(expected = IllegalAccessError.class)
+    public void get_throwsSQLException() throws Exception{
+        repository.Get(20);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsSQLException() throws Exception{
+        repository.Update(20, new Comment());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void add_throwsIllegalArgumentException()
+    {
+        repository.Add(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void delete_throwsIllegalArgumentException()
+    {
+        repository.Delete(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void get_throwsIllegalArgumentException()
+    {
+        repository.Get(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsIllegalArgumentException_item()
+    {
+        repository.Update(13, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsIllegalArgumentException_id()
+    {
+        repository.Update(-1, new Comment());
+    }
+
+    @Test(expected=IllegalAccessError.class)
+    public void get_something()
+    {
+        repository.Get(145);
     }
 }

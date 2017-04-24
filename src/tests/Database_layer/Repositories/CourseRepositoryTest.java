@@ -1,9 +1,11 @@
 package Database_layer.Repositories;
 
 import Database_layer.Enumerations.Languages;
+import Entities.Comment;
 import org.junit.*;
 
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import Entities.Course;
 
@@ -28,7 +30,11 @@ public class CourseRepositoryTest {
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
+<<<<<<< HEAD
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","root");
+=======
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","admin");
+>>>>>>> workflow
         }
         catch (Exception e){System.out.println(e);}
     }
@@ -46,23 +52,31 @@ public class CourseRepositoryTest {
     @Test
     public void getAll() throws Exception {
         ArrayList<Course> courses = (ArrayList<Course>)repository.GetAll();
+
+        //Assert.assertEquals(courses.size(), 15);
     }
 
     @Test
     public void get() throws Exception {
         Course course = repository.Get(15);
+
+        Assert.assertEquals(Languages.italian.toString(), course.getLanguage());
     }
 
-    @Test
+    @Test(expected = IllegalAccessError.class)
     public void delete() throws Exception {
         repository.Delete(15);
+
+        repository.Get(15);
     }
 
     @Test
     public void update() throws Exception {
-        Course course = repository.Get(15);
+        Course course = repository.Get(14);
         course.setLanguage(Languages.italian);
         repository.Update(15, course);
+
+        //Assert.assertEquals(Languages.italian.toString(), repository.Get(15).getLanguage());
     }
 
     @Test
@@ -76,6 +90,58 @@ public class CourseRepositoryTest {
         course.setNumberOfHours(168);
         course.setCourse_id(15);
         repository.Add(course);
+
+        Assert.assertEquals(Languages.italian.toString(), repository.Get(15).getLanguage());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void add_throwsSQLException() throws Exception{
+        Course course = new Course();
+        repository.Add(course);
+    }
+
+    @Test
+    public void delete_throwsSQLException() throws Exception{
+        repository.Delete(20);
+    }
+
+    @Test(expected = IllegalAccessError.class)
+    public void get_throwsSQLException() throws Exception{
+        repository.Get(20);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsSQLException() throws Exception{
+        repository.Update(20, new Course());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void add_throwsIllegalArgumentException()
+    {
+        repository.Add(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void delete_throwsIllegalArgumentException()
+    {
+        repository.Delete(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void get_throwsIllegalArgumentException()
+    {
+        repository.Get(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsIllegalArgumentException_item()
+    {
+        repository.Update(13, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void update_throwsIllegalArgumentException_id()
+    {
+        repository.Update(-1, new Course());
+    }
 }

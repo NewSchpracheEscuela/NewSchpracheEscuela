@@ -1,32 +1,77 @@
 package WebUI;
 
+import Database_layer.Repositories.GroupRepository;
 import Database_layer.Repositories.TeacherRepository;
-import Entities.ControlPoint;
 import Entities.Teacher;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
-@Controller
-@RequestMapping("/teachers/")
+@RestController
+@RequestMapping(value = "/teachers")
 public class TeacherController {
 
-    private static TeacherRepository repository =new TeacherRepository();
+    private TeacherRepository repository;
 
-    @RequestMapping(value = "{id}",method = GET)
-    public ResponseEntity<Teacher> getById(@PathVariable int id){
+    public TeacherController(){
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (TeacherRepository) context.getBean("teacherRepository");
+    }
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody
+    Iterable<Teacher> getTeacher(){
         try {
-            Teacher teacher = repository.Get(id);
-            return ResponseEntity.ok(repository.Get(id));
+            return repository.GetAll();
         } catch (SQLException e) {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public @ResponseBody
+    Teacher getTeacher(@PathVariable int id){
+
+        try {
+            return repository.Get(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE,value = "/{id}")
+    public @ResponseBody
+    void deleteTeacher(@PathVariable int id){
+        try {
+            repository.Delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody
+    void addGroup(@RequestBody Teacher teacher){
+        try {
+            repository.Add(teacher);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public @ResponseBody
+    void updateGroup(@PathVariable int id,@RequestBody Teacher teacher){
+        try {
+            repository.Update(id,teacher);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
