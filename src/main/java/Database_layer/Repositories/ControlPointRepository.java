@@ -13,9 +13,8 @@ import java.util.ArrayList;
  * Created by alexb on 09-Apr-17.
  */
 public class ControlPointRepository implements IRepository<ControlPoint> {
-    private DataSource dataSource;
-
     private static SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+    private DataSource dataSource;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;

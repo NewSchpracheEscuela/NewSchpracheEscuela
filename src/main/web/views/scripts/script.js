@@ -11,6 +11,11 @@ angular.module('NSE',['ngRoute'])
                         controller:'IndexController'
                     }
                 )
+                .when('/contacts',
+                    {
+                        templateUrl:'/resources/html/index.html',
+                        controller:'IndexController'
+                    })
                 .otherwise({
                     redirectTo:"/index"
                 });
@@ -21,5 +26,7 @@ angular.module('NSE',['ngRoute'])
     [
         '$scope',function ($scope) {
             $scope.hello = "Angular index"
+
+            $scope.contact = "Alex Budnitsky"
         }
     ]);

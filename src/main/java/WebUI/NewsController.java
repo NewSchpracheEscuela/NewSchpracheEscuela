@@ -1,8 +1,11 @@
 package WebUI;
 
 import Database_layer.Repositories.NewsRepository;
+import Database_layer.Repositories.UserRepository;
 import Entities.News;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -15,7 +18,10 @@ public class NewsController {
     private final NewsRepository repository;
 
     public NewsController() {
-        repository = new NewsRepository();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (NewsRepository) context.getBean("newsRepository");
     }
 
     @RequestMapping(method = RequestMethod.GET)
