@@ -3,46 +3,26 @@ package Database_layer.Repositories;
 import Database_layer.IRepository;
 import Entities.User;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.sql.DataSource;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
  * Created by alexb on 14-Mar-17.
  */
 public class UserRepository implements IRepository<User> {
-    private java.sql.Connection connection;
-    private Statement statement;
+    private DataSource dataSource;
 
-    public UserRepository() {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
-        }
-            catch (Exception e){System.out.println(e);}
-    }
-
-    @Override
-    protected void finalize() throws SQLException
-    {
-        try {
-            if (!connection.isClosed()){
-                connection.close();
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public Iterable<User> GetAll() throws SQLException {
         ArrayList<User> users = new ArrayList<User>();
         try{
-            statement=connection.createStatement();
-
-            ResultSet rs = statement.executeQuery("select * from user");
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from user");
+            ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 User user = new User();
                 user.setUser_id(rs.getInt("user_id"));
@@ -56,10 +36,12 @@ public class UserRepository implements IRepository<User> {
                 user.setContactInfo(rs.getString("telephone"));
                 users.add(user);
             }
+            connection.close();
+            return users;
         }
         catch (Exception e){System.out.println(e);}
 
-        return users;
+        return null;
     }
 
     public User Get(int id) {
@@ -68,10 +50,9 @@ public class UserRepository implements IRepository<User> {
         User user = new User();
         String query = String.format("SELECT * FROM user WHERE user_id=%1$d", id);
         try{
-            statement=connection.createStatement();
-
-            ResultSet rs = statement.executeQuery(query);
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet rs = statement.executeQuery();
             rs.next();
             user.setUser_id(rs.getInt("user_id"));
             user.setLogin(rs.getString("login"));
@@ -82,11 +63,12 @@ public class UserRepository implements IRepository<User> {
             user.setLastName(rs.getString("last_name"));
             user.setPatronym(rs.getString("patronym"));
             user.setContactInfo(rs.getString("telephone"));
+            connection.close();
+            return user;
         } catch(Exception e){
             System.out.println(e);
             throw new IllegalAccessError();
         }
-        return user;
     }
 
     public void Add(User entity) {
@@ -97,9 +79,10 @@ public class UserRepository implements IRepository<User> {
                 entity.getUser_id(), entity.getLogin(), entity.getPassword_hash(), entity.getEmail(), entity.getRole(), entity.getFirstName(), entity.getLastName(),
                 entity.getPatronym(), entity.getContactInfo());
         try{
-            statement=connection.createStatement();
-
-            statement.executeUpdate(query);
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.executeUpdate();
+            connection.close();
         } catch(Exception e){System.out.println(e);}
     }
 
@@ -108,9 +91,10 @@ public class UserRepository implements IRepository<User> {
 
         String query = String.format("DELETE FROM user WHERE user_id=%1$d", id);
         try{
-            statement=connection.createStatement();
-
-            statement.executeUpdate(query);
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.executeUpdate();
+            connection.close();
         } catch(Exception e){System.out.println(e);}
     }
 
@@ -123,9 +107,10 @@ public class UserRepository implements IRepository<User> {
                 id, item.getLogin(), item.getPassword_hash(), item.getEmail(), item.getRole(), item.getFirstName(), item.getLastName(),
                 item.getPatronym(), item.getContactInfo());
         try{
-            statement=connection.createStatement();
-
-            statement.executeUpdate(query);
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.executeUpdate();
+            connection.close();
         } catch(Exception e){System.out.println(e);}
     }
 

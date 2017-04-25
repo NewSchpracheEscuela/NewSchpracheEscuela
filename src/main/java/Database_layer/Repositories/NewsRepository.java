@@ -2,11 +2,11 @@ package Database_layer.Repositories;
 
 import Entities.News;
 import Database_layer.IRepository;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.sql.DataSource;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -14,38 +14,26 @@ import java.util.ArrayList;
  * Created by angre on 10.04.2017.
  */
 public class NewsRepository implements IRepository<News> {
-    private java.sql.Connection connection;
-    private Statement statement;
-    private UserRepository userRepository = new UserRepository();
+
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public NewsRepository() {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
+    private DataSource dataSource;
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
-        }
-        catch (Exception e){System.out.println(e);}
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
-    @Override
-    protected void finalize() throws SQLException
-    {
-        try {
-            if (!connection.isClosed()){
-                connection.close();
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
 
     public Iterable<News> GetAll() throws SQLException {
         ArrayList<News> newsList = new ArrayList<News>();
         try{
-            statement=connection.createStatement();
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from news");
+            ResultSet rs = statement.executeQuery();
+            ApplicationContext context =
+                    new ClassPathXmlApplicationContext("beans.xml");
 
-            ResultSet rs = statement.executeQuery("select * from news");
+            UserRepository userRepository = (UserRepository) context.getBean("userRepository");
             while(rs.next()){
                 News news = new News();
                 news.setNews_id(rs.getInt("news_id"));
@@ -55,6 +43,7 @@ public class NewsRepository implements IRepository<News> {
                 news.setAuthor(userRepository.Get(rs.getInt("user_id")));
                 newsList.add(news);
             }
+            connection.close();
         }
         catch (Exception e){System.out.println(e);
             throw new IllegalAccessError();}
@@ -67,9 +56,13 @@ public class NewsRepository implements IRepository<News> {
         News news = new News();
         String query = String.format("SELECT * FROM news WHERE news_id=%1$d", id);
         try{
-            statement=connection.createStatement();
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet rs = statement.executeQuery();
+            ApplicationContext context =
+                    new ClassPathXmlApplicationContext("beans.xml");
 
-            ResultSet rs = statement.executeQuery(query);
+            UserRepository userRepository = (UserRepository) context.getBean("userRepository");
 
             rs.next();
             news.setNews_id(rs.getInt("news_id"));
@@ -77,6 +70,7 @@ public class NewsRepository implements IRepository<News> {
             news.setContent(rs.getString("description"));
             news.setDate(formatter.parse(rs.getString("date")));
             news.setAuthor(userRepository.Get(rs.getInt("user_id")));
+            connection.close();
         } catch(Exception e){System.out.println(e);}
         return news;
     }
@@ -85,9 +79,10 @@ public class NewsRepository implements IRepository<News> {
         if (id < 1) throw new IllegalArgumentException();
         String query = String.format("DELETE FROM news WHERE news_id=%1$d", id);
         try{
-            statement=connection.createStatement();
-
-            statement.executeUpdate(query);
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.executeUpdate();
+            connection.close();
         } catch(Exception e){System.out.println(e);
             throw new IllegalAccessError();}
     }
@@ -99,9 +94,10 @@ public class NewsRepository implements IRepository<News> {
         String query = String.format("UPDATE news SET title='%2$s', description='%3$s', date='%4$s', user_id=%5$d WHERE news_id=%1$d",
                 id, item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
         try{
-            statement=connection.createStatement();
-
-            statement.executeUpdate(query);
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.executeUpdate();
+            connection.close();
         } catch(Exception e){System.out.println(e);
             throw new IllegalAccessError();}
     }
@@ -113,9 +109,10 @@ public class NewsRepository implements IRepository<News> {
         String query = String.format("insert into news (title, description, date, user_id) values('%2$s', '%3$s', '%4$s', %5$d)",
                 item.getNews_id(), item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
         try{
-            statement=connection.createStatement();
-
-            statement.executeUpdate(query);
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.executeUpdate();
+            connection.close();
         } catch(Exception e){System.out.println(e);
             throw new IllegalAccessError();}
     }

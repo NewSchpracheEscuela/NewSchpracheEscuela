@@ -3,6 +3,8 @@ package WebUI;
 import Database_layer.Repositories.CommentRepository;
 import Entities.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -15,7 +17,9 @@ public class CommentController {
     private final CommentRepository repository;
 
     public CommentController() {
-        repository = new CommentRepository();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+        repository = (CommentRepository) context.getBean("commentRepository");
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -81,5 +85,4 @@ public class CommentController {
         }
         return false;
     }
-
 }

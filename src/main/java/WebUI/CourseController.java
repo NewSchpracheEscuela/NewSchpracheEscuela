@@ -1,8 +1,11 @@
 package WebUI;
 
+import Database_layer.Repositories.ControlPointRepository;
 import Database_layer.Repositories.CourseRepository;
 import Entities.Course;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -15,7 +18,10 @@ public class CourseController {
     private final CourseRepository repository;
 
     public CourseController() {
-        repository = new CourseRepository();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (CourseRepository) context.getBean("courseRepository");
     }
 
     @RequestMapping(method = RequestMethod.GET)

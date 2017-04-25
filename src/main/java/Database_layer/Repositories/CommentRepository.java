@@ -2,11 +2,11 @@ package Database_layer.Repositories;
 
 import Entities.Comment;
 import Database_layer.IRepository;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.sql.DataSource;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -14,41 +14,27 @@ import java.util.ArrayList;
  * Created by angre on 10.04.2017.
  */
 public class CommentRepository implements IRepository<Comment> {
-    private java.sql.Connection connection;
-    private Statement statement;
-    private UserRepository userRepository = new UserRepository();
-    private CourseRepository courseRepository = new CourseRepository();
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public CommentRepository() {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
+    private DataSource dataSource;
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
-        }
-        catch (Exception e){System.out.println(e);}
-    }
-
-    @Override
-    protected void finalize() throws SQLException
-    {
-        try {
-            if (!connection.isClosed()){
-                connection.close();
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public Iterable<Comment> GetAll() throws SQLException {
         ArrayList<Comment> comments = new ArrayList<Comment>();
         try{
-            statement=connection.createStatement();
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from comment");
 
-            ResultSet rs = statement.executeQuery("select * from comment");
+            ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 Comment comment = new Comment();
+                ApplicationContext context =
+                        new ClassPathXmlApplicationContext("beans.xml");
+                UserRepository userRepository = (UserRepository) context.getBean("userRepository");
+                CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
                 comment.setComment_id(rs.getInt("comment_id"));
                 comment.setDate(formatter.parse(rs.getString("date")));
                 comment.setEntity(rs.getString("entity"));
@@ -56,6 +42,7 @@ public class CommentRepository implements IRepository<Comment> {
                 comment.setCourse(courseRepository.Get(rs.getInt("course_id")));
                 comments.add(comment);
             }
+            connection.close();
         }
         catch (Exception e){System.out.println(e);
             throw new IllegalAccessError();}
@@ -69,16 +56,21 @@ public class CommentRepository implements IRepository<Comment> {
         Comment comment = new Comment();
         String query = String.format("SELECT * FROM comment WHERE comment_id=%1$d", id);
         try{
-            statement=connection.createStatement();
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery(query);
 
+            ApplicationContext context =
+                    new ClassPathXmlApplicationContext("beans.xml");
+            UserRepository userRepository = (UserRepository) context.getBean("userRepository");
+            CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
             rs.next();
             comment.setComment_id(rs.getInt("comment_id"));
             comment.setDate(rs.getDate("date"));
             comment.setEntity(rs.getString("entity"));
             comment.setAuthor(userRepository.Get(rs.getInt("user_id")));
             comment.setCourse(courseRepository.Get(rs.getInt("course_id")));
+            connection.close();
         } catch(Exception e){
             System.out.println(e);
             throw new IllegalAccessError();
@@ -91,9 +83,10 @@ public class CommentRepository implements IRepository<Comment> {
 
         String query = String.format("DELETE FROM comment WHERE comment_id=%1$d", id);
         try{
-            statement=connection.createStatement();
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate(query);
+            connection.close();
         } catch(Exception e){System.out.println(e);
             throw new IllegalAccessError();}
     }
@@ -106,9 +99,10 @@ public class CommentRepository implements IRepository<Comment> {
         String query = String.format("UPDATE comment SET entity='%2$s', course_id=%3$d, user_id=%4$d, date='%5$s' WHERE comment_id=%1$d",
                 id, item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
         try{
-            statement=connection.createStatement();
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate(query);
+            connection.close();
         } catch(Exception e){System.out.println(e);
             throw new IllegalAccessError();}
     }
@@ -120,9 +114,10 @@ public class CommentRepository implements IRepository<Comment> {
         String query = String.format("insert into comment (entity,course_id,user_id,date) values('%1$s', %2$d, %3$d, '%4$s')",
                 item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
         try{
-            statement=connection.createStatement();
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate(query);
+            connection.close();
         } catch(Exception e){System.out.println(e);
             throw new IllegalAccessError();}
     }
