@@ -111,7 +111,7 @@ public class LessonRepository implements IRepository<Lesson> {
         if (item == null) throw new IllegalArgumentException();
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
-        String query = String.format("insert into teacher_group values(%1$d, '%2$s', %3$s, %4$d, %5$d, '%6$s')",
+        String query = String.format("insert into teacher_group values(%1$d, '%2$s', '%3$s', %4$d, %5$d, '%6$s')",
                 item.getLesson_id(), item.getRoom(), formatter.format(item.getTime()), item.getTeacher().getId(), item.getGroup().getId(), item.getDay());
         try{
             Connection connection = dataSource.getConnection();
