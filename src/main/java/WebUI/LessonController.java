@@ -7,6 +7,8 @@ import Entities.Lesson;
 import Entities.User;
 import Database_layer.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,10 @@ public class LessonController {
     private final LessonRepository repository;
 
     public LessonController() {
-        repository = new LessonRepository();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (LessonRepository) context.getBean("lessonRepository");
     }
 
     @RequestMapping(method = RequestMethod.GET)
