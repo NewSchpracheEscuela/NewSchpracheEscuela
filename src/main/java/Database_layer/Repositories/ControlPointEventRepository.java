@@ -5,11 +5,11 @@ import Database_layer.IRepository;
 import Entities.ControlPoint;
 import Entities.ControlPointEvent;
 import Entities.Group;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.sql.DataSource;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -19,37 +19,23 @@ import java.util.ArrayList;
 public class ControlPointEventRepository implements IRepository<ControlPointEvent> {
     private java.sql.Connection connection;
     private Statement statement;
-    private GroupRepository groupRepository = new GroupRepository();
-    private TeacherRepository teacherRepository = new TeacherRepository();
-    private ControlPointRepository pointRepository = new ControlPointRepository();
-
-    public ControlPointEventRepository() {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
-        }
-        catch (Exception e){System.out.println(e);}
-    }
-
-    @Override
-    protected void finalize() throws SQLException
-    {
-        try {
-            if (!connection.isClosed()){
-                connection.close();
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+    private DataSource dataSource;
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public Iterable<ControlPointEvent> GetAll() throws SQLException {
         ArrayList<ControlPointEvent> pointEvents = new ArrayList<ControlPointEvent>();
         try{
-            statement=connection.createStatement();
-
-            ResultSet rs = statement.executeQuery("select * from control_point_group");
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from control_point_group");
+            //statement=connection.createStatement();
+            ApplicationContext context =
+                    new ClassPathXmlApplicationContext("beans.xml");
+            GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+            TeacherRepository teacherRepository = (TeacherRepository) context.getBean("teacherRepository");
+            ControlPointRepository pointRepository = (ControlPointRepository) context.getBean("controlPointRepository");
+            ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 ControlPointEvent pointEvent = new ControlPointEvent();
                 pointEvent.setControlPointEvent_id(rs.getInt("control_point_group_id"));
@@ -58,10 +44,12 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
                 pointEvent.setControlPoint(pointRepository.Get(rs.getInt("control_point_id")));
                 pointEvents.add(pointEvent);
             }
+            connection.close();
+            return pointEvents;
         }
         catch (Exception e){System.out.println(e);}
+        return null;
 
-        return pointEvents;
     }
 
     public ControlPointEvent Get(int id) {
@@ -70,15 +58,21 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
         ControlPointEvent pointEvent = new ControlPointEvent();
         String query = String.format("SELECT * FROM control_point_group WHERE control_point_group_id=%1$d", id);
         try{
-            statement=connection.createStatement();
-
-            ResultSet rs = statement.executeQuery(query);
-
+            //statement=connection.createStatement();
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet rs = statement.executeQuery();
+            ApplicationContext context =
+                    new ClassPathXmlApplicationContext("beans.xml");
+            GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+            TeacherRepository teacherRepository = (TeacherRepository) context.getBean("teacherRepository");
+            ControlPointRepository pointRepository = (ControlPointRepository) context.getBean("controlPointRepository");
             rs.next();
             pointEvent.setControlPointEvent_id(rs.getInt("control_point_group_id"));
             pointEvent.setGroup(groupRepository.Get(rs.getInt("group_id")));
             pointEvent.setTeacher(teacherRepository.Get(rs.getInt("teacher_id")));
             pointEvent.setControlPoint(pointRepository.Get(rs.getInt("control_point_id")));
+            connection.close();
         } catch(Exception e){
             System.out.println(e);
             throw new IllegalAccessError();
@@ -90,8 +84,11 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
         if (id < 1) throw new IllegalArgumentException();
 
         String query = String.format("DELETE FROM control_point_group WHERE control_point_group_id=%1$d", id);
+
         try{
-            statement=connection.createStatement();
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            //statement=connection.createStatement();
 
             statement.executeUpdate(query);
         } catch(Exception e){System.out.println(e);}
@@ -105,9 +102,11 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
         String query = String.format("UPDATE control_point_group SET group_id=%2$d, control_point_id=%3$d, teacher_id=%4$d WHERE control_point_group_id=%1$d",
                 id, item.getGroup().getId(), item.getControlPoint().getId(), item.getTeacher().getId());
         try{
-            statement=connection.createStatement();
-
-            statement.executeUpdate(query);
+            //statement=connection.createStatement();
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.executeUpdate();
+            connection.close();
         } catch(Exception e){System.out.println(e);}
     }
 
@@ -118,9 +117,13 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
         String query = String.format("insert into control_point_group values(%1$d, %2$d, %3$d, %4$d)",
                 item.getControlPointEvent_id(), item.getGroup().getId(), item.getControlPoint().getId(), item.getTeacher().getId());
         try{
-            statement=connection.createStatement();
+            //statement=connection.createStatement();
 
-            statement.executeUpdate(query);
+
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.executeUpdate();
+            connection.close();
         } catch(Exception e){System.out.println(e);}
     }
 

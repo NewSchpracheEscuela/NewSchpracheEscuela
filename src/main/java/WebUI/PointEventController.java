@@ -7,6 +7,8 @@ import Entities.ControlPointEvent;
 import Entities.User;
 import Database_layer.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +23,11 @@ public class PointEventController {
 
     private final ControlPointEventRepository repository;
 
-    public PointEventController() {
-        repository = new ControlPointEventRepository();
+    public PointEventController(){
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        repository = (ControlPointEventRepository) context.getBean("controlPointEventRepository");
     }
 
     @RequestMapping(method = RequestMethod.GET)

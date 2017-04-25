@@ -4,11 +4,11 @@ import Entities.Group;
 import Entities.Teacher;
 import Entities.Lesson;
 import Database_layer.IRepository;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.sql.DataSource;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -16,39 +16,23 @@ import java.util.ArrayList;
  * Created by angre on 10.04.2017.
  */
 public class LessonRepository implements IRepository<Lesson> {
-    private java.sql.Connection connection;
-    private Statement statement;
-    private TeacherRepository teacherRepository = new TeacherRepository();
-    private GroupRepository groupRepository = new GroupRepository();
     private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+    private DataSource dataSource;
 
-    public LessonRepository() {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_nse","root","1234");
-        }
-        catch (Exception e){System.out.println(e);}
-    }
-
-    @Override
-    protected void finalize() throws SQLException
-    {
-        try {
-            if (!connection.isClosed()){
-                connection.close();
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public Iterable<Lesson> GetAll() throws SQLException {
         ArrayList<Lesson> lessons = new ArrayList<Lesson>();
         try{
-            statement=connection.createStatement();
-
-            ResultSet rs = statement.executeQuery("select * from teacher_group");
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from teacher_group");
+            ResultSet rs = statement.executeQuery();
+            ApplicationContext context =
+                    new ClassPathXmlApplicationContext("beans.xml");
+            GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+            TeacherRepository teacherRepository = (TeacherRepository) context.getBean("teacherRepository");
             while(rs.next()){
                 Lesson lesson = new Lesson();
                 lesson.setLesson_id(rs.getInt("teacher_group_id"));
@@ -59,10 +43,12 @@ public class LessonRepository implements IRepository<Lesson> {
                 lesson.setRoom(rs.getString("room"));
                 lessons.add(lesson);
             }
+            connection.close();
+            return lessons;
         }
         catch (Exception e){System.out.println(e);}
 
-        return lessons;
+        return null;
     }
 
     public Lesson Get(int id) {
@@ -71,9 +57,13 @@ public class LessonRepository implements IRepository<Lesson> {
         Lesson lesson = new Lesson();
         String query = String.format("SELECT * FROM teacher_group WHERE teacher_group_id=%1$d", id);
         try{
-            statement=connection.createStatement();
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery(query);
+            ApplicationContext context =
+                    new ClassPathXmlApplicationContext("beans.xml");
+            GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+            TeacherRepository teacherRepository = (TeacherRepository) context.getBean("teacherRepository");
 
             rs.next();
             lesson.setLesson_id(rs.getInt("teacher_group_id"));
@@ -82,11 +72,12 @@ public class LessonRepository implements IRepository<Lesson> {
             lesson.setTeacher(teacherRepository.Get(rs.getInt("teacher_id")));
             lesson.setGroup(groupRepository.Get(rs.getInt("group_id")));
             lesson.setRoom(rs.getString("room"));
+            connection.close();
+            return lesson;
         } catch(Exception e){
             System.out.println(e);
             throw new IllegalAccessError();
         }
-        return lesson;
     }
 
     public void Delete(int id) {
@@ -94,9 +85,10 @@ public class LessonRepository implements IRepository<Lesson> {
 
         String query = String.format("DELETE FROM teacher_group WHERE teacher_group_id=%1$d", id);
         try{
-            statement=connection.createStatement();
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate(query);
+            connection.close();
         } catch(Exception e){System.out.println(e);}
     }
 
@@ -108,9 +100,10 @@ public class LessonRepository implements IRepository<Lesson> {
         String query = String.format("UPDATE teacher_group SET room='%2$s', teacher_id=%3$d, group_id=%4$d, time='%5$s', day='%6$s' WHERE teacher_group_id=%1$d",
                 id, item.getRoom(), item.getTeacher().getId(), item.getGroup().getId(), formatter.format(item.getTime()), item.getDay());
         try{
-            statement=connection.createStatement();
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate(query);
+            connection.close();
         } catch(Exception e){System.out.println(e);}
     }
 
@@ -121,9 +114,10 @@ public class LessonRepository implements IRepository<Lesson> {
         String query = String.format("insert into teacher_group values(%1$d, '%2$s', %3$s, %4$d, %5$d, '%6$s')",
                 item.getLesson_id(), item.getRoom(), formatter.format(item.getTime()), item.getTeacher().getId(), item.getGroup().getId(), item.getDay());
         try{
-            statement=connection.createStatement();
-
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate(query);
+            connection.close();
         } catch(Exception e){System.out.println(e);}
     }
 
