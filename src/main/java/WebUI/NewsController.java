@@ -6,6 +6,8 @@ import Entities.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -26,66 +28,66 @@ public class NewsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    ArrayList<News> getAll()
+    ResponseEntity<ArrayList<News>> getAll()
     {
         try{
-            return (ArrayList<News>)repository.GetAll();
+            return new ResponseEntity<ArrayList<News>>((ArrayList<News>)repository.GetAll(), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return new ResponseEntity<ArrayList<News>>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
-    News getControlPoint(@PathVariable int id){
+    ResponseEntity<News> getControlPoint(@PathVariable int id){
 
         try {
-            return repository.Get(id);
+            return new ResponseEntity<News>(repository.Get(id), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return null;
+        return new ResponseEntity<News>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    boolean addNews(@RequestBody News item) {
+    ResponseEntity addNews(@RequestBody News item) {
         try {
             repository.Add(item);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public @ResponseBody
-    boolean deleteUser(@PathVariable int id)
+    ResponseEntity deleteUser(@PathVariable int id)
     {
         try {
             repository.Delete(id);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public @ResponseBody
-    boolean updateNews(@PathVariable int id, @RequestBody News item) {
+    ResponseEntity updateNews(@PathVariable int id, @RequestBody News item) {
         try {
             repository.Update(id, item);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

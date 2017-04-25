@@ -5,6 +5,8 @@ import Entities.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -24,65 +26,65 @@ public class CommentController {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    ArrayList<Comment> getAll()
+    ResponseEntity<ArrayList<Comment>> getAll()
     {
         try{
-            return (ArrayList<Comment>)repository.GetAll();
+            return new ResponseEntity<ArrayList<Comment>>((ArrayList<Comment>)repository.GetAll(), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return new ResponseEntity<ArrayList<Comment>>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
-    Comment getControlPoint(@PathVariable int id){
+    ResponseEntity<Comment> getControlPoint(@PathVariable int id){
 
         try {
-            return repository.Get(id);
+            return new ResponseEntity<Comment>(repository.Get(id), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return null;
+        return new ResponseEntity<Comment>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public @ResponseBody
-    boolean deleteUser(@PathVariable int id)
+    ResponseEntity deleteUser(@PathVariable int id)
     {
         try {
             repository.Delete(id);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    boolean addComment(@RequestBody Comment item) {
+    ResponseEntity addComment(@RequestBody Comment item) {
         try {
             repository.Add(item);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public @ResponseBody
-    boolean addComment(@PathVariable int id, @RequestBody Comment item) {
+    ResponseEntity addComment(@PathVariable int id, @RequestBody Comment item) {
         try {
             repository.Update(id, item);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

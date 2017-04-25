@@ -6,6 +6,8 @@ import Entities.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -26,66 +28,66 @@ public class CourseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    ArrayList<Course> getAll()
+    ResponseEntity<ArrayList<Course>> getAll()
     {
         try{
-            return (ArrayList<Course>)repository.GetAll();
+            return new ResponseEntity<ArrayList<Course>>((ArrayList<Course>)repository.GetAll(), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return new ResponseEntity<ArrayList<Course>>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
-    Course getControlPoint(@PathVariable int id){
+    ResponseEntity<Course> getControlPoint(@PathVariable int id){
 
         try {
-            return repository.Get(id);
+            return new ResponseEntity<Course>(repository.Get(id), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return null;
+        return new ResponseEntity<Course>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    boolean addCourse(@RequestBody Course item) {
+    ResponseEntity addCourse(@RequestBody Course item) {
         try {
             repository.Add(item);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public @ResponseBody
-    boolean deleteCourse(@PathVariable int id)
+    ResponseEntity deleteCourse(@PathVariable int id)
     {
         try {
             repository.Delete(id);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public @ResponseBody
-    boolean updateCourse(@PathVariable int id, @RequestBody Course item) {
+    ResponseEntity updateCourse(@PathVariable int id, @RequestBody Course item) {
         try {
             repository.Update(id, item);
-            return true;
+            return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }
-        return false;
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
