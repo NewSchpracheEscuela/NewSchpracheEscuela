@@ -56,7 +56,7 @@ angular.module('NSE',['ngRoute', 'ngMap'])
 
 
              $scope.slideIndex = 0;
-             $scope.slideShow = function () {
+                 var slideShow = function () {
                  var i;
                  var x = document.getElementsByClassName("banner__slide");
                  for (i = 0; i < x.length; i++) {
@@ -67,9 +67,8 @@ angular.module('NSE',['ngRoute', 'ngMap'])
                      $scope.slideIndex = 1
                  }
                  x[$scope.slideIndex - 1].style.display = "block";
-                 $timeout($scope.slideShow, 3000);
+                 $timeout(slideShow, 3000);
              };
-
 
             $scope.changeTypeChoice = function (event,optionIndex) {
                 var i;
@@ -91,7 +90,7 @@ angular.module('NSE',['ngRoute', 'ngMap'])
 
             $(window).load(function(){
                 $scope.changeTypeChoice(undefined,1);
-                $scope.slideShow();
+                slideShow();
             });
 
         }
@@ -101,22 +100,45 @@ angular.module('NSE',['ngRoute', 'ngMap'])
     [
         '$scope', '$http' ,function ($scope, $http)
         {
+            $scope.base_url = "/users";
 
-          /*  $http.get('/users').success(function(data) {
-                $scope.users = data;
-            });*/
+            $scope.initData = function (url) {
+                $scope.base_url = url;
+                getAllUsers();
+            }
 
-            $http({
-                method: 'GET',
-                url: '/users'
-            }).then(function successCallback(response) {
-                $scope.users = response.data;
-                // this callback will be called asynchronously
-                // when the response is available
-            }, function errorCallback(response) {
-                alert("код : " +response.status);
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            var getAllUsers =  function(){$http({
+                    method: 'GET',
+                    url: $scope.base_url
+                }).then(function successCallback(response) {
+                    $scope.data = response.data;
+                    $scope.dataKeys = getKeys($scope.data[0]);
+                }, function errorCallback(response) {
+                    alert("Error : " +response.status);
+                })};
+
+            getAllUsers();
+
+            $scope.deleteItem = function (item) {
+                $scope.key = $scope.dataKeys[0].toString();
+                $scope.id = item[$scope.key];
+                $http({
+                    method: 'DELETE',
+                    url: $scope.base_url + '/' + $scope.id
+                }).then(function successCallback(response) {
+                    getAllUsers();
+                }, function errorCallback(response) {
+                    alert("Error : " +response.status);
+                });
+            };
+
+
+            var getKeys = function(obj){
+                var keys = [];
+                for(var key in obj){
+                    keys.push(key);
+                }
+                return keys;
+            }
         }
     ]);

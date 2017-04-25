@@ -288,6 +288,77 @@ header {
     width: 100%;
     height: 100%;
 }
+
+/*Backend*/
+.container__blockTable{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    padding-left: 40px;
+}
+.container__table, th , td {
+    border: 1px solid var(--green-dark-hover);
+    border-collapse: collapse;
+    padding: 5px;
+    color: var(--dark);
+    font-size: 12px;
+    word-wrap: break-word;
+
+}
+
+.container__table tr:nth-child(odd) {
+    background-color: var(--green-light);
+}
+.container__table tr:nth-child(even) {
+    background-color: var(--bg-color);
+}
+
+.container__table td{
+    max-width: 150px;
+}
+
+.table__add{
+    border: none;
+    background: var(--green-dark);
+    color: var(--bg-color);
+    border-radius: 100%;
+    max-height: 20px;
+}
+
+.menu{
+    flex-shrink: 1;
+    width: 200px;
+    background: var(--font-color);
+    color: var(--bg-color);
+}
+
+.menu ul{
+    text-decoration: none;
+}
+
+.menu__item--active {
+    color: white;
+    background: var(--red);
+}
+.menu__item a {
+    text-decoration: none;
+    color: var(--bg-color);
+}
+
+.menu__item:hover{
+    background: var(--green-dark);
+}
+
+.container__backend{
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-height: calc(100vh - 170px);
+}
+.container__base{
+    display: flex;
+    justify-content: center;
+}
 /*FOOTER*/
 footer{
     height: 100px;

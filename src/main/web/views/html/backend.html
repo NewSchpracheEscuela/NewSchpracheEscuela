@@ -1,5 +1,35 @@
 <ng-include src="'resources/html/header.html'"></ng-include>
-<div class="container" >
-    <div ng-repeat="user in users">{{user.firstName}}</div>
-</div>
+    <div class="container__backend">
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__item menu__item--active"><a href="" ng-click="initData('/users')">Пользователи</a></li>
+                <!--<li class="menu__item"><a href="" ng-click="initData('/people')">Студенты</a></li>-->
+                <!--<li class="menu__item"><a href="" ng-click="initData('/teachers')">Преподаватели</a></li>-->
+                <li class="menu__item"><a href="" ng-click="initData('/news')">Новости</a></li>
+                <li class="menu__item"><a href="" ng-click="initData('/marks')">Отметки</a></li>
+                <li class="menu__item"><a href="" ng-click="initData('/lessons')">Уроки</a></li>
+                <li class="menu__item"><a href="" ng-click="initData('/groups')">Группы</a></li>
+                <li class="menu__item"><a href="" ng-click="initData('/courses')">Курсы</a></li>
+                <li class="menu__item"><a href="" ng-click="initData('/comments')">Комментарии</a></li>
+                <li class="menu__item"><a href="" ng-click="initData('/controlpoints')">Контрольные точки</a></li>
+            </ul>
+        </nav>
+        <div class="container__base">
+            <div class="container__blockTable">
+                <table class="container__table">
+                    <tr>
+                        <th ng-repeat="key in dataKeys">{{key}}</th>
+                    </tr>
+                    <tr ng-repeat="item in data">
+                        <td ng-repeat="(key,value) in item"> {{value}}</td>
+                        <td>
+                            <button>еdit</button>
+                            <button ng-click="deleteItem(item)">-</button>
+                        </td>
+                    </tr>
+                </table>
+                <button class="table__add">+</button>
+            </div>
+        </div>
+    </div>
 <ng-include src="'resources/html/footer.html'"></ng-include>
