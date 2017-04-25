@@ -59,7 +59,8 @@ public class CourseRepository implements IRepository<Course> {
                 courses.add(course);
             }
         }
-        catch (Exception e){System.out.println(e);}
+        catch (Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
 
         return courses;
     }
@@ -97,7 +98,8 @@ public class CourseRepository implements IRepository<Course> {
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     public void Update(int id, Course item) {
@@ -111,21 +113,23 @@ public class CourseRepository implements IRepository<Course> {
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     public void Add(Course item) {
         if (item == null) throw new IllegalArgumentException();
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
-        String query = String.format(Locale.ENGLISH, "insert into course values(%1$d, '%2$s', '%3$.3f', '%4$s', %5$d, '%6$s', '%7$s')",
+        String query = String.format(Locale.ENGLISH, "insert into course (title, price, description, hours, language, start_date) values('%2$s', '%3$.3f', '%4$s', %5$d, '%6$s', '%7$s')",
                 item.getCourse_id(), item.getTitle(), item.getPrice(), item.getDescription(), item.getNumberOfHours(), item.getLanguage(), formatter.format(item.getStartDate()));
 
         try{
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     private boolean IsEmpty(Course item)

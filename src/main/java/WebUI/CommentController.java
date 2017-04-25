@@ -45,6 +45,19 @@ public class CommentController {
         return null;
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public @ResponseBody
+    boolean deleteUser(@PathVariable int id)
+    {
+        try {
+            repository.Delete(id);
+            return true;
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
     boolean addComment(@RequestBody Comment item) {

@@ -57,6 +57,19 @@ public class NewsController {
         return false;
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public @ResponseBody
+    boolean deleteUser(@PathVariable int id)
+    {
+        try {
+            repository.Delete(id);
+            return true;
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public @ResponseBody
     boolean updateNews(@PathVariable int id, @RequestBody News item) {

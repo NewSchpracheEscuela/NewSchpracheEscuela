@@ -56,7 +56,8 @@ public class NewsRepository implements IRepository<News> {
                 newsList.add(news);
             }
         }
-        catch (Exception e){System.out.println(e);}
+        catch (Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
 
         return newsList;
     }
@@ -87,7 +88,8 @@ public class NewsRepository implements IRepository<News> {
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     public void Update(int id, News item) throws SQLException {
@@ -100,20 +102,22 @@ public class NewsRepository implements IRepository<News> {
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     public void Add(News item) {
         if (item == null) throw new IllegalArgumentException();
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
-        String query = String.format("insert into news values(%1$d, '%2$s', '%3$s', '%4$s', %5$d)",
+        String query = String.format("insert into news (title, description, date, user_id) values('%2$s', '%3$s', '%4$s', %5$d)",
                 item.getNews_id(), item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
         try{
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     private boolean IsEmpty(News item)

@@ -57,7 +57,8 @@ public class CommentRepository implements IRepository<Comment> {
                 comments.add(comment);
             }
         }
-        catch (Exception e){System.out.println(e);}
+        catch (Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
 
         return comments;
     }
@@ -93,7 +94,8 @@ public class CommentRepository implements IRepository<Comment> {
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     public void Update(int id, Comment item) {
@@ -107,20 +109,22 @@ public class CommentRepository implements IRepository<Comment> {
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     public void Add(Comment item) {
         if (item == null) throw new IllegalArgumentException();
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
-        String query = String.format("insert into comment values(%1$d, '%2$s', %3$d, %4$d, '%5$s')",
-                item.getComment_id(), item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
+        String query = String.format("insert into comment (entity,course_id,user_id,date) values('%1$s', %2$d, %3$d, '%4$s')",
+                item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
         try{
             statement=connection.createStatement();
 
             statement.executeUpdate(query);
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){System.out.println(e);
+            throw new IllegalAccessError();}
     }
 
     private boolean IsEmpty(Comment item)
