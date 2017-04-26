@@ -359,6 +359,40 @@ header {
     display: flex;
     justify-content: center;
 }
+
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: white;
+    min-height: 300px;
+    min-width: 600px;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    padding: 20px;
+}
+
+.popup__bg {
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+}
+
+.popup_keyValue{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.popup_keyValue{
+    max-height: 40px;
+    padding: 3px;
+}
 /*FOOTER*/
 footer{
     height: 100px;

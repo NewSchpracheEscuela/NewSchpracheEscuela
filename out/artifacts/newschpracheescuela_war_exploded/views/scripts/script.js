@@ -98,27 +98,31 @@ angular.module('NSE',['ngRoute', 'ngMap'])
 
     .controller('BackendController',
     [
-        '$scope', '$http' ,function ($scope, $http)
+        '$scope', '$http',function ($scope, $http)
         {
             $scope.base_url = "/users";
 
             $scope.initData = function (url) {
                 $scope.base_url = url;
                 getAllUsers();
-            }
+            };
 
             var getAllUsers =  function(){$http({
                     method: 'GET',
                     url: $scope.base_url
                 }).then(function successCallback(response) {
+
                     $scope.data = response.data;
                     $scope.dataKeys = getKeys($scope.data[0]);
+
+                    $scope.formKeys = $scope.dataKeys.slice();
+                    $scope.formKeys.splice(0,1);
+
                 }, function errorCallback(response) {
                     alert("Error : " +response.status);
                 })};
 
             getAllUsers();
-
             $scope.deleteItem = function (item) {
                 $scope.key = $scope.dataKeys[0].toString();
                 $scope.id = item[$scope.key];
@@ -132,6 +136,21 @@ angular.module('NSE',['ngRoute', 'ngMap'])
                 });
             };
 
+            $scope.test = {};
+            $scope.addItem = function () {
+               // alert(angular.toJson($scope.test["formKeys"]));
+                $http({
+                    method: 'POST',
+                    url: $scope.base_url,
+                    data: $scope.test["formKeys"]
+                }).then(function successCallback(response) {
+                    $scope.hidePopup();
+                    getAllUsers();
+                }, function errorCallback(response) {
+                    alert("Error : " +response.status);
+                });
+            };
+
 
             var getKeys = function(obj){
                 var keys = [];
@@ -139,6 +158,18 @@ angular.module('NSE',['ngRoute', 'ngMap'])
                     keys.push(key);
                 }
                 return keys;
-            }
+            };
+            
+            $scope.hidePopup = function () {
+                document.forms['addForm'].reset();
+                $(".popup").hide();
+                $(".popup__bg").hide();
+            };
+
+            $scope.showPopup = function () {
+                $(".popup").show();
+                $(".popup__bg").show();
+                $("body").animate({"scrollTop":0},"slow");
+            };
         }
     ]);
