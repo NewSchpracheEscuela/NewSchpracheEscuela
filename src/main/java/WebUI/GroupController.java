@@ -1,11 +1,11 @@
 package WebUI;
 
-import Database_layer.Repositories.ControlPointRepository;
 import Database_layer.Repositories.GroupRepository;
 import Entities.Group;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -25,54 +25,76 @@ public class GroupController {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    Iterable<Group> getGroups(){
+    ResponseEntity<Iterable<Group>> getGroups(){
         try {
-            return repository.GetAll();
+            return new ResponseEntity<Iterable<Group>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
+
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
-    Group getGroup(@PathVariable int id){
-
+    ResponseEntity<Group> getGroup(@PathVariable int id){
         try {
-            return repository.Get(id);
+            return new ResponseEntity<Group>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity<Group>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Group>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
 
     @RequestMapping(method = RequestMethod.DELETE,value = "/{id}")
     public @ResponseBody
-    void deleteGroup(@PathVariable int id){
+    ResponseEntity deleteGroup(@PathVariable int id){
         try {
             repository.Delete(id);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    void addGroup(@RequestBody Group group){
+    ResponseEntity addGroup(@RequestBody Group group){
         try {
             repository.Add(group);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public @ResponseBody
-    void updateGroup(@PathVariable int id,@RequestBody Group group){
+    ResponseEntity updateGroup(@PathVariable int id,@RequestBody Group group){
         try {
             repository.Update(id,group);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

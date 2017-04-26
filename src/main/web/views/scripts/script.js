@@ -5,15 +5,15 @@ angular.module('NSE',['ngRoute'])
     .config([
         '$locationProvider','$routeProvider',function ($locationProvider,$routeProvider) {
             $routeProvider
-                .when('/index',
+                .when('/school/index',
                     {
                         templateUrl:'/resources/html/index.html',
                         controller:'IndexController'
                     }
                 )
-                .when('/contacts',
+                .when('/school/contacts',
                     {
-                        templateUrl:'/resources/html/index.html',
+                        templateUrl:'/resources/html/contact.html',
                         controller:'IndexController'
                     })
                 .otherwise({
