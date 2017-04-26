@@ -128,6 +128,7 @@ public class CommentRepository implements IRepository<Comment> {
         if (item.getCourse() == 0) return true;
         if (item.getDate() == null) return true;
         if (item.getEntity() == null) return true;
+        if (item.getEntity().equals("")) return true;
         return false;
     }
 }

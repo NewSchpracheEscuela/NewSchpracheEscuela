@@ -116,13 +116,20 @@ public class UserRepository implements IRepository<User> {
 
     private boolean IsEmpty(User item)
     {
-        if (item.getContactInfo() == null) return true;
+        if (item.getContactInfo() == null ) return true;
+        if (item.getContactInfo().equals("")) return true;
         if (item.getEmail() == null) return true;
+        if (item.getEmail().equals("")) return true;
         if (item.getFirstName() == null) return true;
+        if (item.getFirstName().equals("")) return true;
         if (item.getLastName() == null) return true;
+        if (item.getLastName().equals("")) return true;
         if (item.getLogin() == null) return true;
+        if (item.getLogin().equals("")) return true;
         if (item.getPassword_hash() == null) return true;
+        if (item.getPassword_hash().equals("")) return true;
         if (item.getPatronym() == null) return true;
+        if (item.getPatronym().equals("")) return true;
         if (item.getRole() == null) return true;
         return false;
     }
