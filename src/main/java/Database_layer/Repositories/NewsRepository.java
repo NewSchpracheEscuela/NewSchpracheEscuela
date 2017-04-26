@@ -121,8 +121,10 @@ public class NewsRepository implements IRepository<News> {
     {
         if (item.getAuthor() == 0) return true;
         if (item.getContent() == null) return true;
+        if (item.getContent().equals("")) return true;
         if (item.getDate() == null) return true;
         if (item.getTitle() == null) return true;
+        if (item.getTitle().equals("")) return true;
         return false;
     }
 }
