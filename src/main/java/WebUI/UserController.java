@@ -36,9 +36,7 @@ public class UserController {
     ResponseEntity<ArrayList<User>> getAll()
     {
         try{
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-type", "application/json; charset=windows-1251");
-            return new ResponseEntity<ArrayList<User>>((ArrayList<User>)repository.GetAll(),headers, HttpStatus.OK);
+            return new ResponseEntity<ArrayList<User>>((ArrayList<User>)repository.GetAll(), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -53,11 +51,8 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
     ResponseEntity<User> getUser(@PathVariable int id){
-
         try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-type", "application/json; charset=windows-1251");
-            return new ResponseEntity<User>(repository.Get(id),headers,HttpStatus.OK);
+            return new ResponseEntity<User>(repository.Get(id),HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }catch (Exception e)

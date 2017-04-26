@@ -2,25 +2,25 @@ angular.module('NSE',['ngRoute', 'ngMap'])
     .config([
         '$locationProvider','$routeProvider',function ($locationProvider,$routeProvider) {
             $routeProvider
-                .when('/school/index',
+                .when('/index',
                     {
                         templateUrl:'/resources/html/index.html',
                         controller:'IndexController'
                     }
                 )
-                .when('/school/contact',
+                .when('/contacts',
                     {
                         templateUrl:'/resources/html/contact.html'
                     }
                 )
-                .when('/school/backend',
+                .when('/backend',
                     {
                         templateUrl:'/resources/html/backend.html',
                         controller:'BackendController'
                     }
                 )
                 .otherwise({
-                    redirectTo:"/school/index"
+                    redirectTo:"/index"
                 });
             $locationProvider.html5Mode(true);
         }
@@ -102,8 +102,10 @@ angular.module('NSE',['ngRoute', 'ngMap'])
         {
             $scope.base_url = "/users";
 
-            $scope.initData = function (url) {
+            $scope.initData = function (event,url) {
                 $scope.base_url = url;
+                $(".menu__list .menu__item").parent().find('.menu__item').removeClass("menu__item--active");
+                $(event.target).parent().addClass("menu__item--active");
                 getAllUsers();
             };
 
@@ -145,25 +147,30 @@ angular.module('NSE',['ngRoute', 'ngMap'])
 
             $scope.Item = {};
             $scope.addItem = function () {
-                $http({
-                    method: 'POST',
-                    url: $scope.base_url,
-                    data: $scope.Item["formKeys"]
-                }).then(function successCallback(response) {
-                    if (response.status == 200){
-                        $scope.hidePopup('addForm','.popup__add');
-                        getAllUsers();
-                    }else{
+                if($scope.addForm.$valid) {
+                    $http({
+                        method: 'POST',
+                        url: $scope.base_url,
+                        data: $scope.Item["formKeys"]
+                    }).then(function successCallback(response) {
+                        if (response.status == 200) {
+                            $scope.hidePopup('addForm', '.popup__add');
+                            getAllUsers();
+                        } else {
+                            $scope.errorMessage = "Произошла ошибка добавления. Проверьте введенные данные! И попробуйте снова.";
+                        }
+                    }, function errorCallback(response) {
                         $scope.errorMessage = "Произошла ошибка добавления. Проверьте введенные данные! И попробуйте снова.";
-                    }
-                }, function errorCallback(response) {
-                    alert("Error : " +response.status);
-                });
+                    });
+                }else{
+                    $scope.errorMessage = "Заполните все поля!";
+                }
             };
 
             $scope.Item = {};
             $scope.editItemPopup = function (popup, item) {
                 $scope.edit = item;
+                $scope.Item.formKeys = item;
                 $scope.showPopup(popup);
             };
 
@@ -183,8 +190,10 @@ angular.module('NSE',['ngRoute', 'ngMap'])
                             $scope.errorMessage = "Произошла ошибка редактирования. Проверьте введенные данные! И попробуйте снова.";
                         }
                     }, function errorCallback(response) {
-                        alert("Error : " +response.status);
+                        $scope.errorMessage = "Произошла ошибка редактирования. Проверьте введенные данные! И попробуйте снова.";
                     });
+                }else {
+                    $scope.errorMessage = "Заполните все поля!";
                 }
             };
 
@@ -204,6 +213,7 @@ angular.module('NSE',['ngRoute', 'ngMap'])
             };
 
             $scope.showPopup = function (popup) {
+                $scope.errorMessage = "";
                 $(popup).show();
                 $(".popup__bg").show();
                 $("body").animate({"scrollTop":0},"slow");
