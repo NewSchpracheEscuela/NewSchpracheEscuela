@@ -1,9 +1,6 @@
-/out/*
-
-/target/*
-
 \.idea/workspace\.xml
 
 out/
 
 target/
+/src/main/resources/Spring-Datasource.xml
