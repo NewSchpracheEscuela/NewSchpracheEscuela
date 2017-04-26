@@ -361,10 +361,22 @@ header {
 }
 
 
-.popup {
+.popup__add{
     position: absolute;
     top: 50%;
     left: 50%;
+    background: white;
+    min-height: 300px;
+    min-width: 600px;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    padding: 20px;
+}
+.popup__edit{
+    position: absolute;
+    top:50%;
+    left:50%;
     background: white;
     min-height: 300px;
     min-width: 600px;
@@ -393,7 +405,14 @@ header {
     max-height: 40px;
     padding: 3px;
 }
-/*FOOTER*/
+.popup__editForm  .ng-dirty.ng-invalid {
+    border: 1px solid #FD0000;
+}
+
+.popup__add  {
+    border: 1px solid #7D191B;
+}
+    /*FOOTER*/
 footer{
     height: 100px;
     background: var(--dark);

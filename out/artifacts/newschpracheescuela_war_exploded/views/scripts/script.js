@@ -2,25 +2,25 @@ angular.module('NSE',['ngRoute', 'ngMap'])
     .config([
         '$locationProvider','$routeProvider',function ($locationProvider,$routeProvider) {
             $routeProvider
-                .when('/index',
+                .when('/school/index',
                     {
                         templateUrl:'/resources/html/index.html',
                         controller:'IndexController'
                     }
                 )
-                .when('/contact',
+                .when('/school/contact',
                     {
                         templateUrl:'/resources/html/contact.html'
                     }
                 )
-                .when('/backend',
+                .when('/school/backend',
                     {
                         templateUrl:'/resources/html/backend.html',
                         controller:'BackendController'
                     }
                 )
                 .otherwise({
-                    redirectTo:"/index"
+                    redirectTo:"/school/index"
                 });
             $locationProvider.html5Mode(true);
         }
@@ -111,13 +111,15 @@ angular.module('NSE',['ngRoute', 'ngMap'])
                     method: 'GET',
                     url: $scope.base_url
                 }).then(function successCallback(response) {
+                    if (response.status == 200){
+                        $scope.data = response.data;
+                        $scope.dataKeys = getKeys($scope.data[0]);
 
-                    $scope.data = response.data;
-                    $scope.dataKeys = getKeys($scope.data[0]);
-
-                    $scope.formKeys = $scope.dataKeys.slice();
-                    $scope.formKeys.splice(0,1);
-
+                        $scope.formKeys = $scope.dataKeys.slice();
+                        $scope.formKeys.splice(0,1);
+                    }else{
+                        alert("Ошибка сервера!");
+                    }
                 }, function errorCallback(response) {
                     alert("Error : " +response.status);
                 })};
@@ -130,27 +132,61 @@ angular.module('NSE',['ngRoute', 'ngMap'])
                     method: 'DELETE',
                     url: $scope.base_url + '/' + $scope.id
                 }).then(function successCallback(response) {
-                    getAllUsers();
+                    if (response.status == 200)
+                    {
+                        getAllUsers();
+                    }else{
+                        alert("Ошибка сервера");
+                    }
                 }, function errorCallback(response) {
                     alert("Error : " +response.status);
                 });
             };
 
-            $scope.test = {};
+            $scope.Item = {};
             $scope.addItem = function () {
-               // alert(angular.toJson($scope.test["formKeys"]));
                 $http({
                     method: 'POST',
                     url: $scope.base_url,
-                    data: $scope.test["formKeys"]
+                    data: $scope.Item["formKeys"]
                 }).then(function successCallback(response) {
-                    $scope.hidePopup();
-                    getAllUsers();
+                    if (response.status == 200){
+                        $scope.hidePopup('addForm','.popup__add');
+                        getAllUsers();
+                    }else{
+                        $scope.errorMessage = "Произошла ошибка добавления. Проверьте введенные данные! И попробуйте снова.";
+                    }
                 }, function errorCallback(response) {
                     alert("Error : " +response.status);
                 });
             };
 
+            $scope.Item = {};
+            $scope.editItemPopup = function (popup, item) {
+                $scope.edit = item;
+                $scope.showPopup(popup);
+            };
+
+            $scope.editItem = function () {
+                if($scope.editForm.$valid){
+                    $scope.key = $scope.dataKeys[0].toString();
+                    $scope.id = $scope.edit[$scope.key];
+                    $http({
+                        method: 'PUT',
+                        url: $scope.base_url + "/" + $scope.id,
+                        data: $scope.Item["formKeys"]
+                    }).then(function successCallback(response) {
+                        if (response.status == 200){
+                            $scope.hidePopup('editForm','.popup__edit');
+                            getAllUsers();
+                        }else{
+                            $scope.errorMessage = "Произошла ошибка редактирования. Проверьте введенные данные! И попробуйте снова.";
+                        }
+                    }, function errorCallback(response) {
+                        alert("Error : " +response.status);
+                    });
+                }
+            };
 
             var getKeys = function(obj){
                 var keys = [];
@@ -160,14 +196,15 @@ angular.module('NSE',['ngRoute', 'ngMap'])
                 return keys;
             };
             
-            $scope.hidePopup = function () {
-                document.forms['addForm'].reset();
-                $(".popup").hide();
+            $scope.hidePopup = function (name, popup) {
+               // document.forms[name].reset();
+                $(popup).hide();
                 $(".popup__bg").hide();
+                $scope.Item = {};
             };
 
-            $scope.showPopup = function () {
-                $(".popup").show();
+            $scope.showPopup = function (popup) {
+                $(popup).show();
                 $(".popup__bg").show();
                 $("body").animate({"scrollTop":0},"slow");
             };

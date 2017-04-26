@@ -2,7 +2,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=windows-1251" language="java" %>
 <spring:url value="/resources/css/styles.css" var="mainCss"/>
 <spring:url value="/resources/scripts/angular/ngDialog.min.css" var="dialogCss"/>
 <spring:url value="/resources/scripts/angular/ngDialog-theme-default.min.css" var="dialogminCss"/>
