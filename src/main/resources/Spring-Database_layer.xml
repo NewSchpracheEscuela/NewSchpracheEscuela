@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="controlPointRepository" class="Database_layer.Repositories.ControlPointRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="groupRepository" class="Database_layer.Repositories.GroupRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="teacherRepository" class="Database_layer.Repositories.TeacherRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="personRepository" class="Database_layer.Repositories.PersonRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="markRepository" class="Database_layer.Repositories.MarkRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="groupStudentRepository" class="Database_layer.Repositories.GroupStudentRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="controlPointEventRepository" class="Database_layer.Repositories.ControlPointEventRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="lessonRepository" class="Database_layer.Repositories.LessonRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="commentRepository" class="Database_layer.Repositories.CommentRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="courseRepository" class="Database_layer.Repositories.CourseRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="newsRepository" class="Database_layer.Repositories.NewsRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="userRepository" class="Database_layer.Repositories.UserRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>
