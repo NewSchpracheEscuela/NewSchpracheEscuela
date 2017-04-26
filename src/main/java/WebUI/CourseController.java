@@ -36,6 +36,9 @@ public class CourseController {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
 
         return new ResponseEntity<ArrayList<Course>>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -49,6 +52,9 @@ public class CourseController {
             return new ResponseEntity<Course>(repository.Get(id), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity<Course>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -60,6 +66,9 @@ public class CourseController {
             repository.Add(item);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -74,6 +83,9 @@ public class CourseController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -85,6 +97,9 @@ public class CourseController {
             repository.Update(id, item);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

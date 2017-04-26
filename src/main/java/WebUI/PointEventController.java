@@ -42,6 +42,9 @@ public class PointEventController {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
 
         return new ResponseEntity<ArrayList<ControlPointEvent>>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -54,6 +57,9 @@ public class PointEventController {
         try {
             return new ResponseEntity<ControlPointEvent>(repository.Get(id), HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity<ControlPointEvent>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -68,6 +74,9 @@ public class PointEventController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -80,6 +89,9 @@ public class PointEventController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -91,6 +103,9 @@ public class PointEventController {
             repository.Update(id, item);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

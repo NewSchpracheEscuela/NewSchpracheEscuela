@@ -40,7 +40,7 @@ public class NewsRepository implements IRepository<News> {
                 news.setTitle(rs.getString("title"));
                 news.setContent(rs.getString("description"));
                 news.setDate(formatter.parse(rs.getString("date")));
-                news.setAuthor(userRepository.Get(rs.getInt("user_id")));
+                news.setAuthor(rs.getInt("user_id"));
                 newsList.add(news);
             }
             connection.close();
@@ -69,7 +69,7 @@ public class NewsRepository implements IRepository<News> {
             news.setTitle(rs.getString("title"));
             news.setContent(rs.getString("description"));
             news.setDate(formatter.parse(rs.getString("date")));
-            news.setAuthor(userRepository.Get(rs.getInt("user_id")));
+            news.setAuthor(rs.getInt("user_id"));
             connection.close();
         } catch(Exception e){System.out.println(e);}
         return news;
@@ -92,7 +92,7 @@ public class NewsRepository implements IRepository<News> {
         if (item == null) throw new IllegalArgumentException();
         if (IsEmpty(item)) throw new IllegalArgumentException();
         String query = String.format("UPDATE news SET title='%2$s', description='%3$s', date='%4$s', user_id=%5$d WHERE news_id=%1$d",
-                id, item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
+                id, item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor());
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -107,7 +107,7 @@ public class NewsRepository implements IRepository<News> {
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
         String query = String.format("insert into news (title, description, date, user_id) values('%2$s', '%3$s', '%4$s', %5$d)",
-                item.getNews_id(), item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor().getUser_id());
+                item.getNews_id(), item.getTitle(), item.getContent(), formatter.format(item.getDate()), item.getAuthor());
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -119,7 +119,7 @@ public class NewsRepository implements IRepository<News> {
 
     private boolean IsEmpty(News item)
     {
-        if (item.getAuthor() == null) return true;
+        if (item.getAuthor() == 0) return true;
         if (item.getContent() == null) return true;
         if (item.getDate() == null) return true;
         if (item.getTitle() == null) return true;

@@ -38,8 +38,8 @@ public class LessonRepository implements IRepository<Lesson> {
                 lesson.setLesson_id(rs.getInt("teacher_group_id"));
                 lesson.setTime(formatter.parse(rs.getString("time")));
                 lesson.setDay(rs.getString("day"));
-                lesson.setTeacher(teacherRepository.Get(rs.getInt("teacher_id")));
-                lesson.setGroup(groupRepository.Get(rs.getInt("group_id")));
+                lesson.setTeacher(rs.getInt("teacher_id"));
+                lesson.setGroup(rs.getInt("group_id"));
                 lesson.setRoom(rs.getString("room"));
                 lessons.add(lesson);
             }
@@ -69,8 +69,8 @@ public class LessonRepository implements IRepository<Lesson> {
             lesson.setLesson_id(rs.getInt("teacher_group_id"));
             lesson.setTime(formatter.parse(rs.getString("time")));
             lesson.setDay(rs.getString("day"));
-            lesson.setTeacher(teacherRepository.Get(rs.getInt("teacher_id")));
-            lesson.setGroup(groupRepository.Get(rs.getInt("group_id")));
+            lesson.setTeacher(rs.getInt("teacher_id"));
+            lesson.setGroup(rs.getInt("group_id"));
             lesson.setRoom(rs.getString("room"));
             connection.close();
             return lesson;
@@ -98,7 +98,7 @@ public class LessonRepository implements IRepository<Lesson> {
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
         String query = String.format("UPDATE teacher_group SET room='%2$s', teacher_id=%3$d, group_id=%4$d, time='%5$s', day='%6$s' WHERE teacher_group_id=%1$d",
-                id, item.getRoom(), item.getTeacher().getId(), item.getGroup().getId(), formatter.format(item.getTime()), item.getDay());
+                id, item.getRoom(), item.getTeacher(), item.getGroup(), formatter.format(item.getTime()), item.getDay());
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -112,7 +112,7 @@ public class LessonRepository implements IRepository<Lesson> {
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
         String query = String.format("insert into teacher_group values(%1$d, '%2$s', '%3$s', %4$d, %5$d, '%6$s')",
-                item.getLesson_id(), item.getRoom(), formatter.format(item.getTime()), item.getTeacher().getId(), item.getGroup().getId(), item.getDay());
+                item.getLesson_id(), item.getRoom(), formatter.format(item.getTime()), item.getTeacher(), item.getGroup(), item.getDay());
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -124,8 +124,8 @@ public class LessonRepository implements IRepository<Lesson> {
     private boolean IsEmpty(Lesson item)
     {
         if (item.getDay() == null) return true;
-        if (item.getGroup() == null) return true;
-        if (item.getTeacher() == null) return true;
+        if (item.getGroup() == 0) return true;
+        if (item.getTeacher() == 0) return true;
         if (item.getTime() == null) return true;
         return false;
     }

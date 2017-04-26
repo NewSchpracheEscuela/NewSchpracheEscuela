@@ -38,8 +38,8 @@ public class CommentRepository implements IRepository<Comment> {
                 comment.setComment_id(rs.getInt("comment_id"));
                 comment.setDate(formatter.parse(rs.getString("date")));
                 comment.setEntity(rs.getString("entity"));
-                comment.setAuthor(userRepository.Get(rs.getInt("user_id")));
-                comment.setCourse(courseRepository.Get(rs.getInt("course_id")));
+                comment.setAuthor(rs.getInt("user_id"));
+                comment.setCourse(rs.getInt("course_id"));
                 comments.add(comment);
             }
             connection.close();
@@ -68,8 +68,8 @@ public class CommentRepository implements IRepository<Comment> {
             comment.setComment_id(rs.getInt("comment_id"));
             comment.setDate(rs.getDate("date"));
             comment.setEntity(rs.getString("entity"));
-            comment.setAuthor(userRepository.Get(rs.getInt("user_id")));
-            comment.setCourse(courseRepository.Get(rs.getInt("course_id")));
+            comment.setAuthor(rs.getInt("user_id"));
+            comment.setCourse(rs.getInt("course_id"));
             connection.close();
         } catch(Exception e){
             System.out.println(e);
@@ -97,7 +97,7 @@ public class CommentRepository implements IRepository<Comment> {
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
         String query = String.format("UPDATE comment SET entity='%2$s', course_id=%3$d, user_id=%4$d, date='%5$s' WHERE comment_id=%1$d",
-                id, item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
+                id, item.getEntity(), item.getCourse(), item.getAuthor(), formatter.format(item.getDate()));
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -112,7 +112,7 @@ public class CommentRepository implements IRepository<Comment> {
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
         String query = String.format("insert into comment (entity,course_id,user_id,date) values('%1$s', %2$d, %3$d, '%4$s')",
-                item.getEntity(), item.getCourse().getCourse_id(), item.getAuthor().getUser_id(), formatter.format(item.getDate()));
+                item.getEntity(), item.getCourse(), item.getAuthor(), formatter.format(item.getDate()));
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -124,8 +124,8 @@ public class CommentRepository implements IRepository<Comment> {
 
     private boolean IsEmpty(Comment item)
     {
-        if (item.getAuthor() == null) return true;
-        if (item.getCourse() == null) return true;
+        if (item.getAuthor() == 0) return true;
+        if (item.getCourse() == 0) return true;
         if (item.getDate() == null) return true;
         if (item.getEntity() == null) return true;
         return false;

@@ -5,6 +5,7 @@ import Entities.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,10 +30,16 @@ public class CommentController {
     ResponseEntity<ArrayList<Comment>> getAll()
     {
         try{
-            return new ResponseEntity<ArrayList<Comment>>((ArrayList<Comment>)repository.GetAll(), HttpStatus.OK);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-type", "text/html; charset=windows-1251");
+
+            return new ResponseEntity<ArrayList<Comment>>((ArrayList<Comment>)repository.GetAll(),headers, HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         } catch (SQLException e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
 
@@ -47,6 +54,9 @@ public class CommentController {
             return new ResponseEntity<Comment>(repository.Get(id), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity<Comment>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -60,6 +70,9 @@ public class CommentController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -72,6 +85,9 @@ public class CommentController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -83,6 +99,9 @@ public class CommentController {
             repository.Update(id, item);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

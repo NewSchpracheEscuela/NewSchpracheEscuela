@@ -36,6 +36,9 @@ public class NewsController {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
 
         return new ResponseEntity<ArrayList<News>>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -49,6 +52,9 @@ public class NewsController {
             return new ResponseEntity<News>(repository.Get(id), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity<News>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -60,6 +66,9 @@ public class NewsController {
             repository.Add(item);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -73,6 +82,9 @@ public class NewsController {
             repository.Delete(id);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

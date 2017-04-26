@@ -42,6 +42,9 @@ public class LessonController {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
 
         return new ResponseEntity<ArrayList<Lesson>>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -54,6 +57,9 @@ public class LessonController {
         try {
             return new ResponseEntity<Lesson>(repository.Get(id), HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity<Lesson>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -68,6 +74,9 @@ public class LessonController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -80,6 +89,9 @@ public class LessonController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -91,6 +103,9 @@ public class LessonController {
             repository.Update(id, item);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
