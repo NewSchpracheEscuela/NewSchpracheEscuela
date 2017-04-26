@@ -1,11 +1,11 @@
 package WebUI;
 
-import Database_layer.Repositories.GroupRepository;
 import Database_layer.Repositories.TeacherRepository;
 import Entities.Teacher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -24,54 +24,75 @@ public class TeacherController {
     }
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    Iterable<Teacher> getTeacher(){
+    ResponseEntity<Iterable<Teacher>> getTeacher(){
         try {
-            return repository.GetAll();
+            return new ResponseEntity<Iterable<Teacher>>(repository.GetAll(),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity<Iterable<Teacher>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Iterable<Teacher>>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
-    Teacher getTeacher(@PathVariable int id){
+    ResponseEntity getTeacher(@PathVariable int id){
 
         try {
-            return repository.Get(id);
+            return new ResponseEntity(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
 
     @RequestMapping(method = RequestMethod.DELETE,value = "/{id}")
     public @ResponseBody
-    void deleteTeacher(@PathVariable int id){
+    ResponseEntity deleteTeacher(@PathVariable int id){
         try {
             repository.Delete(id);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    void addGroup(@RequestBody Teacher teacher){
+    ResponseEntity addGroup(@RequestBody Teacher teacher){
         try {
             repository.Add(teacher);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public @ResponseBody
-    void updateGroup(@PathVariable int id,@RequestBody Teacher teacher){
+    ResponseEntity updateGroup(@PathVariable int id,@RequestBody Teacher teacher){
         try {
             repository.Update(id,teacher);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

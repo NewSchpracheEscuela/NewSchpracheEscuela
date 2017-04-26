@@ -39,9 +39,9 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
             while(rs.next()){
                 ControlPointEvent pointEvent = new ControlPointEvent();
                 pointEvent.setControlPointEvent_id(rs.getInt("control_point_group_id"));
-                pointEvent.setGroup(groupRepository.Get(rs.getInt("group_id")));
-                pointEvent.setTeacher(teacherRepository.Get(rs.getInt("teacher_id")));
-                pointEvent.setControlPoint(pointRepository.Get(rs.getInt("control_point_id")));
+                pointEvent.setGroup(rs.getInt("group_id"));
+                pointEvent.setTeacher(rs.getInt("teacher_id"));
+                pointEvent.setControlPoint(rs.getInt("control_point_id"));
                 pointEvents.add(pointEvent);
             }
             connection.close();
@@ -69,9 +69,9 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
             ControlPointRepository pointRepository = (ControlPointRepository) context.getBean("controlPointRepository");
             rs.next();
             pointEvent.setControlPointEvent_id(rs.getInt("control_point_group_id"));
-            pointEvent.setGroup(groupRepository.Get(rs.getInt("group_id")));
-            pointEvent.setTeacher(teacherRepository.Get(rs.getInt("teacher_id")));
-            pointEvent.setControlPoint(pointRepository.Get(rs.getInt("control_point_id")));
+            pointEvent.setGroup(rs.getInt("group_id"));
+            pointEvent.setTeacher(rs.getInt("teacher_id"));
+            pointEvent.setControlPoint(rs.getInt("control_point_id"));
             connection.close();
         } catch(Exception e){
             System.out.println(e);
@@ -100,7 +100,7 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
         String query = String.format("UPDATE control_point_group SET group_id=%2$d, control_point_id=%3$d, teacher_id=%4$d WHERE control_point_group_id=%1$d",
-                id, item.getGroup().getId(), item.getControlPoint().getId(), item.getTeacher().getId());
+                id, item.getGroup(), item.getControlPoint(), item.getTeacher());
         try{
             //statement=connection.createStatement();
             Connection connection = dataSource.getConnection();
@@ -115,7 +115,7 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
         String query = String.format("insert into control_point_group values(%1$d, %2$d, %3$d, %4$d)",
-                item.getControlPointEvent_id(), item.getGroup().getId(), item.getControlPoint().getId(), item.getTeacher().getId());
+                item.getControlPointEvent_id(), item.getGroup(), item.getControlPoint(), item.getTeacher());
         try{
             //statement=connection.createStatement();
 
@@ -129,9 +129,9 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
 
     private boolean IsEmpty(ControlPointEvent item)
     {
-        if (item.getGroup() == null) return true;
-        if (item.getTeacher() == null) return true;
-        if (item.getControlPoint() == null) return true;
+        if (item.getGroup() == 0) return true;
+        if (item.getTeacher() == 0) return true;
+        if (item.getControlPoint() == 0) return true;
         return false;
     }
 }

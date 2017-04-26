@@ -15,8 +15,8 @@ import java.util.Date;
 
 public class Lesson {
     private int lesson_id;
-    private Group group;
-    private Teacher teacher;
+    private int group;
+    private int teacher;
     private String room;
     private Date time;
     private Days day;
@@ -25,8 +25,8 @@ public class Lesson {
     {
         return lesson_id;
     }
-    public Group getGroup() { return group; }
-    public Teacher getTeacher() { return teacher; }
+    public int getGroup() { return group; }
+    public int getTeacher() { return teacher; }
     public String getRoom()
     {
         return room;
@@ -40,11 +40,11 @@ public class Lesson {
     {
         lesson_id = value;
     }
-    public void setGroup(Group item)
+    public void setGroup(int item)
     {
         group = item;
     }
-    public void setTeacher(Teacher item)
+    public void setTeacher(int item)
     {
         teacher = item;
     }

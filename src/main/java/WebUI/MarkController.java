@@ -4,6 +4,8 @@ import Database_layer.Repositories.MarkRepository;
 import Entities.Mark;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -23,54 +25,76 @@ public class MarkController
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    Iterable<Mark> getMarks(){
+    ResponseEntity<Iterable<Mark>> getMarks(){
         try {
-            return repository.GetAll();
+            return new ResponseEntity<Iterable<Mark>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity<Iterable<Mark>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Iterable<Mark>>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
+
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
-    Mark getMark(@PathVariable int id){
+    ResponseEntity<Mark> getMark(@PathVariable int id){
 
         try {
-            return repository.Get(id);
+            return new ResponseEntity<Mark>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity<Mark>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Mark>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
 
     @RequestMapping(method = RequestMethod.DELETE,value = "/{id}")
     public @ResponseBody
-    void deleteMark(@PathVariable int id){
+    ResponseEntity<Mark> deleteMark(@PathVariable int id){
         try {
             repository.Delete(id);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Mark>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    void addPerson(@RequestBody Mark mark){
+    ResponseEntity addPerson(@RequestBody Mark mark){
         try {
             repository.Add(mark);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public @ResponseBody
-    void updatePerson(@PathVariable int id,@RequestBody Mark mark){
+    ResponseEntity updatePerson(@PathVariable int id,@RequestBody Mark mark){
         try {
             repository.Update(id,mark);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

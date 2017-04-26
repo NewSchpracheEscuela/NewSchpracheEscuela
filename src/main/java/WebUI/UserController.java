@@ -7,6 +7,7 @@ import Database_layer.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,9 @@ public class UserController {
     ResponseEntity<ArrayList<User>> getAll()
     {
         try{
-            return new ResponseEntity<ArrayList<User>>((ArrayList<User>)repository.GetAll(), HttpStatus.OK);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-type", "application/json; charset=windows-1251");
+            return new ResponseEntity<ArrayList<User>>((ArrayList<User>)repository.GetAll(),headers, HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -52,7 +55,9 @@ public class UserController {
     ResponseEntity<User> getUser(@PathVariable int id){
 
         try {
-            return new ResponseEntity<User>(repository.Get(id),HttpStatus.OK);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-type", "application/json; charset=windows-1251");
+            return new ResponseEntity<User>(repository.Get(id),headers,HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         }catch (Exception e)

@@ -2,16 +2,16 @@ package WebUI;
 
 import Database_layer.Repositories.ControlPointRepository;
 import Entities.ControlPoint;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @RestController
 @RequestMapping("/controlpoints")
@@ -28,64 +28,90 @@ public class ControlPointController {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    Iterable<ControlPoint> getControlPoints(){
+    ResponseEntity<Iterable<ControlPoint>> getControlPoints(){
         try {
-            return repository.GetAll();
+            return new ResponseEntity<Iterable<ControlPoint>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
+        catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody
-    ControlPoint getControlPoint(@PathVariable int id){
+    ResponseEntity<ControlPoint> getControlPoint(@PathVariable int id){
 
         try {
-            return repository.Get(id);
+            return new ResponseEntity<ControlPoint>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity<ControlPoint>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
+        catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<ControlPoint>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    void addControlPoint(@RequestBody String date){
+    ResponseEntity addControlPoint(@RequestBody String date){
         try {
             ControlPoint controlPoint = new ControlPoint();
             DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
             controlPoint.setDate(dateFormat.parse(date));
             repository.Add(controlPoint);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (ParseException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(method = RequestMethod.PUT,value = "/{id}")
     public @ResponseBody
-    void updateControlPoint(@PathVariable int id,@RequestBody String date){
+    ResponseEntity updateControlPoint(@PathVariable int id,@RequestBody String date){
         ControlPoint controlPoint = new ControlPoint();
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         try {
             controlPoint.setDate(dateFormat.parse(date));
             repository.Update(id,controlPoint);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (ParseException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
 
     @RequestMapping(method = RequestMethod.DELETE,value = "/{id}")
     public @ResponseBody
-    void deleteControlPoint(@PathVariable int id){
+    ResponseEntity deleteControlPoint(@PathVariable int id){
         try {
             repository.Delete(id);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

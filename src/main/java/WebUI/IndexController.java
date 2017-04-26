@@ -1,9 +1,5 @@
 package WebUI;
-import java.sql.*;
-import Entities.User;
-import Database_layer.Repositories.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +17,10 @@ public class IndexController {
         return new ModelAndView("users", "users", users);
     }*/
 
-    @RequestMapping(value = "/school/**",method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index","/contacts"},method = RequestMethod.GET)
     public ModelAndView AngularIndex() {
         return new ModelAndView("index");
     }
+
+
 }

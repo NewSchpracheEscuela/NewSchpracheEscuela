@@ -32,5 +32,17 @@
     <bean id="lessonRepository" class="Database_layer.Repositories.LessonRepository">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <bean id="commentRepository" class="Database_layer.Repositories.CommentRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="courseRepository" class="Database_layer.Repositories.CourseRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="newsRepository" class="Database_layer.Repositories.NewsRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="userRepository" class="Database_layer.Repositories.UserRepository">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
 </beans>
