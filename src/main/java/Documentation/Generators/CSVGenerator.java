@@ -1,13 +1,9 @@
 package Documentation.Generators;
 
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 /**
  * Created by angre on 29.04.2017.
  */
-public class XLSGenerator<T> implements IGenerator<T>{
+public class CSVGenerator<T> implements IGenerator<T> {
     private boolean isProtected = false;
 
     public boolean getIsProtected() {
@@ -18,8 +14,7 @@ public class XLSGenerator<T> implements IGenerator<T>{
         isProtected = value;
     }
 
-    public String getType()
-    {
-        return "xls";
+    public String getType() {
+        return "csv";
     }
 }
