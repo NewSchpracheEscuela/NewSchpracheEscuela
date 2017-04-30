@@ -5,8 +5,11 @@ import Database_layer.IRepository;
 import Entities.ControlPoint;
 import Entities.ControlPointEvent;
 import Entities.Group;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -16,13 +19,16 @@ import java.util.ArrayList;
 /**
  * Created by angre on 10.04.2017.
  */
-public class ControlPointEventRepository implements IRepository<ControlPointEvent> {
+public class ControlPointEventRepository implements IRepository<ControlPointEvent>,ApplicationContextAware {
     private java.sql.Connection connection;
     private Statement statement;
     private DataSource dataSource;
+    private ApplicationContext context;
+
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+
 
     public Iterable<ControlPointEvent> GetAll() throws SQLException {
         ArrayList<ControlPointEvent> pointEvents = new ArrayList<ControlPointEvent>();
@@ -30,8 +36,6 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement("select * from control_point_group");
             //statement=connection.createStatement();
-            ApplicationContext context =
-                    new ClassPathXmlApplicationContext("beans.xml");
             GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
             TeacherRepository teacherRepository = (TeacherRepository) context.getBean("teacherRepository");
             ControlPointRepository pointRepository = (ControlPointRepository) context.getBean("controlPointRepository");
@@ -62,8 +66,6 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
-            ApplicationContext context =
-                    new ClassPathXmlApplicationContext("beans.xml");
             GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
             TeacherRepository teacherRepository = (TeacherRepository) context.getBean("teacherRepository");
             ControlPointRepository pointRepository = (ControlPointRepository) context.getBean("controlPointRepository");
@@ -133,5 +135,9 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
         if (item.getTeacher() == 0) return true;
         if (item.getControlPoint() == 0) return true;
         return false;
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
     }
 }

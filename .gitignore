@@ -3,4 +3,5 @@
 out/
 
 target/
-/src/main/resources/Spring-Datasource.xml
+
+/src/main/web/WEB-INF/spring/spring-datasource.xml

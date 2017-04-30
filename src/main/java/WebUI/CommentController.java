@@ -2,8 +2,10 @@ package WebUI;
 
 import Database_layer.Repositories.CommentRepository;
 import Entities.Comment;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,25 +17,16 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/comments")
-public class CommentController {
+public class CommentController implements ApplicationContextAware {
 
-    private final CommentRepository repository;
-
-    public CommentController() {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-        repository = (CommentRepository) context.getBean("commentRepository");
-    }
+    private CommentRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
     ResponseEntity<ArrayList<Comment>> getAll()
     {
         try{
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-type", "text/html; charset=windows-1251");
-
-            return new ResponseEntity<ArrayList<Comment>>((ArrayList<Comment>)repository.GetAll(),headers, HttpStatus.OK);
+            return new ResponseEntity<ArrayList<Comment>>((ArrayList<Comment>)repository.GetAll(), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -105,5 +98,9 @@ public class CommentController {
             e.printStackTrace();
         }
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.repository = (CommentRepository) applicationContext.getBean("commentRepository");
     }
 }

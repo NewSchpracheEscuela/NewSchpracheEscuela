@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import Entities.User;
 import Database_layer.Repositories.UserRepository;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,16 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserController implements ApplicationContextAware{
 
-    private final UserRepository repository;
-
-    public UserController() {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-        repository = (UserRepository) context.getBean("userRepository");
-
-    }
+    private UserRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -108,4 +103,7 @@ public class UserController {
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (UserRepository) applicationContext.getBean("userRepository");
+    }
 }

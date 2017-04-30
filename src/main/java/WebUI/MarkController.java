@@ -2,7 +2,9 @@ package WebUI;
 
 import Database_layer.Repositories.MarkRepository;
 import Entities.Mark;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +14,9 @@ import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/marks")
-public class MarkController
+public class MarkController implements ApplicationContextAware
 {
     private MarkRepository repository;
-
-    public MarkController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (MarkRepository) context.getBean("markRepository");
-    }
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -96,5 +91,9 @@ public class MarkController
             e.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (MarkRepository) applicationContext.getBean("markRepository");
     }
 }
