@@ -2,7 +2,7 @@
 <div class="container" >
     <div class="container__banner">
         <div class="banner__slider">
-            <img ng-repeat="slide in slides" class="banner__slide" src="{{slide.image}}">
+            <img ng-repeat="slide in slides" class="{{slide.classes}}" src="{{slide.image}}">
         </div>
         <div class="banner__title" >
                 <span>Говорить на иностранном языке просто!<br>
@@ -17,12 +17,12 @@
             <h2>Почему более 2 студентов выбрали нас</h2>
             <div class="container__delimiter"></div>
             <div class="container__numbers">
-                <div ng-repeat="number in [1,2,3,4,5] track by $index"  >
-                    <button class="container__number" ng-click = "changeTypeChoice($event, $index+1)">{{number}}</button>
+                <div ng-repeat="number in numbers track by $index"  >
+                    <button class="{{number.classes}}" ng-click = "changeTypeChoice($event, $index+1)">{{number.id}}</button>
                 </div>
             </div>
             <div ng-repeat="choice in choices" >
-                <div id="{{choice.id}}" class="container__text">
+                <div id="{{choice.id}}" class="{{choice.classes}}">
                     <div class="choice__text">
                         <h3>{{choice.title}}</h3>
                         <span>{{choice.content}}</span>

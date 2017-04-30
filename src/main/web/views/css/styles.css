@@ -139,6 +139,11 @@ header {
 
 .banner__slide{
     width: 100%;
+    display: none;
+}
+
+.banner__slide--active{
+    display:block;
 }
 
 .banner__title{
@@ -218,6 +223,14 @@ header {
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.container__text{
+    display: none;
+}
+
+.container__text--active{
+    display: block;
 }
 
 .choice__text{

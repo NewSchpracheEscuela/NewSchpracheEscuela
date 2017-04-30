@@ -2,34 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83e40edf-16b8-4970-beb0-cb299557d630" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/Database_layer/Repositories/CommentRepositoryTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/Database_layer/Repositories/CourseRepositoryTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/Database_layer/Repositories/NewsRepositoryTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/Database_layer/Repositories/UserRepositoryTest.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/backend.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/CommentRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/CommentRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/ControlPointRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/ControlPointRepository.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/CourseRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/CourseRepository.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/NewsRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/NewsRepository.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/UserRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/UserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/WebUI/UserController.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/WebUI/UserController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/CommentRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/CommentRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/ControlPointRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/ControlPointRepository.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/CourseRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/CourseRepository.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/NewsRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/NewsRepository.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/UserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WebUI/UserController.class" afterPath="$PROJECT_DIR$/target/classes/WebUI/UserController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/jsp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/backend.html" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/backend.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/header.html" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/css/styles.css" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/css/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/index.html" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/scripts/script.js" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/scripts/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/WebUI/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/WebUI/IndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/WebUI/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/WebUI/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/Spring-Datasource.xml" afterPath="$PROJECT_DIR$/src/main/resources/Spring-Datasource.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/backend.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/backend.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/header.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/css/styles.css" afterPath="$PROJECT_DIR$/src/main/web/views/css/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/index.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/script.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/script.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/web/views/html/backend.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/admin.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,98 +41,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="106" column="71" lean-forward="false" selection-start-line="106" selection-start-column="71" selection-end-line="106" selection-end-column="71" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/UserController.java">
+      <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/admin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="101" column="31" lean-forward="true" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Database_layer/Repositories/UserRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="110" column="29" lean-forward="false" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="29" />
-              <folding>
-                <marker date="1493208499628" expanded="true" signature="670:688" ph="select * fro... user" />
-                <marker date="1493208499628" expanded="true" signature="1188:1206" ph="select * fro... user" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Spring-Datasource.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/Spring-Datasource.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="92" lean-forward="false" selection-start-line="9" selection-start-column="92" selection-end-line="9" selection-end-column="92" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/header.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="51" lean-forward="false" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="46" lean-forward="false" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="backend.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/backend.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="56" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/IndexController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+            <state relative-caret-position="-594">
+              <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -145,8 +64,78 @@
       <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/web/views/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7004">
-              <caret line="412" column="30" lean-forward="false" selection-start-line="412" selection-start-column="30" selection-end-line="412" selection-end-column="30" />
+            <state relative-caret-position="238">
+              <caret line="219" column="26" lean-forward="false" selection-start-line="219" selection-start-column="1" selection-end-line="219" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/users.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Index.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Admin.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="68" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="12" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.service.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/CommentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-849">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -160,8 +149,8 @@
         <option value="Enum" />
         <option value="JUnit4 Test Class" />
         <option value="Class" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -184,13 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/IRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/ControlPointRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/Entities/Roles.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/Entities/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/Entities/Level.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/Enumerations/Level.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/Entities/ControlPoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Entities/Group.java" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/ControlPointRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Entities/Teacher.java" />
@@ -215,7 +197,6 @@
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/CourseRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/UserRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/NewsRepositoryTest.java" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/index.html" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/contact.html" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/CommentRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Repositories/UserRepository.java" />
@@ -227,14 +208,22 @@
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Repositories/LessonRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Repositories/NewsRepository.java" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/dialog.html" />
-        <option value="$PROJECT_DIR$/src/main/web/views/css/styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/WebUI/IndexController.java" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/header.html" />
         <option value="$PROJECT_DIR$/src/main/java/WebUI/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/Spring-Datasource.xml" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/backend.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/IndexController.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/AdminController.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.Controller.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/css/styles.css" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/index.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js" />
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/script.js" />
+        <option value="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/services/Index.service.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js" />
       </list>
     </option>
   </component>
@@ -280,7 +269,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -418,6 +406,74 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NewSchpracheEscuela" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NewSchpracheEscuela" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NewSchpracheEscuela" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NewSchpracheEscuela" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -522,127 +578,12 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Deserializers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Database_layer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Database_layer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repositories" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1346,6 +1287,8 @@
       <workItem from="1493058548604" duration="14252000" />
       <workItem from="1493108672918" duration="26360000" />
       <workItem from="1493215458744" duration="6988000" />
+      <workItem from="1493489682330" duration="4540000" />
+      <workItem from="1493570320361" duration="12290000" />
     </task>
     <servers />
   </component>
@@ -1382,7 +1325,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206351000" />
+    <option name="totallyTimeSpent" value="223863000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1413,6 +1356,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28550512" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1420,7 +1364,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1448,66 +1391,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/users.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/index.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/ControlPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/Deserializers/JsonTimeDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/Deserializers/JSONDateYearDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/Deserializers/JSONDateTimeDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/Database_layer/Repositories/CommentRepositoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/views/html/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1515,19 +1398,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/TeacherController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1535,7 +1409,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1543,7 +1416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1551,7 +1423,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1559,7 +1430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1567,22 +1437,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/CommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Database_layer/Repositories/CommentRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="26" column="108" lean-forward="false" selection-start-line="26" selection-start-column="108" selection-end-line="26" selection-end-column="108" />
         </state>
       </provider>
     </entry>
@@ -1639,7 +1493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1647,7 +1500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1655,7 +1507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1670,7 +1521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="59" column="67" lean-forward="false" selection-start-line="59" selection-start-column="67" selection-end-line="59" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1701,7 +1551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-696">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1719,22 +1568,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="22" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/MarkController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
           <caret line="89" column="26" lean-forward="false" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <marker date="1493208397712" expanded="true" signature="3447:3465" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1742,30 +1579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#422#423#0" expanded="false" />
-            <element signature="e#466#467#0" expanded="false" />
-            <marker date="1492982351755" expanded="true" signature="729:765" ph="SELECT * FRO... control_point_person" />
-            <marker date="1492982351755" expanded="true" signature="1661:1728" ph="SELECT * FRO... control_point_person" />
-            <marker date="1492982351755" expanded="true" signature="3479:3544" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7004">
-          <caret line="412" column="30" lean-forward="false" selection-start-line="412" selection-start-column="30" selection-end-line="412" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1773,14 +1586,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="101" column="31" lean-forward="true" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
+          <caret line="101" column="31" lean-forward="false" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1789,17 +1601,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Database_layer/Repositories/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="1751">
           <caret line="110" column="29" lean-forward="false" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="29" />
           <folding>
-            <marker date="1493208499628" expanded="true" signature="670:688" ph="select * fro... user" />
-            <marker date="1493208499628" expanded="true" signature="1188:1206" ph="select * fro... user" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#363#364#0" expanded="false" />
+            <element signature="e#407#408#0" expanded="false" />
+            <marker date="1493224625166" expanded="true" signature="670:688" ph="select * fro... user" />
+            <marker date="1493224625166" expanded="true" signature="1188:1206" ph="select * fro... user" />
           </folding>
         </state>
       </provider>
@@ -1812,14 +1626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="46" lean-forward="false" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/views/html/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1828,22 +1634,152 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/backend.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/Deserializers/JSONDateTimeDeserializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="56" />
+        <state relative-caret-position="187">
+          <caret line="17" column="46" lean-forward="false" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Database_layer/Repositories/CommentRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#632#633#0" expanded="false" />
+            <element signature="e#676#677#0" expanded="false" />
+            <marker date="1493224625118" expanded="true" signature="951:972" ph="select * fro... comment" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/logo_red.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/CommentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-849">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594">
+          <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="219" column="26" lean-forward="false" selection-start-line="219" selection-start-column="1" selection-end-line="219" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="106" column="71" lean-forward="false" selection-start-line="106" selection-start-column="71" selection-end-line="106" selection-end-column="71" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/users.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="68" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="12" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
