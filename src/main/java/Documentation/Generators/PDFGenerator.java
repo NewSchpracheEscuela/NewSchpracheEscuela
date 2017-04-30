@@ -1,13 +1,17 @@
 package Documentation.Generators;
 
-import Documentation.Model.IModelViewer;
+import Documentation.Factories.IFactory;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by angre on 29.04.2017.
  */
 public class PDFGenerator<T> implements IGenerator<T>{
     private boolean isProtected = false;
-    private IModelViewer<T> modelViewer = null;
+    private IFactory<T> modelViewer = null;
 
     public boolean getIsProtected() {
         return isProtected;
@@ -17,12 +21,12 @@ public class PDFGenerator<T> implements IGenerator<T>{
         isProtected = value;
     }
 
-    public IModelViewer<T> getModelViewer()
+    public IFactory<T> getModelViewer()
     {
         return  modelViewer;
     }
 
-    public void setModelViewer(IModelViewer<T> item) {
+    public void setModelViewer(IFactory<T> item) {
         modelViewer = item;
     }
 
@@ -37,6 +41,22 @@ public class PDFGenerator<T> implements IGenerator<T>{
     }
 
     public String getContentType() {
-        return null;
+        return "application/pdf";
+    }
+
+    @Override
+    public void writeToResponse(Iterable<T> list, HttpServletResponse response) {
+
+    }
+
+}
+
+class PdfNewPageEventHandler extends PdfPageEventHelper {
+
+    @Override
+    public void onEndPage(PdfWriter writer, Document document) {
+
+        document.setMargins(0, 0, 20, 20);
+
     }
 }

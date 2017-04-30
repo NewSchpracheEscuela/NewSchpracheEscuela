@@ -30,10 +30,10 @@ public class GroupController {
             return new ResponseEntity<Iterable<Group>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<Group>>(HttpStatus.INTERNAL_SERVER_ERROR);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<Group>>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

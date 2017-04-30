@@ -1,4 +1,4 @@
-package Documentation.Entities;
+package Documentation.Factories.Implementations;
 
 /**
  * Created by angre on 29.04.2017.
