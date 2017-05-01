@@ -4,7 +4,14 @@ import Documentation.Factories.IFactory;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.pdf.PdfTemplate;
 import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.List;
+
+import static javax.servlet.http.HttpServletResponse.SC_CREATED;
 
 /**
  * Created by angre on 29.04.2017.
@@ -45,14 +52,86 @@ public class PDFGenerator<T> implements IGenerator<T>{
     }
 
     @Override
-    public void writeToResponse(Iterable<T> list, HttpServletResponse response) {
+    public void writeToResponse(List<T> list, HttpServletResponse response) {
+        response.setHeader("Content-disposition", "attachment;filename=" + getDocumentName());
+        response.setHeader("Content-type", getContentType());
+        response.setStatus(SC_CREATED);
 
+        try {
+            String fontFile = "./arial.ttf";
+            String templateUrl = "./template.pdf";
+
+            BaseFont bf = BaseFont.createFont(fontFile, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(bf);
+            OutputStream outputStream = response.getOutputStream();
+            PdfReader letterhead = new PdfReader(templateUrl);
+            Rectangle pageSize = letterhead.getPageSizeWithRotation(1);
+            Document document = new Document(pageSize);
+            document.setMargins(0, 0, 170, 20);
+            document.setMarginMirroringTopBottom(true);
+            PdfWriter writer = PdfWriter.getInstance(document, outputStream);
+            writer.setPageEvent(new PdfNewPageEventHandler());
+            setEncryption(writer);
+            document.open();
+            addHeader(letterhead, writer);
+            addMetadata(document);
+            addContent(list, document, font);
+            document.close();
+            outputStream.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    private void setEncryption(PdfWriter writer) throws DocumentException {
+        if(isProtected) writer.setEncryption(null, null, ~(PdfWriter.ALLOW_COPY), PdfWriter.STANDARD_ENCRYPTION_128);
+    }
+
+    private void addContent(List<T> model, Document document, Font font) throws DocumentException {
+
+        Paragraph paragraph =  new Paragraph(" ");
+
+        document.add(paragraph);
+        PdfPTable pdfTable = createTable(model, font);
+        document.add(pdfTable);
+    }
+
+    private PdfPTable createTable(List<T> model, Font font) {
+        PdfPTable pdfTable = new PdfPTable(modelViewer.getHeaders().size());
+
+        for (String header : modelViewer.getHeaders()) {
+            PdfPCell headerCell = new PdfPCell(new Phrase(header));
+            headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            pdfTable.addCell(new Paragraph(header, font));
+        }
+
+        pdfTable.setHeaderRows(1);
+
+        for (List<String> row : modelViewer.map(model)) {
+
+            for (String cell : row) {
+                pdfTable.addCell(new Paragraph(cell, font));
+            }
+
+        }
+
+        return pdfTable;
+    }
+
+    private void addMetadata(Document document) {
+        document.addAuthor("nse-project");
+        document.addCreationDate();
+        document.addTitle("NSE Document");
+    }
+
+    private void addHeader(PdfReader letterhead, PdfWriter writer) {
+        PdfContentByte content = writer.getDirectContent();
+        PdfImportedPage page = writer.getImportedPage(letterhead, 1);
+        content.addTemplate(page, 0, 0);
+    }
 }
 
 class PdfNewPageEventHandler extends PdfPageEventHelper {
-
     @Override
     public void onEndPage(PdfWriter writer, Document document) {
 

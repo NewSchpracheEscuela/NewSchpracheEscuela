@@ -6,6 +6,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by angre on 29.04.2017.
@@ -42,7 +43,7 @@ public class XLSGenerator<T> implements IGenerator<T>{
         return null;
     }
 
-    public void writeToResponse(Iterable<T> list, HttpServletResponse response) {
+    public void writeToResponse(List<T> list, HttpServletResponse response) {
 
     }
 

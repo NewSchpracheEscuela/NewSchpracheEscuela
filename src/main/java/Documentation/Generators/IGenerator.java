@@ -3,6 +3,7 @@ package Documentation.Generators;
 import Documentation.Factories.IFactory;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by angre on 29.04.2017.
@@ -18,5 +19,5 @@ public interface IGenerator<T> {
     String getDocumentType();
     String getContentType();
 
-    void writeToResponse(Iterable<T> list, HttpServletResponse response);
+    void writeToResponse(List<T> list, HttpServletResponse response);
 }

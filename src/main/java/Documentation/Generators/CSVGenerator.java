@@ -3,6 +3,7 @@ package Documentation.Generators;
 import Documentation.Factories.IFactory;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by angre on 29.04.2017.
@@ -39,7 +40,7 @@ public class CSVGenerator<T> implements IGenerator<T> {
         return null;
     }
 
-    public void writeToResponse(Iterable<T> list, HttpServletResponse response) {
+    public void writeToResponse(List<T> list, HttpServletResponse response) {
 
     }
 

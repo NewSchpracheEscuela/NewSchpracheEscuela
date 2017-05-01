@@ -13,7 +13,7 @@ public class BlankBody {
     }
 
     public void setCourse_id(int value) {
-        this.course_id = course_id;
+        course_id = value;
     }
 
     public int getUser_id() {
@@ -23,4 +23,5 @@ public class BlankBody {
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
+
 }
