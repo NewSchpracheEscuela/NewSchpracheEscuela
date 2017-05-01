@@ -30,10 +30,8 @@ public class CommentController {
     ResponseEntity<ArrayList<Comment>> getAll()
     {
         try{
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-type", "text/html; charset=windows-1251");
 
-            return new ResponseEntity<ArrayList<Comment>>((ArrayList<Comment>)repository.GetAll(),headers, HttpStatus.OK);
+            return new ResponseEntity<ArrayList<Comment>>((ArrayList<Comment>)repository.GetAll(), HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
         } catch (SQLException e) {
