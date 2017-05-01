@@ -43,7 +43,7 @@ function RequestService($http) {
         }, function errorCallback(response) {
             callback(response.data)
         });
-    }
+    };
 
     this.editItem = function (url, data, callback) {
         $http({
@@ -57,7 +57,7 @@ function RequestService($http) {
         }, function errorCallback(response) {
             callback({code: "Произошла ошибка редактирования. Проверьте введенные данные! И попробуйте снова."});
         });
-    }
+    };
     
     this.addItem = function (url, data, callback) {
         $http({

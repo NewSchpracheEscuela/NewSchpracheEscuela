@@ -14,10 +14,22 @@ function nseAppConfig ($routeProvider,$locationProvider) {
                 templateUrl: '/resources/html/contact.html'
             }
         )
-        .when('/backend',
+        .when('/admin',
             {
                 templateUrl: '/resources/html/admin.html',
                 controller: 'AdminController'
+            }
+        )
+        .when('/all_comments',
+            {
+                templateUrl: '/resources/html/comments.html',
+                controller: 'CommentsController'
+            }
+        )
+        .when('/all_news',
+            {
+                templateUrl: '/resources/html/news.html',
+                controller: 'NewsController'
             }
         )
         .otherwise({

@@ -3,7 +3,7 @@
  */
 nseApp.controller('AdminController', AdminController);
 
-function AdminController($scope, $http, RequestService) {
+function AdminController($scope, RequestService) {
     $scope.base_url = "/users";
 
     $scope.initData = function (event,url) {

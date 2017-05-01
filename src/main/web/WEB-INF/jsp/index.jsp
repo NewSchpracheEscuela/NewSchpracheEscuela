@@ -7,7 +7,7 @@
 <spring:url value="/resources/scripts/angular/ngDialog.min.css" var="dialogCss"/>
 <spring:url value="/resources/scripts/angular/ngDialog-theme-default.min.css" var="dialogminCss"/>
 <spring:url value="/resources/scripts/angular/angular.min.js" var="angularMain"/>
-<spring:url value="/resources/scripts/script.js" var="scriptMain"/>
+<spring:url value="/resources/scripts/app.js" var="scriptMain"/>
 <spring:url value="/resources/scripts/angular/angular-route.min.js" var="angularRoute"/>
 <spring:url value="/resources/scripts/angular/ng-map.min.js" var="map"/>
 <spring:url value="/resources/scripts/angular/ngDialog.min.js" var="angularDialog"/>
@@ -24,6 +24,8 @@
 
       <script src="/resources/scripts/controllers/index.controller.js"></script>
       <script src="/resources/scripts/controllers/admin.controller.js"></script>
+      <script src="/resources/scripts/controllers/news.controller.js"></script>
+      <script src="/resources/scripts/controllers/comments.controller.js"></script>
 
 
       <script src = "/resources/scripts/services/index.service.js"></script>
@@ -32,6 +34,7 @@
       <link rel="stylesheet" href="${mainCss}">
       <link rel="stylesheet" href="${dialogCss}">
       <link rel="stylesheet" href="${dialogminCss}">
+      <link rel="shortcut icon" href="/resources/images/logo_icon.png" type="image/png">
     <title>Языковые курсы</title>
 
   </head>
