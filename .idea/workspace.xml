@@ -2,30 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83e40edf-16b8-4970-beb0-cb299557d630" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/backend.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/CommentRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/CommentRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/CourseRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/CourseRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/NewsRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/NewsRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/UserRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/classes/Database_layer/Repositories/UserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/CommentRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/CommentRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/CourseRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/CourseRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/NewsRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/NewsRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/Database_layer/Repositories/UserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/jsp/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/css/styles.css" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/index.html" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/contact.html" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/html/contact.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/scripts/script.js" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/scripts/script.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/css/styles.css" afterPath="$PROJECT_DIR$/src/main/web/views/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/index.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/contact.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/contact.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/script.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/script.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/web/views/html/backend.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/admin.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/admin.controller.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/index.controller.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/script.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -64,8 +52,18 @@
       <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/web/views/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="219" column="26" lean-forward="false" selection-start-line="219" selection-start-column="1" selection-end-line="219" selection-end-column="26" />
+            <state relative-caret-position="170">
+              <caret line="301" column="31" lean-forward="false" selection-start-line="301" selection-start-column="31" selection-end-line="301" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contact.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/contact.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -74,8 +72,8 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            <state relative-caret-position="459">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Index.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js">
+      <file leaf-file-name="index.controller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/index.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,39 +102,31 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/web/views/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Admin.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="12" column="68" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="12" selection-end-column="68" />
+              <caret line="12" column="14" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="12" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.service.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/admin.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.service.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommentController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/CommentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-849">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="248">
+              <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#51#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -173,8 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/Entities/Group.java" />
-        <option value="$PROJECT_DIR$/src/tests/Database_layer/ControlPointRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Entities/Teacher.java" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/ControlPointRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/GroupRepositoryTest.java" />
@@ -197,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/CourseRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/UserRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/NewsRepositoryTest.java" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/contact.html" />
         <option value="$PROJECT_DIR$/src/tests/Database_layer/Repositories/CommentRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Repositories/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" />
@@ -217,13 +204,16 @@
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/AdminController.js" />
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.Controller.js" />
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js" />
-        <option value="$PROJECT_DIR$/src/main/web/views/css/styles.css" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/index.html" />
-        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js" />
-        <option value="$PROJECT_DIR$/src/main/web/views/scripts/script.js" />
-        <option value="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/services/Index.service.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/css/styles.css" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/contact.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/script.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/admin.controller.js" />
+        <option value="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/index.controller.js" />
       </list>
     </option>
   </component>
@@ -472,66 +462,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NewSchpracheEscuela" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1288,7 +1218,7 @@
       <workItem from="1493108672918" duration="26360000" />
       <workItem from="1493215458744" duration="6988000" />
       <workItem from="1493489682330" duration="4540000" />
-      <workItem from="1493570320361" duration="12290000" />
+      <workItem from="1493570320361" duration="15176000" />
     </task>
     <servers />
   </component>
@@ -1325,7 +1255,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223863000" />
+    <option name="totallyTimeSpent" value="226749000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1554,13 +1484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/views/html/dialog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1720,38 +1643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="219" column="26" lean-forward="false" selection-start-line="219" selection-start-column="1" selection-end-line="219" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/Index.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/users.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1760,26 +1651,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        <state relative-caret-position="170">
+          <caret line="301" column="31" lean-forward="false" selection-start-line="301" selection-start-column="31" selection-end-line="301" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/Admin.controller.js">
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="68" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="12" selection-end-column="68" />
+          <caret line="12" column="14" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="12" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/contact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/admin.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="248">
+          <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#51#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/index.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>

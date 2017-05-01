@@ -11,8 +11,6 @@
 <spring:url value="/resources/scripts/angular/angular-route.min.js" var="angularRoute"/>
 <spring:url value="/resources/scripts/angular/ng-map.min.js" var="map"/>
 <spring:url value="/resources/scripts/angular/ngDialog.min.js" var="angularDialog"/>
-<spring:url value="/resources/scripts/controllers/Index.controller.js" var="indexController"/>
-<spring:url value="/resources/scripts/controllers/Admin.controller.js" var="adminController"/>
 <html ng-app="NSE">
   <head>
       <base href="/"/>
@@ -22,14 +20,23 @@
       <script src="${angularDialog}"></script>
       <script src="http://code.jquery.com/jquery-latest.js"></script>
       <script src="${scriptMain}"></script>
-      <script src="${indexController}"></script>
-      <script src="${adminController}"></script>
+
+      /*Controllers*/
+      <script src="/resources/scripts/controllers/index.controller.js"></script>
+      <script src="/resources/scripts/controllers/admin.controller.js"></script>
+
+      /*Services*/
+      <script src = "/resources/scripts/services/index.service.js"></script>
+
       <link rel="stylesheet" href="${mainCss}">
       <link rel="stylesheet" href="${dialogCss}">
       <link rel="stylesheet" href="${dialogminCss}">
     <title>Языковые курсы</title>
+
   </head>
+
   <body ng-controller="IndexController">
     <div ng-view>Loading...</div>
   </body>
+
 </html>

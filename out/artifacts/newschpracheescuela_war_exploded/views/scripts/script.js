@@ -1,4 +1,4 @@
-angular.module('NSE', ['ngRoute', 'ngMap'])
+var nseApp = angular.module('NSE', ['ngRoute', 'ngMap'])
     .config(nseAppConfig);
 
 function nseAppConfig ($routeProvider,$locationProvider) {
