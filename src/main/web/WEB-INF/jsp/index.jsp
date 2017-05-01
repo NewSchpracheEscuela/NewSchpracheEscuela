@@ -21,12 +21,13 @@
       <script src="http://code.jquery.com/jquery-latest.js"></script>
       <script src="${scriptMain}"></script>
 
-      /*Controllers*/
+
       <script src="/resources/scripts/controllers/index.controller.js"></script>
       <script src="/resources/scripts/controllers/admin.controller.js"></script>
 
-      /*Services*/
+
       <script src = "/resources/scripts/services/index.service.js"></script>
+      <script src = "/resources/scripts/services/request.service.js"></script>
 
       <link rel="stylesheet" href="${mainCss}">
       <link rel="stylesheet" href="${dialogCss}">
