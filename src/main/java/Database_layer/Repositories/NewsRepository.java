@@ -2,7 +2,9 @@ package Database_layer.Repositories;
 
 import Entities.News;
 import Database_layer.IRepository;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.sql.DataSource;
@@ -13,11 +15,12 @@ import java.util.ArrayList;
 /**
  * Created by angre on 10.04.2017.
  */
-public class NewsRepository implements IRepository<News> {
+public class NewsRepository implements IRepository<News>,ApplicationContextAware {
 
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private DataSource dataSource;
+    private ApplicationContext context;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -30,8 +33,6 @@ public class NewsRepository implements IRepository<News> {
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement("select * from news");
             ResultSet rs = statement.executeQuery();
-            ApplicationContext context =
-                    new ClassPathXmlApplicationContext("beans.xml");
 
             UserRepository userRepository = (UserRepository) context.getBean("userRepository");
             while(rs.next()){
@@ -59,8 +60,6 @@ public class NewsRepository implements IRepository<News> {
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
-            ApplicationContext context =
-                    new ClassPathXmlApplicationContext("beans.xml");
 
             UserRepository userRepository = (UserRepository) context.getBean("userRepository");
 
@@ -126,5 +125,9 @@ public class NewsRepository implements IRepository<News> {
         if (item.getTitle() == null) return true;
         if (item.getTitle().equals("")) return true;
         return false;
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
     }
 }

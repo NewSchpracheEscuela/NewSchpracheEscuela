@@ -2,7 +2,9 @@ package Database_layer.Repositories;
 
 import Entities.Comment;
 import Database_layer.IRepository;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.sql.DataSource;
@@ -13,10 +15,11 @@ import java.util.ArrayList;
 /**
  * Created by angre on 10.04.2017.
  */
-public class CommentRepository implements IRepository<Comment> {
+public class CommentRepository implements IRepository<Comment>,ApplicationContextAware {
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private DataSource dataSource;
+    private ApplicationContext context;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -31,8 +34,6 @@ public class CommentRepository implements IRepository<Comment> {
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 Comment comment = new Comment();
-                ApplicationContext context =
-                        new ClassPathXmlApplicationContext("beans.xml");
                 UserRepository userRepository = (UserRepository) context.getBean("userRepository");
                 CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
                 comment.setComment_id(rs.getInt("comment_id"));
@@ -60,8 +61,6 @@ public class CommentRepository implements IRepository<Comment> {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery(query);
 
-            ApplicationContext context =
-                    new ClassPathXmlApplicationContext("beans.xml");
             UserRepository userRepository = (UserRepository) context.getBean("userRepository");
             CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
             rs.next();
@@ -130,5 +129,9 @@ public class CommentRepository implements IRepository<Comment> {
         if (item.getEntity() == null) return true;
         if (item.getEntity().equals("")) return true;
         return false;
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
     }
 }

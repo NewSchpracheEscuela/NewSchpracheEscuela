@@ -6,8 +6,10 @@ import Database_layer.Repositories.ControlPointEventRepository;
 import Entities.ControlPointEvent;
 import Entities.User;
 import Database_layer.Repositories.UserRepository;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,16 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 @RequestMapping("/controlpointevents")
-public class PointEventController {
+public class PointEventController implements ApplicationContextAware{
 
-    private final ControlPointEventRepository repository;
-
-    public PointEventController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (ControlPointEventRepository) context.getBean("controlPointEventRepository");
-    }
+    private ControlPointEventRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -111,4 +106,7 @@ public class PointEventController {
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (ControlPointEventRepository) applicationContext.getBean("controlPointEventRepository");
+    }
 }

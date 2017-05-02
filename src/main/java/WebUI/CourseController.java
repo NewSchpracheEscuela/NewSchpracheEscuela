@@ -3,8 +3,10 @@ package WebUI;
 import Database_layer.Repositories.ControlPointRepository;
 import Database_layer.Repositories.CourseRepository;
 import Entities.Course;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +17,9 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/courses")
-public class CourseController {
+public class CourseController implements ApplicationContextAware {
 
-    private final CourseRepository repository;
-
-    public CourseController() {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (CourseRepository) context.getBean("courseRepository");
-    }
+    private CourseRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -105,4 +100,7 @@ public class CourseController {
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.repository = (CourseRepository) applicationContext.getBean("courseRepository");
+    }
 }

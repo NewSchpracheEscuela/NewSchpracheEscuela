@@ -4,9 +4,9 @@ package Database_layer.Enumerations;
  * Created by alexb on 15-Mar-17.
  */
 public enum Roles {
-    admin,
+    ROLE_ADMIN,
     guest,
-    student,
+    ROLE_STUDENT,
     leader,
-    teacher
+    ROLE_TEACHER
 }

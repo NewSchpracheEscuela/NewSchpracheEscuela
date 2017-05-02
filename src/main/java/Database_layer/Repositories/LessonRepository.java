@@ -4,7 +4,9 @@ import Entities.Group;
 import Entities.Teacher;
 import Entities.Lesson;
 import Database_layer.IRepository;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.sql.DataSource;
@@ -15,9 +17,10 @@ import java.util.ArrayList;
 /**
  * Created by angre on 10.04.2017.
  */
-public class LessonRepository implements IRepository<Lesson> {
+public class LessonRepository implements IRepository<Lesson>,ApplicationContextAware {
     private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
     private DataSource dataSource;
+    private ApplicationContext context;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -29,8 +32,6 @@ public class LessonRepository implements IRepository<Lesson> {
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement("select * from teacher_group");
             ResultSet rs = statement.executeQuery();
-            ApplicationContext context =
-                    new ClassPathXmlApplicationContext("beans.xml");
             GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
             TeacherRepository teacherRepository = (TeacherRepository) context.getBean("teacherRepository");
             while(rs.next()){
@@ -60,8 +61,6 @@ public class LessonRepository implements IRepository<Lesson> {
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery(query);
-            ApplicationContext context =
-                    new ClassPathXmlApplicationContext("beans.xml");
             GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
             TeacherRepository teacherRepository = (TeacherRepository) context.getBean("teacherRepository");
 
@@ -128,5 +127,9 @@ public class LessonRepository implements IRepository<Lesson> {
         if (item.getTeacher() == 0) return true;
         if (item.getTime() == null) return true;
         return false;
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
     }
 }

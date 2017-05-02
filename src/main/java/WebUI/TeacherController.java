@@ -2,7 +2,9 @@ package WebUI;
 
 import Database_layer.Repositories.TeacherRepository;
 import Entities.Teacher;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +14,10 @@ import java.sql.SQLException;
 
 @RestController
 @RequestMapping(value = "/teachers")
-public class TeacherController {
+public class TeacherController implements ApplicationContextAware{
 
     private TeacherRepository repository;
 
-    public TeacherController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (TeacherRepository) context.getBean("teacherRepository");
-    }
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
     ResponseEntity<Iterable<Teacher>> getTeacher(){
@@ -94,5 +90,9 @@ public class TeacherController {
             e.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (TeacherRepository) applicationContext.getBean("teacherRepository");
     }
 }
