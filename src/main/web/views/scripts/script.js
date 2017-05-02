@@ -126,6 +126,24 @@ angular.module('NSE',['ngRoute', 'ngMap'])
                     alert("Error : " +response.status);
                 })};
 
+        //     var getAllUsers = function () {
+        //         $http.get($scope.base_url)
+        //             .then(function (response){
+        //             if (response.status == 200){
+        //                 $scope.data = response.data;
+        //                 $scope.dataKeys = getKeys($scope.data[0]);
+        //
+        //                 $scope.formKeys = $scope.dataKeys.slice();
+        //                 $scope.formKeys.splice(0,1);
+        //             }else{
+        //                 alert("Ошибка сервера!");
+        //             }
+        //             })
+        //             .catch(function (data) {
+        //                 alert("Error: " +data)
+        //             })
+        // }
+
             getAllUsers();
             $scope.deleteItem = function (item) {
                 $scope.key = $scope.dataKeys[0].toString();

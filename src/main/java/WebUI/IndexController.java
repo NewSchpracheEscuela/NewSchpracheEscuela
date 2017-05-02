@@ -17,7 +17,7 @@ public class IndexController {
         return new ModelAndView("users", "users", users);
     }*/
 
-    @RequestMapping(value = {"/","/index","/contacts","/backend"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index","/contacts","/backend","/login"},method = RequestMethod.GET)
     public ModelAndView AngularIndex() {
         return new ModelAndView("index");
     }
