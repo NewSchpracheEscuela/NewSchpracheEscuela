@@ -17,7 +17,10 @@ function nseAppConfig ($routeProvider,$locationProvider) {
         .when('/admin',
             {
                 templateUrl: '/resources/html/admin.html',
-                controller: 'AdminController'
+                controller: 'AdminController',
+               /* data: {
+                    authorizedRoles: [USER_ROLES.admin]
+                }*/
             }
         )
         .when('/all_comments',
@@ -32,8 +35,28 @@ function nseAppConfig ($routeProvider,$locationProvider) {
                 controller: 'NewsController'
             }
         )
+        .when('/login',
+            {
+                templateUrl: '/resources/html/login.html',
+                controller: 'LoginController'
+            }
+        )
         .otherwise({
             redirectTo: "/index"
         });
     $locationProvider.html5Mode(true);
-};
+}
+/*
+nseApp.run(function ($rootScope, AUTH_EVENTS, AuthService) {
+    $rootScope.$on('$locationChangeStart', function (event, next) {
+        var authorizedRoles = next.data.authorizedRoles;
+        if (!AuthService.isAuthorized(authorizedRoles)) {
+            event.preventDefault();
+            if (AuthService.isAuthenticated()) {
+                $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+            } else {
+                $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+            }
+        }
+    });
+});*/

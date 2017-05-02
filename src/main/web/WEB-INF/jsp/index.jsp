@@ -18,7 +18,7 @@
       <script src="${angularRoute}"></script>
       <script src="${map}"></script>
       <script src="${angularDialog}"></script>
-      <script src="http://code.jquery.com/jquery-latest.js"></script>
+      <script src="/resources/scripts/angular/jquery-3.2.1/jquery.js"></script>
       <script src="${scriptMain}"></script>
 
 
@@ -26,10 +26,17 @@
       <script src="/resources/scripts/controllers/admin.controller.js"></script>
       <script src="/resources/scripts/controllers/news.controller.js"></script>
       <script src="/resources/scripts/controllers/comments.controller.js"></script>
+      <script src="/resources/scripts/controllers/login.controller.js"></script>
 
 
       <script src = "/resources/scripts/services/index.service.js"></script>
       <script src = "/resources/scripts/services/request.service.js"></script>
+      <script src = "/resources/scripts/services/auth.service.js"></script>
+      <script src = "/resources/scripts/services/session.service.js"></script>
+
+      <script src = "/resources/scripts/constants/auth.constant.js"></script>
+      <script src = "/resources/scripts/constants/roles.constant.js"></script>
+
 
       <link rel="stylesheet" href="${mainCss}">
       <link rel="stylesheet" href="${dialogCss}">

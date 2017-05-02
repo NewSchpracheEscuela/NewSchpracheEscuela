@@ -5,7 +5,12 @@
 
 nseApp.controller('IndexController', IndexController);
 
-function IndexController($scope, IndexService) {
+function IndexController($scope, IndexService, USER_ROLES, AuthService) {
+
+    $scope.currentUser = null;
+    $scope.userRoles = USER_ROLES;
+    $scope.isAuthorized = AuthService.isAuthorized;
+
     $scope.slides =IndexService.getImagesSlide();
     $scope.choices = IndexService.getChoices();
     $scope.numbers = IndexService.getNumberChoice();
