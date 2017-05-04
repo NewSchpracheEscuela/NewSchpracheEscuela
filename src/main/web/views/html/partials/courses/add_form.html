@@ -1,0 +1,44 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>{{base_url}}</h3>
+    </div>
+    <div class="modal__body">
+        <form name="addForm"  class = "popup__addForm" novalidate>
+            <div class="popup_keyValue">
+                <span>Название:</span>
+                <input ng-model="Item.formKeys['title']" type="text" name="Название" placeholder="Название" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Язык:</span>
+                <select name="language" ng-model="Item.formKeys['language']">
+                    <option value="english">Английский</option>
+                    <option value="german">Немецкий</option>
+                    <option value="spanish">Испанский</option>
+                    <option value="french">Французский</option>
+                    <option value="italian">Итальянский</option>
+                </select>
+            </div>
+            <div class="popup_keyValue">
+                <span>Описание:</span>
+                <input ng-model="Item.formKeys['description']" type="text" name="Описание" placeholder="Описание" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Количество часов:</span>
+                <input ng-model="Item.formKeys['numberOfHours']" type="text" name="Часы" placeholder="Кол-во часов" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Дата начала:</span>
+                <input ng-model="Item.formKeys['startDate']" type="date" name="Начало" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Цена:</span>
+                <input ng-model="Item.formKeys['price']" type="text" name="Цена" placeholder="Цена" required>
+            </div>
+        </form>
+    </div>
+    <span ng-module="errorMessage">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input type="button" ng-click="addItem()" ng-disabled="addForm. $invalid" value="ok">
+        <button ng-click="hidePopup('.popup__add')">Cancel</button>
+    </div>
+</div>

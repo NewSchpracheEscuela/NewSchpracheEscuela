@@ -1,0 +1,30 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>Отметки</h3>
+    </div>
+    <div class="modal__body">
+        <form name="editForm"  class = "popup__editForm" novalidate>
+            <div class="popup_keyValue">
+                <span>Отметка:</span>
+                <input ng-model="Item.formKeys['mark']" type="text" name="Заголовок" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Студент:</span>
+                <select name="student" ng-model="Item.formKeys['personId']" ng-init="getUsers()">
+                    <option ng-repeat="user in users" value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
+                </select>
+            </div>
+            <div class="popup_keyValue">
+                <span>Контрольная точка:</span>
+                <select name="controlpoint" ng-model="Item.formKeys['controlPointId']" ng-init="getItems('/controlpoints')">
+                    <option ng-repeat="point in items" value="{{point.id}}">({{point.id}}) {{point.date}}</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <span ng-module="errorMessage" class="error__message">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input class="modal__button" type="button" ng-click="editItem()" ng-disabled="editForm. $invalid" value="ok">
+        <button class="modal__button" ng-click="hidePopup('.popup__edit')">Cancel</button>
+    </div>
+</div>

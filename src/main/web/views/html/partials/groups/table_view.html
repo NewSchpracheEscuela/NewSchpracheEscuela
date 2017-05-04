@@ -1,0 +1,21 @@
+<div class="container__blockTable">
+    <table class="container__table">
+        <tr>
+            <th>Уровень</th>
+            <th>Количество студентов</th>
+            <th>Курсы</th>
+            <th>Староста</th>
+        </tr>
+        <tr ng-repeat="item in data">
+            <td>{{item.level}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.course_id}}</td>
+            <td>{{item.person_id}}</td>
+            <td>
+                <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>
+                <button ng-click="deleteItem(item)">-</button>
+            </td>
+        </tr>
+    </table>
+    <button class="table__add" ng-click="showPopup('.popup__add')">+</button>
+</div>

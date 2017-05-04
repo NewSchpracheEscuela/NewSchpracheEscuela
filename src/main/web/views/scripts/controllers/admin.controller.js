@@ -5,9 +5,11 @@ nseApp.controller('AdminController', AdminController);
 
 function AdminController($scope, RequestService) {
     $scope.base_url = "/users";
+    $scope.currentDate = new Date();
 
     $scope.initData = function (event,url) {
         $scope.base_url = url;
+        changeUrl();
         $(".menu__list .menu__item").parent().find('.menu__item').removeClass("menu__item--active");
         $(event.target).parent().addClass("menu__item--active");
         getAll();
@@ -27,6 +29,26 @@ function AdminController($scope, RequestService) {
         });
     };
 
+    $scope.getItems = function (url) {
+        RequestService.getAll(url, function(err,data){
+            if (err){
+                alert(err.message);
+            }else{
+                $scope.items = data;
+            }
+        });
+    } ;
+
+    $scope.getUsers = function () {
+        RequestService.getAll('/users', function(err,data){
+            if (err){
+                alert(err.message);
+            }else{
+                $scope.users = data;
+            }
+        });
+    } ;
+
     getAll();
     $scope.deleteItem = function (item) {
         $scope.key = $scope.dataKeys[0].toString();
@@ -43,19 +65,15 @@ function AdminController($scope, RequestService) {
 
     $scope.Item = {};
     $scope.addItem = function () {
-        if($scope.addForm.$valid) {
-            let data = $scope.Item["formKeys"];
-            RequestService.addItem($scope.base_url, data, function (err, data) {
-                if(err){
-                    $scope.errorMessage = err.code;
-                } else{
-                    $scope.hidePopup('.popup__add');
-                    getAll();
-                }
-            });
-        }else{
-            $scope.errorMessage = "Заполните все поля!";
-        }
+        let data = $scope.Item["formKeys"];
+        RequestService.addItem($scope.base_url, data, function (err, data) {
+            if(err){
+                $scope.errorMessage = err.code;
+            } else{
+                $scope.hidePopup('.popup__add');
+                getAll();
+            }
+        });
     };
 
     $scope.Item = {};
@@ -66,22 +84,18 @@ function AdminController($scope, RequestService) {
     };
 
     $scope.editItem = function () {
-        if($scope.editForm.$valid){
-            $scope.key = $scope.dataKeys[0].toString();
-            $scope.id = $scope.edit[$scope.key];
-            let url = $scope.base_url + "/" + $scope.id;
-            let data = $scope.Item["formKeys"];
-            RequestService.editItem(url, data, function (err, data) {
-                if(err){
-                    $scope.errorMessage = err.code;
-                } else{
-                    $scope.hidePopup('.popup__edit');
-                    getAll();
-                }
-            });
-        }else {
-            $scope.errorMessage = "Заполните все поля!";
-        }
+        $scope.key = $scope.dataKeys[0].toString();
+        $scope.id = $scope.edit[$scope.key];
+        let url = $scope.base_url + "/" + $scope.id;
+        let data = $scope.Item["formKeys"];
+        RequestService.editItem(url, data, function (err, data) {
+            if(err){
+                $scope.errorMessage = err.code;
+            } else{
+                $scope.hidePopup('.popup__edit');
+                getAll();
+            }
+        });
     };
 
     var getKeys = function(obj){
@@ -102,5 +116,13 @@ function AdminController($scope, RequestService) {
         $scope.errorMessage = "";
         $(popup).show();
     };
+
+    var changeUrl = function () {
+        $scope.edit_form = 'resources/html/partials' + $scope.base_url + '/edit_form.html';
+        $scope.add_form = 'resources/html/partials' + $scope.base_url + '/add_form.html';
+        $scope.table_view = 'resources/html/partials' + $scope.base_url + '/table_view.html';
+    };
+    changeUrl();
+
 }
 

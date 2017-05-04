@@ -1,0 +1,52 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>Пользователи</h3>
+    </div>
+    <div class="modal__body">
+        <form name="editForm"  class = "popup__editForm" novalidate>
+            <div class="popup_keyValue">
+                <span>Логин:</span>
+                <input ng-model="Item.formKeys['login']" type="text" name="Логин" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>E-mail:</span>
+                <input ng-model="Item.formKeys['email']" type="text" name="E-mail" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Имя:</span>
+                <input ng-model="Item.formKeys['firstName']" type="text" name="Имя" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Фамилия:</span>
+                <input ng-model="Item.formKeys['lastName']" type="text" name="Фамилия" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Отчество:</span>
+                <input ng-model="Item.formKeys['patronym']" type="text" name="Отчество" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Пароль:</span>
+                <input ng-model="Item.formKeys['password_hash']" type="text" name="Пароль" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Роль:</span>
+                <select name="role" ng-model="Item.formKeys['role']">
+                    <option value="ROLE_STUDENT">Студент</option>
+                    <option value="ROLE_TEACHER">Преподаватель</option>
+                    <option value="ROLE_GUEST">Гость</option>
+                    <option value="ROLE_ADMIN">Админ</option>
+                </select>
+                <!--<input ng-model="Item.formKeys['role']" type="text" name="Роль" required>-->
+            </div>
+            <div class="popup_keyValue">
+                <span>Контакты:</span>
+                <input ng-model="Item.formKeys['contactInfo']" type="text" name="Контакты" required>
+            </div>
+        </form>
+    </div>
+    <span ng-module="errorMessage" class="error__message">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input class="modal__button" type="button" ng-disabled="editForm. $invalid" ng-click="editItem()" value="ok">
+        <button class="modal__button" ng-click="hidePopup('.popup__edit')">Cancel</button>
+    </div>
+</div>

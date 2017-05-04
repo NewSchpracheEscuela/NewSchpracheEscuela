@@ -1,0 +1,18 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>{{base_url}}</h3>
+    </div>
+    <div class="modal__body">
+        <form name="addForm"  class = "popup__addForm" novalidate>
+            <div ng-repeat="key in formKeys track by key" class="popup_keyValue">
+                <span>{{key}}</span>
+                <input ng-model="Item.formKeys[key]" type="text" name="{{key}}" placeholder="{{key}}" required>
+            </div>
+        </form>
+    </div>
+    <span ng-module="errorMessage">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input type="button" ng-click="addItem()" ng-disabled="addForm. $invalid" value="ok">
+        <button ng-click="hidePopup('.popup__add')">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>Новости</h3>
+    </div>
+    <div class="modal__body">
+        <form name="editForm"  class = "popup__editForm" novalidate>
+            <div class="popup_keyValue">
+                <span>Заголовок:</span>
+                <input ng-model="Item.formKeys['title']" type="text" name="Заголовок" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Текст:</span>
+                <input ng-model="Item.formKeys['content']" type="text" name="Текст" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Автор:</span>
+                <select name="role" ng-model="Item.formKeys['author']" ng-init="getItems('/users')">
+                    <option ng-repeat="user in items" value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
+                </select>
+            </div>
+            <div class="popup_keyValue">
+                <span>Дата и время</span>
+                <input ng-model="Item.formKeys['date'] = currentDate | date:'yyyy-MM-dd HH:mm:ss'">
+            </div>
+        </form>
+    </div>
+    <span ng-module="errorMessage" class="error__message">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input class="modal__button" type="button" ng-click="editItem()" ng-disabled="addForm. $invalid" value="ok">
+        <button class="modal__button" ng-click="hidePopup('.popup__edit')">Cancel</button>
+    </div>
+</div>
