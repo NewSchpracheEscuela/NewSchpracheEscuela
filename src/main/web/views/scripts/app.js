@@ -5,18 +5,18 @@ function nseAppConfig ($routeProvider,$locationProvider) {
     $routeProvider
         .when('/index',
             {
-                templateUrl: '/resources/html/index.html',
+                templateUrl: '/resources/html/pages/index.html',
                 controller: 'IndexController'
             }
         )
         .when('/contacts',
             {
-                templateUrl: '/resources/html/contact.html'
+                templateUrl: '/resources/html/pages/contact.html'
             }
         )
         .when('/admin',
             {
-                templateUrl: '/resources/html/admin.html',
+                templateUrl: '/resources/html/pages/admin.html',
                 controller: 'AdminController',
                /* data: {
                     authorizedRoles: [USER_ROLES.admin]
@@ -25,19 +25,19 @@ function nseAppConfig ($routeProvider,$locationProvider) {
         )
         .when('/all_comments',
             {
-                templateUrl: '/resources/html/comments.html',
+                templateUrl: '/resources/html/pages/comments.html',
                 controller: 'CommentsController'
             }
         )
         .when('/all_news',
             {
-                templateUrl: '/resources/html/news.html',
+                templateUrl: '/resources/html/pages/news.html',
                 controller: 'NewsController'
             }
         )
-        .when('/login',
+        .when('/authorization',
             {
-                templateUrl: '/resources/html/login.html',
+                templateUrl: '/resources/html/pages/login.html',
                 controller: 'LoginController'
             }
         )

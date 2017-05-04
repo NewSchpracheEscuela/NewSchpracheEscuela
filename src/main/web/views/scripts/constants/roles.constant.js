@@ -4,9 +4,8 @@
 
 nseApp.constant('USER_ROLES', {
     all: '*',
-    admin: 'admin',
-    leader: 'leader',
-    guest: 'guest',
-    teacher: 'teacher',
-    student: 'student'
+    admin: 'ROLE_ADMIN',
+    guest: 'ROLE_GUEST',
+    teacher: 'ROLE_TEACHER',
+    student: 'ROLE_STUDENT'
 });

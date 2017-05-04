@@ -1,4 +1,4 @@
-<ng-include src="'resources/html/header.html'"></ng-include>
+<ng-include src="'resources/html/partials/header.html'"></ng-include>
     <div class="container__backend">
         <nav class="menu">
             <ul class="menu__list">
@@ -30,27 +30,44 @@
             </div>
         </div>
     </div>
-<div class="popup__bg" style="display: none"></div>
-<div class="popup__add" style="display: none">
-    <form name="addForm"  class = "popup__addForm" novalidate>
-        <div ng-repeat="key in formKeys track by key" class="popup_keyValue">
-            <span>{{key}}</span>
-            <input ng-model="Item.formKeys[key]" type="text" name="{{key}}" placeholder="{{key}}" required>
+<div class="popup__add modal__box">
+    <div class="modal__content">
+        <div class="modal__header">
+            <h3>{{base_url}}</h3>
         </div>
-        <input type="button" ng-click="addItem()" value="ok">
-        <button ng-click="hidePopup('addForm','.popup__add')">Cancel</button>
-    </form>
-    <span ng-module="errorMessage">{{errorMessage}}</span>
-</div>
-<div class="popup__edit" style="display: none">
-    <form name="editForm"  class = "popup__editForm" novalidate>
-        <div ng-repeat="(key,value) in edit track by key" ng-if="$index > 0" class="popup_keyValue">
-            <span>{{key}}</span>
-            <input ng-model="Item.formKeys[key]" type="text" name="{{key}}" required>
+        <div class="modal__body">
+            <form name="addForm"  class = "popup__addForm" novalidate>
+                <div ng-repeat="key in formKeys track by key" class="popup_keyValue">
+                    <span>{{key}}</span>
+                    <input ng-model="Item.formKeys[key]" type="text" name="{{key}}" placeholder="{{key}}" required>
+                </div>
+            </form>
         </div>
-        <input type="button" ng-click="editItem()" value="ok">
-        <button ng-click="hidePopup('editForm','.popup__edit')">Cancel</button>
-    </form>
-    <span ng-module="errorMessage">{{errorMessage}}</span>
+        <span ng-module="errorMessage">{{errorMessage}}</span>
+        <div class="modal__footer">
+            <input type="button" ng-click="addItem()" value="ok">
+            <button ng-click="hidePopup('.popup__add')">Cancel</button>
+        </div>
+    </div>
 </div>
-<ng-include src="'resources/html/footer.html'"></ng-include>
+<div class="popup__edit modal__box">
+    <div class="modal__content">
+        <div class="modal__header">
+            <h3>{{base_url}}</h3>
+        </div>
+        <div class="modal__body">
+            <form name="editForm"  class = "popup__editForm" novalidate>
+                <div ng-repeat="(key,value) in edit track by key" ng-if="$index > 0" class="popup_keyValue">
+                    <span>{{key}}</span>
+                    <input ng-model="Item.formKeys[key]" type="text" name="{{key}}" required>
+                </div>
+            </form>
+        </div>
+        <span ng-module="errorMessage" class="error__message">{{errorMessage}}</span>
+        <div class="modal__footer">
+            <input class="modal__button" type="button" ng-click="editItem()" value="ok">
+            <button class="modal__button" ng-click="hidePopup('.popup__edit')">Cancel</button>
+        </div>
+    </div>
+</div>
+<ng-include src="'resources/html/partials/footer.html'"></ng-include>

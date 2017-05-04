@@ -49,7 +49,7 @@ function AdminController($scope, RequestService) {
                 if(err){
                     $scope.errorMessage = err.code;
                 } else{
-                    $scope.hidePopup('addForm', '.popup__add');
+                    $scope.hidePopup('.popup__add');
                     getAll();
                 }
             });
@@ -75,7 +75,7 @@ function AdminController($scope, RequestService) {
                 if(err){
                     $scope.errorMessage = err.code;
                 } else{
-                    $scope.hidePopup('editForm','.popup__edit');
+                    $scope.hidePopup('.popup__edit');
                     getAll();
                 }
             });
@@ -92,17 +92,15 @@ function AdminController($scope, RequestService) {
         return keys;
     };
 
-    $scope.hidePopup = function (name, popup) {
+    $scope.hidePopup = function (popup) {
         $(popup).hide();
-        $(".popup__bg").hide();
         $scope.Item = {};
+        getAll();
     };
 
     $scope.showPopup = function (popup) {
         $scope.errorMessage = "";
         $(popup).show();
-        $(".popup__bg").show();
-        $("body").animate({"scrollTop":0},"slow");
     };
 }
 
