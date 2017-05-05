@@ -2,14 +2,34 @@
  * Created by Ника Тихоновец on 02.05.2017.
  */
 
-nseApp.factory('AuthService', function ($http, Session) {
+nseApp.factory('AuthService', function ($http, Session,$cookies,$location,$route,$rootScope) {
     return {
         login: function (credentials) {
             return $http
-                .post('/login', credentials)
-                .then(function (res) {
-                    Session.create(res.id, res.userid, res.role);
-                });
+                .post('/sign_in', credentials)
+                    .then(function (res) {
+                        Session.create(res.data.userId, res.data.role);
+                        // var interceptor = function() {
+                        //     return {
+                        //         'request': function(config) {
+                        //             config.headers['Authorization'] = res.data.authHeader;
+                        //         }
+                        //     }
+                        // };
+                        $http.defaults.headers.common['Authorization'] = 'Basic ' + res.data.authHeader;
+                        $cookies.put('Authorization',res.data.authHeader)
+                        $rootScope.role = res.data.role;
+                    });
+        },
+        logout: function () {
+                Session.destroy();
+                $http.defaults.headers.common['Authorization'] = null;
+                $cookies.remove('Authorization')
+                if($location.path() === '/index'){
+                    $route.reload()
+                }else{
+                    $location.path('/index');
+                }
         },
         isAuthenticated: function () {
             return !!Session.userId;

@@ -42,7 +42,7 @@ public class LessonController implements ApplicationContextAware {
             e.printStackTrace();
         }
 
-        return new ResponseEntity<ArrayList<Lesson>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ArrayList<Lesson>>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
@@ -57,7 +57,7 @@ public class LessonController implements ApplicationContextAware {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity<Lesson>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<Lesson>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
@@ -73,7 +73,7 @@ public class LessonController implements ApplicationContextAware {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -88,7 +88,7 @@ public class LessonController implements ApplicationContextAware {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
@@ -103,7 +103,7 @@ public class LessonController implements ApplicationContextAware {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

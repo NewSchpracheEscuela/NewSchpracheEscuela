@@ -25,10 +25,10 @@ public class TeacherController implements ApplicationContextAware{
             return new ResponseEntity<Iterable<Teacher>>(repository.GetAll(),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Iterable<Teacher>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<Teacher>>(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Iterable<Teacher>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<Teacher>>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -40,10 +40,10 @@ public class TeacherController implements ApplicationContextAware{
             return new ResponseEntity(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -55,10 +55,10 @@ public class TeacherController implements ApplicationContextAware{
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -70,10 +70,10 @@ public class TeacherController implements ApplicationContextAware{
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -85,10 +85,10 @@ public class TeacherController implements ApplicationContextAware{
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -30,11 +30,11 @@ public class ControlPointController implements ApplicationContextAware {
             return new ResponseEntity<Iterable<ControlPoint>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.BAD_REQUEST);
         }
         catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -46,11 +46,11 @@ public class ControlPointController implements ApplicationContextAware {
             return new ResponseEntity<ControlPoint>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<ControlPoint>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<ControlPoint>(HttpStatus.BAD_REQUEST);
         }
         catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<ControlPoint>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<ControlPoint>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -65,13 +65,13 @@ public class ControlPointController implements ApplicationContextAware {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (ParseException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -86,13 +86,13 @@ public class ControlPointController implements ApplicationContextAware {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (ParseException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -105,10 +105,10 @@ public class ControlPointController implements ApplicationContextAware {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 

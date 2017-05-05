@@ -7,15 +7,15 @@
 
     <global-method-security pre-post-annotations="enabled"/>
     <http auto-config="true" use-expressions="true" entry-point-ref="restAuthenticationEntryPoint" create-session="stateless">
+        <intercept-url method="GET" pattern="/checklogin" access="hasAnyRole('ROLE_ADMIN','ROLE_GUEST','ROLE_STUDENT','ROLE_TEACHER')"/>
 
-        <!--<intercept-url  method="GET" pattern="/news*" access="hasRole('ROLE_ADMIN')" />-->
+        <intercept-url  method="GET" pattern="/admin*" access="hasRole('ROLE_ADMIN')" />
 
         <!-- access denied page -->
-        <!--<access-denied-handler error-page="/403" />-->
+        <access-denied-handler error-page="/403" />
 
         <form-login
                 login-page="/authorization"
-                default-target-url="/index"
                 username-parameter="login"
                 password-parameter="password" />
         <!--<logout logout-success-url="/login?logout"  />-->
