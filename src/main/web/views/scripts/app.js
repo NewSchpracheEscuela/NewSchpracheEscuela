@@ -1,7 +1,7 @@
-var nseApp = angular.module('NSE', ['ngRoute', 'ngMap'])
+var nseApp = angular.module('NSE', ['ngRoute', 'ngMap','ngCookies','base64'])
     .config(nseAppConfig);
 
-function nseAppConfig ($routeProvider,$locationProvider) {
+function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
     $routeProvider
         .when('/index',
             {
@@ -18,9 +18,9 @@ function nseAppConfig ($routeProvider,$locationProvider) {
             {
                 templateUrl: '/resources/html/pages/admin.html',
                 controller: 'AdminController',
-               /* data: {
+                data: {
                     authorizedRoles: [USER_ROLES.admin]
-                }*/
+                }
             }
         )
         .when('/all_comments',
@@ -46,17 +46,38 @@ function nseAppConfig ($routeProvider,$locationProvider) {
         });
     $locationProvider.html5Mode(true);
 }
-/*
-nseApp.run(function ($rootScope, AUTH_EVENTS, AuthService) {
-    $rootScope.$on('$locationChangeStart', function (event, next) {
-        var authorizedRoles = next.data.authorizedRoles;
-        if (!AuthService.isAuthorized(authorizedRoles)) {
-            event.preventDefault();
-            if (AuthService.isAuthenticated()) {
-                $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-            } else {
-                $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-            }
+
+nseApp.run(function ($rootScope, AUTH_EVENTS, AuthService,$cookies,$http, $base64) {
+    // $rootScope.$on('$locationChangeStart', function (event, next) {
+    //     var authorizedRoles = next.data.authorizedRoles;
+    //     if (!AuthService.isAuthorized(authorizedRoles)) {
+    //         event.preventDefault();
+    //         if (AuthService.isAuthenticated()) {
+    //             $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+    //         } else {
+    //             $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+    //         }
+    //     }
+    // });
+
+
+    if($cookies.get('Authorization')){
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + $cookies.get('Authorization');
+        var req = {
+            method: 'GET',
+            url: '/checklogin',
+            headers: {
+                'Authorization': 'Basic ' + $cookies.get('Authorization')
+            },
         }
-    });
-});*/
+
+        $http(req).then(function(){
+            var credentialsString = $base64.decode($cookies.get('Authorization'));
+            var credentials = {'username':credentialsString.split(':')[0],
+                                'password':credentialsString.split(':')[1]}
+            AuthService.login(credentials);
+        }, function(){
+
+        });
+    }
+});

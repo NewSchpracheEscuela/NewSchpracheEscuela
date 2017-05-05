@@ -10,7 +10,10 @@
             <li class="header__item"><a href="/all_news">Новости</a></li>
             <li class="header__item"><a href="/all_comments">Отзывы</a></li>
             <li class="header__item"><a href="/contacts">Контакты</a></li>
-            <li class="header__item"><a href="/authorization">Вход</a></li>
+            <div ng-controller="LoginController">
+                <li class="header__item" ng-show="!isAuthenticated"><a href="/authorization">Вход</a></li>
+                <li class="header__item" ng-show="isAuthenticated"><a href="#" ng-click="logout()">Выход</a></li>
+            </div>
         </ul>
     </nav>
 </header>

@@ -44,6 +44,30 @@ public class UserRepository implements IRepository<User> {
         return null;
     }
 
+    public int CheckByLoginandPass(String login,String pass) throws SQLException {
+        if (login.equals("") || pass.equals(""))
+            throw new IllegalArgumentException();
+        String query = String.format("SELECT user_id,login FROM user WHERE login='%s' AND password='%s'",login,pass);
+        Connection connection = dataSource.getConnection();
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt("user_id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return -1;
+    }
+
     public User Get(int id) {
         if (id < 1) throw new IllegalArgumentException();
 

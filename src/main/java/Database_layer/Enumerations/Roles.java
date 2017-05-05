@@ -5,8 +5,7 @@ package Database_layer.Enumerations;
  */
 public enum Roles {
     ROLE_ADMIN,
-    guest,
+    ROLE_GUEST,
     ROLE_STUDENT,
-    leader,
     ROLE_TEACHER
 }

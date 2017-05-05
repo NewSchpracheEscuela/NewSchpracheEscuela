@@ -18,6 +18,8 @@
       <script src="${angularRoute}"></script>
       <script src="${map}"></script>
       <script src="${angularDialog}"></script>
+      <script src="/resources/scripts/angular/angular-cookies.js"></script>
+      <script src="/resources/scripts/angular/angular-base64.js"></script>
       <script src="/resources/scripts/angular/jquery-3.2.1/jquery.js"></script>
       <script src="${scriptMain}"></script>
 
