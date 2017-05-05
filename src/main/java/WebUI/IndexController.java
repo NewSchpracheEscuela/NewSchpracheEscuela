@@ -23,7 +23,7 @@ public class IndexController implements ApplicationContextAware{
 
     private UserRepository repository;
 
-    @RequestMapping(value = {"/","/index","/contacts", "/all_news", "/all_comments", "/authorization"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index","/contacts","/admin", "/all_news", "/all_comments", "/authorization"},method = RequestMethod.GET)
     public ModelAndView AngularIndex() {
         return new ModelAndView("index");
     }
@@ -45,10 +45,6 @@ public class IndexController implements ApplicationContextAware{
             e.printStackTrace();
         }
         return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-    }
-    @RequestMapping(value = {"/admin"},method = RequestMethod.GET)
-    private ModelAndView AngularAdmin() {
-        return new ModelAndView("index");
     }
 
     @RequestMapping(value = "/checklogin",method = RequestMethod.GET)
