@@ -1,0 +1,20 @@
+<ng-include src="'resources/html/partials/header.html'"></ng-include>
+<div class="container">
+    <div class="container__comments">
+        <div ng-repeat="item in all_comments" class="comment__block">
+            <img src="resources/images/user_boy1.png">
+            <div class="comment__text">
+                <h3>Название курса:  "{{item.course}}"</h3>
+                <div class="comment__info">
+                    <span>{{item.date}}</span>
+                    <span>{{item.author}}</span>
+                </div>
+                <div class="comment__content">
+                    <span>{{item.entity}}</span>
+                </div>
+            </div>
+            <div class="container__delimiterBlock"></div>
+        </div>
+    </div>
+</div>
+<ng-include src="'resources/html/partials/footer.html'"></ng-include>

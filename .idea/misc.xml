@@ -4,6 +4,9 @@
     <file type="web" url="file://$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/web.xml" />
     <type id="Spring" />
   </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

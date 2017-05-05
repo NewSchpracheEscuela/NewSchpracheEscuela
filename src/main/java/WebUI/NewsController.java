@@ -3,11 +3,14 @@ package WebUI;
 import Database_layer.Repositories.NewsRepository;
 import Database_layer.Repositories.UserRepository;
 import Entities.News;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -15,16 +18,9 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/news")
-public class NewsController {
+public class NewsController implements ApplicationContextAware {
 
-    private final NewsRepository repository;
-
-    public NewsController() {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (NewsRepository) context.getBean("newsRepository");
-    }
+    private NewsRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -41,7 +37,7 @@ public class NewsController {
             e.printStackTrace();
         }
 
-        return new ResponseEntity<ArrayList<News>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ArrayList<News>>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
@@ -56,7 +52,7 @@ public class NewsController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity<News>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<News>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -71,7 +67,7 @@ public class NewsController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
@@ -87,7 +83,7 @@ public class NewsController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
@@ -99,7 +95,10 @@ public class NewsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (NewsRepository) applicationContext.getBean("newsRepository");
+    }
 }

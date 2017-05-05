@@ -1,0 +1,25 @@
+<ng-include src="'resources/html/partials/header.html'"></ng-include>
+    <div class="container__backend">
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__item menu__item--active"><a href="" ng-click="initData($event,'/users')">Пользователи</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/news')">Новости</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/marks')">Отметки</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/lessons')">Уроки</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/groups')">Группы</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/courses')">Курсы</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/comments')">Комментарии</a></li>
+                <!--<li class="menu__item"><a href="" ng-click="initData($event,'/controlpoints')">Контрольные точки</a></li>-->
+            </ul>
+        </nav>
+        <div class="container__base">
+            <ng-include src="table_view"></ng-include>
+        </div>
+    </div>
+<div class="popup__add modal__box">
+    <ng-include src="add_form"></ng-include>
+</div>
+<div class="popup__edit modal__box">
+    <ng-include src="edit_form"></ng-include>
+</div>
+<ng-include src="'resources/html/partials/footer.html'"></ng-include>

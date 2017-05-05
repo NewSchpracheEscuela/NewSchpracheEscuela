@@ -123,9 +123,11 @@ public class CourseRepository implements IRepository<Course> {
     private boolean IsEmpty(Course item)
     {
         if (item.getDescription() == null) return true;
+        if (item.getDescription().equals("")) return true;
         if (item.getLanguage() == null) return true;
         if (item.getStartDate() == null) return true;
         if (item.getTitle() == null) return true;
+        if (item.getTitle().equals("")) return true;
         return false;
     }
 }

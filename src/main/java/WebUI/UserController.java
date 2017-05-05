@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import Entities.User;
 import Database_layer.Repositories.UserRepository;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,16 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserController implements ApplicationContextAware{
 
-    private final UserRepository repository;
-
-    public UserController() {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-        repository = (UserRepository) context.getBean("userRepository");
-
-    }
+    private UserRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -45,7 +40,7 @@ public class UserController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity<ArrayList<User>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ArrayList<User>>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
@@ -59,7 +54,7 @@ public class UserController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
@@ -75,7 +70,7 @@ public class UserController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -90,7 +85,7 @@ public class UserController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
@@ -105,7 +100,10 @@ public class UserController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (UserRepository) applicationContext.getBean("userRepository");
+    }
 }

@@ -1,0 +1,41 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>Группы</h3>
+    </div>
+    <div class="modal__body">
+        <form name="editForm"  class = "popup__editForm" novalidate>
+            <div class="popup_keyValue">
+                <span>Уровень:</span>
+                <select name="level" ng-model="Item.formKeys['level']">
+                    <option value="a1">A1</option>
+                    <option value="a2">A2</option>
+                    <option value="b1">B1</option>
+                    <option value="b2">B2</option>
+                    <option value="c1">C1</option>
+                    <option value="c2">C2</option>
+                </select>
+            </div>
+            <div class="popup_keyValue">
+                <span>Количество студентов:</span>
+                <input ng-model="Item.formKeys['amount']" type="text" name="Количество" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Курсы:</span>
+                <select name="course" ng-model="Item.formKeys['course_id']" ng-init="getItems('/courses')">
+                    <option ng-repeat="course in items" ng-value="{{course.course_id}}">{{course.title}}</option>
+                </select>
+            </div>
+            <div class="popup_keyValue">
+                <span>Староста:</span>
+                <select name="leader" ng-model="Item.formKeys['person_id']" ng-init="getUsers()">
+                    <option ng-repeat="user in users" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <span ng-module="errorMessage" class="error__message">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input class="modal__button" type="button" ng-click="editItem()" value="ok">
+        <button class="modal__button" ng-click="hidePopup('.popup__edit')">Cancel</button>
+    </div>
+</div>

@@ -6,8 +6,10 @@ import Database_layer.Repositories.ControlPointEventRepository;
 import Entities.ControlPointEvent;
 import Entities.User;
 import Database_layer.Repositories.UserRepository;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,16 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 @RequestMapping("/controlpointevents")
-public class PointEventController {
+public class PointEventController implements ApplicationContextAware{
 
-    private final ControlPointEventRepository repository;
-
-    public PointEventController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (ControlPointEventRepository) context.getBean("controlPointEventRepository");
-    }
+    private ControlPointEventRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -47,7 +42,7 @@ public class PointEventController {
             e.printStackTrace();
         }
 
-        return new ResponseEntity<ArrayList<ControlPointEvent>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ArrayList<ControlPointEvent>>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
@@ -62,7 +57,7 @@ public class PointEventController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity<ControlPointEvent>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ControlPointEvent>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
@@ -78,7 +73,7 @@ public class PointEventController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -93,7 +88,7 @@ public class PointEventController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
@@ -108,7 +103,10 @@ public class PointEventController {
         {
             e.printStackTrace();
         }
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (ControlPointEventRepository) applicationContext.getBean("controlPointEventRepository");
+    }
 }

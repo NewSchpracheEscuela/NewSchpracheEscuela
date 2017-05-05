@@ -2,7 +2,9 @@ package WebUI;
 
 import Database_layer.Repositories.GroupRepository;
 import Entities.Group;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +14,9 @@ import java.sql.SQLException;
 
 @RestController
 @RequestMapping(value = "/groups")
-public class GroupController {
+public class GroupController implements ApplicationContextAware{
 
     private GroupRepository repository;
-
-    public GroupController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (GroupRepository) context.getBean("groupRepository");
-    }
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -30,10 +25,10 @@ public class GroupController {
             return new ResponseEntity<Iterable<Group>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -45,10 +40,10 @@ public class GroupController {
             return new ResponseEntity<Group>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Group>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Group>(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Group>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Group>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -60,10 +55,10 @@ public class GroupController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -75,10 +70,10 @@ public class GroupController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -91,10 +86,14 @@ public class GroupController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (GroupRepository) applicationContext.getBean("groupRepository");
     }
 }

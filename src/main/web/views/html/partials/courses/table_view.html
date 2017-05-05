@@ -1,0 +1,25 @@
+<div class="container__blockTable">
+    <table class="container__table">
+        <tr>
+            <th>Название</th>
+            <th>Язык</th>
+            <th>Описание</th>
+            <th>Кол-во часов</th>
+            <th>Дата начала</th>
+            <th>Цена</th>
+        </tr>
+        <tr ng-repeat="item in data">
+            <td>{{item.title}}</td>
+            <td>{{item.language}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.numberOfHours}}</td>
+            <td>{{item.startDate}}</td>
+            <td>{{item.price}}</td>
+            <td>
+                <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>
+                <button ng-click="deleteItem(item)">-</button>
+            </td>
+        </tr>
+    </table>
+    <button class="table__add" ng-click="showPopup('.popup__add')">+</button>
+</div>

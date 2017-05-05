@@ -2,7 +2,9 @@ package WebUI;
 
 import Database_layer.Repositories.PersonRepository;
 import Entities.Person;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +14,9 @@ import java.sql.SQLException;
 
 @RestController
 @RequestMapping(value = "/people")
-public class PersonController {
+public class PersonController implements ApplicationContextAware {
 
     private PersonRepository repository;
-
-    public PersonController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (PersonRepository) context.getBean("personRepository");
-    }
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -30,10 +25,10 @@ public class PersonController {
             return new ResponseEntity<Iterable<Person>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Iterable<Person>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<Person>>(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Iterable<Person>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<Person>>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -45,10 +40,10 @@ public class PersonController {
             return new ResponseEntity<Person>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Person>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Person>(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Person>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Person>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -60,10 +55,10 @@ public class PersonController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -75,10 +70,10 @@ public class PersonController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -90,10 +85,14 @@ public class PersonController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (PersonRepository) applicationContext.getBean("personRepository");
     }
 }
