@@ -7,13 +7,13 @@
             <div class="popup_keyValue">
                 <span>Группа:</span>
                 <select name="group" ng-model="Item.formKeys['group']" ng-init="getItems('/groups')">
-                    <option ng-repeat="group in items" value="{{group.id}}">({{group.id}}) - {{group.level}}</option>
+                    <option ng-repeat="group in items" ng-value="{{group.id}}">({{group.id}}) - {{group.level}}</option>
                 </select>
             </div>
             <div class="popup_keyValue">
                 <span>Преподаватель:</span>
                 <select name="teacher" ng-model="Item.formKeys['teacher']" ng-init="getUsers()">
-                    <option ng-repeat="user in users" value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
+                    <option ng-repeat="user in users" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
                 </select>
             </div>
             <div class="popup_keyValue">
@@ -35,7 +35,6 @@
                     <option value="friday">Пятница</option>
                     <option value="saturday">Суббота</option>
                 </select>
-                <!--<input ng-model="Item.formKeys['role']" type="text" name="Роль" required>-->
             </div>
         </form>
     </div>

@@ -22,13 +22,13 @@
             <div class="popup_keyValue">
                 <span>Курсы:</span>
                 <select name="course" ng-model="Item.formKeys['course_id']" ng-init="getItems('/courses')">
-                    <option ng-repeat="course in items" value="{{course.course_id}}">{{course.title}}</option>
+                    <option ng-repeat="course in items" ng-value="{{course.course_id}}">{{course.title}}</option>
                 </select>
             </div>
             <div class="popup_keyValue">
                 <span>Староста:</span>
                 <select name="leader" ng-model="Item.formKeys['person_id']" ng-init="getUsers()">
-                    <option ng-repeat="user in users" value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
+                    <option ng-repeat="user in users" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
                 </select>
             </div>
         </form>

@@ -15,7 +15,7 @@
             <div class="popup_keyValue">
                 <span>Автор:</span>
                 <select name="role" ng-model="Item.formKeys['author']" ng-init="getItems('/users')">
-                    <option ng-repeat="user in items" value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
+                    <option ng-repeat="user in items" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
                 </select>
             </div>
             <div class="popup_keyValue">
