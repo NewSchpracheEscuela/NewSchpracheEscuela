@@ -38,8 +38,12 @@ function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
                 controller: 'LoginController'
             }
         )
+        .when('/404',
+            {
+                templateUrl: '/resources/html/pages/404.html'
+            })
         .otherwise({
-            redirectTo: "/index"
+            redirectTo: "/404"
         });
     $locationProvider.html5Mode(true);
 }

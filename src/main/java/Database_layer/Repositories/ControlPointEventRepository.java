@@ -116,12 +116,9 @@ public class ControlPointEventRepository implements IRepository<ControlPointEven
         if (item == null) throw new IllegalArgumentException();
         if (IsEmpty(item)) throw new IllegalArgumentException();
 
-        String query = String.format("insert into control_point_group values(%1$d, %2$d, %3$d, %4$d)",
-                item.getControlPointEvent_id(), item.getGroup(), item.getControlPoint(), item.getTeacher());
+        String query = String.format("insert into control_point_group (group_id,control_point_id,teacher_id) values(%1$d, %2$d, %3$d)",
+                item.getGroup(), item.getControlPoint(), item.getTeacher());
         try{
-            //statement=connection.createStatement();
-
-
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate();
