@@ -10,6 +10,6 @@ public interface IRepository<T>  {
     Iterable< T > GetAll() throws SQLException;
     T Get(int id) throws SQLException;
     void Add(T entity) throws SQLException;
-    void Delete(int id) throws SQLException;
-    void Update(int id,T item) throws SQLException;
+//    void Delete(int id) throws SQLException;
+//    void Update(int id,T item) throws SQLException;
 }

@@ -62,7 +62,23 @@ public class UserController implements ApplicationContextAware{
     ResponseEntity deleteUser(@PathVariable int id)
     {
         try {
-            repository.Delete(id);
+            boolean isAdmin = false;
+            User user = repository.Get(id);
+            if (user.getRole() == "ROLE_ADMIN"){
+                  isAdmin = true;
+                  Iterable<User> users = repository.GetAll();
+                  int count=0;
+                for (User tempUser :
+                        users) {
+                    if (tempUser.getRole() =="ROLE_ADMIN"){
+                        count++;
+                    }
+                }
+                if(count>1)
+                    repository.Delete(id);
+            }
+            else
+                repository.Delete(id);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
@@ -92,7 +108,23 @@ public class UserController implements ApplicationContextAware{
     public @ResponseBody
     ResponseEntity addUser(@PathVariable int id, @RequestBody User item) {
         try {
-            repository.Update(id, item);
+            boolean isAdmin = false;
+            User user = repository.Get(id);
+            if (user.getRole() == "ROLE_ADMIN" && item.getRole() != user.getRole()){
+                isAdmin = true;
+                Iterable<User> users = repository.GetAll();
+                int count=0;
+                for (User tempUser :
+                        users) {
+                    if (tempUser.getRole() =="ROLE_ADMIN"){
+                        count++;
+                    }
+                }
+                if(count>1)
+                    repository.Update(id,item);
+            }
+            else
+                repository.Update(id,item);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
