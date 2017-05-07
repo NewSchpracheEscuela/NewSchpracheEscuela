@@ -99,8 +99,8 @@ public class UserRepository implements IRepository<User> {
         if (entity == null) throw new IllegalArgumentException();
         if (IsEmpty(entity)) throw new IllegalArgumentException();
 
-        String query = String.format("insert into user values(%1$d, '%2$s', '%3$s', '%4$s', '%5$s', '%6$s', '%7$s', '%8$s', '%9$s')",
-                entity.getUser_id(), entity.getLogin(), entity.getPassword_hash(), entity.getEmail(), entity.getRole(), entity.getFirstName(), entity.getLastName(),
+        String query = String.format("insert into user values('%2$s', '%3$s', '%4$s', '%5$s', '%6$s', '%7$s', '%8$s', '%9$s')"
+                , entity.getLogin(), entity.getPassword_hash(), entity.getEmail(), entity.getRole(), entity.getFirstName(), entity.getLastName(),
                 entity.getPatronym(), entity.getContactInfo());
         try{
             Connection connection = dataSource.getConnection();
@@ -112,8 +112,8 @@ public class UserRepository implements IRepository<User> {
 
     public void Delete(int id) {
         if (id < 1) throw new IllegalArgumentException();
-
-        String query = String.format("DELETE FROM user WHERE user_id=%1$d", id);
+        String query;
+            query = String.format("DELETE FROM user WHERE user_id=%1$d", id);
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -126,10 +126,9 @@ public class UserRepository implements IRepository<User> {
         if (id < 1) throw new IllegalArgumentException();
         if (item == null) throw new IllegalArgumentException();
         if (IsEmpty(item)) throw new IllegalArgumentException();
-
         String query = String.format("UPDATE user SET login='%2$s', password='%3$s', email='%4$s', role='%5$s', first_name='%6$s', last_name='%7$s', patronym='%8$s', telephone='%9$s' WHERE user_id=%1$d",
-                id, item.getLogin(), item.getPassword_hash(), item.getEmail(), item.getRole(), item.getFirstName(), item.getLastName(),
-                item.getPatronym(), item.getContactInfo());
+                    id, item.getLogin(), item.getPassword_hash(), item.getEmail(), item.getRole(), item.getFirstName(), item.getLastName(),
+                    item.getPatronym(), item.getContactInfo());
         try{
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
