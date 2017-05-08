@@ -25,6 +25,19 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.0.pr2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.0.pr2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0.pr2" />
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="org.apache.poi:poi-ooxml:3.13" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.6.0" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi:3.13" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:3.13" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.13" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
+          <element id="library" level="project" name="com.itextpdf:itextpdf:5.5.11" />
+          <element id="library" level="project" name="Maven: com.itextpdf:itextpdf:5.5.11" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.49" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.49" />
+          <element id="library" level="project" name="org.bouncycastle:bcpkix-jdk15on:1.49" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="newschpracheescuela/web/Web" />

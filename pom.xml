@@ -71,24 +71,28 @@
             <version>4.3.7.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.poi</groupId>
+             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.13</version>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
-            <version>5.0.6</version>
+            <version>5.5.11</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
         <dependency>
-            <groupId>com.itextpdf</groupId>
-           <artifactId>itext-xtra</artifactId>
-           <version>5.1.0</version>
-       </dependency>
-       <dependency>
-           <groupId>com.itextpdf</groupId>
-           <artifactId>itext-pdfa</artifactId>
-           <version>5.4.4</version>
-       </dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.49</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk15on -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>1.49</version>
+        </dependency>
+
     </dependencies>
 </project>
