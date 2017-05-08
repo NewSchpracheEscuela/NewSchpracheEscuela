@@ -4,11 +4,9 @@
     </div>
     <div class="modal__body">
         <form name="addForm"  class = "popup__addForm" novalidate>
-            <div class="popup_keyValue">
+            <div class="popup_keyValue" ng-show="false">
                 <span>Автор:</span>
-                <select name="author" ng-model="Item.formKeys['author']" ng-init="getUsers()">
-                    <option ng-repeat="user in users" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
-                </select>
+                <input name="author" ng-model="Item.formKeys['author'] = current_userId">
             </div>
             <div class="popup_keyValue">
                 <span>Курсы:</span>
@@ -16,13 +14,13 @@
                     <option ng-repeat="course in items" ng-value="{{course.course_id}}">{{course.title}}</option>
                 </select>
             </div>
-            <div class="popup_keyValue">
+            <div class="popup_keyValue" ng-show="false">
                 <span>Дата и время</span>
                 <input ng-model="Item.formKeys['date'] = currentDate | date:'yyyy-MM-dd HH:mm:ss'">
             </div>
             <div class="popup_keyValue">
                 <span>Контент:</span>
-                <input ng-model="Item.formKeys['entity']" type="text" name="Контент" placeholder="Контент" required>
+                <textarea ng-model="Item.formKeys['entity']" type="text" name="Контент" placeholder="Контент" required></textarea>
             </div>
         </form>
     </div>

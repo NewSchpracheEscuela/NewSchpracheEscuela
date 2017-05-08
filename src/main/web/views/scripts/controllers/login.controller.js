@@ -19,7 +19,7 @@ function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService,$location)
         });
     };
 
-    $scope.isAuthenticated = AuthService.isAuthenticated();
+    $rootScope.isAuthenticated = AuthService.isAuthenticated();
 
     $scope.logout = function () {
         AuthService.logout()

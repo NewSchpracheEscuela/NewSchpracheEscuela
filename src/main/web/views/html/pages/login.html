@@ -3,13 +3,20 @@
     <div class="container__login">
         <div class="login__block">
             <form name="loginForm" ng-submit="login(credentials)" novalidate>
-                <label for="login__username">Username:</label>
-                <input type="text" id="login__username" ng-model="credentials.username">
-                <label for="login__password">Password:</label>
-                <input type="password" id="login__password" ng-model="credentials.password">
-                <button type="submit">Login</button>
+                <div class="login__keyValue">
+                    <label for="login__username">Логин:</label>
+                    <input type="text" name="login" id="login__username" ng-model="credentials.username" required>
+                    <span ng-show="loginForm.login.$touched &&loginForm.login.$invalid">Введите логин!</span>
+                </div>
+                <div class="login__keyValue">
+                    <label for="login__password">Пароль:</label>
+                    <input type="password" name="password"  id="login__password" ng-model="credentials.password" required>
+                    <span ng-show="loginForm.password.$touched && loginForm.password.$invalid">Введите пароль!</span>
+                </div>
+                <button type="submit" ng-disabled="loginForm. $invalid">Вход</button>
             </form>
         </div>
+        <a href="/registration">Регистрация</a>
     </div>
 </div>
 <ng-include src="'resources/html/partials/footer.html'"></ng-include>

@@ -23,7 +23,7 @@ public class IndexController implements ApplicationContextAware{
 
     private UserRepository repository;
 
-    @RequestMapping(value = {"/","/index","/contacts","/admin", "/all_news", "/all_comments", "/authorization"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index","/contacts","/admin", "/all_news", "/all_comments", "/authorization", "/registration"},method = RequestMethod.GET)
     public ModelAndView AngularIndex() {
         return new ModelAndView("index");
     }
@@ -38,7 +38,7 @@ public class IndexController implements ApplicationContextAware{
                 String authString = user.getLogin() + ":" + user.getPassword_hash();
                 byte[] authEncBytes = Base64.encode(authString.getBytes());
                 String authStringEnc = new String(authEncBytes);
-                String result = String.format("{\"userId\":%d,\"role\":\"%s\",\"authHeader\":\"%s\"}",user.getUser_id(),user.getRole(),authStringEnc );
+                String result = String.format("{\"userId\":%d,\"role\":\"%s\",\"userLogin\":\"%s\",\"authHeader\":\"%s\"}",user.getUser_id(),user.getRole(), user.getLogin(), authStringEnc );
                 return new ResponseEntity<String>(result, HttpStatus.OK);
             }
         } catch (SQLException e) {

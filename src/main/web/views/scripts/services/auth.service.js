@@ -9,22 +9,17 @@ nseApp.factory('AuthService', function ($http, Session,$cookies,$location,$route
                 .post('/sign_in', credentials)
                     .then(function (res) {
                         Session.create(res.data.userId, res.data.role);
-                        // var interceptor = function() {
-                        //     return {
-                        //         'request': function(config) {
-                        //             config.headers['Authorization'] = res.data.authHeader;
-                        //         }
-                        //     }
-                        // };
                         $http.defaults.headers.common['Authorization'] = 'Basic ' + res.data.authHeader;
-                        $cookies.put('Authorization',res.data.authHeader)
+                        $cookies.put('Authorization',res.data.authHeader);
                         $rootScope.role = res.data.role;
+                        $rootScope.user_login = res.data.userLogin;
+                        $rootScope.current_userId = res.data.userId;
                     });
         },
         logout: function () {
                 Session.destroy();
                 $http.defaults.headers.common['Authorization'] = null;
-                $cookies.remove('Authorization')
+                $cookies.remove('Authorization');
                 if($location.path() === '/index'){
                     $route.reload()
                 }else{

@@ -15,6 +15,7 @@ function IndexController($scope, IndexService, USER_ROLES, AuthService) {
     $scope.choices = IndexService.getChoices();
     $scope.numbers = IndexService.getNumberChoice();
 
+    $("li.header__item:contains('О нас')").addClass('header__item--active');
 
     $scope.changeTypeChoice = function (event, optionIndex) {
         $(".container__text").parent().find('.container__text').removeClass("container__text--active");

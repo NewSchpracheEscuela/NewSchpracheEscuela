@@ -38,6 +38,12 @@ function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
                 controller: 'LoginController'
             }
         )
+        .when('/registration',
+            {
+                templateUrl: '/resources/html/pages/registration.html',
+                controller: 'RegistrationController'
+            }
+        )
         .otherwise({
             redirectTo: "/index"
         });

@@ -1,0 +1,47 @@
+<ng-include src="'resources/html/partials/header.html'"></ng-include>
+<div class="container">
+    <div class="container__login">
+        <div class="login__block">
+            <form name="registrationForm" ng-submit="registration(userInfo)" novalidate>
+                <div class="login__keyValue">
+                    <label for="login__username">Логин:</label>
+                    <input type="text" name="login" id="login__username" ng-model="userInfo.login" required>
+                    <span ng-show="registrationForm.login.$touched && registrationForm.login.$error.required">Введите логин!</span>
+                </div>
+                <div class="login__keyValue">
+                    <label for="login__password">Пароль:</label>
+                    <input type="password" name="password"  id="login__password" ng-model="userInfo.password_hash" required>
+                    <span ng-show="registrationForm.password.$touched && registrationForm.password.$error.required">Введите пароль!</span>
+                </div>
+                <div class="login__keyValue">
+                    <label for="login__email">E-mail:</label>
+                    <input type="email" name="email"  id="login__email" ng-model="userInfo.email" required>
+                    <span ng-show="registrationForm.email.$touched && registrationForm.email.$error.required">Введите E-mail!</span>
+                    <span ng-show="registrationForm.email.$touched && registrationForm.email.$error.email">Неверный E-mail!</span>
+                </div>
+                <div class="login__keyValue">
+                    <label for="login__name">Имя:</label>
+                    <input type="text" name="first_name"  id="login__name" ng-model="userInfo.firstName" required>
+                    <span ng-show="registrationForm.first_name.$touched && registrationForm.first_name.$error.required">Введите имя!</span>
+                </div>
+                <div class="login__keyValue">
+                    <label for="login__lastName">Фамилия:</label>
+                    <input type="text" name="last_name"  id="login__lastName" ng-model="userInfo.lastName" required>
+                    <span ng-show="registrationForm.last_name.$touched && registrationForm.last_name.$error.required">Введите фамилию!</span>
+                </div>
+                <div class="login__keyValue">
+                    <label for="login__patronym">Отчество:</label>
+                    <input type="text" name="patronym"  id="login__patronym" ng-model="userInfo.patronym" required>
+                    <span ng-show="registrationForm.patronym.$touched && registrationForm.patronym.$error.required">Введите отчество!</span>
+                </div>
+                <div class="login__keyValue">
+                    <label for="login__contact">Контакты:</label>
+                    <input type="text" name="contact"  id="login__contact" ng-model="userInfo.contactInfo" required>
+                    <span ng-show="registrationForm.contact.$touched && registrationForm.contact.$error.required">Введите контактную информацию!</span>
+                </div>
+                <button type="submit" ng-disabled="registrationForm. $invalid">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+</div>
+<ng-include src="'resources/html/partials/footer.html'"></ng-include>

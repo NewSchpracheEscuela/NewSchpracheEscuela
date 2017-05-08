@@ -10,15 +10,15 @@
             </div>
             <div class="popup_keyValue">
                 <span>Текст:</span>
-                <input ng-model="Item.formKeys['content']" type="text" name="Текст" required>
+                <textarea ng-model="Item.formKeys['content']" type="text" name="Текст" required></textarea>
             </div>
-            <div class="popup_keyValue">
-                <span>Автор:</span>
-                <select name="role" ng-model="Item.formKeys['author']"  ng-init="getItems('/users')">
-                    <option ng-repeat="user in items" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
-                </select>
-            </div>
-            <div class="popup_keyValue">
+            <!--<div class="popup_keyValue">-->
+                <!--<span>Автор:</span>-->
+                <!--<select name="role" ng-model="Item.formKeys['author']"  ng-init="getItems('/users')">-->
+                    <!--<option ng-repeat="user in items" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <div class="popup_keyValue" ng-show="false">
                 <span>Дата и время</span>
                 <input ng-model="Item.formKeys['date']" value=" {{currentDate | date:'yyyy-MM-dd HH:mm:ss'}}" type="date" readonly>
             </div>

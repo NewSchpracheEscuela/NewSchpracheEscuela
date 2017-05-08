@@ -6,6 +6,8 @@ nseApp.controller('NewsController', NewsController);
 
 function NewsController($scope, RequestService) {
 
+    $("li.header__item:contains('Новости')").addClass('header__item--active');
+
     var getAllNews = function () {
         RequestService.getAll('/news', function(err,data){
             if (err){
@@ -30,6 +32,30 @@ function NewsController($scope, RequestService) {
         });
     };
 
+    $scope.Item = {};
+    $scope.addItem = function () {
+        let data = $scope.Item["formKeys"];
+        RequestService.addItem("/news", data, function (err, data) {
+            if(err){
+                $scope.errorMessage = err.code;
+            } else{
+                $scope.hidePopup('.popup__add');
+                getAllNews();
+            }
+        });
+    };
+
+    $scope.showPopup = function () {
+        $scope.currentDate = new Date();
+        $scope.errorMessage = "";
+        $('.popup__add').show();
+    };
+
+    $scope.hidePopup = function (popup) {
+        $(popup).hide();
+        $scope.Item = {};
+        getAllNews();
+    };
 
     getAllNews();
 }

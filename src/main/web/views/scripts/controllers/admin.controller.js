@@ -7,6 +7,8 @@ function AdminController($scope, RequestService) {
     $scope.base_url = "/users";
     $scope.currentDate = new Date();
 
+    $("li.header__item:contains('Админка')").addClass('header__item--active');
+
     $scope.initData = function (event,url) {
         $scope.base_url = url;
         changeUrl();

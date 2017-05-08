@@ -14,5 +14,9 @@
             </div>
         </div>
     </div>
+    <div class="popup__add modal__box">
+        <ng-include src="'resources/html/partials/news/add_form.html'"></ng-include>
+    </div>
+    <button class="table__add" ng-click="showPopup()" ng-show="isAuthenticated"></button>
 </div>
 <ng-include src="'resources/html/partials/footer.html'"></ng-include>
