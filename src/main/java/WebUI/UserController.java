@@ -62,15 +62,13 @@ public class UserController implements ApplicationContextAware{
     ResponseEntity deleteUser(@PathVariable int id)
     {
         try {
-            boolean isAdmin = false;
             User user = repository.Get(id);
-            if (user.getRole() == "ROLE_ADMIN"){
-                  isAdmin = true;
+            if (user.getRole().equals("ROLE_ADMIN")){
                   Iterable<User> users = repository.GetAll();
                   int count=0;
                 for (User tempUser :
                         users) {
-                    if (tempUser.getRole() =="ROLE_ADMIN"){
+                    if (tempUser.getRole().equals("ROLE_ADMIN")){
                         count++;
                     }
                 }
@@ -108,15 +106,13 @@ public class UserController implements ApplicationContextAware{
     public @ResponseBody
     ResponseEntity addUser(@PathVariable int id, @RequestBody User item) {
         try {
-            boolean isAdmin = false;
             User user = repository.Get(id);
-            if (user.getRole() == "ROLE_ADMIN" && item.getRole() != user.getRole()){
-                isAdmin = true;
+            if (user.getRole().equals("ROLE_ADMIN") && !item.getRole().equals(user.getRole())){
                 Iterable<User> users = repository.GetAll();
                 int count=0;
                 for (User tempUser :
                         users) {
-                    if (tempUser.getRole() =="ROLE_ADMIN"){
+                    if (tempUser.getRole().equals("ROLE_ADMIN")){
                         count++;
                     }
                 }
