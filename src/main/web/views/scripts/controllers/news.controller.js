@@ -14,23 +14,20 @@ function NewsController($scope, RequestService) {
                 alert(err.message);
             }else{
                 $scope.all_news = data;
-                for (let item = 0; item < $scope.all_news.length; item++){
-                    getAuthor(item);
-                }
             }
         });
     };
 
-    var getAuthor= function (item ) {
-        let user_id = $scope.all_news[item]['author'];
-        RequestService.getItemById('/users/'+user_id, function(err,data){
-            if (err){
-                alert(err.message);
-            }else{
-                $scope.all_news[item]['author'] = data['firstName']+" "+ data['lastName'];
-            }
-        });
-    };
+    // var getAuthor= function (item ) {
+    //     let user_id = $scope.all_news[item]['author'];
+    //     RequestService.getItemById('/users/'+user_id, function(err,data){
+    //         if (err){
+    //             alert(err.message);
+    //         }else{
+    //             $scope.all_news[item]['author'] = data['firstName']+" "+ data['lastName'];
+    //         }
+    //     });
+    // };
 
     $scope.Item = {};
     $scope.addItem = function () {

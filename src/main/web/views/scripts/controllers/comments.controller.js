@@ -13,35 +13,31 @@ function CommentsController($scope, RequestService) {
                 alert(err.message);
             }else{
                 $scope.all_comments = data;
-                for (let item = 0; item < $scope.all_comments.length; item++){
-                    getAuthor(item);
-                    getCourse(item);
-                }
             }
         });
     };
 
-    var getAuthor= function (item ) {
-        let user_id = $scope.all_comments[item]['author'];
-        RequestService.getItemById('/users/'+user_id, function(err,data){
-            if (err){
-                alert(err.message);
-            }else{
-                $scope.all_comments[item]['author'] = data['firstName']+" "+ data['lastName'];
-            }
-        });
-    };
-
-    var getCourse= function (item ) {
-        let course_id = $scope.all_comments[item]['course'];
-        RequestService.getItemById('/courses/'+course_id, function(err,data){
-            if (err){
-                alert(err.message);
-            }else{
-                $scope.all_comments[item]['course'] = data['title'];
-            }
-        });
-    };
+    // var getAuthor= function (item ) {
+    //     let user_id = $scope.all_comments[item]['author'];
+    //     RequestService.getItemById('/users/'+user_id, function(err,data){
+    //         if (err){
+    //             alert(err.message);
+    //         }else{
+    //             $scope.all_comments[item]['author'] = data['firstName']+" "+ data['lastName'];
+    //         }
+    //     });
+    // };
+    //
+    // var getCourse= function (item ) {
+    //     let course_id = $scope.all_comments[item]['course'];
+    //     RequestService.getItemById('/courses/'+course_id, function(err,data){
+    //         if (err){
+    //             alert(err.message);
+    //         }else{
+    //             $scope.all_comments[item]['course'] = data['title'];
+    //         }
+    //     });
+    // };
 
     $scope.getItems = function (url) {
         RequestService.getAll(url, function(err,data){

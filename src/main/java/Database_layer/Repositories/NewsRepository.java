@@ -31,7 +31,7 @@ public class NewsRepository implements IRepository<News>,ApplicationContextAware
         ArrayList<News> newsList = new ArrayList<News>();
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("select * from news");
+            PreparedStatement statement = connection.prepareStatement("SELECT `news_id`,`description`, `title`,news.user_id,`date`, `first_name`,`last_name` FROM database_nse.news LEFT JOIN database_nse.user ON (news.user_id = user.user_id) order by `date` DESC");
             ResultSet rs = statement.executeQuery();
 
             UserRepository userRepository = (UserRepository) context.getBean("userRepository");
@@ -42,6 +42,7 @@ public class NewsRepository implements IRepository<News>,ApplicationContextAware
                 news.setContent(rs.getString("description"));
                 news.setDate(formatter.parse(rs.getString("date")));
                 news.setAuthor(rs.getInt("user_id"));
+                news.setAuthor_name(rs.getString("last_name") + " " + rs.getString("first_name"));
                 newsList.add(news);
             }
             connection.close();

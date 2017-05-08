@@ -23,7 +23,7 @@ public class IndexController implements ApplicationContextAware{
 
     private UserRepository repository;
 
-    @RequestMapping(value = {"/","/index","/contacts","/admin", "/all_news", "/all_comments", "/authorization", "/registration"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index","/contacts","/admin", "/all_news", "/all_comments", "/authorization", "/registration", "/404"},method = RequestMethod.GET)
     public ModelAndView AngularIndex() {
         return new ModelAndView("index");
     }
