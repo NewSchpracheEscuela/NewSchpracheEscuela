@@ -90,14 +90,16 @@ public class UserController implements ApplicationContextAware{
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity addUser(@RequestBody User item) {
-        try {
-            repository.Add(item);
-            return new ResponseEntity(HttpStatus.OK);
-        } catch (IllegalAccessError e) {
-            e.printStackTrace();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
+        if (item.getEmail().contains("@")){
+
+            try {
+                repository.Add(item);
+                return new ResponseEntity(HttpStatus.OK);
+            } catch (IllegalAccessError e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }

@@ -18,12 +18,18 @@ function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
             {
                 templateUrl: '/resources/html/pages/admin.html',
                 controller: 'AdminController',
+                data:{
+                    authorizedRoles: [USER_ROLES.admin]
+                }
             }
         )
         .when('/all_comments',
             {
                 templateUrl: '/resources/html/pages/comments.html',
-                controller: 'CommentsController'
+                controller: 'CommentsController',
+                data:{
+                    authorizedRoles: [USER_ROLES.admin]
+                }
             }
         )
         .when('/all_news',
@@ -44,28 +50,31 @@ function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
                 controller: 'RegistrationController'
             }
         )
+        // .when('/403',
+        //     {
+        //         templateUrl: '/resources/html/pages/403.html',
+        //     }
+        // )
         .when('/404',
             {
                 templateUrl: '/resources/html/pages/404.html'
-            })
+            }
+        )
         .otherwise({
             redirectTo: "/404"
         });
     $locationProvider.html5Mode(true);
 }
 
-nseApp.run(function ($rootScope, AUTH_EVENTS, AuthService,$cookies,$http, $base64) {
-    // $rootScope.$on('$locationChangeStart', function (event, next) {
-    //     var authorizedRoles = next.data.authorizedRoles;
-    //     if (!AuthService.isAuthorized(authorizedRoles)) {
-    //         event.preventDefault();
-    //         if (AuthService.isAuthenticated()) {
-    //             $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-    //         } else {
-    //             $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-    //         }
-    //     }
-    // });
+nseApp.run(function ($rootScope, AUTH_EVENTS, AuthService,$cookies,$http, $base64,$location) {
+    $rootScope.$on('$routeChangeStart', function (event, next) {
+        if (next.data){
+            var authorizedRoles = next.data.authorizedRoles;
+            if (!AuthService.isAuthorized(authorizedRoles)) {
+                $location.path('/403')
+            }
+        }
+    });
 
 
     if($cookies.get('Authorization')){
@@ -83,8 +92,6 @@ nseApp.run(function ($rootScope, AUTH_EVENTS, AuthService,$cookies,$http, $base6
             var credentials = {'username':credentialsString.split(':')[0],
                                 'password':credentialsString.split(':')[1]}
             AuthService.login(credentials);
-        }, function(){
-
         });
     }
 });

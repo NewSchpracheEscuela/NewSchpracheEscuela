@@ -4,13 +4,14 @@
 
 nseApp.controller('LoginController', LoginController);
 
-function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService,$location) {
+function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService,$location,$base64) {
 
     $scope.credentials = {
         username: '',
         password: ''
     };
     $scope.login = function (credentials) {
+        credentials.password = $base64.encode(credentials.password + 'NSE')
         AuthService.login(credentials).then(function () {
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
             $location.path('/index');

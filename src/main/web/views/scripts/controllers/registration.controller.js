@@ -4,7 +4,7 @@
 
 nseApp.controller('RegistrationController', RegistrationController);
 
-function RegistrationController($scope, RequestService, USER_ROLES, $location) {
+function RegistrationController($scope, RequestService, USER_ROLES, $location,$base64) {
 
     $scope.userInfo = {
         login: '',
@@ -17,10 +17,11 @@ function RegistrationController($scope, RequestService, USER_ROLES, $location) {
         contactInfo: ''
     };
     function getPasswordHash(password) {
-        
+        return $base64.encode(password+'NSE');
     }
 
     $scope.registration = function (userInfo) {
+        userInfo.password_hash = getPasswordHash(userInfo.password_hash);
         RequestService.addItem('/users', userInfo, function (err, data) {
             if(err){
                 $scope.errorMessage = err.code;
