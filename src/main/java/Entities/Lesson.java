@@ -20,6 +20,9 @@ public class Lesson {
     private String room;
     private Date time;
     private Days day;
+    private String course_title;
+    private String course_language;
+    private String group_level;
 
     public int getLesson_id()
     {
@@ -30,6 +33,18 @@ public class Lesson {
     public String getRoom()
     {
         return room;
+    }
+    public String getCourse_title()
+    {
+        return course_title;
+    }
+    public String getCourse_language()
+    {
+        return course_language;
+    }
+    public String getGroup_level()
+    {
+        return group_level;
     }
 
     @JsonSerialize(using = JsonTimeSerializer.class)
@@ -51,6 +66,18 @@ public class Lesson {
     public void setRoom(String value)
     {
         room = value;
+    }
+    public void setCourse_title(String value)
+    {
+        course_title = value;
+    }
+    public void setCourse_language(String value)
+    {
+        course_language = value;
+    }
+    public void setGroup_level(String value)
+    {
+        group_level = value;
     }
 
     @JsonDeserialize(using = JsonTimeDeserializer.class)

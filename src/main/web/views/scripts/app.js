@@ -44,6 +44,18 @@ function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
                 controller: 'RegistrationController'
             }
         )
+        .when('/teacher',
+            {
+                templateUrl: '/resources/html/pages/teacher.html',
+                controller: 'TeacherController'
+            }
+        )
+        .when('/student',
+            {
+                templateUrl: '/resources/html/pages/student.html',
+                controller: 'StudentController'
+            }
+        )
         .when('/404',
             {
                 templateUrl: '/resources/html/pages/404.html'

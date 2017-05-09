@@ -30,6 +30,8 @@
       <script src="/resources/scripts/controllers/comments.controller.js"></script>
       <script src="/resources/scripts/controllers/login.controller.js"></script>
       <script src="/resources/scripts/controllers/registration.controller.js"></script>
+      <script src="/resources/scripts/controllers/teacher.controller.js"></script>
+      <script src="/resources/scripts/controllers/student.controller.js"></script>
 
 
       <script src = "/resources/scripts/services/index.service.js"></script>

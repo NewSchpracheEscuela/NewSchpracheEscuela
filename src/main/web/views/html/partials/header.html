@@ -16,8 +16,18 @@
             </div>
         </ul>
     </nav>
-    <div ng-show="isAuthenticated" ng-controller="LoginController" class="header__user">
-        <img src="resources/images/icon_user.png">
-        <span>{{user_login}}</span>
+    <div ng-show="isAuthenticated" ng-controller="LoginController" class="header__user" ng-switch on="role">
+        <a href="/teacher" ng-switch-when="ROLE_TEACHER">
+            <img src="resources/images/icon_user.png">
+            <span>{{user_login}}</span>
+        </a>
+        <a href="/student" ng-switch-when="ROLE_STUDENT">
+            <img src="resources/images/icon_user.png">
+            <span>{{user_login}}</span>
+        </a>
+        <div ng-switch-default>
+            <img src="resources/images/icon_user.png">
+            <span>{{user_login}}</span>
+        </div>
     </div>
 </header>

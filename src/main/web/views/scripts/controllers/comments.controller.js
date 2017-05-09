@@ -4,7 +4,6 @@
 
 nseApp.controller('CommentsController', CommentsController);
 
-$("li.header__item:contains('Отзывы')").addClass('header__item--active');
 
 function CommentsController($scope, RequestService) {
     var getAllComments = function () {

@@ -1,0 +1,74 @@
+<ng-include src="'resources/html/partials/header.html'"></ng-include>
+<div class="container">
+    <div class="container__information">
+        <div class="information__miniBlock">
+            <div class="information__about" ng-init="getAboutInfo()">
+                <h3>Обо мне:</h3>
+                <span class="about__title">ФИО: </span>
+                <span class="about__info">{{about_info.lastName}} {{about_info.firstName}} {{about_info.patronym}}</span><br>
+                <span class="about__title">E-mail: </span>
+                <span class="about__info">{{about_info.email}}</span><br>
+                <span class="about__title">Контактная информация: </span>
+                <span class="about__info">{{about_info.contactInfo}}</span><br>
+            </div>
+            <div class="information__groups">
+                <h3>Группы:</h3>
+                <div ng-repeat="group in groups">
+                    <a href="{{group.link}}">
+                        <span class="information__group">
+                            {{group.group}} ({{group.course_language}}-{{group.group_level}}) "{{group.course_title}}"
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="information__base">
+            <h2>Расписание</h2>
+            <div class="base__schedule" ng-init="getLessons()">
+                <div class="schedule__day">
+                    <h3>Понедельник</h3>
+                    <span>------------</span>
+                    <div ng-repeat="lesson in lessons" ng-if="lesson.day == 'monday'">
+                        <span class="day__lesson"><b>{{lesson.time}}</b> - {{lesson.group}} ({{lesson.course_language}}) {{lesson.room}}</span>
+                    </div>
+                </div>
+                <div class="schedule__day">
+                    <h3>Вторник</h3>
+                    <span>------------</span>
+                    <div ng-repeat="lesson in lessons" ng-if="lesson.day == 'tuesday'">
+                        <span class="day__lesson"><b>{{lesson.time}}</b> - {{lesson.group}} ({{lesson.course_language}}) {{lesson.room}}</span>
+                    </div>
+                </div>
+                <div class="schedule__day">
+                    <h3>Среда</h3>
+                    <span>------------</span>
+                    <div ng-repeat="lesson in lessons" ng-if="lesson.day == 'wednesday'">
+                        <span class="day__lesson"><b>{{lesson.time}}</b> - {{lesson.group}} ({{lesson.course_language}}) {{lesson.room}}</span>
+                    </div>
+                </div>
+                <div class="schedule__day">
+                    <h3>Четверг</h3>
+                    <span>------------</span>
+                    <div ng-repeat="lesson in lessons" ng-if="lesson.day == 'thursday'">
+                        <span class="day__lesson"><b>{{lesson.time}}</b> - {{lesson.group}} ({{lesson.course_language}}) {{lesson.room}}</span>
+                    </div>
+                </div>
+                <div class="schedule__day">
+                    <h3>Пятница</h3>
+                    <span>------------</span>
+                    <div ng-repeat="lesson in lessons" ng-if="lesson.day == 'friday'">
+                        <span class="day__lesson"><b>{{lesson.time}}</b> - {{lesson.group}} ({{lesson.course_language}}) {{lesson.room}}</span>
+                    </div>
+                </div>
+                <div class="schedule__day">
+                    <h3>Суббота</h3>
+                    <span>------------</span>
+                    <div ng-repeat="lesson in lessons" ng-if="lesson.day == 'saturday'">
+                        <span class="day__lesson"><b>{{lesson.time}}</b> - {{lesson.group}} ({{lesson.course_language}}) {{lesson.room}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-include src="'resources/html/partials/footer.html'"></ng-include>

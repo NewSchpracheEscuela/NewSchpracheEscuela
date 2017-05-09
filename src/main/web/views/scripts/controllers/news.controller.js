@@ -6,7 +6,6 @@ nseApp.controller('NewsController', NewsController);
 
 function NewsController($scope, RequestService) {
 
-    $("li.header__item:contains('Новости')").addClass('header__item--active');
 
     var getAllNews = function () {
         RequestService.getAll('/news', function(err,data){

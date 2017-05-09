@@ -79,6 +79,36 @@ public class LessonRepository implements IRepository<Lesson>,ApplicationContextA
         }
     }
 
+    public Iterable<Lesson> GetForTeacher(int id) {
+        if (id < 1) throw new IllegalArgumentException();
+
+        ArrayList<Lesson> lessons = new ArrayList<Lesson>();
+        String query = String.format("SELECT `teacher_group_id`,`day`,`room`,`time`,`user_id`,teacher_group.group_id, course.title, course.language, database_nse.group.level FROM database_nse.teacher_group left join database_nse.teacher on (teacher_group.teacher_id= teacher.teacher_id) left join database_nse.group on (teacher_group.group_id = database_nse.group.group_id)left join database_nse.course on (database_nse.group.course_id = database_nse.course.course_id)Where user_id =%1$d order by time", id);
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet rs = statement.executeQuery(query);
+
+            while(rs.next()) {
+                Lesson lesson = new Lesson();
+                lesson.setLesson_id(rs.getInt("teacher_group_id"));
+                lesson.setTime(formatter.parse(rs.getString("time")));
+                lesson.setDay(rs.getString("day"));
+                lesson.setGroup(rs.getInt("group_id"));
+                lesson.setRoom(rs.getString("room"));
+                lesson.setCourse_language(rs.getString("language"));
+                lesson.setCourse_title(rs.getString("title"));
+                lesson.setGroup_level(rs.getString("level"));
+                lessons.add(lesson);
+            }
+            connection.close();
+            return lessons;
+        } catch(Exception e){
+            System.out.println(e);
+            throw new IllegalAccessError();
+        }
+    }
+
     public void Delete(int id) {
         if (id < 1) throw new IllegalArgumentException();
 

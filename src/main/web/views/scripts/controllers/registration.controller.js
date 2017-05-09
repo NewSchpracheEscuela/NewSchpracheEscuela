@@ -10,7 +10,7 @@ function RegistrationController($scope, RequestService, USER_ROLES, $location) {
         login: '',
         password_hash: '',
         email: '',
-        role: "ROLE_STUDENT",
+        role: USER_ROLES.guest,
         firstName: '',
         lastName: '',
         patronym: '',

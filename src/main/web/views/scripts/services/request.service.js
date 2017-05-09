@@ -5,6 +5,7 @@
 nseApp.service('RequestService', RequestService);
 
 function RequestService($http) {
+
     this.getAll = function (url, callback) {
         $http({
             method: 'GET',
@@ -27,7 +28,7 @@ function RequestService($http) {
                 callback(null, response.data);
             }
         }, function errorCallback(response) {
-            callback(response.data);
+            callback({message: response.codeName});
         })
     };
 
