@@ -33,7 +33,7 @@ public class IndexController implements ApplicationContextAware{
     ResponseEntity<String> SignInService(@RequestBody Credentials credentials){
         try {
             int id = repository.CheckByLoginandPass(credentials.getUsername(),credentials.getPassword());
-            if (id > 1){
+            if (id > 0){
                 User user = repository.Get(id);
                 String authString = user.getLogin() + ":" + user.getPassword_hash();
                 byte[] authEncBytes = Base64.encode(authString.getBytes());

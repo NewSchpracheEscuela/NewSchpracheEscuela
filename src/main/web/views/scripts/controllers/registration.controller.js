@@ -21,8 +21,9 @@ function RegistrationController($scope, RequestService, USER_ROLES, $location,$b
     }
 
     $scope.registration = function (userInfo) {
-        userInfo.password_hash = getPasswordHash(userInfo.password_hash);
-        RequestService.addItem('/users', userInfo, function (err, data) {
+        let reginfo = userInfo;
+        reginfo.password_hash = getPasswordHash(userInfo.password_hash);
+        RequestService.addItem('/users', reginfo, function (err, data) {
             if(err){
                 $scope.errorMessage = err.code;
             } else{
