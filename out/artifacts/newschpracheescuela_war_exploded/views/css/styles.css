@@ -738,6 +738,27 @@ input, textarea, select{
     margin-bottom: 5px;
 }
 
+    /*ERROR_PAGE*/
+
+.container__error{
+    background: var(--green-dark);
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+.container__error .error__title{
+    color: var(--bg-color);
+    font-size: 10vw;
+    font-weight: bold;
+}
+
+.container__error .error__text{
+    color: var(--bg-color);
+    font-size: 3vw;
+}
+
+
     /*FOOTER*/
 footer{
     min-height: 100px;
@@ -778,6 +799,7 @@ footer{
 .footer__logo img{
     width: 100%;
 }
+
 
 @media
 only screen and (max-width: 1000px),
@@ -886,7 +908,7 @@ only screen and (max-width: 1000px),
 
 }
 
-[type="checkbox"], label {
+[type="checkbox"], .header label {
     display: none;
 }
 
@@ -895,7 +917,7 @@ only screen and (max-width: 1000px),
         display: none;
     }
 
-    label {
+    .header label {
         display: block;
         background: var(--font-color);
         width: 40px;
@@ -906,7 +928,7 @@ only screen and (max-width: 1000px),
         top: 15px;
     }
 
-    label:after{
+    .header label:after{
         content:'';
         display: block;
         width: 30px;
