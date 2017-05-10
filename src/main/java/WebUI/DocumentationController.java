@@ -64,7 +64,6 @@ public class DocumentationController {
         Course_Application_Blank factory = new Course_Application_Blank();
 
         createDocument(DocumentType.valueOf(type), factory, isProtected, response, blanks);
-
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/groups/{type}")

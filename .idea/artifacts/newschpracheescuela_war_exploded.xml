@@ -38,6 +38,7 @@
           <element id="library" level="project" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.49" />
           <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.49" />
           <element id="library" level="project" name="org.bouncycastle:bcpkix-jdk15on:1.49" />
+          <element id="library" level="project" name="net.sf.supercsv:super-csv:2.4.0" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="newschpracheescuela/web/Web" />

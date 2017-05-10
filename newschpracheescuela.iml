@@ -86,6 +86,7 @@
     <orderEntry type="library" name="com.itextpdf:itextpdf:5.5.11" level="project" />
     <orderEntry type="library" name="org.bouncycastle:bcprov-jdk15on:1.49" level="project" />
     <orderEntry type="library" name="org.bouncycastle:bcpkix-jdk15on:1.49" level="project" />
+    <orderEntry type="library" name="net.sf.supercsv:super-csv:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.7.RELEASE" level="project" />
@@ -110,6 +111,7 @@
     <orderEntry type="library" name="Maven: org.apache.xmlbeans:xmlbeans:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.11" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.supercsv:super-csv:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.49" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.49" level="project" />
   </component>
