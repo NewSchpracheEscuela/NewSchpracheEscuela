@@ -1,11 +1,13 @@
 <div class="container__blockTable">
-    <table class="container__table">
+        <table class="container__table table__group">
+        <thead>
         <tr>
             <th>Уровень</th>
             <th>Количество студентов</th>
             <th>Курсы</th>
             <th>Староста</th>
         </tr>
+        </thead>
         <tr ng-repeat="item in data">
             <td>{{item.level}}</td>
             <td>{{item.amount}}</td>

@@ -1,5 +1,6 @@
 <div class="container__blockTable">
-    <table class="container__table">
+    <table class="container__table table__course">
+        <thead>
         <tr>
             <th>Название</th>
             <th>Язык</th>
@@ -8,6 +9,7 @@
             <th>Дата начала</th>
             <th>Цена</th>
         </tr>
+        </thead>
         <tr ng-repeat="item in data">
             <td>{{item.title}}</td>
             <td>{{item.language}}</td>

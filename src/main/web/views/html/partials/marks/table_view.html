@@ -1,10 +1,12 @@
 <div class="container__blockTable">
-    <table class="container__table">
+    <table class="container__table table__mark">
+        <thead>
         <tr>
             <th>Отметка</th>
             <th>Студент(id)</th>
             <th>Контрольная точка</th>
         </tr>
+        </thead>
         <tr ng-repeat="item in data">
             <td>{{item.mark}}</td>
             <td>{{item.personId}}</td>

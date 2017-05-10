@@ -1,11 +1,13 @@
 <div class="container__blockTable">
-    <table class="container__table">
+    <table class="container__table table__comment">
+        <thead>
         <tr>
             <th>Автор</th>
             <th>Курсы</th>
             <th>Дата</th>
             <th>Контент</th>
         </tr>
+        </thead>
         <tr ng-repeat="item in data">
             <td>{{item.author}}</td>
             <td>{{item.course}}</td>

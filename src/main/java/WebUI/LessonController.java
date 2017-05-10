@@ -74,19 +74,19 @@ public class LessonController implements ApplicationContextAware {
         return new ResponseEntity<ArrayList<Lesson>>(HttpStatus.BAD_REQUEST);
     }
 
-//    @RequestMapping(method = RequestMethod.GET, value = "/student/{id}")
-//    public @ResponseBody
-//    ResponseEntity<ArrayList<Lesson>> getForStudent(@PathVariable int id){
-//        try {
-//            return new ResponseEntity<ArrayList<Lesson>>((ArrayList<Lesson>)repository.GetForStudent(id), HttpStatus.OK);
-//        } catch (IllegalAccessError e) {
-//            e.printStackTrace();
-//        }catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//        return new ResponseEntity<ArrayList<Lesson>>(HttpStatus.BAD_REQUEST);
-//    }
+    @RequestMapping(method = RequestMethod.GET, value = "/student/{id}")
+    public @ResponseBody
+    ResponseEntity<ArrayList<Lesson>> getForStudent(@PathVariable int id){
+        try {
+            return new ResponseEntity<ArrayList<Lesson>>((ArrayList<Lesson>)repository.GetForStudent(id), HttpStatus.OK);
+        } catch (IllegalAccessError e) {
+            e.printStackTrace();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<ArrayList<Lesson>>(HttpStatus.BAD_REQUEST);
+    }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public @ResponseBody

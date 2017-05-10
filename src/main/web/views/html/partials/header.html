@@ -3,6 +3,8 @@
         <img src="resources/images/logo.png" alt="NSE_logo">
     </div>
     <nav class="header__menu">
+        <input type="checkbox" id="nav" />
+        <label for="nav"></label>
         <ul class="header__list">
             <li class="header__item"><a href="/index">О нас</a></li>
             <li class="header__item" ng-controller="LoginController" ng-show="isAuthenticated && role ==='ROLE_ADMIN'"><a href="/admin">Админка</a></li>

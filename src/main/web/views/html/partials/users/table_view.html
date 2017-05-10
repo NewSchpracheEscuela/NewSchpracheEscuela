@@ -1,22 +1,22 @@
 <div class="container__blockTable">
-    <table class="container__table">
-        <tr>
-            <th>Логин</th>
-            <th>E-mail</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Отчество</th>
-            <!--<th>Пароль</th>-->
-            <th>Роль</th>
-            <th>Контактная информация</th>
-        </tr>
+    <table class="container__table table__user">
+        <thead>
+            <tr>
+                <th>Логин</th>
+                <th>E-mail</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Отчество</th>
+                <th>Роль</th>
+                <th>Контактная информация</th>
+            </tr>
+        </thead>
         <tr ng-repeat="item in data">
             <td>{{item.login}}</td>
             <td>{{item.email}}</td>
             <td>{{item.firstName}}</td>
             <td>{{item.lastName}}</td>
             <td>{{item.patronym}}</td>
-            <!--<td>{{item.password_hash}}</td>-->
             <td>{{item.role}}</td>
             <td>{{item.contactInfo}}</td>
             <td>

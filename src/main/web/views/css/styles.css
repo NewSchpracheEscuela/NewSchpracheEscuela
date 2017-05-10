@@ -138,40 +138,6 @@ input, textarea, select{
     justify-content: flex-start;
     flex-direction: column;
 }
-/*
-.container__content{
-    display: flex;
-    justify-content: space-between;
-}
-.container__banner{
-    max-width: 60vw;
-}
-
-.container__banner img{
-    width:100%;
-}
-
-.container__info{
-    max-width: 40vw;
-}
-
-.info__initial{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-top: 20px;
-    align-items: stretch;
-    text-align: center;
-    color: var(--green-dark);
-}
-
-.info__dark{
-    
-    height: 50%;
-    width: 100%;
-    background: var(--green-dark);
-    color:var(--bg-color);
-}*/
 
 .container__banner{
     width: 100%;
@@ -726,6 +692,15 @@ input, textarea, select{
     flex-direction:row;
 }
 
+.base__scheduleStudent{
+    display: flex;
+    width: 60%;
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction:row;
+}
+
 .schedule__day{
     min-width: 200px;
     min-height: 200px;
@@ -738,7 +713,9 @@ input, textarea, select{
     text-align: center;
     max-width: calc(100vw - 405px);
 }
-
+.information__baseStudent{
+    text-align: center;
+}
 .information__miniBlock{
     color: #B9CDC9;
 }
@@ -800,4 +777,190 @@ footer{
 
 .footer__logo img{
     width: 100%;
+}
+
+@media
+only screen and (max-width: 1000px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table{
+        width:95%;
+    }
+
+    .container__table td{
+        max-width: 50%;
+    }
+    .container__base, .container__blockTable, .container__table, .table__view {
+        width: 100%;
+    }
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid #ccc; }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 50%;
+        padding-right: 20px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+
+    .table__user td:nth-of-type(1):before { content: "Логин:"; }
+    .table__user td:nth-of-type(2):before { content: "E-mail:"; }
+    .table__user td:nth-of-type(3):before { content: "Имя:"; }
+    .table__user td:nth-of-type(4):before { content: "Фамилия:"; }
+    .table__user td:nth-of-type(5):before { content: "Отчество:"; }
+    .table__user td:nth-of-type(6):before { content: "Роль:"; }
+    .table__user td:nth-of-type(7):before { content: "Контакты:"; }
+
+    .table__news td:nth-of-type(1):before { content: "Заголовок:"; }
+    .table__news td:nth-of-type(2):before { content: "Текст:"; }
+    .table__news td:nth-of-type(3):before { content: "Автор:"; }
+    .table__news td:nth-of-type(4):before { content: "Дата:"; }
+
+    .table__comment td:nth-of-type(1):before { content: "Автор:"; }
+    .table__comment td:nth-of-type(2):before { content: "Курсы:"; }
+    .table__comment td:nth-of-type(3):before { content: "Дата:"; }
+    .table__comment td:nth-of-type(4):before { content: "Контент:"; }
+
+    .table__course td:nth-of-type(1):before { content: "Название:"; }
+    .table__course td:nth-of-type(2):before { content: "Язык:"; }
+    .table__course td:nth-of-type(3):before { content: "Описание:"; }
+    .table__course td:nth-of-type(4):before { content: "Часы:"; }
+    .table__course td:nth-of-type(5):before { content: "Дата начала:"; }
+    .table__course td:nth-of-type(6):before { content: "Цена"; }
+
+    .table__group td:nth-of-type(1):before { content: "Уровень:"; }
+    .table__group td:nth-of-type(2):before { content: "Студенты:"; }
+    .table__group td:nth-of-type(3):before { content: "Курсы:"; }
+    .table__group td:nth-of-type(4):before { content: "Староста:"; }
+
+    .table__lesson td:nth-of-type(1):before { content: "Группа:"; }
+    .table__lesson td:nth-of-type(2):before { content: "Преподаватель:"; }
+    .table__lesson td:nth-of-type(3):before { content: "Аудитория:"; }
+    .table__lesson td:nth-of-type(4):before { content: "Время:"; }
+    .table__lesson td:nth-of-type(5):before { content: "День:"; }
+
+    .table__mark td:nth-of-type(1):before { content: "Отметка:"; }
+    .table__mark td:nth-of-type(2):before { content: "Студент:"; }
+    .table__mark td:nth-of-type(3):before { content: "Контр. т.:"; }
+
+    .container__backend{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .menu{
+        width:100%;
+
+    }
+    .menu ul{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .menu li{
+        display: inline-block;
+        margin-left: 30px;
+    }
+
+}
+
+[type="checkbox"], label {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .header__menu .header__list {
+        display: none;
+    }
+
+    label {
+        display: block;
+        background: var(--font-color);
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        position: absolute;
+        right: 100px;
+        top: 15px;
+    }
+
+    label:after{
+        content:'';
+        display: block;
+        width: 30px;
+        height: 5px;
+        background: var(--green-light);
+        margin: 7px 5px;
+        box-shadow: 0px 10px 0px #679289, 0px 20px 0px #679289
+    }
+
+    [type="checkbox"]:checked ~ .header__list {
+        display: block;
+        z-index: 9999;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        left: 65%;
+    }
+
+    .header__menu a {
+        color: var(--font-color);
+    }
+
+    .header__menu .header__list .header__item {
+        display: block;
+        float: none;
+        width: 100%;
+        text-align: center;
+        background: #679289;
+        text-indent: 20px;
+        font-weight: bold;
+        height: auto;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .header__menu .header__list .header__item:hover {
+        background: var(--green-dark);
+    }
+
+    .header__menu > .header__list > .header__item {
+        margin-left: 0px;
+    }
+
+
+    .header__menu > .header__list .header__item .header__list {
+        display: block;
+        position: relative;
+        width: 100%;
+        z-index: 9999;
+        float: none;
+    }
+
+    .header__item:hover{
+        background-image: none;
+        background: var(--green-dark);
+    }
 }

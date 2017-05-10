@@ -1,11 +1,13 @@
 <div class="container__blockTable">
-    <table class="container__table">
-        <tr>
-            <th>Заголовок</th>
-            <th>Текст</th>
-            <th>Автор(id)</th>
-            <th>Дата</th>
-        </tr>
+    <table class="container__table table__news">
+        <thead>
+            <tr>
+                <th>Заголовок</th>
+                <th>Текст</th>
+                <th>Автор(id)</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
         <tr ng-repeat="item in data">
             <td>{{item.title}}</td>
             <td>{{item.content}}</td>

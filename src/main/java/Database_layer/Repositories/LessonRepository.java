@@ -109,6 +109,32 @@ public class LessonRepository implements IRepository<Lesson>,ApplicationContextA
         }
     }
 
+    public Iterable<Lesson> GetForStudent(int id) {
+        if (id < 1) throw new IllegalArgumentException();
+
+        ArrayList<Lesson> lessons = new ArrayList<Lesson>();
+        String query = String.format("SELECT `teacher_group_id`, `room`, `time`, `day` FROM database_nse.teacher_group LEFT JOIN database_nse.group ON (teacher_group.group_id = database_nse.group.group_id) WHERE teacher_group.group_id = (select group_id from database_nse.person_group where person_id = (select person_id from database_nse.person where user_id =%1$d)) ORDER BY time", id);
+        try{
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet rs = statement.executeQuery(query);
+
+            while(rs.next()) {
+                Lesson lesson = new Lesson();
+                lesson.setLesson_id(rs.getInt("teacher_group_id"));
+                lesson.setTime(formatter.parse(rs.getString("time")));
+                lesson.setDay(rs.getString("day"));
+                lesson.setRoom(rs.getString("room"));
+                lessons.add(lesson);
+            }
+            connection.close();
+            return lessons;
+        } catch(Exception e){
+            System.out.println(e);
+            throw new IllegalAccessError();
+        }
+    }
+
     public void Delete(int id) {
         if (id < 1) throw new IllegalArgumentException();
 
