@@ -34,7 +34,7 @@ public class Course_Application_Blank implements IFactory<BlankInfo>{
             fields.add(blank.getCourseLanguage());
             return fields;
         };
-    }
+            }
 
     public List<String> getHeaders() {
         return headers;
