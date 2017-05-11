@@ -15,7 +15,7 @@ public class Teacher_List implements IFactory<Teacher_Blank>{
     private Function<Teacher_Blank, List<String>> mapper;
     private List<String> headers;
 
-    Teacher_List(){
+    public Teacher_List(){
         headers = new ArrayList<String>();
 
         headers.add("ФИО");

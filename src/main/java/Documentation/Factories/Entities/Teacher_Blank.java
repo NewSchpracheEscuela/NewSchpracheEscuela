@@ -9,7 +9,7 @@ public class Teacher_Blank {
     private String patronym;
 
     private String phone;
-//    private String languages;
+    private String languages;
 
     public String getFirstName() {
         return firstName;
@@ -43,14 +43,14 @@ public class Teacher_Blank {
         this.phone = phone;
     }
 
-//    public String getLanguages() {
-//        return languages;
-//    }
-//
-//    public void setLanguages(ArrayList<String> languagesArray) {
-//        for (int i=0;i<languagesArray.size()-1;i++){
-//            languages+= languagesArray.get(i) + ", ";
-//        }
-//        languages+=languagesArray.get(languagesArray.size()-1);
-//    }
+    public String getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(ArrayList<String> languagesArray) {
+        for (int i = 0; i < languagesArray.size() - 1; i++) {
+            languages += languagesArray.get(i) + ", ";
+        }
+        languages += languagesArray.get(languagesArray.size() - 1);
+    }
 }

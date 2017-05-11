@@ -1,17 +1,14 @@
 package WebUI;
 
-import Database_layer.Repositories.CourseRepository;
-import Database_layer.Repositories.GroupRepository;
-import Database_layer.Repositories.PersonRepository;
-import Database_layer.Repositories.UserRepository;
+import Database_layer.Repositories.*;
 import Documentation.Builder;
 import Documentation.Enumerations.DocumentType;
 import Documentation.Factories.Entities.BlankInfo;
+import Documentation.Factories.Entities.Teacher_Blank;
 import Documentation.Factories.IFactory;
 import Documentation.Factories.Implementations.Course_Application_Blank;
-import Entities.Course;
-import Entities.User;
-import WebUI.RequestBodies.BlankBody;
+import Documentation.Factories.Implementations.Teacher_List;
+import Entities.*;
 import org.apache.xmlbeans.impl.xb.xsdschema.DocumentationDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -23,8 +20,12 @@ import org.w3c.dom.Document;
 
 
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
 
 /**
  * Created by angre on 29.04.2017.
@@ -39,15 +40,14 @@ public class DocumentationController {
         //repository = (GroupRepository) context.getBean("groupRepository");
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/blank/{type}")
+    @RequestMapping(method = RequestMethod.GET, value = "/blank/{type}")
     public @ResponseBody
-    void getBlank(@PathVariable String type, @RequestBody BlankBody blankBody, @RequestParam boolean isProtected, HttpServletResponse response){
-        PersonRepository personRepository = (PersonRepository) context.getBean("personRepository");
+    void getBlank(@PathVariable String type, @RequestParam int user_id, @RequestParam int course_id, @RequestParam boolean isProtected, HttpServletResponse response){
         UserRepository userRepository = (UserRepository) context.getBean("userRepository");
         CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
 
-        User user = userRepository.Get(blankBody.getUser_id());
-        Course course = courseRepository.Get(blankBody.getCourse_id());
+        User user = userRepository.Get(user_id);
+        Course course = courseRepository.Get(course_id);
 
         BlankInfo info = new BlankInfo();
 
@@ -62,29 +62,69 @@ public class DocumentationController {
         blanks.add(info);
 
         Course_Application_Blank factory = new Course_Application_Blank();
-
         createDocument(DocumentType.valueOf(type), factory, isProtected, response, blanks);
-
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/groups/{type}")
+    @RequestMapping(method = RequestMethod.GET, value = "/groups/{type}")
     public @ResponseBody
     void getGroups(@PathVariable String type){
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/attendance/{type}")
+    @RequestMapping(method = RequestMethod.GET, value = "/attendance/{type}")
     public @ResponseBody
     void getAttendance(@PathVariable String type){
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/marks/{type}")
+    @RequestMapping(method = RequestMethod.GET, value = "/marks/{type}")
     public @ResponseBody
-    void getControlPoints(@PathVariable String type){
+    void getControlPoints(@PathVariable String type, HttpServletResponse response){
+        GroupRepository groupRepository = (GroupRepository)context.getBean("groupRepository");
+        ControlPointRepository controlPointRepository = (ControlPointRepository)context.getBean("controlPointRepository");
+
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/teachers/{type}")
+    @RequestMapping(method = RequestMethod.GET, value = "/teachers/{type}")
     public @ResponseBody
-    void getTeachers(@PathVariable String type){
+    void getTeachers(@PathVariable String type, @RequestParam boolean isProtected, HttpServletResponse response){
+        UserRepository userRepository = (UserRepository) context.getBean("userRepository");
+        TeacherRepository teacherRepository= (TeacherRepository) context.getBean("teacherRepository");
+        LessonRepository lessonRepository = (LessonRepository) context.getBean("lessonRepository");
+        GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+        CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
+
+        try {
+            ArrayList<Teacher> teachers = (ArrayList<Teacher>) teacherRepository.GetAll();
+            List<Teacher_Blank> blanks = new ArrayList<Teacher_Blank>();
+
+            for (Teacher teacher: teachers) {
+                Teacher_Blank blank = new Teacher_Blank();
+                User user = userRepository.Get(teacher.getUser_id());
+                blank.setFirstName(user.getFirstName());
+                blank.setLastName(user.getLastName());
+                blank.setPatronym(user.getPatronym());
+                blank.setPhone(user.getContactInfo());
+
+                ArrayList<String> languages = new ArrayList<>();
+                ArrayList<Lesson> lessons = (ArrayList<Lesson>) lessonRepository.GetAll();
+                lessons.removeIf(lesson -> lesson.getTeacher() != teacher.getId());
+
+                for (Lesson lesson: lessons) {
+                    Group group = groupRepository.Get(lesson.getGroup());
+                    Course course = courseRepository.Get(group.getCourse_id());
+                    languages.add(course.getTitle());
+                }
+
+                blank.setLanguages(languages);
+                blanks.add(blank);
+            }
+
+            blanks.sort((o1, o2) -> o1.getLastName().compareTo(o2.getFirstName()));
+            Teacher_List factory = new Teacher_List();
+            createDocument(DocumentType.valueOf(type), factory, isProtected, response, blanks);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private <T> void createDocument(DocumentType type, IFactory<T> factory, boolean isProtected, HttpServletResponse response, List<T> entities)
