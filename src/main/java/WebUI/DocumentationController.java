@@ -1,12 +1,18 @@
 package WebUI;
 
+import Database_layer.Enumerations.Level;
+import Database_layer.Enumerations.Roles;
 import Database_layer.Repositories.*;
 import Documentation.Builder;
 import Documentation.Enumerations.DocumentType;
 import Documentation.Factories.Entities.BlankInfo;
+import Documentation.Factories.Entities.Group_Blank;
+import Documentation.Factories.Entities.LanguageStatistics;
 import Documentation.Factories.Entities.Teacher_Blank;
 import Documentation.Factories.IFactory;
 import Documentation.Factories.Implementations.Course_Application_Blank;
+import Documentation.Factories.Implementations.Group_List;
+import Documentation.Factories.Implementations.LanguageStatisticsFactory;
 import Documentation.Factories.Implementations.Teacher_List;
 import Entities.*;
 import org.apache.xmlbeans.impl.xb.xsdschema.DocumentationDocument;
@@ -26,6 +32,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Created by angre on 29.04.2017.
@@ -67,21 +74,90 @@ public class DocumentationController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/groups/{type}")
     public @ResponseBody
-    void getGroups(@PathVariable String type){
+    void getGroups(@PathVariable String type, @RequestParam boolean isProtected, HttpServletResponse response){
+        UserRepository userRepository = (UserRepository) context.getBean("userRepository");
+
+        try {
+            ArrayList<User> users = (ArrayList<User>) userRepository.GetAll();
+            List<Group_Blank> blanks = new ArrayList<Group_Blank>();
+
+            for (User user :
+                    users) {
+                Group_Blank blank = new Group_Blank();
+                if(Roles.valueOf(user.getRole()) == Roles.ROLE_STUDENT){
+                    blank.setFirstName(user.getFirstName());
+                    blank.setLastName(user.getLastName());
+                    blank.setPatronym(user.getPatronym());
+                    blank.setPhone(user.getContactInfo());
+                    blank.setEmail(user.getEmail());
+                    blanks.add(blank);
+                }
+            }
+            blanks.sort((o1, o2) -> o1.getLastName().compareTo(o2.getFirstName()));
+            Group_List factory = new Group_List();
+            createDocument(DocumentType.valueOf(type), factory, isProtected, response, blanks);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/attendance/{type}")
+    @RequestMapping(method = RequestMethod.GET, value = "/languages/{type}")
     public @ResponseBody
-    void getAttendance(@PathVariable String type){
-    }
+    void getLanguagesStatistics(@PathVariable String type, @RequestParam boolean isProtected, HttpServletResponse response){
+        GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+        CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
 
-    @RequestMapping(method = RequestMethod.GET, value = "/marks/{type}")
-    public @ResponseBody
-    void getControlPoints(@PathVariable String type, HttpServletResponse response){
-        GroupRepository groupRepository = (GroupRepository)context.getBean("groupRepository");
-        ControlPointRepository controlPointRepository = (ControlPointRepository)context.getBean("controlPointRepository");
+        try {
+            ArrayList<Group> groups = (ArrayList<Group>) groupRepository.GetAll();
+            ArrayList<Course> courses = (ArrayList<Course>) courseRepository.GetAll();
+            List<LanguageStatistics> blanks = new ArrayList<LanguageStatistics>();
 
+                for (Course course :
+                        courses) {
+                    ArrayList<Group> languageGroups = (ArrayList<Group>) groups.stream().filter(group -> group.getCourse_id() == course.getCourse_id())
+                                                                                        .collect(Collectors.toList());;
+                    int A1Groups = Math.toIntExact(languageGroups.stream().filter(x -> Level.valueOf(x.getLevel()) == Level.a1).count());
+                    int A2Groups = Math.toIntExact(languageGroups.stream().filter(x -> Level.valueOf(x.getLevel()) == Level.a2).count());
+                    int B1Groups = Math.toIntExact(languageGroups.stream().filter(x -> Level.valueOf(x.getLevel()) == Level.b1).count());
+                    int B2Groups = Math.toIntExact(languageGroups.stream().filter(x -> Level.valueOf(x.getLevel()) == Level.b2).count());
+                    int C1Groups = Math.toIntExact(languageGroups.stream().filter(x -> Level.valueOf(x.getLevel()) == Level.c1).count());
+                    int C2Groups = Math.toIntExact(languageGroups.stream().filter(x -> Level.valueOf(x.getLevel()) == Level.c2).count());
+                    LanguageStatistics statistics = new LanguageStatistics();
+
+                    statistics.setCourseName(course.getTitle());
+                    if (languageGroups.size()!=0){
+                        statistics.setA1Percent((double)A1Groups/languageGroups.size()*100 + "%");
+                        statistics.setA2Percent((double)A2Groups/languageGroups.size()*100 + "%");
+                        statistics.setB1Percent((double)B1Groups/languageGroups.size()*100 + "%");
+                        statistics.setB2Percent((double)B2Groups/languageGroups.size()*100 + "%");
+                        statistics.setC1Percent((double)C1Groups/languageGroups.size()*100 + "%");
+                        statistics.setC2Percent((double)C2Groups/languageGroups.size()*100 + "%");
+                    }else {
+                        statistics.setA1Percent("N/A");
+                        statistics.setA2Percent("N/A");
+                        statistics.setB1Percent("N/A");
+                        statistics.setB2Percent("N/A");
+                        statistics.setC1Percent("N/A");
+                        statistics.setC2Percent("N/A");
+                    }
+                    statistics.setGroupAmount(String.valueOf(languageGroups.size()));
+                    blanks.add(statistics);
+                }
+            blanks.sort(Comparator.comparing(LanguageStatistics::getCourseName));
+            LanguageStatisticsFactory factory = new LanguageStatisticsFactory();
+            createDocument(DocumentType.valueOf(type), factory, isProtected, response, blanks);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+//
+//    @RequestMapping(method = RequestMethod.GET, value = "/marks/{type}")
+//    public @ResponseBody
+//    void getControlPoints(@PathVariable String type, HttpServletResponse response){
+//        GroupRepository groupRepository = (GroupRepository)context.getBean("groupRepository");
+//        ControlPointRepository controlPointRepository = (ControlPointRepository)context.getBean("controlPointRepository");
+//
+//    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/teachers/{type}")
     public @ResponseBody
@@ -108,12 +184,14 @@ public class DocumentationController {
                 ArrayList<Lesson> lessons = (ArrayList<Lesson>) lessonRepository.GetAll();
                 lessons.removeIf(lesson -> lesson.getTeacher() != teacher.getId());
 
-                for (Lesson lesson: lessons) {
-                    Group group = groupRepository.Get(lesson.getGroup());
-                    Course course = courseRepository.Get(group.getCourse_id());
-                    languages.add(course.getTitle());
-                }
 
+                for (Lesson lesson: lessons) {
+                    if (lesson.getTeacher() == teacher.getId()){
+                        Group group = groupRepository.Get(lesson.getGroup());
+                        Course course = courseRepository.Get(group.getCourse_id());
+                        languages.add(course.getTitle());
+                    }
+                }
                 blank.setLanguages(languages);
                 blanks.add(blank);
             }

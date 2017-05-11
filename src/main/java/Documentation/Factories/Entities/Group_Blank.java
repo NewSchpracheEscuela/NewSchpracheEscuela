@@ -6,6 +6,7 @@ public class Group_Blank {
     private String patronym;
 
     private String phone;
+    private String email;
 
     public String getFirstName() {
         return firstName;
@@ -37,5 +38,13 @@ public class Group_Blank {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

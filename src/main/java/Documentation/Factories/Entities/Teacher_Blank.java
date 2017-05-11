@@ -1,6 +1,9 @@
 package Documentation.Factories.Entities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Teacher_Blank {
 
@@ -9,7 +12,7 @@ public class Teacher_Blank {
     private String patronym;
 
     private String phone;
-    private String languages;
+    private String languages = "";
 
     public String getFirstName() {
         return firstName;
@@ -48,6 +51,11 @@ public class Teacher_Blank {
     }
 
     public void setLanguages(ArrayList<String> languagesArray) {
+
+        Set<String> hs = new HashSet<>();
+        hs.addAll(languagesArray);
+        languagesArray.clear();
+        languagesArray.addAll(hs);
         for (int i = 0; i < languagesArray.size() - 1; i++) {
             languages += languagesArray.get(i) + ", ";
         }

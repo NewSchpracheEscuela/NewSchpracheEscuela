@@ -20,14 +20,14 @@ public class Teacher_List implements IFactory<Teacher_Blank>{
 
         headers.add("ФИО");
         headers.add("Телефон");
-//        headers.add("Преподаваемые языки");
+        headers.add("Преподаваемые языки");
 
         mapper = (blank) -> {
             List<String> fields = new ArrayList<>();
 
             fields.add(blank.getFirstName() + ' ' + blank.getLastName() + ' ' + blank.getPatronym());
             fields.add(blank.getPhone());
-//            fields.add(blank.getLanguages);
+            fields.add(blank.getLanguages());
             return fields;
         };
     }

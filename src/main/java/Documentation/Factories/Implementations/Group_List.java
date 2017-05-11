@@ -15,16 +15,18 @@ public class Group_List implements IFactory<Group_Blank>{
     private Function<Group_Blank, List<String>> mapper;
     private List<String> headers;
 
-    Group_List(){
+    public Group_List(){
         headers = new ArrayList<String>();
 
         headers.add("ФИО");
+        headers.add("Электронная почта");
         headers.add("Телефон");
 
         mapper = (blank) -> {
             List<String> fields = new ArrayList<>();
 
             fields.add(blank.getFirstName() + ' ' + blank.getLastName() + ' ' + blank.getPatronym());
+            fields.add(blank.getEmail());
             fields.add(blank.getPhone());
             return fields;
         };
