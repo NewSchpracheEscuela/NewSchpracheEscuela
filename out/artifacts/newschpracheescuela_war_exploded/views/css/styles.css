@@ -142,6 +142,8 @@ input, textarea, select{
 .container__banner{
     width: 100%;
     color: var(--bg-color);
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 
@@ -156,18 +158,23 @@ input, textarea, select{
 }
 
 .banner__title{
-    position: absolute;   
-    background: var(--green-dark);
-    opacity: 0.85; 
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-top: 15vw;
-    height: 15vw;
-    width: 30vw;
-    font-size: 1.3vw;
-    text-shadow: 1px 1px 2px black;
+    background-image: url(../images/flags.jpg) ;
+    width: 100%;
+    height: 20vw ;
+    min-height:200px;
+
+    font-size: 5vw;
+
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+.banner__title span{
+    margin: auto;
+    color: var(--bg-color);
+    text-shadow: 5px 5px 5px black;
+    min-font-size: 30px;
 }
 
 .info__price{
@@ -209,8 +216,12 @@ input, textarea, select{
     font-size: 25px;
     font-weight: bold;
     color: var(--green-dark);
-    width: 75px;
-    height: 75px;
+    width: 7vw;
+    height: 7vw;
+    max-width: 75px;
+    max-height:75px;
+    min-width: 40px;
+    min-height: 40px;
 }
 
 .container__number:focus{
@@ -244,6 +255,7 @@ input, textarea, select{
 
 .choice__text{
     line-height: 15px;
+    margin-bottom: 10px;
 }
 
 .choice__text span{
@@ -330,6 +342,11 @@ input, textarea, select{
     flex-direction: column;
 }
 
+.container__authorCenter{
+    display: flex;
+    justify-content: center;
+}
+
 .container__author img{
     border-radius: 100%;
     max-width: 150px;
@@ -338,6 +355,13 @@ input, textarea, select{
 
 .map__picture{
     height: 200px;
+}
+.container__author h2, .container__author h3,.container__author h4{
+    margin: 5px 0;
+}
+
+.container__author{
+    text-align: center;
 }
 
 /*Admin*/
@@ -358,7 +382,7 @@ input, textarea, select{
 }
 
 .container__table tr:nth-child(odd) {
-    background-color: var(--green-light);
+    background-color: #9EB9B3;
 }
 .container__table tr:nth-child(even) {
     background-color: var(--bg-color);
@@ -377,6 +401,7 @@ input, textarea, select{
     border-radius: 100%;
     background: var(--bg-color);
     background-image: url(../images/add.png);
+    cursor: pointer;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -433,7 +458,7 @@ input, textarea, select{
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
+    padding-top: 0;
     left: 0;
     top: 0;
     width: 100%;
@@ -449,12 +474,21 @@ input, textarea, select{
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    max-width: 80%;
+    max-width: 60%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
+}
+.modal__content textarea{
+    min-height: 45px;
+}
+
+.reg__error{
+    display: none;
+    color: var(--red);
+    font-size: 12px;
 }
 
 @-webkit-keyframes animatetop {
@@ -473,7 +507,11 @@ input, textarea, select{
     color: white;
 }
 
-.modal__body {padding: 2px 16px;}
+.modal__body {
+    padding: 2px 16px;
+    display: flex;
+    justify-content: center;
+}
 
 .modal__footer {
     padding: 2px 16px;
@@ -485,22 +523,30 @@ input, textarea, select{
 
 .popup_keyValue{
     display: flex;
-    justify-content: space-around;
-    flex-direction: row;
+    justify-content: center;
+    flex-direction: column;
+    margin-top:2px;
 }
 .popup_keyValue{
-    max-height: 40px;
-    padding: 3px;
+    max-width: 300px;
 }
-.popup__editForm  .ng-dirty.ng-invalid {
-    border: 1px solid #FD0000;
-}
-
-.popup__add .ng-dirty.ng-invalid{
-    border: 1px solid #7D191B;
+input .ng-dirty.ng-invalid, textarea .ng-dirty.ng-invalid, select .ng-dirty.ng-invalid{
+    border: 3px solid var(--red);
 }
 
-.modal__box .modal__button{
+.popup__add input .ng-dirty.ng-invalid{
+    border: #7D191B;
+}
+
+select, input {
+    min-height: 25px;
+}
+
+textarea{
+    height: 60px;
+}
+
+button,.modal__box .modal__button{
     background: var(--bg-color);
     border: none;
     color: var(--font-color);
@@ -514,6 +560,24 @@ input, textarea, select{
 .modal__box .modal__button:hover{
     background: #E6DDD6;
     cursor: pointer;
+}
+
+.container__blockTable button:not(.table__add){
+    background: #1D7874;
+    cursor: pointer;
+    color:var(--bg-color);
+}
+
+.container__blockTable button:not(.table__add):hover{
+    background: var(--green-dark-hover);
+    cursor: pointer;
+    color:var(--bg-color);
+}
+
+
+button:disabled, .modal__box .modal__button:disabled, .reg__button:disabled, input[type=button]:disabled{
+    background: var(--red);
+    color: var(--bg-color);
 }
 
 .error__message{
@@ -622,7 +686,10 @@ input, textarea, select{
     flex-direction: column;
 }
 
+
+
 .login__block input{
+    width: 300px;
     border: 3px solid var(--green-dark);
     height: 30px;
     border-radius: 5px;
@@ -696,7 +763,7 @@ input, textarea, select{
     display: flex;
     width: 60%;
     margin: auto;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     flex-direction:row;
 }
@@ -704,7 +771,7 @@ input, textarea, select{
 .schedule__day{
     min-width: 200px;
     min-height: 200px;
-    background: var(--green-light);
+    background: #90AFA9;
     border-radius: 4px;
     margin: 10px;
     padding: 10px;
@@ -800,10 +867,11 @@ footer{
     width: 100%;
 }
 
-
-@media
-only screen and (max-width: 1000px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+@media screen and (max-width: 1000px)
+    /*@media*/
+/*only screen and (max-width: 1000px),*/
+/*(min-device-width: 768px) and (max-device-width: 1024px)  */
+{
 
     table, thead, tbody, th, td, tr {
         display: block;
@@ -811,11 +879,17 @@ only screen and (max-width: 1000px),
 
     table{
         width:95%;
+        margin: 10px;
     }
 
-    .container__table td{
-        max-width: 50%;
+    .container__blockTable{
+        margin: 0;
+        padding: 0;
     }
+
+    /*.container__table td{*/
+        /*max-width: 50%;*/
+    /*}*/
     .container__base, .container__blockTable, .container__table, .table__view {
         width: 100%;
     }
@@ -842,6 +916,10 @@ only screen and (max-width: 1000px),
         padding-right: 20px;
         white-space: nowrap;
         font-weight: bold;
+    }
+
+    .container__table td{
+        max-width: 1000px;
     }
 
     .table__user td:nth-of-type(1):before { content: "Логин:"; }
@@ -904,6 +982,10 @@ only screen and (max-width: 1000px),
     .menu li{
         display: inline-block;
         margin-left: 30px;
+        margin-top: 10px;
+    }
+    .menu__list{
+        padding: 10px;
     }
 
 }
@@ -913,6 +995,46 @@ only screen and (max-width: 1000px),
 }
 
 @media screen and (max-width: 900px) {
+
+    .base__scheduleStudent{
+        width:100%;
+    }
+
+    .base__schedule {
+        display: flex;
+        max-width: 100%;
+        margin: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .information__base {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .login__block input{
+        max-width: 150px;
+    }
+
+    .choice__block h2, .choice__block h3{
+        font-size: 1.2em;
+    }
+
+    .choice__block h3{
+        font-size: 1em;
+    }
+
+    .choice__block{
+        width: 80%;
+    }
+
+    .container__number{
+        font-size: 14px;
+        margin-right:5px;
+    }
+
     .header__menu .header__list {
         display: none;
     }
@@ -943,8 +1065,8 @@ only screen and (max-width: 1000px),
         z-index: 9999;
         position: absolute;
         top: 70px;
-        right: 0;
-        left: 65%;
+        right: 30px;
+        left: 30px;
     }
 
     .header__menu a {
@@ -984,5 +1106,23 @@ only screen and (max-width: 1000px),
     .header__item:hover{
         background-image: none;
         background: var(--green-dark);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .container__information{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .information__miniBlock{
+        width: 100%;
+    }
+
+    .information__base {
+        width: 100%;
+        text-align: center;
     }
 }

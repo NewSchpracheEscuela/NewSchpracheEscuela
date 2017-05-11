@@ -14,6 +14,7 @@
 <html ng-app="NSE">
   <head>
       <base href="/"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="${angularMain}"></script>
       <script src="${angularRoute}"></script>
       <script src="${map}"></script>

@@ -59,6 +59,7 @@ function AdminController($scope, RequestService) {
            if(err){
                alert(err.message)
            } else{
+               $scope.hidePopup('.popup__delete');
                getAll();
            }
         });
@@ -82,6 +83,14 @@ function AdminController($scope, RequestService) {
         $scope.edit = item;
         $scope.Item.formKeys = item;
         $scope.showPopup(popup);
+    };
+
+    $scope.deleteItemPopup = function (popup,item) {
+        $scope.itemForDelete = item;
+        $scope.showPopup(popup);
+    };
+    $scope.delete = function () {
+        $scope.deleteItem($scope.itemForDelete);
     };
 
     $scope.editItem = function () {

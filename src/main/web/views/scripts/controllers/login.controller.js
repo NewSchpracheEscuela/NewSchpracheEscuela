@@ -17,6 +17,7 @@ function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService,$location,
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
             $location.path('/index');
         }, function () {
+            $('.reg__error').show();
             $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         });
     };

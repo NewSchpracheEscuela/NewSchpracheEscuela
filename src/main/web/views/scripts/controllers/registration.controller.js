@@ -25,6 +25,7 @@ function RegistrationController($scope, RequestService, USER_ROLES, $location,$b
         reginfo.password_hash = getPasswordHash(userInfo.password_hash);
         RequestService.addItem('/users', reginfo, function (err, data) {
             if(err){
+                $('.reg__error').show();
                 $scope.errorMessage = err.code;
             } else{
                 $location.path('/authorization');

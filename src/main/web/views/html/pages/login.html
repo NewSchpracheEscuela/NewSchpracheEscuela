@@ -2,6 +2,7 @@
 <div class="container">
     <div class="container__login">
         <div class="login__block">
+            <span class="reg__error">Проверьте введенные данные!</span>
             <form name="loginForm" ng-submit="login(credentials)" novalidate>
                 <div class="login__keyValue">
                     <label for="login__username">Логин:</label>
@@ -13,7 +14,7 @@
                     <input type="password" name="password"  id="login__password" ng-model="credentials.password" required>
                     <span ng-show="loginForm.password.$touched && loginForm.password.$invalid">Введите пароль!</span>
                 </div>
-                <button type="submit" ng-disabled="loginForm. $invalid">Вход</button>
+                <button class="reg__button" type="submit" ng-disabled="loginForm. $invalid">Вход</button>
             </form>
         </div>
         <a href="/registration">Регистрация</a>

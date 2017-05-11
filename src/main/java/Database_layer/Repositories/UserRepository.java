@@ -95,7 +95,7 @@ public class UserRepository implements IRepository<User> {
         }
     }
 
-    public void Add(User entity) {
+    public void Add(User entity) throws Exception {
         if (entity == null) throw new IllegalArgumentException();
         if (IsEmpty(entity)) throw new IllegalArgumentException();
 
@@ -107,7 +107,7 @@ public class UserRepository implements IRepository<User> {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate();
             connection.close();
-        } catch(Exception e){System.out.println(e);}
+        } catch(Exception e){ throw e;}
     }
 
     public void Delete(int id) {

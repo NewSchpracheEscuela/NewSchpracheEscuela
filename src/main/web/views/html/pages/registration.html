@@ -2,6 +2,7 @@
 <div class="container">
     <div class="container__login">
         <div class="login__block">
+            <span class="reg__error">Пользователь с таким логином уже существует!</span>
             <form name="registrationForm" ng-submit="registration(userInfo)" novalidate>
                 <div class="login__keyValue">
                     <label for="login__username">Логин:</label>
@@ -39,7 +40,7 @@
                     <input type="text" name="contact"  id="login__contact" ng-model="userInfo.contactInfo" required>
                     <span ng-show="registrationForm.contact.$touched && registrationForm.contact.$error.required">Введите контактную информацию!</span>
                 </div>
-                <button type="submit" ng-disabled="registrationForm. $invalid">Зарегистрироваться</button>
+                <button class="reg__button" type="submit" ng-disabled="registrationForm. $invalid">Зарегистрироваться</button>
             </form>
         </div>
     </div>

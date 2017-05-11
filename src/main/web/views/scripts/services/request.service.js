@@ -67,7 +67,8 @@ function RequestService($http) {
             data: data
         }).then(function successCallback(response) {
             if (response.status == 200){
-                callback(null, response.status)
+
+                callback(null, response.status);
             }
         }, function errorCallback(response) {
             callback({code: "Произошла ошибка добавления. Проверьте введенные данные! И попробуйте снова."});

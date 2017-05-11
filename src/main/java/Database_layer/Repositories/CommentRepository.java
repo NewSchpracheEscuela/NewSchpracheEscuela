@@ -29,7 +29,7 @@ public class CommentRepository implements IRepository<Comment>,ApplicationContex
         ArrayList<Comment> comments = new ArrayList<Comment>();
         try{
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT `entity`, comment.course_id,`title`,comment.user_id,`date`, `first_name`,`last_name` FROM database_nse.comment LEFT JOIN database_nse.user ON (comment.user_id = user.user_id) Left join database_nse.course ON (comment.course_id=course.course_id) order by `date` DESC");
+            PreparedStatement statement = connection.prepareStatement("SELECT `comment_id`,`entity`, comment.course_id,`title`,comment.user_id,`date`, `first_name`,`last_name` FROM database_nse.comment LEFT JOIN database_nse.user ON (comment.user_id = user.user_id) Left join database_nse.course ON (comment.course_id=course.course_id) order by `date` DESC");
 
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
@@ -37,6 +37,7 @@ public class CommentRepository implements IRepository<Comment>,ApplicationContex
                 UserRepository userRepository = (UserRepository) context.getBean("userRepository");
                 CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
                 comment.setDate(formatter.parse(rs.getString("date")));
+                comment.setComment_id(rs.getInt("comment_id"));
                 comment.setEntity(rs.getString("entity"));
                 comment.setAuthor(rs.getInt("user_id"));
                 comment.setCourse(rs.getInt("course_id"));

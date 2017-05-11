@@ -27,9 +27,6 @@ function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
             {
                 templateUrl: '/resources/html/pages/comments.html',
                 controller: 'CommentsController',
-                data:{
-                    authorizedRoles: [USER_ROLES.admin]
-                }
             }
         )
         .when('/all_news',
@@ -53,13 +50,19 @@ function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
         .when('/teacher',
             {
                 templateUrl: '/resources/html/pages/teacher.html',
-                controller: 'TeacherController'
+                controller: 'TeacherController',
+                data:{
+                    authorizedRoles: [USER_ROLES.teacher]
+                }
             }
         )
         .when('/student',
             {
                 templateUrl: '/resources/html/pages/student.html',
-                controller: 'StudentController'
+                controller: 'StudentController',
+                data:{
+                    authorizedRoles: [USER_ROLES.student]
+                }
             }
         )
         .when('/403',
