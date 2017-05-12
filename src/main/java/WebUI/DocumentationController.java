@@ -4,6 +4,7 @@ import Database_layer.Enumerations.Level;
 import Database_layer.Enumerations.Roles;
 import Database_layer.Repositories.*;
 import Documentation.Builder;
+import Documentation.BuilderForBlanks;
 import Documentation.Enumerations.DocumentType;
 import Documentation.Factories.Entities.BlankInfo;
 import Documentation.Factories.Entities.Group_Blank;
@@ -69,7 +70,32 @@ public class DocumentationController {
         blanks.add(info);
 
         Course_Application_Blank factory = new Course_Application_Blank();
-        createDocument(DocumentType.valueOf(type), factory, isProtected, response, blanks);
+        createBlanks(DocumentType.valueOf(type + 'b'), factory, isProtected, response, blanks);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/diploma/{type}")
+    public @ResponseBody
+    void getDiploma(@PathVariable String type, @RequestParam int user_id, @RequestParam int course_id, @RequestParam boolean isProtected, HttpServletResponse response){
+        UserRepository userRepository = (UserRepository) context.getBean("userRepository");
+        CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
+
+        User user = userRepository.Get(user_id);
+        Course course = courseRepository.Get(course_id);
+
+        BlankInfo info = new BlankInfo();
+
+        info.setCourseLanguage(course.getLanguage());
+        info.setCourseTitle(course.getTitle());
+        info.setFirstName(user.getFirstName());
+        info.setLastName(user.getLastName());
+        info.setPatronym(user.getPatronym());
+        info.setTelephone(user.getContactInfo());
+
+        List<BlankInfo> blanks= new ArrayList<>();
+        blanks.add(info);
+
+        Course_Application_Blank factory = new Course_Application_Blank();
+        createBlanks(DocumentType.valueOf(type + 'd'), factory, isProtected, response, blanks);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/groups/{type}")
@@ -208,6 +234,17 @@ public class DocumentationController {
     private <T> void createDocument(DocumentType type, IFactory<T> factory, boolean isProtected, HttpServletResponse response, List<T> entities)
     {
         Builder documentBuilder = new Builder<T>().setModelViewer(factory).setDocumentType(type).setProtectedFromCopy(isProtected);
+
+        try {
+            documentBuilder.writeToResponse(entities, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createBlanks(DocumentType type, IFactory<BlankInfo> factory, boolean isProtected, HttpServletResponse response, List<BlankInfo> entities)
+    {
+        BuilderForBlanks documentBuilder = new BuilderForBlanks().setModelViewer(factory).setDocumentType(type).setProtectedFromCopy(isProtected);
 
         try {
             documentBuilder.writeToResponse(entities, response);

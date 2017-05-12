@@ -6,5 +6,11 @@ package Documentation.Enumerations;
 public enum DocumentType {
     csv,
     xls,
-    pdf
+    pdf,
+    pdfb,
+    pdfd,
+    csvd,
+    csvb,
+    xlsb,
+    xlsd
 }

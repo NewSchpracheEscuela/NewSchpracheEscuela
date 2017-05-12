@@ -5,50 +5,49 @@ import Documentation.Factories.Entities.BlankInfo;
 import Documentation.Factories.IFactory;
 import Documentation.Generators.*;
 
-import javax.print.Doc;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.DocumentBuilder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static javax.swing.UIManager.put;
-
 /**
- * Created by angre on 29.04.2017.
+ * Created by angre on 12.05.2017.
  */
-public class Builder<T> {
-    private IGenerator<T> documentGenerator;
+public class BuilderForBlanks {
+    private IGenerator<BlankInfo> documentGenerator;
 
-    private IFactory<T> modelViewer;
+    private IFactory<BlankInfo> modelViewer;
 
-    private final Map<DocumentType, IGenerator<T>> defaultGenerators = new HashMap<DocumentType, IGenerator<T>>() {{
-        put(DocumentType.csv, new CSVGenerator<T>());
-        put(DocumentType.pdf, new PDFGenerator<T>());
-        put(DocumentType.xls, new XLSGenerator<T>());
+    private final Map<DocumentType, IGenerator<BlankInfo>> defaultGenerators = new HashMap<DocumentType, IGenerator<BlankInfo>>() {{
+        put(DocumentType.csvb, new CSVGeneratorBlank());
+        put(DocumentType.pdfb, new PDFGeneratorBlank());
+        put(DocumentType.xlsb, new XLSGeneratorBlank());
+        put(DocumentType.csvd, new CSVGeneratorDiploma());
+        put(DocumentType.pdfd, new PDFGeneratorDiploma());
+        put(DocumentType.xlsd, new XLSGeneratorDiploma());
     }};
 
     private boolean isProtectedFromCopy = false;
 
-    public Builder<T> setProtectedFromCopy(boolean value) {
+    public BuilderForBlanks setProtectedFromCopy(boolean value) {
         this.isProtectedFromCopy = value;
         return this;
 
     }
 
-    public Builder<T> setDocumentType(DocumentType documentType) {
+    public BuilderForBlanks setDocumentType(DocumentType documentType) {
         setDocumentGenerator(defaultGenerators.get(documentType));
         return this;
     }
 
-    public Builder<T> setDocumentGenerator(IGenerator<T> documentGenerator) {
+    public BuilderForBlanks setDocumentGenerator(IGenerator<BlankInfo> documentGenerator) {
         if (documentGenerator == null) throw new IllegalAccessError("generator is null");
         this.documentGenerator = documentGenerator;
 
         return this;
     }
 
-    public Builder setModelViewer(IFactory<T> modelViewer) {
+    public BuilderForBlanks setModelViewer(IFactory<BlankInfo> modelViewer) {
         if (modelViewer == null) throw new IllegalAccessError("viewer is null");
         this.modelViewer = modelViewer;
 
@@ -56,13 +55,12 @@ public class Builder<T> {
 
     }
 
-    public void writeToResponse(List<T> entityList, HttpServletResponse response) {
+    public void writeToResponse(List<BlankInfo> entityList, HttpServletResponse response) {
         if (documentGenerator == null) throw new IllegalAccessError("generator is null");
         if (modelViewer == null) throw new IllegalAccessError("viewer is null");
 
         documentGenerator.setIsProtected(isProtectedFromCopy);
         documentGenerator.setModelViewer(modelViewer);
         documentGenerator.writeToResponse(entityList, response);
-
     }
 }
