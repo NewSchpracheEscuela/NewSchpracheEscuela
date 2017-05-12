@@ -159,12 +159,12 @@ public class DocumentationController {
                         statistics.setC1Percent((double)C1Groups/languageGroups.size()*100 + "%");
                         statistics.setC2Percent((double)C2Groups/languageGroups.size()*100 + "%");
                     }else {
-                        statistics.setA1Percent("N/A");
-                        statistics.setA2Percent("N/A");
-                        statistics.setB1Percent("N/A");
-                        statistics.setB2Percent("N/A");
-                        statistics.setC1Percent("N/A");
-                        statistics.setC2Percent("N/A");
+                        statistics.setA1Percent("-");
+                        statistics.setA2Percent("-");
+                        statistics.setB1Percent("-");
+                        statistics.setB2Percent("-");
+                        statistics.setC1Percent("-");
+                        statistics.setC2Percent("-");
                     }
                     statistics.setGroupAmount(String.valueOf(languageGroups.size()));
                     blanks.add(statistics);

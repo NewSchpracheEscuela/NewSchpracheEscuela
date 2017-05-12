@@ -60,9 +60,11 @@ public class PDFGenerator<T> implements IGenerator<T>{
         try {
             String fontFile = "./arial.ttf";
             String templateUrl = "./template.pdf";
+            String boldFontFile = "./arial_bold.ttf";
 
             BaseFont bf = BaseFont.createFont(fontFile, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            Font font = new Font(bf);
+            Font bold = FontFactory.getFont(boldFontFile, BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 9f);
+            Font font = new Font(bf, 7f);
             OutputStream outputStream = response.getOutputStream();
             PdfReader letterhead = new PdfReader(templateUrl);
             Rectangle pageSize = letterhead.getPageSizeWithRotation(1);
@@ -75,7 +77,7 @@ public class PDFGenerator<T> implements IGenerator<T>{
             document.open();
             addHeader(letterhead, writer);
             addMetadata(document);
-            addContent(list, document, font);
+            addContent(list, document, font, bold);
             document.close();
             outputStream.flush();
         } catch (Exception e) {
@@ -87,22 +89,24 @@ public class PDFGenerator<T> implements IGenerator<T>{
         if(isProtected) writer.setEncryption(null, null, ~(PdfWriter.ALLOW_COPY), PdfWriter.STANDARD_ENCRYPTION_128);
     }
 
-    private void addContent(List<T> model, Document document, Font font) throws DocumentException {
+    private void addContent(List<T> model, Document document, Font font, Font bold) throws DocumentException {
 
         Paragraph paragraph =  new Paragraph(" ");
 
         document.add(paragraph);
-        PdfPTable pdfTable = createTable(model, font);
+        PdfPTable pdfTable = createTable(model, font, bold);
         document.add(pdfTable);
     }
 
-    private PdfPTable createTable(List<T> model, Font font) {
+    private PdfPTable createTable(List<T> model, Font font, Font bold) {
         PdfPTable pdfTable = new PdfPTable(modelViewer.getHeaders().size());
 
         for (String header : modelViewer.getHeaders()) {
             PdfPCell headerCell = new PdfPCell(new Phrase(header));
-            headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            pdfTable.addCell(new Paragraph(header, font));
+            headerCell.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            Paragraph paragraph = new Paragraph(header, bold);
+            //paragraph.setAlignment(Element.ALIGN_CENTER);
+            pdfTable.addCell(paragraph);
         }
 
         pdfTable.setHeaderRows(1);

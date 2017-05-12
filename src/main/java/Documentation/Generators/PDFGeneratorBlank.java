@@ -103,6 +103,7 @@ public class PDFGeneratorBlank implements IGenerator<BlankInfo>{
         Paragraph description1  = new Paragraph("о зачислении на курс:", generalFont);
         Paragraph fioParagraph = new Paragraph();
         Paragraph request = new Paragraph("Прошу зачислить меня на курс по данному предмету с " + getCurrentDate() + " на основе договора на предоставление образовательных услуг", generalFont);
+        Paragraph signy = new Paragraph("Подпись: _____________   " + getCurrentDate(), generalFont);
         fioParagraph.add(annotation);
         fioParagraph.add(fio);
         Paragraph course = new Paragraph(item.getCourseTitle() + "(" + item.getCourseLanguage() + ")", generalFont);
@@ -111,7 +112,7 @@ public class PDFGeneratorBlank implements IGenerator<BlankInfo>{
         fioParagraph.setAlignment(Element.ALIGN_CENTER);
         course.setAlignment(Element.ALIGN_CENTER);
         request.setAlignment(Element.ALIGN_CENTER);
-
+        signy.setAlignment(Element.ALIGN_CENTER);
         document.add(paragraph);
         document.add(paragraph);
         document.add(header);
@@ -122,6 +123,12 @@ public class PDFGeneratorBlank implements IGenerator<BlankInfo>{
         document.add(request);
         document.add(paragraph);
         document.add(fioParagraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(signy);
     }
 
     private void addMetadata(Document document) {

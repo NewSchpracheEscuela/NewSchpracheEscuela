@@ -98,6 +98,7 @@ public class PDFGeneratorDiploma implements IGenerator<BlankInfo>{
         Paragraph description2  = new Paragraph("НАГРАЖДАЕТСЯ", bold);
         Paragraph fio = new Paragraph(item.getFirstName() + " " + item.getLastName() + " " + item.getPatronym(), middle);
         Paragraph description3 = new Paragraph("закончивший/ая курс", generalFont);
+        Paragraph signy = new Paragraph("Подпись: _____________   " + getCurrentDate(), generalFont);
         Paragraph course = new Paragraph(item.getCourseTitle(), generalFont);
         Paragraph date = new Paragraph(getCurrentDate(), generalFont);
         header.setAlignment(Element.ALIGN_CENTER);
@@ -107,6 +108,7 @@ public class PDFGeneratorDiploma implements IGenerator<BlankInfo>{
         fio.setAlignment(Element.ALIGN_CENTER);
         course.setAlignment(Element.ALIGN_CENTER);
         date.setAlignment(Element.ALIGN_CENTER);
+        signy.setAlignment(Element.ALIGN_CENTER);
 
         document.add(paragraph);
         document.add(header);
@@ -118,6 +120,14 @@ public class PDFGeneratorDiploma implements IGenerator<BlankInfo>{
         document.add(description3);
         document.add(course);
         document.add(date);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(paragraph);
+        document.add(signy);
     }
 
     private void addMetadata(Document document) {
