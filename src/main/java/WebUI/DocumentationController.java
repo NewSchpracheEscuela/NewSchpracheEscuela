@@ -17,8 +17,10 @@ import Documentation.Factories.Implementations.LanguageStatisticsFactory;
 import Documentation.Factories.Implementations.Teacher_List;
 import Entities.*;
 import org.apache.xmlbeans.impl.xb.xsdschema.DocumentationDocument;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,13 +42,8 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/documents")
-public class DocumentationController {
+public class DocumentationController implements ApplicationContextAware{
     ApplicationContext context;
-
-    public DocumentationController(){
-        context = new ClassPathXmlApplicationContext("beans.xml");
-        //repository = (GroupRepository) context.getBean("groupRepository");
-    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/blank/{type}")
     public @ResponseBody
@@ -251,5 +248,10 @@ public class DocumentationController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        context = applicationContext;
     }
 }

@@ -10,6 +10,7 @@
 
         <intercept-url method="GET" pattern="/checklogin" access="hasAnyRole('ROLE_ADMIN','ROLE_GUEST','ROLE_STUDENT','ROLE_TEACHER')"/>
         <intercept-url method="GET" pattern="/admin" access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url method="GET" pattern="/documentations*" access="hasRole('ROLE_ADMIN')"/>
 
         <intercept-url method="GET" pattern="/comments*" access="permitAll"/>
         <intercept-url method="POST" pattern="/comments*" access="hasAnyRole('ROLE_ADMIN','ROLE_GUEST','ROLE_STUDENT','ROLE_TEACHER')"/>

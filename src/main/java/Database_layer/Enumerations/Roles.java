@@ -9,14 +9,3 @@ public enum Roles {
     ROLE_STUDENT,
     ROLE_TEACHER
 }
-
-/**
- * Created by alexb on 15-Mar-17.
- */
-public enum Roles {
-    admin,
-    guest,
-    student,
-    leader,
-    teacher
-}
