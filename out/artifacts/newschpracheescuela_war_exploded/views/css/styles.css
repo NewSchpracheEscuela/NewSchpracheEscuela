@@ -451,6 +451,11 @@ input, textarea, select{
 .container__base{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+.modal__buttonDoc{
+    margin: 10px;
 }
 
 

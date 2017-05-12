@@ -5,14 +5,14 @@
             <th>Уровень</th>
             <th>Количество студентов</th>
             <th>Курсы</th>
-            <th>Староста</th>
+            <!--<th>Староста</th>-->
         </tr>
         </thead>
         <tr ng-repeat="item in data">
             <td>{{item.level}}</td>
             <td>{{item.amount}}</td>
             <td>{{item.course_id}}</td>
-            <td>{{item.person_id}}</td>
+            <!--<td>{{item.person_id}}</td>-->
             <td>
                 <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>
                 <button ng-click="deleteItemPopup('.popup__delete', item)">-</button>
