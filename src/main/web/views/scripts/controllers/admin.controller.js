@@ -118,6 +118,7 @@ function AdminController($scope, RequestService) {
 
     $scope.hidePopup = function (popup) {
         $(popup).hide();
+        $('.body').css("overflow","auto");
         $scope.Item = {};
         getAll();
     };
@@ -125,6 +126,7 @@ function AdminController($scope, RequestService) {
     $scope.showPopup = function (popup) {
         $scope.errorMessage = "";
         $(popup).show();
+        $('.body').css("overflow","hidden");
     };
 
     var changeUrl = function () {

@@ -45,10 +45,12 @@ function NewsController($scope, RequestService) {
         $scope.currentDate = new Date();
         $scope.errorMessage = "";
         $('.popup__add').show();
+        $('.body').css("overflow","hidden");
     };
 
     $scope.hidePopup = function (popup) {
         $(popup).hide();
+        $('.body').css("overflow","auto");
         $scope.Item = {};
         getAllNews();
     };

@@ -65,6 +65,14 @@ function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
                 }
             }
         )
+        .when('/teacher/group/:id',{
+                templateUrl: '/resources/html/pages/student_list.html',
+                controller: 'StudentListController',
+                data:{
+                    authorizedRoles: [USER_ROLES.teacher]
+                }
+            }
+        )
         .when('/403',
             {
                 templateUrl: '/resources/html/pages/403.html',

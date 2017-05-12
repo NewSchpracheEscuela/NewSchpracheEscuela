@@ -507,6 +507,10 @@ input, textarea, select{
     color: white;
 }
 
+.popup__delete .modal__header h3{
+    margin: 0;
+}
+
 .modal__body {
     padding: 2px 16px;
     display: flex;
@@ -577,6 +581,15 @@ button,.modal__box .modal__button{
 
 button:disabled, .modal__box .modal__button:disabled, .reg__button:disabled, input[type=button]:disabled{
     background: var(--red);
+    opacity: 0.5;
+    color: var(--bg-color);
+}
+
+
+
+button:hover:disabled, .modal__box .modal__button:hover:disabled, .reg__button:hover:disabled, input[type=button]:hover:disabled{
+    background: var(--red);
+    opacity: 0.5;
     color: var(--bg-color);
 }
 
