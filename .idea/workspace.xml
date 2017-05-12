@@ -2,25 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83e40edf-16b8-4970-beb0-cb299557d630" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/views/html/pages/student_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/studentList.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/WEB-INF/jsp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/css/styles.css" afterPath="$PROJECT_DIR$/out/artifacts/newschpracheescuela_war_exploded/views/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/css/styles.css" afterPath="$PROJECT_DIR$/src/main/web/views/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/pages/teacher.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/pages/teacher.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/controlpoints/table_view.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/controlpoints/table_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/courses/table_view.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/courses/table_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/groups/table_view.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/groups/table_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/table_view.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/table_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/marks/table_view.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/marks/table_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/news/table_view.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/news/table_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/users/table_view.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/users/table_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/app.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/admin.controller.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/admin.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/comments.controller.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/comments.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/news.controller.js" afterPath="$PROJECT_DIR$/src/main/web/views/scripts/controllers/news.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/comments/add_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/comments/add_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/comments/edit_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/comments/edit_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/controlpoints/edit_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/controlpoints/edit_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/courses/add_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/courses/add_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/courses/edit_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/courses/edit_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/groups/add_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/groups/add_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/groups/edit_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/groups/edit_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/add_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/add_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/edit_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/edit_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/marks/add_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/marks/add_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/marks/edit_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/marks/edit_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/news/add_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/news/add_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/news/edit_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/news/edit_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/users/add_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/users/add_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/views/html/partials/users/edit_form.html" afterPath="$PROJECT_DIR$/src/main/web/views/html/partials/users/edit_form.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,103 +45,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/css/styles.css">
+      <file leaf-file-name="edit_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/comments/edit_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="508" column="0" lean-forward="true" selection-start-line="508" selection-start-column="0" selection-end-line="508" selection-end-column="0" />
+            <state relative-caret-position="241">
+              <caret line="31" column="81" lean-forward="false" selection-start-line="31" selection-start-column="81" selection-end-line="31" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teacher.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/pages/teacher.html">
+      <file leaf-file-name="edit_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/controlpoints/edit_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+            <state relative-caret-position="255">
+              <caret line="15" column="81" lean-forward="false" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.controller.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/admin.controller.js">
+      <file leaf-file-name="edit_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/courses/edit_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="120" column="39" lean-forward="false" selection-start-line="120" selection-start-column="39" selection-end-line="120" selection-end-column="39" />
+            <state relative-caret-position="241">
+              <caret line="41" column="81" lean-forward="false" selection-start-line="41" selection-start-column="81" selection-end-line="41" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comments.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/comments.controller.js">
+      <file leaf-file-name="edit_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/groups/edit_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="72" column="39" lean-forward="false" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="39" />
+            <state relative-caret-position="241">
+              <caret line="38" column="81" lean-forward="false" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/controllers/news.controller.js">
+      <file leaf-file-name="edit_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/lessons/edit_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="52" column="39" lean-forward="false" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+            <state relative-caret-position="241">
+              <caret line="43" column="81" lean-forward="false" selection-start-line="43" selection-start-column="81" selection-end-line="43" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Database_layer/Repositories/UserRepository.java">
+      <file leaf-file-name="edit_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/marks/edit_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-              <folding>
-                <marker date="1494531834703" expanded="true" signature="670:688" ph="select * fro... user" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/WebUI/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-782">
-              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state relative-caret-position="241">
+              <caret line="27" column="81" lean-forward="false" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/pages/admin.html">
+      <file leaf-file-name="edit_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/news/edit_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
+            <state relative-caret-position="323">
+              <caret line="29" column="81" lean-forward="false" selection-start-line="29" selection-start-column="81" selection-end-line="29" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="student_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/pages/student_list.html">
+      <file leaf-file-name="edit_form.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/users/edit_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="275">
+              <caret line="51" column="6" lean-forward="true" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="student.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/pages/student.html">
+      <file leaf-file-name="add_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/news/add_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="52" column="69" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="69" />
+            <state relative-caret-position="241">
+              <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/users/add_form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="53" column="58" lean-forward="false" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -213,15 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Entities/Comment.java" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/pages/comments.html" />
-        <option value="$PROJECT_DIR$/src/main/java/Database_layer/Repositories/NewsRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Entities/News.java" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/pages/news.html" />
-        <option value="$PROJECT_DIR$/src/main/java/Entities/Lesson.java" />
-        <option value="$PROJECT_DIR$/src/main/web/WEB-INF/spring/spring-security.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/WebUI/IndexController.java" />
-        <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/teacher.controller.js" />
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/index.controller.js" />
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Repositories/LessonRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/WebUI/LessonController.java" />
@@ -239,12 +225,6 @@
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/login.controller.js" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/pages/registration.html" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/pages/login.html" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/comments/add_form.html" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/comments/edit_form.html" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/courses/add_form.html" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/groups/add_form.html" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/add_form.html" />
-        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/marks/add_form.html" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/partials/comments/table_view.html" />
         <option value="$PROJECT_DIR$/src/main/web/views/html/pages/admin.html" />
         <option value="$PROJECT_DIR$/src/main/java/Database_layer/Repositories/CommentRepository.java" />
@@ -264,6 +244,21 @@
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/news.controller.js" />
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/comments.controller.js" />
         <option value="$PROJECT_DIR$/src/main/web/views/scripts/controllers/admin.controller.js" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/comments/add_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/courses/add_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/groups/add_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/add_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/marks/add_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/news/add_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/users/add_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/comments/edit_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/controlpoints/edit_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/courses/edit_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/groups/edit_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/lessons/edit_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/marks/edit_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/news/edit_form.html" />
+        <option value="$PROJECT_DIR$/src/main/web/views/html/partials/users/edit_form.html" />
       </list>
     </option>
   </component>
@@ -1826,7 +1821,7 @@
       <workItem from="1494443076688" duration="8138000" />
       <workItem from="1494511736869" duration="9224000" />
       <workItem from="1494527348579" duration="16534000" />
-      <workItem from="1494577067646" duration="8707000" />
+      <workItem from="1494577067646" duration="9418000" />
     </task>
     <servers />
   </component>
@@ -1863,7 +1858,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="472829000" />
+    <option name="totallyTimeSpent" value="473540000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1985,27 +1980,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/scripts/services/index.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="53" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/pages/404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="51" lean-forward="false" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/pages/403.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -2041,13 +2015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/lessons/edit_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-490">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/views/html/pages/registration.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -2069,80 +2036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/controlpoints/edit_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/courses/add_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/courses/edit_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/groups/add_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/groups/edit_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/lessons/add_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/marks/add_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/news/add_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/users/add_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/comments/edit_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="6" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Database_layer/Repositories/CommentRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -2150,14 +2043,6 @@
           <folding>
             <marker date="1494544786871" expanded="true" signature="1124:1409" ph="SELECT `comm... comment" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/comments/add_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2377,6 +2262,126 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="120" column="39" lean-forward="false" selection-start-line="120" selection-start-column="39" selection-end-line="120" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/comments/add_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="28" column="97" lean-forward="false" selection-start-line="28" selection-start-column="89" selection-end-line="28" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/courses/add_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="41" column="58" lean-forward="false" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/groups/add_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="38" column="58" lean-forward="false" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/lessons/add_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="43" column="58" lean-forward="false" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/marks/add_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="27" column="58" lean-forward="false" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/news/add_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/users/add_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="53" column="58" lean-forward="false" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/comments/edit_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="31" column="81" lean-forward="false" selection-start-line="31" selection-start-column="81" selection-end-line="31" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/controlpoints/edit_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="81" lean-forward="false" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/courses/edit_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="41" column="81" lean-forward="false" selection-start-line="41" selection-start-column="81" selection-end-line="41" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/groups/edit_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="38" column="81" lean-forward="false" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/lessons/edit_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="43" column="81" lean-forward="false" selection-start-line="43" selection-start-column="81" selection-end-line="43" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/marks/edit_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="27" column="81" lean-forward="false" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/news/edit_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="29" column="81" lean-forward="false" selection-start-line="29" selection-start-column="81" selection-end-line="29" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/web/views/html/partials/users/edit_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="51" column="6" lean-forward="true" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
           <folding />
         </state>
       </provider>
