@@ -1,0 +1,19 @@
+<header class="header">
+    <div class="header__logo">
+        <img src="resources/images/logo.png" alt="NSE_logo">
+    </div>
+    <nav class="header__menu">
+        <ul class="header__list">
+            <li class="header__item header__item--active"><a href="/index">О нас</a></li>
+            <li class="header__item" ng-controller="LoginController" ng-show="isAuthenticated && role ==='ROLE_ADMIN'"><a href="/admin">Админка</a></li>
+            <!--<li class="header__item"><a href="">Курсы</a></li>-->
+            <li class="header__item"><a href="/all_news">Новости</a></li>
+            <li class="header__item"><a href="/all_comments">Отзывы</a></li>
+            <li class="header__item"><a href="/contacts">Контакты</a></li>
+            <div ng-controller="LoginController">
+                <li class="header__item" ng-show="!isAuthenticated"><a href="/authorization">Вход</a></li>
+                <li class="header__item" ng-show="isAuthenticated"><a href="#" ng-click="logout()">Выход</a></li>
+            </div>
+        </ul>
+    </nav>
+</header>

@@ -2,7 +2,9 @@ package WebUI;
 
 import Database_layer.Repositories.GroupStudentRepository;
 import Entities.GroupStudent;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +14,9 @@ import java.sql.SQLException;
 
 @RestController
 @RequestMapping(value = "/groupstudents")
-public class GroupStudentController {
+public class GroupStudentController implements ApplicationContextAware {
     private GroupStudentRepository repository;
 
-    public GroupStudentController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (GroupStudentRepository) context.getBean("groupStudentRepository");
-    }
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -29,11 +25,11 @@ public class GroupStudentController {
             return new ResponseEntity<Iterable<GroupStudent>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Iterable<GroupStudent>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<GroupStudent>>(HttpStatus.BAD_REQUEST);
         }
         catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Iterable<GroupStudent>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<GroupStudent>>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -45,10 +41,10 @@ public class GroupStudentController {
             return new ResponseEntity<GroupStudent>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<GroupStudent>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<GroupStudent>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<GroupStudent>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<GroupStudent>(HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -61,10 +57,10 @@ public class GroupStudentController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<GroupStudent>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<GroupStudent>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -76,10 +72,10 @@ public class GroupStudentController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<GroupStudent>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<GroupStudent>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<GroupStudent>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<GroupStudent>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -91,10 +87,14 @@ public class GroupStudentController {
             return new ResponseEntity<GroupStudent>(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<GroupStudent>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<GroupStudent>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<GroupStudent>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<GroupStudent>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (GroupStudentRepository) applicationContext.getBean("groupStudentRepository");
     }
 }

@@ -1,0 +1,34 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>Комментарии</h3>
+    </div>
+    <div class="modal__body">
+        <form name="editForm"  class = "popup__editForm" novalidate>
+            <div class="popup_keyValue">
+                <span>Автор:</span>
+                <select name="author" ng-model="Item.formKeys['author']" ng-init="getUsers()">
+                    <option ng-repeat="user in users" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
+                </select>
+            </div>
+            <div class="popup_keyValue">
+                <span>Курсы:</span>
+                <select name="course" ng-model="Item.formKeys['course']" ng-init="getItems('/courses')">
+                    <option ng-repeat="course in items" ng-value="{{course.course_id}}">{{course.title}}</option>
+                </select>
+            </div>
+            <div class="popup_keyValue">
+                <span>Дата и время</span>
+                <input ng-model="Item.formKeys['date'] = currentDate | date:'yyyy-MM-dd HH:mm:ss'">
+            </div>
+            <div class="popup_keyValue">
+                <span>Контент:</span>
+                <input ng-model="Item.formKeys['entity']" type="text" name="Контент" required>
+            </div>
+        </form>
+    </div>
+    <span ng-module="errorMessage" class="error__message">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input class="modal__button" type="button" ng-click="editItem()" value="ok">
+        <button class="modal__button" ng-click="hidePopup('.popup__edit')">Cancel</button>
+    </div>
+</div>

@@ -2,10 +2,13 @@ package WebUI;
 
 import Database_layer.Repositories.ControlPointRepository;
 import Entities.ControlPoint;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -15,17 +18,11 @@ import java.text.SimpleDateFormat;
 
 @RestController
 @RequestMapping("/controlpoints")
-public class ControlPointController {
+public class ControlPointController implements ApplicationContextAware {
 
     private ControlPointRepository repository;
 
-    public ControlPointController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (ControlPointRepository) context.getBean("controlPointRepository");
-    }
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
     ResponseEntity<Iterable<ControlPoint>> getControlPoints(){
@@ -33,11 +30,11 @@ public class ControlPointController {
             return new ResponseEntity<Iterable<ControlPoint>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.BAD_REQUEST);
         }
         catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<ControlPoint>>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -49,11 +46,11 @@ public class ControlPointController {
             return new ResponseEntity<ControlPoint>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<ControlPoint>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<ControlPoint>(HttpStatus.BAD_REQUEST);
         }
         catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<ControlPoint>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<ControlPoint>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -68,13 +65,13 @@ public class ControlPointController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (ParseException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -89,13 +86,13 @@ public class ControlPointController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (ParseException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -108,10 +105,14 @@ public class ControlPointController {
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (ControlPointRepository) applicationContext.getBean("controlPointRepository");
     }
 }

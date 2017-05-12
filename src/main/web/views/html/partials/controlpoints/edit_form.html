@@ -1,0 +1,18 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>Контрольные точки</h3>
+    </div>
+    <div class="modal__body">
+        <form name="editForm"  class = "popup__editForm" novalidate>
+            <div ng-repeat="(key,value) in edit track by key" ng-if="$index > 0" class="popup_keyValue">
+                <span>{{key}}</span>
+                <input ng-model="Item.formKeys[key]" type="text" name="{{key}}" required>
+            </div>
+        </form>
+    </div>
+    <span ng-module="errorMessage" class="error__message">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input class="modal__button" type="button" ng-click="editItem()" value="ok">
+        <button class="modal__button" ng-click="hidePopup('.popup__edit')">Cancel</button>
+    </div>
+</div>

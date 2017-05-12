@@ -44,6 +44,30 @@ public class UserRepository implements IRepository<User> {
         return null;
     }
 
+    public int CheckByLoginandPass(String login,String pass) throws SQLException {
+        if (login.equals("") || pass.equals(""))
+            throw new IllegalArgumentException();
+        String query = String.format("SELECT user_id,login FROM user WHERE login='%s' AND password='%s'",login,pass);
+        Connection connection = dataSource.getConnection();
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt("user_id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return -1;
+    }
+
     public User Get(int id) {
         if (id < 1) throw new IllegalArgumentException();
 
@@ -116,13 +140,20 @@ public class UserRepository implements IRepository<User> {
 
     private boolean IsEmpty(User item)
     {
-        if (item.getContactInfo() == null) return true;
+        if (item.getContactInfo() == null ) return true;
+        if (item.getContactInfo().equals("")) return true;
         if (item.getEmail() == null) return true;
+        if (item.getEmail().equals("")) return true;
         if (item.getFirstName() == null) return true;
+        if (item.getFirstName().equals("")) return true;
         if (item.getLastName() == null) return true;
+        if (item.getLastName().equals("")) return true;
         if (item.getLogin() == null) return true;
+        if (item.getLogin().equals("")) return true;
         if (item.getPassword_hash() == null) return true;
+        if (item.getPassword_hash().equals("")) return true;
         if (item.getPatronym() == null) return true;
+        if (item.getPatronym().equals("")) return true;
         if (item.getRole() == null) return true;
         return false;
     }

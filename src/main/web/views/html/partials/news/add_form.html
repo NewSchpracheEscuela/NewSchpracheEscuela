@@ -1,0 +1,36 @@
+<div class="modal__content">
+    <div class="modal__header">
+        <h3>Добавление новости</h3>
+    </div>
+    <div class="modal__body">
+        <form name="addForm"  class = "popup__addForm" novalidate>
+            <div class="popup_keyValue">
+                <span>Заголовок:</span>
+                <input ng-model="Item.formKeys['title']" type="text" name="Заголовок" placeholder="Заголовок" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Текст:</span>
+                <input ng-model="Item.formKeys['content']" type="text" name="Текст" placeholder="Текст" required>
+            </div>
+            <div class="popup_keyValue">
+                <span>Автор:</span>
+                <select name="role" ng-model="Item.formKeys['author']" ng-init="getItems('/users')">
+                    <option ng-repeat="user in items" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
+                </select>
+            </div>
+            <div class="popup_keyValue">
+                <span>Дата и время</span>
+                <input ng-model="Item.formKeys['date'] = currentDate | date:'yyyy-MM-dd HH:mm:ss'">
+            </div>
+            <!--<div ng-repeat="key in formKeys track by key" class="popup_keyValue">-->
+                <!--<span>{{key}}</span>-->
+                <!--<input ng-model="Item.formKeys[key]" type="text" name="{{key}}" placeholder="{{key}}" required>-->
+            <!--</div>-->
+        </form>
+    </div>
+    <span ng-module="errorMessage">{{errorMessage}}</span>
+    <div class="modal__footer">
+        <input type="button" ng-click="addItem()" ng-disabled="addForm. $invalid" value="ok">
+        <button ng-click="hidePopup('.popup__add')">Cancel</button>
+    </div>
+</div>

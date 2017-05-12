@@ -1,0 +1,18 @@
+<ng-include src="'resources/html/partials/header.html'"></ng-include>
+<div class="container">
+    <div class="container__news">
+        <div ng-repeat="item in all_news" class="news__block">
+            <h3>{{item.title}}</h3>
+            <div class="container__delimiterBlock"></div>
+            <div class="news__content">
+                <span>{{item.content}}</span>
+            </div>
+            <div class="container__delimiterBlock"></div>
+            <div class="news__info">
+                <span>{{item.date}}</span>
+                <span>{{item.author}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-include src="'resources/html/partials/footer.html'"></ng-include>

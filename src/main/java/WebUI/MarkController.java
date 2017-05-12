@@ -2,7 +2,9 @@ package WebUI;
 
 import Database_layer.Repositories.MarkRepository;
 import Entities.Mark;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +14,9 @@ import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/marks")
-public class MarkController
+public class MarkController implements ApplicationContextAware
 {
     private MarkRepository repository;
-
-    public MarkController(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        repository = (MarkRepository) context.getBean("markRepository");
-    }
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
@@ -30,10 +25,10 @@ public class MarkController
             return new ResponseEntity<Iterable<Mark>>(repository.GetAll(), HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Iterable<Mark>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<Mark>>(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Iterable<Mark>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Iterable<Mark>>(HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -46,10 +41,10 @@ public class MarkController
             return new ResponseEntity<Mark>(repository.Get(id),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<Mark>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Mark>(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Mark>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Mark>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -61,10 +56,10 @@ public class MarkController
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<Mark>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Mark>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -76,10 +71,10 @@ public class MarkController
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -91,10 +86,14 @@ public class MarkController
             return new ResponseEntity(HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        repository = (MarkRepository) applicationContext.getBean("markRepository");
     }
 }
