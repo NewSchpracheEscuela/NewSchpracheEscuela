@@ -23,6 +23,10 @@
                 <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>
                 <button ng-click="deleteItemPopup('.popup__delete', item)">-</button>
             </td>
+            <td>
+                <button ng-click="blankPopup(item)">Заявление</button>
+                <button ng-click="diplomaPopup(item)">Диплом</button>
+            </td>
         </tr>
     </table>
     <button class="table__add" ng-click="showPopup('.popup__add')"></button>

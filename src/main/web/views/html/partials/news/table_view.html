@@ -4,14 +4,14 @@
             <tr>
                 <th>Заголовок</th>
                 <th>Текст</th>
-                <th>Автор(id)</th>
+                <th>Автор</th>
                 <th>Дата</th>
             </tr>
         </thead>
         <tr ng-repeat="item in data">
             <td>{{item.title}}</td>
             <td>{{item.content}}</td>
-            <td>{{item.author}}</td>
+            <td>{{item.author_name}}</td>
             <td>{{item.date}}</td>
             <td>
                 <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>

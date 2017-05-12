@@ -50,6 +50,31 @@ function AdminController($scope, RequestService) {
         });
     } ;
 
+    $scope.getAuthor= function () {
+        let i;
+        for(i=0; i < $scope.data.length; i++){
+            let user_id = $scope.data[i]['teacher_id'];
+            RequestService.getItemById('/users/'+user_id, function(err,info){
+                if (err){
+                    alert(err.message);
+                }else{
+                    $scope.data[i]['name'] = info['firstName']+" "+ info['lastName'];
+                }
+            });
+        }
+    };
+
+    $scope.getAuthorName = function (id) {
+        let url = '/people/' + $scope.id;
+        RequestService.getItemById(url, function(err,data){
+            if (err){
+                alert(err.message);
+            }else{
+                $scope.author = data;
+            }
+        });
+    };
+
     getAll();
     $scope.deleteItem = function (item) {
         $scope.key = $scope.dataKeys[0].toString();
@@ -77,7 +102,15 @@ function AdminController($scope, RequestService) {
             }
         });
     };
-
+    $scope.getNameById = function (user_id) {
+        RequestService.getItemById('users/'+user_id,function (err,data) {
+            if(err){
+                $scope.errorMessage = err.code;
+            } else{
+                return data.lastName + data.firstName;
+            }
+            })
+        };
     $scope.Item = {};
     $scope.editItemPopup = function (popup, item) {
         $scope.edit = item;
@@ -136,5 +169,49 @@ function AdminController($scope, RequestService) {
     };
     changeUrl();
 
+    $scope.blankPopup = function (item) {
+        $scope.format;
+        $scope.type= "blank";
+        $scope.itemDoc = item['user_id'];
+        $scope.showPopup('.popup__choice');
+    };
+
+    $scope.diplomaPopup = function (item) {
+        $scope.format;
+        $scope.type= "diploma";
+        $scope.itemDoc = item['user_id'];
+        $scope.showPopup('.popup__choice');
+    };
+
+    $scope.teachersPopup = function () {
+        $scope.format;
+        $scope.type= "teachers";
+        $scope.showPopup('.popup__choice');
+    };
+
+    $scope.groupsPopup = function () {
+        $scope.format;
+        $scope.type= "groups";
+        $scope.showPopup('.popup__choice');
+    };
+    $scope.languagesPopup = function () {
+        $scope.format;
+        $scope.type= "languages";
+        $scope.showPopup('.popup__choice');
+    };
+
+
+    $scope.hidePopupDoc = function (typeDoc) {
+        $('.popup__choice').hide();
+        $('.body').css("overflow","auto");
+        $scope.format = typeDoc;
+        let url
+        if($scope.type == 'blank' || $scope.type == 'diploma'){
+             url= "/documents/"+$scope.type + "/"+ $scope.format+"?user_id="+$scope.itemDoc+"&isProtected=true";
+        }else{
+            url = "/documents/"+$scope.type + "/"+ $scope.format+"?"+"isProtected=true";
+        }
+        window.open(url);
+    }
 }
 
