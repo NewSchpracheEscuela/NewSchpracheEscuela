@@ -23,7 +23,7 @@ public class IndexController implements ApplicationContextAware{
 
     private UserRepository repository;
 
-    @RequestMapping(value = {"/","/index","/contacts","/admin", "/all_news", "/all_comments", "/authorization"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index","/contacts","/admin", "/all_news", "/all_comments", "/authorization", "/registration", "/404","/403"},method = RequestMethod.GET)
     public ModelAndView AngularIndex() {
         return new ModelAndView("index");
     }
@@ -33,12 +33,12 @@ public class IndexController implements ApplicationContextAware{
     ResponseEntity<String> SignInService(@RequestBody Credentials credentials){
         try {
             int id = repository.CheckByLoginandPass(credentials.getUsername(),credentials.getPassword());
-            if (id > 1){
+            if (id > 0){
                 User user = repository.Get(id);
                 String authString = user.getLogin() + ":" + user.getPassword_hash();
                 byte[] authEncBytes = Base64.encode(authString.getBytes());
                 String authStringEnc = new String(authEncBytes);
-                String result = String.format("{\"userId\":%d,\"role\":\"%s\",\"authHeader\":\"%s\"}",user.getUser_id(),user.getRole(),authStringEnc );
+                String result = String.format("{\"userId\":%d,\"role\":\"%s\",\"userLogin\":\"%s\",\"authHeader\":\"%s\"}",user.getUser_id(),user.getRole(), user.getLogin(), authStringEnc );
                 return new ResponseEntity<String>(result, HttpStatus.OK);
             }
         } catch (SQLException e) {

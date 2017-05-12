@@ -14,6 +14,7 @@
 <html ng-app="NSE">
   <head>
       <base href="/"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="${angularMain}"></script>
       <script src="${angularRoute}"></script>
       <script src="${map}"></script>
@@ -29,7 +30,10 @@
       <script src="/resources/scripts/controllers/news.controller.js"></script>
       <script src="/resources/scripts/controllers/comments.controller.js"></script>
       <script src="/resources/scripts/controllers/login.controller.js"></script>
-
+      <script src="/resources/scripts/controllers/registration.controller.js"></script>
+      <script src="/resources/scripts/controllers/teacher.controller.js"></script>
+      <script src="/resources/scripts/controllers/student.controller.js"></script>
+      <script src="/resources/scripts/controllers/studentList.controller.js"></script>
 
       <script src = "/resources/scripts/services/index.service.js"></script>
       <script src = "/resources/scripts/services/request.service.js"></script>
@@ -48,7 +52,7 @@
 
   </head>
 
-  <body ng-controller="IndexController">
+  <body class="body" ng-controller="IndexController">
     <div ng-view>Loading...</div>
   </body>
 

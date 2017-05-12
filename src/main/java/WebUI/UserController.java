@@ -62,7 +62,21 @@ public class UserController implements ApplicationContextAware{
     ResponseEntity deleteUser(@PathVariable int id)
     {
         try {
-            repository.Delete(id);
+            User user = repository.Get(id);
+            if (user.getRole().equals("ROLE_ADMIN")){
+                  Iterable<User> users = repository.GetAll();
+                  int count=0;
+                for (User tempUser :
+                        users) {
+                    if (tempUser.getRole().equals("ROLE_ADMIN")){
+                        count++;
+                    }
+                }
+                if(count>1)
+                    repository.Delete(id);
+            }
+            else
+                repository.Delete(id);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();
@@ -76,14 +90,16 @@ public class UserController implements ApplicationContextAware{
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity addUser(@RequestBody User item) {
-        try {
-            repository.Add(item);
-            return new ResponseEntity(HttpStatus.OK);
-        } catch (IllegalAccessError e) {
-            e.printStackTrace();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
+        if (item.getEmail().contains("@")){
+
+            try {
+                repository.Add(item);
+                return new ResponseEntity(HttpStatus.OK);
+            } catch (IllegalAccessError e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
@@ -92,7 +108,21 @@ public class UserController implements ApplicationContextAware{
     public @ResponseBody
     ResponseEntity addUser(@PathVariable int id, @RequestBody User item) {
         try {
-            repository.Update(id, item);
+            User user = repository.Get(id);
+            if (user.getRole().equals("ROLE_ADMIN") && !item.getRole().equals(user.getRole())){
+                Iterable<User> users = repository.GetAll();
+                int count=0;
+                for (User tempUser :
+                        users) {
+                    if (tempUser.getRole().equals("ROLE_ADMIN")){
+                        count++;
+                    }
+                }
+                if(count>1)
+                    repository.Update(id,item);
+            }
+            else
+                repository.Update(id,item);
             return new ResponseEntity(HttpStatus.OK);
         } catch (IllegalAccessError e) {
             e.printStackTrace();

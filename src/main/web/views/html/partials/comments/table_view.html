@@ -1,21 +1,23 @@
 <div class="container__blockTable">
-    <table class="container__table">
+    <table class="container__table table__comment">
+        <thead>
         <tr>
             <th>Автор</th>
             <th>Курсы</th>
             <th>Дата</th>
             <th>Контент</th>
         </tr>
+        </thead>
         <tr ng-repeat="item in data">
-            <td>{{item.author}}</td>
-            <td>{{item.course}}</td>
+            <td>{{item.author_name}}</td>
+            <td>{{item.course_name}}</td>
             <td>{{item.date}}</td>
             <td>{{item.entity}}</td>
             <td>
                 <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>
-                <button ng-click="deleteItem(item)">-</button>
+                <button ng-click="deleteItemPopup('.popup__delete', item)">-</button>
             </td>
         </tr>
     </table>
-    <button class="table__add" ng-click="showPopup('.popup__add')">+</button>
+    <button class="table__add" ng-click="showPopup('.popup__add')"></button>
 </div>

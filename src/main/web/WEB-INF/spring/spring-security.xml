@@ -7,9 +7,65 @@
 
     <global-method-security pre-post-annotations="enabled"/>
     <http auto-config="true" use-expressions="true" entry-point-ref="restAuthenticationEntryPoint" create-session="stateless">
-        <intercept-url method="GET" pattern="/checklogin" access="hasAnyRole('ROLE_ADMIN','ROLE_GUEST','ROLE_STUDENT','ROLE_TEACHER')"/>
 
-        <intercept-url  method="GET" pattern="/admin*" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url method="GET" pattern="/checklogin" access="hasAnyRole('ROLE_ADMIN','ROLE_GUEST','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="GET" pattern="/admin" access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url method="GET" pattern="/documentations*" access="hasRole('ROLE_ADMIN')"/>
+
+        <intercept-url method="GET" pattern="/comments*" access="permitAll"/>
+        <intercept-url method="POST" pattern="/comments*" access="hasAnyRole('ROLE_ADMIN','ROLE_GUEST','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/comments*" access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url method="DELETE" pattern="/comments*" access="hasAnyRole('ROLE_ADMIN')"/>
+
+        <intercept-url method="GET" pattern="/controlpoints*" access="hasAnyRole('ROLE_ADMIN','ROLE_GUEST','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="POST" pattern="/controlpoints*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/controlpoints*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/controlpoints*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/courses*" access="permitAll"/>
+        <intercept-url method="POST" pattern="/courses*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/courses*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/courses*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/groups*" access="permitAll"/>
+        <intercept-url method="POST" pattern="/groups*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/groups*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/groups*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/groupstudents*" access="hasAnyRole('ROLE_ADMIN','ROLE_GUEST','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="POST" pattern="/groupstudents*" access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/groupstudents*" access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/groupstudents*" access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/marks*" access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="POST" pattern="/marks*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/marks*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/marks*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/news*" access="permitAll"/>
+        <intercept-url method="POST" pattern="/news*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/news*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/news*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/people*" access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="POST" pattern="/people*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/people*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/people*" access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/controlpointevents*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="POST" pattern="/controlpointevents*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="PUT" pattern="/controlpointevents*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/controlpointevents*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/teachers*" access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="POST" pattern="/teachers*" access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url method="PUT" pattern="/teachers*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+        <intercept-url method="DELETE" pattern="/teachers*" access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')"/>
+
+        <intercept-url method="GET" pattern="/users*" access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT','ROLE_TEACHER')"/>
+        <intercept-url method="POST" pattern="/users*" access="permitAll"/>
+        <intercept-url method="PUT" pattern="/users*" access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url method="DELETE" pattern="/users*" access="hasAnyRole('ROLE_ADMIN')"/>
 
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />

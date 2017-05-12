@@ -10,9 +10,13 @@
             <div class="container__delimiterBlock"></div>
             <div class="news__info">
                 <span>{{item.date}}</span>
-                <span>{{item.author}}</span>
+                <span>{{item.author_name}}</span>
             </div>
         </div>
     </div>
+    <div class="popup__add modal__box">
+        <ng-include src="'resources/html/partials/news/add_form.html'"></ng-include>
+    </div>
+    <button class="table__add" ng-click="showPopup()" ng-show="isAuthenticated && role ==='ROLE_ADMIN'"></button>
 </div>
 <ng-include src="'resources/html/partials/footer.html'"></ng-include>

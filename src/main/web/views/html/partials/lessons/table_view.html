@@ -1,5 +1,6 @@
 <div class="container__blockTable">
-    <table class="container__table">
+    <table class="container__table table__lesson">
+        <thead>
         <tr>
             <th>Группа</th>
             <th>Преподаватель</th>
@@ -7,6 +8,7 @@
             <th>Время</th>
             <th>День недели</th>
         </tr>
+        </thead>
         <tr ng-repeat="item in data">
             <td>{{item.group}}</td>
             <td>{{item.teacher}}</td>
@@ -15,9 +17,9 @@
             <td>{{item.day}}</td>
             <td>
                 <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>
-                <button ng-click="deleteItem(item)">-</button>
+                <button ng-click="deleteItemPopup('.popup__delete', item)">-</button>
             </td>
         </tr>
     </table>
-    <button class="table__add" ng-click="showPopup('.popup__add')">+</button>
+    <button class="table__add" ng-click="showPopup('.popup__add')"></button>
 </div>

@@ -4,10 +4,10 @@
     </div>
     <div class="modal__body">
         <form name="editForm"  class = "popup__editForm" novalidate>
-            <div class="popup_keyValue">
-                <span>Логин:</span>
-                <input ng-model="Item.formKeys['login']" type="text" name="Логин" required>
-            </div>
+            <!--<div class="popup_keyValue">-->
+                <!--<span>Логин:</span>-->
+                <!--<input ng-model="Item.formKeys['login']" type="text" name="Логин" required>-->
+            <!--</div>-->
             <div class="popup_keyValue">
                 <span>E-mail:</span>
                 <input ng-model="Item.formKeys['email']" type="text" name="E-mail" required>
@@ -46,7 +46,7 @@
     </div>
     <span ng-module="errorMessage" class="error__message">{{errorMessage}}</span>
     <div class="modal__footer">
-        <input class="modal__button" type="button" ng-disabled="editForm. $invalid" ng-click="editItem()" value="ok">
-        <button class="modal__button" ng-click="hidePopup('.popup__edit')">Cancel</button>
+        <input class="modal__button" type="button" ng-disabled="editForm. $invalid" ng-click="editItem()" value="Редактировать">
+        <button class="modal__button" ng-click="hidePopup('.popup__edit')">Отмена</button>
     </div>
 </div>

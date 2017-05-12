@@ -4,10 +4,10 @@
         <div ng-repeat="item in all_comments" class="comment__block">
             <img src="resources/images/user_boy1.png">
             <div class="comment__text">
-                <h3>Название курса:  "{{item.course}}"</h3>
+                <h3>Название курса:  "{{item.course_name}}"</h3>
                 <div class="comment__info">
                     <span>{{item.date}}</span>
-                    <span>{{item.author}}</span>
+                    <span>{{item.author_name}}</span>
                 </div>
                 <div class="comment__content">
                     <span>{{item.entity}}</span>
@@ -16,5 +16,9 @@
             <div class="container__delimiterBlock"></div>
         </div>
     </div>
+    <div class="popup__add modal__box">
+        <ng-include src="'resources/html/partials/comments/add_form.html'"></ng-include>
+    </div>
+    <button class="table__add" ng-click="showPopup()" ng-show="isAuthenticated"></button>
 </div>
 <ng-include src="'resources/html/partials/footer.html'"></ng-include>

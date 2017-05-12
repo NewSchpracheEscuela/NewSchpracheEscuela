@@ -10,17 +10,15 @@
             </div>
             <div class="popup_keyValue">
                 <span>Текст:</span>
-                <input ng-model="Item.formKeys['content']" type="text" name="Текст" placeholder="Текст" required>
+                <textarea ng-model="Item.formKeys['content']" type="text" name="Текст" placeholder="Текст" required></textarea>
             </div>
-            <div class="popup_keyValue">
+            <div class="popup_keyValue" ng-show="false">
                 <span>Автор:</span>
-                <select name="role" ng-model="Item.formKeys['author']" ng-init="getItems('/users')">
-                    <option ng-repeat="user in items" ng-value="{{user.user_id}}">{{user.lastName}} {{user.firstName}}</option>
-                </select>
+                <input ng-model="Item.formKeys['author'] = current_userId" type="text" name="Текст" required>
             </div>
-            <div class="popup_keyValue">
+            <div class="popup_keyValue" ng-show="false">
                 <span>Дата и время</span>
-                <input ng-model="Item.formKeys['date'] = currentDate | date:'yyyy-MM-dd HH:mm:ss'">
+                <input ng-model="Item.formKeys['date'] = currentDate | date:'yyyy-MM-dd HH:mm:ss'" required>
             </div>
             <!--<div ng-repeat="key in formKeys track by key" class="popup_keyValue">-->
                 <!--<span>{{key}}</span>-->
@@ -30,7 +28,7 @@
     </div>
     <span ng-module="errorMessage">{{errorMessage}}</span>
     <div class="modal__footer">
-        <input type="button" ng-click="addItem()" ng-disabled="addForm. $invalid" value="ok">
-        <button ng-click="hidePopup('.popup__add')">Cancel</button>
+        <input type="button" ng-click="addItem()" ng-disabled="addForm. $invalid" value="Добавить">
+        <button ng-click="hidePopup('.popup__add')">Отмена</button>
     </div>
 </div>

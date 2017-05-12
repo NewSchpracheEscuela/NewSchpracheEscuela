@@ -7,9 +7,9 @@
             <td ng-repeat="(key,value) in item"> {{value}}</td>
             <td>
                 <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>
-                <button ng-click="deleteItem(item)">-</button>
+                <button ng-click="deleteItemPopup('.popup__delete', item)">-</button>
             </td>
         </tr>
     </table>
-    <button class="table__add" ng-click="showPopup('.popup__add')">+</button>
+    <button class="table__add" ng-click="showPopup('.popup__add')"></button>
 </div>

@@ -5,6 +5,7 @@
 nseApp.service('RequestService', RequestService);
 
 function RequestService($http) {
+
     this.getAll = function (url, callback) {
         $http({
             method: 'GET',
@@ -27,7 +28,7 @@ function RequestService($http) {
                 callback(null, response.data);
             }
         }, function errorCallback(response) {
-            callback(response.data);
+            callback({message: response.codeName});
         })
     };
 
@@ -66,7 +67,8 @@ function RequestService($http) {
             data: data
         }).then(function successCallback(response) {
             if (response.status == 200){
-                callback(null, response.status)
+
+                callback(null, response.status);
             }
         }, function errorCallback(response) {
             callback({code: "Произошла ошибка добавления. Проверьте введенные данные! И попробуйте снова."});

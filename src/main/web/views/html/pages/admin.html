@@ -4,16 +4,18 @@
             <ul class="menu__list">
                 <li class="menu__item menu__item--active"><a href="" ng-click="initData($event,'/users')">Пользователи</a></li>
                 <li class="menu__item"><a href="" ng-click="initData($event,'/news')">Новости</a></li>
-                <li class="menu__item"><a href="" ng-click="initData($event,'/marks')">Отметки</a></li>
+                <!--<li class="menu__item"><a href="" ng-click="initData($event,'/marks')">Отметки</a></li>-->
                 <li class="menu__item"><a href="" ng-click="initData($event,'/lessons')">Уроки</a></li>
                 <li class="menu__item"><a href="" ng-click="initData($event,'/groups')">Группы</a></li>
                 <li class="menu__item"><a href="" ng-click="initData($event,'/courses')">Курсы</a></li>
                 <li class="menu__item"><a href="" ng-click="initData($event,'/comments')">Комментарии</a></li>
-                <!--<li class="menu__item"><a href="" ng-click="initData($event,'/controlpoints')">Контрольные точки</a></li>-->
             </ul>
+            <button class="modal__buttonDoc" ng-click="languagesPopup()">Статистика языков</button>
+            <button class="modal__buttonDoc" ng-click="teachersPopup()">Список учителей</button>
+            <button class="modal__buttonDoc" ng-click="groupsPopup()">Список студентов</button>
         </nav>
         <div class="container__base">
-            <ng-include src="table_view"></ng-include>
+            <ng-include src="table_view" class="table__view"></ng-include>
         </div>
     </div>
 <div class="popup__add modal__box">
@@ -21,5 +23,34 @@
 </div>
 <div class="popup__edit modal__box">
     <ng-include src="edit_form"></ng-include>
+</div>
+<div class="popup__delete modal__box">
+    <div class="modal__content">
+        <div class="modal__header">
+            <h3>Удаление</h3>
+        </div>
+        <div class="modal__body">
+            <span>Продолжить удаление?</span>
+        </div>
+        <div class="modal__footer">
+            <input class="modal__button" type="button" ng-click="delete()" value="Да">
+            <button class="modal__button" ng-click="hidePopup('.popup__delete')">Отмена</button>
+        </div>
+    </div>
+</div>
+<div class="popup__choice modal__box">
+    <div class="modal__content">
+        <div class="modal__header">
+            <h3>Формат</h3>
+        </div>
+        <div class="modal__body">
+            <button class="modal__button" ng-click="hidePopupDoc('pdf')">.pdf</button>
+            <button class="modal__button" ng-click="hidePopupDoc('xls')">.xls</button>
+            <button class="modal__button" ng-click="hidePopupDoc('csv')">.csv</button>
+        </div>
+        <div class="modal__footer">
+            <button class="modal__button" ng-click="hidePopup('.popup__choice')">Отмена</button>
+        </div>
+    </div>
 </div>
 <ng-include src="'resources/html/partials/footer.html'"></ng-include>
