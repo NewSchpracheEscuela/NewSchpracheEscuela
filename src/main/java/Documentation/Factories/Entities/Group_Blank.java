@@ -7,6 +7,7 @@ public class Group_Blank {
 
     private String phone;
     private String email;
+    private String course_name;
 
     public String getFirstName() {
         return firstName;
@@ -46,5 +47,13 @@ public class Group_Blank {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCourse_name() {
+        return course_name;
+    }
+
+    public void setCourse_name(String course_name) {
+        this.course_name = course_name;
     }
 }

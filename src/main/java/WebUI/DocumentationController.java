@@ -47,11 +47,35 @@ public class DocumentationController implements ApplicationContextAware{
 
     @RequestMapping(method = RequestMethod.GET, value = "/blank/{type}")
     public @ResponseBody
-    void getBlank(@PathVariable String type, @RequestParam int user_id, @RequestParam int course_id, @RequestParam boolean isProtected, HttpServletResponse response){
+    void getBlank(@PathVariable String type, @RequestParam int user_id, @RequestParam boolean isProtected, HttpServletResponse response){
         UserRepository userRepository = (UserRepository) context.getBean("userRepository");
         CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
+        PersonRepository personRepository = (PersonRepository) context.getBean("personRepository");
+        GroupStudentRepository groupStudentRepository = (GroupStudentRepository) context.getBean("groupStudentRepository");
+        GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+
+        ArrayList<GroupStudent> groupStudents = null;
+        ArrayList<Person> people = null;
+        try {
+            people = (ArrayList<Person>) personRepository.GetAll();
+            groupStudents = (ArrayList<GroupStudent>) groupStudentRepository.GetAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         User user = userRepository.Get(user_id);
+        int course_id = 1;
+        Person person = people.stream().filter(x -> x.getUser_id() == user.getUser_id()).findFirst().orElse(null);
+        if (person != null){
+            GroupStudent groupStudent = groupStudents.stream().filter(student->student.getGroupId() == person.getUser_id()).findAny().orElse(null);
+            if (groupStudent!=null){
+                try {
+                    course_id = courseRepository.Get(groupRepository.Get(groupStudent.getGroupId()).getCourse_id()).getCourse_id();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
         Course course = courseRepository.Get(course_id);
 
         BlankInfo info = new BlankInfo();
@@ -72,11 +96,37 @@ public class DocumentationController implements ApplicationContextAware{
 
     @RequestMapping(method = RequestMethod.GET, value = "/diploma/{type}")
     public @ResponseBody
-    void getDiploma(@PathVariable String type, @RequestParam int user_id, @RequestParam int course_id, @RequestParam boolean isProtected, HttpServletResponse response){
+    void getDiploma(@PathVariable String type, @RequestParam int user_id, @RequestParam boolean isProtected, HttpServletResponse response){
         UserRepository userRepository = (UserRepository) context.getBean("userRepository");
         CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
 
         User user = userRepository.Get(user_id);
+
+        PersonRepository personRepository = (PersonRepository) context.getBean("personRepository");
+        GroupStudentRepository groupStudentRepository = (GroupStudentRepository) context.getBean("groupStudentRepository");
+        GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+
+        ArrayList<GroupStudent> groupStudents = null;
+        ArrayList<Person> people = null;
+        try {
+            people = (ArrayList<Person>) personRepository.GetAll();
+            groupStudents = (ArrayList<GroupStudent>) groupStudentRepository.GetAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        int course_id = 1;
+        Person person = people.stream().filter(x -> x.getUser_id() == user.getUser_id()).findFirst().orElse(null);
+        if (person != null){
+            GroupStudent groupStudent = groupStudents.stream().filter(student->student.getGroupId() == person.getUser_id()).findAny().orElse(null);
+            if (groupStudent!=null){
+                try {
+                    course_id = courseRepository.Get(groupRepository.Get(groupStudent.getGroupId()).getCourse_id()).getCourse_id();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
         Course course = courseRepository.Get(course_id);
 
         BlankInfo info = new BlankInfo();
@@ -99,13 +149,28 @@ public class DocumentationController implements ApplicationContextAware{
     public @ResponseBody
     void getGroups(@PathVariable String type, @RequestParam boolean isProtected, HttpServletResponse response){
         UserRepository userRepository = (UserRepository) context.getBean("userRepository");
-
+        GroupStudentRepository groupStudentRepository = (GroupStudentRepository) context.getBean("groupStudentRepository");
+        GroupRepository groupRepository = (GroupRepository) context.getBean("groupRepository");
+        PersonRepository personRepository = (PersonRepository) context.getBean("personRepository");
+        CourseRepository courseRepository = (CourseRepository) context.getBean("courseRepository");
         try {
             ArrayList<User> users = (ArrayList<User>) userRepository.GetAll();
             List<Group_Blank> blanks = new ArrayList<Group_Blank>();
+            ArrayList<GroupStudent> groupStudents = (ArrayList<GroupStudent>) groupStudentRepository.GetAll();
+            ArrayList<Person> people = (ArrayList<Person>) personRepository.GetAll();
 
             for (User user :
                     users) {
+                String title = "Немецкий";
+                Person person = people.stream().filter(x -> x.getUser_id() == user.getUser_id()).findFirst().orElse(null);
+                if (person != null){
+                    GroupStudent groupStudent = groupStudents.stream().filter(student->student.getGroupId() == person.getUser_id()).findAny().orElse(null);
+                    if (groupStudent!=null){
+                        title = courseRepository.Get(groupRepository.Get(groupStudent.getGroupId()).getCourse_id()).getTitle();
+                    }
+                }
+
+
                 Group_Blank blank = new Group_Blank();
                 if(Roles.valueOf(user.getRole()) == Roles.ROLE_STUDENT){
                     blank.setFirstName(user.getFirstName());
@@ -113,6 +178,7 @@ public class DocumentationController implements ApplicationContextAware{
                     blank.setPatronym(user.getPatronym());
                     blank.setPhone(user.getContactInfo());
                     blank.setEmail(user.getEmail());
+                    blank.setCourse_name(title);
                     blanks.add(blank);
                 }
             }

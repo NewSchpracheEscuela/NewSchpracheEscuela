@@ -21,6 +21,7 @@ public class Group_List implements IFactory<Group_Blank>{
         headers.add("ФИО");
         headers.add("Электронная почта");
         headers.add("Телефон");
+        headers.add("Курс");
 
         mapper = (blank) -> {
             List<String> fields = new ArrayList<>();
@@ -28,6 +29,7 @@ public class Group_List implements IFactory<Group_Blank>{
             fields.add(blank.getFirstName() + ' ' + blank.getLastName() + ' ' + blank.getPatronym());
             fields.add(blank.getEmail());
             fields.add(blank.getPhone());
+            fields.add(blank.getCourse_name());
             return fields;
         };
     }
