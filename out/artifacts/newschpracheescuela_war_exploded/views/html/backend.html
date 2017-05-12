@@ -1,0 +1,56 @@
+<ng-include src="'resources/html/header.html'"></ng-include>
+    <div class="container__backend">
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__item menu__item--active"><a href="" ng-click="initData($event,'/users')">Пользователи</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/news')">Новости</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/marks')">Отметки</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/lessons')">Уроки</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/groups')">Группы</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/courses')">Курсы</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/comments')">Комментарии</a></li>
+                <li class="menu__item"><a href="" ng-click="initData($event,'/controlpoints')">Контрольные точки</a></li>
+            </ul>
+        </nav>
+        <div class="container__base">
+            <div class="container__blockTable">
+                <table class="container__table">
+                    <tr>
+                        <th ng-repeat="key in dataKeys">{{key}}</th>
+                    </tr>
+                    <tr ng-repeat="item in data">
+                        <td ng-repeat="(key,value) in item"> {{value}}</td>
+                        <td>
+                            <button ng-click="editItemPopup('.popup__edit', item)">еdit</button>
+                            <button ng-click="deleteItem(item)">-</button>
+                        </td>
+                    </tr>
+                </table>
+                <button class="table__add" ng-click="showPopup('.popup__add')">+</button>
+            </div>
+        </div>
+    </div>
+<div class="popup__bg" style="display: none"></div>
+<div class="popup__add" style="display: none">
+    <form name="addForm"  class = "popup__addForm" novalidate>
+        <div ng-repeat="key in formKeys track by key" class="popup_keyValue">
+            <span>{{key}}</span>
+            <input ng-model="Item.formKeys[key]" type="text" name="{{key}}" placeholder="{{key}}" required>
+        </div>
+        <input type="button" ng-click="addItem()" value="ok">
+        <button ng-click="hidePopup('addForm','.popup__add')">Cancel</button>
+    </form>
+    <span ng-module="errorMessage">{{errorMessage}}</span>
+</div>
+<div class="popup__edit" style="display: none">
+    <form name="editForm"  class = "popup__editForm" novalidate>
+        <div ng-repeat="(key,value) in edit track by key" ng-if="$index > 0" class="popup_keyValue">
+            <span>{{key}}</span>
+            <input ng-model="Item.formKeys[key]" type="text" name="{{key}}" required>
+        </div>
+        <input type="button" ng-click="editItem()" value="ok">
+        <button ng-click="hidePopup('editForm','.popup__edit')">Cancel</button>
+    </form>
+    <span ng-module="errorMessage">{{errorMessage}}</span>
+</div>
+<ng-include src="'resources/html/footer.html'"></ng-include>
