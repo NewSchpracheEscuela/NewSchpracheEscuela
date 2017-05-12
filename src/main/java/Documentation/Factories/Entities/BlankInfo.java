@@ -26,7 +26,7 @@ public class BlankInfo {
     }
 
     public void setCourseTitle(String courseTitle) {
-        this.courseTitle = "\"" +courseTitle + "\"";
+        this.courseTitle = '\"' +courseTitle + '\"';
     }
 
     public String getTelephone() {
