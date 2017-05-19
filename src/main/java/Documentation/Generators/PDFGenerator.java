@@ -44,7 +44,7 @@ public class PDFGenerator<T> implements IGenerator<T>{
     }
 
     public String getDocumentType() {
-        return "pdf";
+        return ".pdf";
     }
 
     public String getContentType() {
