@@ -3,6 +3,12 @@ var nseApp = angular.module('NSE', ['ngRoute', 'ngMap','ngCookies','base64'])
 
 function nseAppConfig ($routeProvider,$locationProvider,USER_ROLES) {
     $routeProvider
+        .when('/',
+            {
+                templateUrl: '/resources/html/pages/index.html',
+                controller: 'IndexController'
+            }
+        )
         .when('/index',
             {
                 templateUrl: '/resources/html/pages/index.html',

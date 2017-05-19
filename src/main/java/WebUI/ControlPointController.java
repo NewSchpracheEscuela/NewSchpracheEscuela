@@ -22,7 +22,6 @@ public class ControlPointController implements ApplicationContextAware {
 
     private ControlPointRepository repository;
 
-    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
     ResponseEntity<Iterable<ControlPoint>> getControlPoints(){

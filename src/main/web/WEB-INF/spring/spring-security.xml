@@ -74,7 +74,6 @@
                 login-page="/authorization"
                 username-parameter="login"
                 password-parameter="password" />
-        <!--<logout logout-success-url="/login?logout"  />-->
         <!-- enable csrf protection -->
         <csrf disabled="true"/>
     </http>
